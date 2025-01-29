@@ -1,0 +1,86 @@
+/* Home Page */
+
+/* Custom Header Background Color */
+.custom-header {
+    background-color: #002060; /* Dark blue */
+    color: white;
+}
+
+/* Login Button Styling */
+.login-btn {
+    background-color: #fff; /* White button background */
+    color: #002060; /* Dark blue text */
+    border: none;
+    font-weight: bold;
+    padding: 5px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.login-btn:hover {
+    background-color: #FFD700; /* Gold on hover */
+    color: #002060; /* Dark blue text */
+    text-decoration: none;
+}
+
+.welcome-section {
+    background: url('../images/bg1.jpg') no-repeat center center / cover;
+    height: 600px;
+    position: relative;
+}
+.welcome-section .overlay {
+    background: rgba(0, 0, 0, 0.4);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+.welcome-section .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+}
+welcome-text {
+    font-size: 4.5em;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+.card-section {
+    padding: 50px 0;
+}
+.card {
+    border: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+.card:hover {
+    transform: scale(1.05);
+}
+.student-handbook {
+    text-align: center;
+    margin-top: 50px;
+}
+
+    /* Styling the Login Button */
+    .login-btn {
+        background-color: #fff; /* Gold */
+        color: #002060; /* Dark blue for contrast */
+        border: none;
+        font-weight: bold;
+        margin-left: 20px;
+        margin-top: 6px;
+        padding: 5px 15px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+
+    }
+
+    .login-btn:hover {
+        background-color: #FFD700; /* Slightly darker gold */
+        color: #002060; /* White text on hover */
+        text-decoration: none;
+    }
+
+/* Home Page - Responsive */
