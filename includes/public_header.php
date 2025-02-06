@@ -41,14 +41,17 @@
                     <li class="nav-item">
                         <a class="nav-link" href="index.php">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="admission_portal/admission_form.php">Admission</a>
-                    </li>
+                <!--<li class="nav-item">
+                        <a class="nav-link" href="admission_portal/admission_.php">Admission</a>
+                    </li>-->
                     <li class="nav-item">
                         <a class="nav-link" href="programs.php">Programs</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="services.php">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="admission_portal/porfolio.php">Porfolio</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="faq.php">FAQ</a>
@@ -58,7 +61,7 @@
                     </li>
                     <li class="nav-item">
                         <!-- Custom Styled Login Button -->
-                        <a class="btn login-btn btn-sm ms-3" href="admin/login.php">Student Portal</a>
+                        <a class="btn login-btn btn-sm ms-3" href="admission_portal/admission_portal.php">Admission Portal</a>
                     </li>
                 </ul>
             </div>

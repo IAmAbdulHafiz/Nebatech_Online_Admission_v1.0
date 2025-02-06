@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
 </head>
 <body>
+    <!-- Include Header -->
+    <?php include("includes/header.php"); ?>
+
     <div class="container mt-5">
         <h2 class="text-center">Pay for Admission Form</h2>
 
@@ -41,5 +44,7 @@
             <button type="submit" class="btn btn-primary w-100">Pay with Hubtel</button>
         </form>
     </div>
+    <!-- Include Footer -->
+    <?php include("includes/footer.php"); ?>
 </body>
 </html>
