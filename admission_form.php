@@ -65,31 +65,16 @@
                 </div>
             </div>
 
-            <!-- Right Side: Payment Options -->
+            <!-- Right Side: Payment Information -->
             <div class="col-md-6">
                 <div class="card shadow-lg">
                     <div class="card-body d-flex flex-column justify-content-between">
                         <h2 class="text-center mb-4" style="color: #002060;">Online Admission Form</h2>
                         <p class="text-center">The fee for the form is <b>GH₵100</b>.</p>
-                        <p class="text-center">Please select your preferred payment method to view the instructions.</p>
-
-                        <div class="mb-3">
-                            <label for="paymentMethod" class="form-label">Payment Method</label>
-                            <select id="paymentMethod" class="form-select">
-                                <option value="" selected disabled>Choose a payment method</option>
-                                <option value="momo">MTN MoMo</option>
-                                <option value="bank">Bank</option>
-                                <option value="cash">Cash</option>
-                            </select>
-                        </div>
-
-                        <div id="paymentInstructions" class="instructions d-none">
-                            <h5>Payment Instructions</h5>
-                            <p>Select a payment method to see the instructions.</p>
-                        </div>
-
+                        <p class="text-center">You must purchase the application form online through this platform.</p>
+                        <p class="text-center">Click the button below to proceed with the payment.</p>
                         <div class="text-center mt-4">
-                            <a href="payment_form.php" class="btn btn-primary w-20" style="background-color: #002060; border: 1px solid #002060;">Buy Form Now</a>
+                            <a href="payment_form.php" class="btn btn-primary w-100" style="background-color: #002060; border: 1px solid #002060;">Buy Form Now</a>
                         </div>
                         <div class="mt-3 text-center">
                             <p>Continue your application or check admission status. <a href="login.php">Login here.</a></p>
