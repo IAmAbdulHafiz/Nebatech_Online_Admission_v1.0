@@ -18,7 +18,7 @@
         <div class="content">
             <h1 class="welcome-text" style="font-size: 3em;">Welcome to the Nebatech Software Solution</h1>
             <p>Where technology meets innovation and learning fosters transformation.</p>
-            <a href="admission.php" class="btn btn-light btn-lg login-btn">Start Your Application</a>
+            <a href="admission_form.php" class="btn btn-light btn-lg login-btn">Start Your Application</a>
         </div>
     </div>
 
