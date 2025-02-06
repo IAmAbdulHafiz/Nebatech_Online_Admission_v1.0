@@ -10,7 +10,8 @@
         .services-header {
             background-color: #002060;
             color: white;
-            padding: 40px 0;
+            padding: 40px;
+            margin-top:70px;
             text-align: center;
         }
 
@@ -121,7 +122,7 @@
         </div>
     </div>
 
-    <?php include("footer.php"); ?>
+    <?php include("includes/public_footer.php"); ?>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
 </body>
 

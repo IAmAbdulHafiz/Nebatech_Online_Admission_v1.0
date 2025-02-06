@@ -10,7 +10,8 @@
         .contact-header {
             background-color: #002060;
             color: white;
-            padding: 40px 0;
+            padding: 40px;
+            margin-top:70px;
             text-align: center;
         }
 
@@ -91,7 +92,7 @@
             width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
     </div>
 
-    <?php include("footer.php"); ?>
+    <?php include("includes/public_footer.php"); ?>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
 </body>
 

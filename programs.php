@@ -48,6 +48,7 @@ $programs = [
     <title>NTSS - Programs</title>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <style>
+        }
         .program-card img {
             height: 200px;
             object-fit: cover;
@@ -56,7 +57,8 @@ $programs = [
         .program-header {
             background-color: #002060;
             color: white;
-            padding: 40px 0;
+            padding: 40px;
+            padding-top:100px;
             text-align: center;
         }
 
@@ -103,7 +105,7 @@ $programs = [
         <a href="contact.php" class="btn btn-primary">Contact Us</a>
     </div>
 
-    <?php include("footer.php"); ?>
+    <?php include("includes/public_footer.php"); ?>
 
     <script src="assets/js/bootstrap.bundle.min.js"></script>
 </body>

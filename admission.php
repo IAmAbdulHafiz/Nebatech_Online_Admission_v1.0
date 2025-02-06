@@ -70,7 +70,7 @@
                 <div class="card shadow-lg">
                     <div class="card-body d-flex flex-column justify-content-between">
                         <h2 class="text-center mb-4" style="color: #002060;">Online Admission Form</h2>
-                        <p class="text-center">The fee for the form is <b>GH₵50</b>.</p>
+                        <p class="text-center">The fee for the form is <b>GH₵100</b>.</p>
                         <p class="text-center">Please select your preferred payment method to view the instructions.</p>
 
                         <div class="mb-3">
@@ -89,7 +89,7 @@
                         </div>
 
                         <div class="text-center mt-4">
-                            <a href="payment_and_signup.php" class="btn btn-primary w-20" style="background-color: #002060; border: 1px solid #002060;">Apply Now</a>
+                            <a href="payment_form.php" class="btn btn-primary w-20" style="background-color: #002060; border: 1px solid #002060;">Buy Form Now</a>
                         </div>
                         <div class="mt-3 text-center">
                             <p>Continue your application or check admission status. <a href="login.php">Login here.</a></p>
