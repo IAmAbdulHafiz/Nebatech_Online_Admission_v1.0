@@ -25,7 +25,7 @@
 
 .welcome-section {
     background: url('../images/bg1.jpg') no-repeat center center / cover;
-    height: 600px;
+    height: 100vh;
     position: relative;
 }
 .welcome-section .overlay {

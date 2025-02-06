@@ -42,7 +42,7 @@
                         <a class="nav-link" href="index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="admission_portal/admission_form.php">Admission</a>
+                        <a class="nav-link" href="admission.php">Admission</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="programs.php">Programs</a>

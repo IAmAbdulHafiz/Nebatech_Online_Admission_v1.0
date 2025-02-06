@@ -1,97 +1,114 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <icon href="assets/images/favicon.ico">
-    <title>NEBATECH-Online Admission</title>
+    <link rel="icon" href="assets/images/favicon.ico">
+    <title>Nebatech Software Solution Ltd</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/style1.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
 </head>
 <body>
+
     <?php include("includes/public_header.php"); ?>
 
-    <!-- Welcome Section -->
-    <div class="welcome-section">
+    <div class="content mt-5">
+    <!-- Hero Section -->
+    <div class="hero-section text-center">
         <div class="overlay"></div>
         <div class="content">
-            <h1 class="welcome-text" style="font-size: 3em;">Welcome to the Nebatech Software Solution</h1>
-            <p>Where technology meets innovation and learning fosters transformation.</p>
-            <a href="admission_form.php" class="btn btn-light btn-lg login-btn">Start Your Application</a>
+            <h1 class="hero-text" style="font-size: 3em;">Welcome to Nebatech Software Solution Ltd</h1>
+            <p>Empowering businesses and individuals with cutting-edge technology solutions.</p>
+            <a href="contact.php" class="btn btn-light btn-lg">Get In Touch</a>
         </div>
     </div>
 
-    <!-- Welcome Message Section -->
+    <!-- About Section -->
     <div class="container text-center mt-5">
-        <h2>Welcome Message</h2>
+        <h2>About Us</h2>
         <p class="lead text-start">
-            Dear Student,<br><br>
-            Welcome to Nebatech Software Solution Ltd, where technology meets innovation and learning fosters transformation. 
-            We are thrilled to have you join our growing community of passionate learners and professionals dedicated to 
-            leveraging technology for impact and excellence.<br><br>At Nebatech, we believe in your potential to innovate and 
-            create a better future through technology. With our competence base training programs, exceptional faculty, and 
-            supportive community, we are committed to equipping you with the knowledge, skills, and tools needed to excel 
-            in today’s fast-evolving digital world. We also want to express our gratitude to our investor, <strong>Mr. Rafik 
-                Fuseini</strong>, for believing in our vision and supporting our growth.<br><br> Additionally, we extend our 
-                heartfelt appreciation to <strong>Alhaj Dr. Tanko Mohammed</strong>, a valued member of our Board of Advisory, 
-                and <strong>Mr. Awal Fuseini</strong>, who serves as the Board Advisor Secretary, for their immense contributions 
-                toward the success of Nebatech Software Solution Ltd. Their guidance and dedication continue to inspire and 
-                propel us forward.<br><br>Warm regards,<br>
-            <strong>Abdul-Hafiz Yussif</strong><br>
-            Founder & CEO, Nebatech Software Solution Ltd.
+            At Nebatech Software Solution Ltd, we specialize in developing innovative software solutions tailored to businesses' and individuals' needs. Our team is dedicated to delivering high-quality, secure, and scalable applications to enhance productivity and drive digital transformation.
         </p>
     </div>
 
-
-    <!-- Cards Section -->
-    <div class="container card-section">
+    <!-- Services Section -->
+    <div class="container services-section">
         <div class="row">
-            <!-- Admission Information -->
-            <div class="col-md-6 mb-4">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <i class="fas fa-user-graduate fa-3x mb-3" style="color: #002060"></i>
-                        <h5 class="card-title">Admission Requirements</h5>
-                        <p class="card-text">
-                            To enroll in any of our programs, students must meet the following requirements:
-                        </p>
-                        <ul class="list-unstyled text-left">
-                            <li><i class="fas fa-check-circle text-success"></i> Basic literacy and numeracy skills (minimum JHS certificate).</li>
-                            <li><i class="fas fa-check-circle text-success"></i> A passion for technology and a commitment to learning.</li>
-                            <li><i class="fas fa-check-circle text-success"></i> Access to a laptop is highly recommended for technical programs.</li>
-                            <br>
-                        </ul>
+            <div class="col-md-4 mb-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <i class="fas fa-code fa-3x mb-3" style="color: #002060"></i>
+                        <h5 class="card-title">Software Development</h5>
+                        <p class="card-text">Custom software solutions tailored to your business needs.</p>
                     </div>
                 </div>
             </div>
-            <!-- Learning Tools and Resources -->
-            <div class="col-md-6 mb-4">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <i class="fas fa-book-open fa-3x mb-3" style="color: #002060"></i>
-                        <h5 class="card-title">Learning Tools and Resources</h5>
-                        <p class="card-text">
-                            Nebatech provides the following tools and resources to enhance your learning experience:
-                        </p>
-                        <ul class="list-unstyled text-left">
-                            <li><i class="fas fa-check-circle text-success"></i> Modern Classroom with high-speed internet.</li>
-                            <li><i class="fas fa-check-circle text-success"></i> Free Wi-Fi for research and assignments.</li>
-                            <li><i class="fas fa-check-circle text-success"></i> Access to licensed software and tools relevant to your program.</li>
-                            <li><i class="fas fa-check-circle text-success"></i> Study guides, e-books, and video tutorials for each course.</li>
-                        </ul>
+            <div class="col-md-4 mb-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <i class="fas fa-laptop fa-3x mb-3" style="color: #002060"></i>
+                        <h5 class="card-title">IT Consultancy</h5>
+                        <p class="card-text">Expert guidance to optimize your IT infrastructure and strategy.</p>
                     </div>
                 </div>
             </div>
-
-            <!-- Student Handbook Section -->
-            <div class="container student-handbook py-5 text-center">
-                <p>For more information on our programs, admission requirements, and policies, please download our Student Handbook.</p>
-                <a href="student_handbook.pdf" class="btn btn-primary btn-lg">
-                    <i class="fas fa-file-pdf"></i> Download Student Handbook
-                </a>
+            <div class="col-md-4 mb-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <i class="fas fa-chalkboard-teacher fa-3x mb-3" style="color: #002060"></i>
+                        <h5 class="card-title">Training & Capacity Building</h5>
+                        <p class="card-text">Hands-on training to equip individuals with in-demand tech skills.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <?php include("includes/public_footer.php"); ?>
+    <!-- Portfolio Section -->
+    <div class="container mt-5">
+        <h2 class="text-center">Our Portfolio</h2>
+        <p class="text-center">Some of the projects we have successfully delivered.</p>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="assets/images/project1.jpg" class="card-img-top" alt="Project 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Project 1</h5>
+                        <p class="card-text">A brief description of the project.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="assets/images/project2.jpg" class="card-img-top" alt="Project 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Project 2</h5>
+                        <p class="card-text">A brief description of the project.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="assets/images/project3.jpg" class="card-img-top" alt="Project 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Project 3</h5>
+                        <p class="card-text">A brief description of the project.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="container text-center mt-5 contact-section">
+        <h2>Contact Us</h2>
+        <p class="lead">Have a project in mind? Let's discuss how we can help you achieve your goals.</p>
+        <a href="contact.php" class="btn btn-primary btn-lg">Contact Us</a>
+    </div>
+</div>
+
+    <?php include("includes/footer.php"); ?>
+</body>
+</html>

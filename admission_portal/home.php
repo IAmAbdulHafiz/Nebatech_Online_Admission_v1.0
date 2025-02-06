@@ -1,11 +1,15 @@
+    
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NTSS Admission</title>
-    <!-- Bootstrap CSS -->
+    <icon href="assets/images/favicon.ico">
+    <title>NEBATECH-Online Admission</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <style>
         .carousel-item {
@@ -28,13 +32,6 @@
             color: #fff;
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
         }
-
-        /* Adjust page content to fit with fixed header and footer */
-        body {
-            padding-top: 70px; /* Adjust to the height of the header */
-            padding-bottom: 60px; /* Adjust to the height of the footer */
-        }
-
         .card-body {
             min-height: 400px; /* Maintain consistent height for the right-side card */
         }
@@ -43,7 +40,7 @@
 
 <body>
     <!-- Include Header -->
-    <?php include("includes/public_header.php"); ?>
+    <?php include("includes/header.php"); ?>
 
     <!-- Main Content -->
     <div class="container mt-4">
@@ -86,57 +83,10 @@
     </div>
     <br><br><br>
     <!-- Include Footer -->
-    <?php include("includes/public_footer.php"); ?>
+    <?php include("includes/footer.php"); ?>
 
     <!-- Bootstrap JS -->
     <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // JavaScript for dynamically showing payment instructions
-        document.getElementById('paymentMethod').addEventListener('change', function () {
-            const instructions = document.getElementById('paymentInstructions');
-            const selectedMethod = this.value;
-            instructions.classList.remove('d-none');
-
-            let content = '';
-            switch (selectedMethod) {
-                case 'momo':
-                    content = `
-                        <h5>MTN MoMo Payment Instructions</h5>
-                        <ol>
-                            <li>Dial *170#, Choose Option 2 (MoMo Pay)</li>
-                            <li>Choose Option 3 and Enter Amount</li>
-                            <li>Enter MoMo PIN to Confirm Payment</li>
-                            <li>Input Reference: Use “<strong>NTSS form</strong>” and add your first name.</li>
-                        </ol>
-                    `;
-                    break;
-                case 'bank':
-                    content = `
-                        <h5>Bank Payment Instructions</h5>
-                        <p>Visit any Zenith Bank Branch to make a deposit into the following account details:</p>
-                        <ol>
-                            <li>Account Name: <b>Nebatech Software Solution Ltd.</b></li>
-                            <li>Account Number: <b>6011119549</b></li>
-                            <li>Branch: <b>Tamale Main</b></li>
-                            <li>Send the <b>Deposit Slip</b> Picture to us on WhatsApp: 0247636080</li>
-                            <li>You will get <b>SERIAL NUMBER & PIN</b>.</li>
-                            <li>Use the serial number and pin to apply.</li>
-                        </ol>
-                    `;
-                    break;
-                case 'cash':
-                    content = `
-                        <h5>Cash Payment Instructions</h5>
-                        <p>Visit the NTSS Main office in Tamale to make your payment and obtain your <b>SERIAL NUMBER</b> and <b>PIN</b> to proceed with your application.</p>
-                    `;
-                    break;
-                default:
-                    content = `<p>Select a payment method to see the instructions.</p>`;
-            }
-
-            instructions.innerHTML = content;
-        });
-    </script>
 </body>
 
 </html>

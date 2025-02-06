@@ -30,7 +30,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark">
             <!-- Logo -->
             <a class="navbar-brand d-flex align-items-center" href="index.php">
-                <img src="assets/images/logo.png" alt="Nebatech Logo" style="height: 50px;">
+                <img src="../assets/images/logo.png" alt="Nebatech Logo" style="width: 100px; height: 51px;">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -39,16 +39,13 @@
                 <!-- Navigation Menu -->
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php">Home</a>
+                        <a class="nav-link" href="../index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="admission_portal/admission_form.php">Admission</a>
+                        <a class="nav-link" href="admission.php">Admission</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="programs.php">Programs</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="services.php">Services</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="faq.php">FAQ</a>
