@@ -89,7 +89,7 @@
         </div>
     </div>
 
-    <?php include("includes/footer.php"); ?>
+    <?php include("includes/public_footer.php"); ?>
 
     <!-- Optional JavaScript -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

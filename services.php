@@ -58,7 +58,7 @@
 <body>
 
     <?php include("includes/public_header.php"); ?>
-
+<div class="content">
     <div class="container mt-5 services-section">
         <h2 class="text-center" style="color: orange;">Our Services</h2>
         <p class="text-center lead">At Nebatech, we provide a variety of services to cater to your needs. Below are the services we offer:</p>
@@ -122,8 +122,8 @@
             </div>
         </div>
     </div>
-
-    <?php include("includes/footer.php"); ?>
+</div>
+<?php include("includes/public_footer.php"); ?>
 
 </body>
 </html>

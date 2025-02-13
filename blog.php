@@ -32,12 +32,30 @@
         .section-title {
             color: orange;
         }
+        @media (max-width: 768px) {
+            .blog-section {
+                padding: 100px 0;
+            }
+            .card {
+                margin-left: 1rem;
+                margin-right: 1rem;
+            }
+            .card-body {
+                padding: 1rem;
+            }
+            .card-title {
+                font-size: 1.2rem;
+            }
+            .card-text {
+                font-size: 0.9rem;
+            }
+        }
     </style>
 </head>
 <body>
 
     <?php include("includes/public_header.php"); ?>
-
+<div class="content">
     <div class="container mt-5 blog-section">
         <!-- Blogs Section -->
         <h2 class="text-center section-title">Blogs</h2>
@@ -113,8 +131,8 @@
             </div>
         </div>
     </div>
-
-    <?php include("includes/footer.php"); ?>
+</div>
+<?php include("includes/public_footer.php"); ?>
 
 </body>
 </html>

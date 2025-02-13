@@ -12,6 +12,10 @@
         .projects-section {
             padding: 100px 0;
         }
+        .lead{
+            margin-left: 1rem;
+            margin-right: 1rem;
+        }
         .card {
             border: none;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
@@ -35,6 +39,25 @@
             background-color: #f0f0f0;
             margin-bottom: 1rem;
         }
+        /* Responsive styling */
+        @media (max-width: 768px) {
+            .projects-section {
+                padding: 100px 0;
+            }
+            .card {
+                margin-left: 1rem;
+                margin-right: 1rem;
+            }
+            .card-body {
+                padding: 1rem;
+            }
+            .card-title {
+                font-size: 1.2rem;
+            }
+            .card-text {
+                font-size: 0.9rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -43,7 +66,7 @@
 
     <div class="container mt-5 projects-section">
         <h2 class="text-center" style="color: orange;">Our Accomplished Projects</h2>
-        <p class="text-center lead">At Nebatech, we have successfully completed numerous projects that have helped businesses grow and improve their operations. Here are some of the key projects we've worked on:</p>
+        <p class="text-center lead">We have successfully completed numerous projects that have helped businesses grow and improve their operations. Here are some of the key projects we've worked on:</p>
 
         <!-- Projects List -->
         <div class="row mt-5">
@@ -158,7 +181,7 @@
         </div>
     </div>
 
-    <?php include("includes/footer.php"); ?>
+    <?php include("includes/public_footer.php"); ?>
 
 </body>
 </html>

@@ -11,9 +11,12 @@
     <style>
         .contact-section {
             padding: 100px 0;
+            background-color: #f9f9f9;
         }
         .section-title {
             color: orange;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
         }
         .icon-container {
             font-size: 1.5em;
@@ -22,6 +25,9 @@
         }
         .contact-details, .contact-form {
             padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         .map-container {
             position: relative;
@@ -38,12 +44,29 @@
             width: 100%;
             height: 100%;
         }
+        .btn-primary {
+            background-color: #002060;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: orange;
+        }
+        /* Responsive styling */
+        @media (max-width: 768px) {
+            .contact-section {
+                padding: 50px 0;
+            }
+            .contact-details, .contact-form {
+                margin-bottom: 20px;
+            }
+        }
     </style>
 </head>
 <body>
 
     <?php include("includes/public_header.php"); ?>
-
+<div class="content mt-5">
     <div class="container mt-5 contact-section">
         <h2 class="text-center section-title">Contact Us</h2>
         <p class="text-center lead">Feel free to get in touch with us. You can reach us through the contact details below or fill out the form on the left.</p>
@@ -116,8 +139,8 @@
             </div>
         </div>
     </div>
-
-    <?php include("includes/footer.php"); ?>
+</div>
+    <?php include("includes/public_footer.php"); ?>
 
     <!-- Optional JavaScript -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

@@ -29,12 +29,27 @@
         .card-text {
             color: #555;
         }
+        @media (max-width: 768px) {
+            .card {
+                margin-left: 1rem;
+                margin-right: 1rem;
+            }
+            .card-body {
+                padding: 1rem;
+            }
+            .card-title {
+                font-size: 1.25rem;
+            }
+            .card-text {
+                font-size: 0.875rem;
+            }
+        }
     </style>
 </head>
 <body>
 
     <?php include("includes/public_header.php"); ?>
-
+<div class="content">
     <div class="container mt-5 programmes-section">
         <h2 class="text-center" style="color: orange;">Competency-Based Training Programs</h2>
         <p class="text-center lead">We offer specialized training programs designed to help individuals develop skills in the following areas:</p>
@@ -153,6 +168,7 @@
             </div>
         </div>
     </div>
+</div>
 
     <?php include("includes/footer.php"); ?>
 

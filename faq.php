@@ -6,26 +6,71 @@
     <link rel="icon" href="assets/images/favicon.ico">
     <title>FAQs - Nebatech Software Solution Ltd</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
         .faq-section {
             padding: 100px 0;
+            background-color: #f9f9f9;
+        }
+        .lead {
+            margin-left: 1rem;
+            margin-right: 1rem;
         }
         .accordion .card {
             margin-bottom: 15px;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         .accordion .card-header {
-            background-color: #f7f7f7;
+            background-color: #002060;
+            color: white;
+            border-radius: 10px 10px 0 0;
+        }
+        .accordion .card-body {
+            background-color: white;
+            border-radius: 0 0 10px 10px;
         }
         .section-title {
             color: orange;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+        .btn-link {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+        .btn-link:hover {
+            text-decoration: none;
+            color: #FFD700;
+        }
+        /* Responsive styling */
+        @media (max-width: 768px) {
+            .faq-section {
+                padding: 50px 0;
+            }
+            .card {
+                margin-left: 1rem;
+                margin-right: 1rem;
+            }
+            .card-body {
+                padding: 1rem;
+            }
+            .card-title {
+                font-size: 1.2rem;
+            }
+            .card-text {
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
 <body>
 
     <?php include("includes/public_header.php"); ?>
-
+<div class="content mt-5">
     <div class="container mt-5 faq-section">
         <h2 class="text-center section-title">Frequently Asked Questions</h2>
         <p class="text-center lead">Find answers to some of the most common questions about Nebatech and our services:</p>
@@ -225,7 +270,7 @@
                     <h5 class="mb-0">
                         <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThirteen" aria-expanded="false" aria-controls="collapseThirteen">
                             How does Nebatech ensure the security of my data during project development?
-                        </button>
+                        </button> 
                     </h5>
                 </div>
                 <div id="collapseThirteen" class="collapse" aria-labelledby="headingThirteen" data-parent="#faqAccordion">
@@ -251,8 +296,8 @@
             </div>
         </div>
     </div>
-
-    <?php include("includes/footer.php"); ?>
+</div>
+<?php include("includes/public_footer.php"); ?>
     <!-- Add the necessary Bootstrap JS and jQuery scripts for the accordion to work -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
@@ -260,4 +305,3 @@
 
 </body>
 </html>
-
