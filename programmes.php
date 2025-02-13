@@ -16,6 +16,9 @@
             border: none;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s;
+            height: 100%;
+            margin-left: 1rem;
+            margin-right: 1rem;
         }
         .card:hover {
             transform: scale(1.05);
@@ -43,6 +46,10 @@
             .card-text {
                 font-size: 0.875rem;
             }
+        }
+        .lead{
+            margin-left: 1rem;
+            margin-right: 1rem;
         }
     </style>
 </head>
@@ -170,7 +177,7 @@
     </div>
 </div>
 
-    <?php include("includes/footer.php"); ?>
+    <?php include("includes/public_footer.php"); ?>
 
 </body>
 </html>

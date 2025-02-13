@@ -20,6 +20,7 @@
             border: none;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s;
+            height: 100%;
         }
         .card:hover {
             transform: scale(1.05);

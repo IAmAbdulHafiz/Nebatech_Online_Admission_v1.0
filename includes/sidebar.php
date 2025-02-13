@@ -86,7 +86,7 @@
 
     /* Hover effects for links */
     .nav-link:hover {
-        background-color: #FFD700; /* Lighter blue shade on hover */
+        background-color:orange; /* Lighter blue shade on hover */
         color: white;
         text-decoration: none;
     }

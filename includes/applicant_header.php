@@ -18,7 +18,7 @@
         }
 
         .login-btn:hover {
-            background-color: #FFD700; /* Gold on hover */
+            background-color:orange; /* Gold on hover */
             color: #002060; /* Dark blue text */
             text-decoration: none;
         }

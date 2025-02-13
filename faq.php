@@ -44,7 +44,7 @@
         }
         .btn-link:hover {
             text-decoration: none;
-            color: #FFD700;
+            color:orange;
         }
         /* Responsive styling */
         @media (max-width: 768px) {
