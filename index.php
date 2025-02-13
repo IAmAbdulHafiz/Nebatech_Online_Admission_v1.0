@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
     <style>
         body {
             background-color: #002060; /* Set primary color as background */
@@ -55,7 +57,7 @@
             transform: scale(1.05);
         }
 
-        .btn-lg{
+        .btn-lgs{
             color: orange;
         }
         .page-background {
@@ -92,10 +94,11 @@
         <div class="hero-section text-center">
             <div class="overlay"></div>
             <div class="content">
-                <h1 class="hero-text" style="font-size: 3em; color:">Welcome to Nebatech Software Solution Ltd</h1>
+                <h1 class="hero-text" style="font-size: 3em; color: orange;">
+                    <span id="typed-text"></span>
+                </h1>
                 <p>Empowering businesses and individuals with cutting-edge technology solutions.</p>
-                <a href="contact.php" class="btn btn-light btn-lg">Get Started</a>
-                <a href="request-quote.php" class="btn btn-light btn-lg">Request a Quote</a>
+                <a href="request-quote.php" class="btn btn-lg">Request a Quote</a>
             </div>
         </div>
         <!-- Page Background -->
@@ -160,7 +163,7 @@
                                         <i class="fas fa-chalkboard-teacher fa-3x mb-3" style="color: #002060"></i>
                                         <h5 class="card-title">Our Programmes</h5>
                                         <p class="card-text">Join our learners and advance your skills</p>
-                                        <button class="btn btn-lg ">
+                                        <button class="btn btn-lgs ">
                                             <i class="fas fa-arrow-right"></i>
                                         </button>
                                     </div>
@@ -175,7 +178,7 @@
                                         <i class="fas fa-cogs fa-3x mb-3" style="color: #002060"></i>
                                         <h5 class="card-title">Our Services</h5>
                                         <p class="card-text">Explore the solutions we offer</p>
-                                        <button class="btn btn-lg">
+                                        <button class="btn btn-lgs">
                                             <i class="fas fa-arrow-right"></i>
                                         </button>
                                     </div>
@@ -190,7 +193,7 @@
                                         <i class="fas fa-project-diagram fa-3x mb-3" style="color: #002060"></i>
                                         <h5 class="card-title">Our Projects</h5>
                                         <p class="card-text">Discover our successful projects</p>
-                                        <button class="btn btn-lg">
+                                        <button class="btn btn-lgs">
                                             <i class="fas fa-arrow-right"></i>
                                         </button>
                                     </div>
@@ -205,19 +208,42 @@
                                         <i class="fas fa-envelope fa-3x mb-3" style="color: #002060"></i>
                                         <h5 class="card-title">Get in Touch</h5>
                                         <p class="card-text">Contact us for more details</p>
-                                        <button class="btn btn-lg">
+                                        <button class="btn btn-lgs">
                                             <i class="fas fa-arrow-right"></i>
                                         </button>
                                     </div>
                                 </div>
                             </a>
                         </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>
-    <?php include("includes/public_footer.php"); ?>
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script>
+        var typed = new Typed("#typed-text", {
+            strings: [
+                "Nebatech Software Solution Ltd",
+                "Mobile and Web Application Development",
+                "e-Commernce Development",
+                "POS System Development",
+                "Website Design and Development",
+                "Networking Installation & Troubleshooting",
+                "CCTV Camera Installation",
+                "iPhone and Laptop Repairs",
+                "Competency-Based IT Training Programs"
+            ],
+            typeSpeed: 100,
+            backSpeed: 25,
+            startDelay: 500,
+            backDelay: 1500,
+            loop: true,
+            showCursor: true
+        });
+    </script>
+
 </body>
 </html>
