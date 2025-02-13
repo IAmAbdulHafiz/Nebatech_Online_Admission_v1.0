@@ -16,6 +16,7 @@
             border: none;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s;
+            height: 100%;
         }
         .card:hover {
             transform: scale(1.05);
@@ -28,6 +29,25 @@
         }
         .card-text {
             color: #555;
+        }
+        /* Responsive styling */
+        @media (max-width: 768px) {
+            .services-section {
+                padding: 100px 0;
+            }
+            .card {
+                margin-left: 1rem;
+                margin-right: 1rem;
+            }
+            .card-body {
+                padding: 1rem;
+            }
+            .card-title {
+                font-size: 1.2rem;
+            }
+            .card-text {
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>

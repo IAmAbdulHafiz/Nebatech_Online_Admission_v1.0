@@ -14,6 +14,18 @@
         .section-title {
             color: orange;
         }
+        /* Responsive styling */
+        @media (max-width: 768px) {
+            .request-quote-section {
+                padding: 50px 0;
+            }
+            .card-body {
+                padding: 1rem;
+            }
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
     </style>
 </head>
 <body>
