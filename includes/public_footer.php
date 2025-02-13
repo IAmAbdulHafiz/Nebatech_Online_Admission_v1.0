@@ -1,4 +1,4 @@
-<footer class="text-white py-3" style="background: #002060; box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);">
+<footer class="text-white py-3" style="background: #002060; box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.5);">
     <div class="container">
         <div class="row align-items-center">
             <!-- Social Media Links -->
@@ -21,7 +21,7 @@
 
             <!-- System Version -->
             <div class="col-12 col-md-3 text-center text-md-end">
-                <p class="mb-0">Version 1.0.0</p>
+                <p class="mb-0">v3.2.0</p>
             </div>
         </div>
     </div>
