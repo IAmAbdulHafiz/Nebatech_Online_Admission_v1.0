@@ -83,6 +83,48 @@
             position: relative;
             z-index: 0;
         }
+        .quote-btn {
+            background: linear-gradient(135deg, #ff9800, #ff5722); /* Gradient Effect */
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none; /* Ensure no underline */
+            transition: all 0.3s ease-in-out;
+            display: inline-block;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .quote-btn:hover {
+            background: linear-gradient(135deg, #ff5722, #ff9800); /* Reverse Gradient */
+            color: #002060; /* Dark blue text */
+            transform: scale(1.05); /* Slight Zoom Effect */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+            text-decoration: none; /* Ensure no underline on hover */
+        }
+
+        .quote-btn:active {
+            transform: scale(0.98);
+            box-shadow: none;
+        }
+
+        /* Responsive styling for hero section */
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 50px 0;
+            }
+            .hero-section .content h1 {
+                font-size: 2em;
+            }
+            .hero-section .content p {
+                font-size: 1em;
+            }
+            .btn-lgs {
+                font-size: 0.9em;
+                padding: 10px 20px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -98,7 +140,7 @@
                     <span id="typed-text"></span>
                 </h1>
                 <p>Empowering businesses and individuals with cutting-edge technology solutions.</p>
-                <a href="request-quote.php" class="btn btn-lg">Request a Quote</a>
+                <a href="request-quote.php" class="quote-btn">Request a Quote</a>
             </div>
         </div>
         <!-- Page Background -->
