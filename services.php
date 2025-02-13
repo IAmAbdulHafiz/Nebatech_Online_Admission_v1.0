@@ -30,6 +30,10 @@
         .card-text {
             color: #555;
         }
+        .lead{
+            margin-left: 1rem;
+            margin-right: 1rem;
+        }
         /* Responsive styling */
         @media (max-width: 768px) {
             .services-section {
