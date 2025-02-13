@@ -286,6 +286,6 @@
             showCursor: true
         });
     </script>
-
+<?php include("includes/public_footer.php"); ?>
 </body>
 </html>
