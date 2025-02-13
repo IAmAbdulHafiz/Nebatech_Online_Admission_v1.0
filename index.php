@@ -61,7 +61,7 @@
             color: orange;
         }
         .page-background {
-            background-image: url('assets/images/welcome2.jpg'); /* Keeping your image as background */
+            background-image: url('assets/images/welcome2.JPG'); /* Keeping your image as background */
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
