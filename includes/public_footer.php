@@ -1,4 +1,4 @@
-<footer class="text-white py-3" style="background: #002060; position: fixed; bottom: 0; width: 100%; box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);">
+<footer class="text-white py-3" style="background: #002060; box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);">
     <div class="container">
         <div class="row align-items-center">
             <!-- Social Media Links -->
