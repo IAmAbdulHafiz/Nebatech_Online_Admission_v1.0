@@ -88,7 +88,29 @@
                     </div>
                 </div>
             </div>
-            <!-- Service 3: Network Installation & Troubleshooting -->
+            <!-- Service 3: POS System Development -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <i class="fas fa-cash-register fa-3x mb-3" style="color: #002060;"></i>
+                        <h5 class="card-title">POS System Development</h5>
+                        <p class="card-text">We develop custom Point of Sale (POS) systems to streamline your business transactions and inventory management.</p>
+                        <a href="pos-system-development.php" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Service 4: Inventory Management System -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <i class="fas fa-warehouse fa-3x mb-3" style="color: #002060;"></i>
+                        <h5 class="card-title">Inventory Management System</h5>
+                        <p class="card-text">Our inventory management systems help you keep track of your stock levels, orders, sales, and deliveries efficiently.</p>
+                        <a href="inventory-management-system.php" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Service 5: Network Installation & Troubleshooting -->
             <div class="col-md-4 mb-4">
                 <div class="card">
                     <div class="card-body">
@@ -99,7 +121,7 @@
                     </div>
                 </div>
             </div>
-            <!-- Service 4: CCTV Camera Installation -->
+            <!-- Service 6: CCTV Camera Installation -->
             <div class="col-md-4 mb-4">
                 <div class="card">
                     <div class="card-body">
@@ -110,7 +132,7 @@
                     </div>
                 </div>
             </div>
-            <!-- Service 5: iPhone & Laptop Repairs -->
+            <!-- Service 7: iPhone & Laptop Repairs -->
             <div class="col-md-4 mb-4">
                 <div class="card">
                     <div class="card-body">

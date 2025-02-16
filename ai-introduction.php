@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn the basics of Artificial Intelligence (AI) with Nebatech's Introduction to AI course. Understand AI concepts, applications, and how they are transforming industries. Start your AI journey today.">
+    <meta name="keywords" content="Introduction to AI, AI concepts, artificial intelligence course, AI applications, AI for beginners, learn AI, AI technology, machine learning, AI development, Nebatech AI course">
+    <meta name="author" content="Nebatech Software Solution Ltd">
+    <meta name="robots" content="index, follow">
     <link rel="icon" href="assets/images/favicon.ico">
     <title>Introduction to AI - Nebatech Software Solution Ltd</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">

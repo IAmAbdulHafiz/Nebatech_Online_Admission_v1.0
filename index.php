@@ -11,9 +11,6 @@
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 
     <style>
-        body {
-            background-color: #002060; /* Set primary color as background */
-        }
         .hero-section {
             background-image: url('assets/images/bg1.jpg'); /* Keeping your image as background */
             background-size: cover;
@@ -52,6 +49,7 @@
             cursor: pointer; /* Make the card appear clickable */
             transition: transform 0.3s ease-in-out;
             height: 100%;
+            color: #002060;
         }
         .card:hover {
             transform: scale(1.05);
@@ -61,7 +59,7 @@
             color: orange;
         }
         .page-background {
-            background-image: url('assets/images/welcome2.JPG'); /* Keeping your image as background */
+            background-image: url('assets/images/welcome2.JPG'); 
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -76,12 +74,15 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 32, 96, 0.85); /* Changed to a semi-transparent primary color overlay */
+            background: rgba(0, 32, 96, 0.85);
         }
 
         .page-background .content {
             position: relative;
             z-index: 0;
+        }
+        .body{
+            background-color: #F5F5F5;
         }
         .quote-btn {
             background: linear-gradient(135deg, #ff9800, #ff5722); /* Gradient Effect */

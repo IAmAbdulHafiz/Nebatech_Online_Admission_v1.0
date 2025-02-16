@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="assets/images/favicon.ico">
+    <meta name="description" content="Discover the fundamentals of Back-End Development with Nebatech. Learn how to build robust server-side applications, manage databases, and create APIs. Start your Back-End development journey today.">
+    <meta name="keywords" content="back-end development, server-side programming, databases, APIs, web development, programming, software development">
+    <meta name="author" content="Nebatech Software Solution Ltd">
+    <meta property="og:title" content="Back-End Development - Nebatech Software Solution Ltd">
+    <meta property="og:description" content="Discover the fundamentals of Back-End Development with Nebatech. Learn how to build robust server-side applications, manage databases, and create APIs. Start your Back-End development journey today.">
+    <meta name="robots" content="index, follow">
     <title>Back-End Development - Nebatech Software Solution Ltd</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">

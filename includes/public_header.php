@@ -25,7 +25,7 @@
     </div>
 </div>
 
-<header class="custom-header">
+<header class="custom-header" style="box-shadow: 4px 2px 10px rgba(0, 0, 0, 0.5);">
     <div class="container container-padding" id="main-container">
         <nav class="navbar navbar-expand-lg navbar-dark">
             <!-- Logo -->
@@ -81,7 +81,7 @@
             header.style.top = "0"; // Fix the header at the top
         } else {
             topbar.classList.remove("topbar-hidden");
-            header.style.top = "40px"; // Move header down when topbar is visible
+            header.style.top = "25px"; // Move header down when topbar is visible
         }
         lastScrollTop = st <= 0 ? 0 : st;
     });

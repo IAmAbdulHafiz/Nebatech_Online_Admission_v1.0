@@ -1,11 +1,35 @@
-/* Home Page */
+/* Home Page Styling */
+/*html, body {
+    background: url('../images/welcome2.JPG') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    position: relative;
+    z-index: -1;
+}
+*/
+/* Overlay Effect */
+/*body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 32, 96, 0.9);
+    z-index: -1;
+}
+*/
+
 html, body {
-    font-family: 'Roboto', sans-serif;
+    background-color: #F5F5F5;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     overflow-x: hidden;
-    
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
@@ -40,34 +64,11 @@ body {
     z-index: 1;
 }
 
-/* Custom Header Background Color */
-.custom-header {
-    background-color: #002060; /* Dark blue */
-    color: white;
-}
-
 .hero-text {
     padding-top: 100px;
     font-size: 4.5em;
     font-weight: 700;
     margin-bottom: 20px;
-}
-
-/* Login Button Styling */
-.login-btn {
-    background-color: #fff; /* White button background */
-    color: #002060; /* Dark blue text */
-    border: none;
-    font-weight: bold;
-    padding: 5px 15px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.login-btn:hover {
-    background-color:orange; /* Gold on hover */
-    color: #002060; /* Dark blue text */
-    text-decoration: none;
 }
 
 .welcome-section {
@@ -89,7 +90,7 @@ body {
     text-align: center;
     color: #fff;
 }
-welcome-text {
+.welcome-text {
     font-size: 4.5em;
     font-weight: 700;
     margin-bottom: 20px;
@@ -128,19 +129,6 @@ welcome-text {
         background-color: #FFD700; /* Slightly darker gold */
         color: #002060; /* White text on hover */
         text-decoration: none;
-    }
-
-    .btn-primary {
-        background-color: #002060;
-        border-color: #002060;
-        color: white;
-        transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
-    }
-
-    .btn-primary:hover {
-        background-color: orange;
-        border-color: orange;
-        color: white;
     }
 
 /* Home Page - Responsive */

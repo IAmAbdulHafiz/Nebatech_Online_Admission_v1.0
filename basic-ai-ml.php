@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn the fundamentals of Artificial Intelligence and Machine Learning. This course is designed to introduce you to AI technologies and techniques.">
+    <meta name="keywords" content="AI, Machine Learning, Artificial Intelligence, ML, AI Course, Machine Learning Course, AI Training, Machine Learning Training, AI Basics, ML Basics, AI Concepts, ML Concepts, AI Algorithms, ML Algorithms, AI Applications, ML Applications, AI Technologies, ML Technologies, AI Techniques, ML Techniques, AI Introduction, ML Introduction, AI Fundamentals, ML Fundamentals, AI Real-world Scenarios, ML Real-world Scenarios, AI Experience, ML Experience, AI Tools, ML Tools, AI Python, ML Python, AI TensorFlow, ML TensorFlow, AI Models, ML Models, AI Performance, ML Performance, AI Duration, ML Duration, AI Prerequisites, ML Prerequisites, AI Beginners, ML Beginners, AI Programming, ML Programming, AI Mathematics, ML Mathematics, AI Linear Algebra, ML Linear Algebra, AI Calculus, ML Calculus, AI Probability, ML Probability">
+    <meta name="author" content="Nebatech Software Solution Ltd">
+    <meta name="robots" content="noindex, nofollow">
     <link rel="icon" href="assets/images/favicon.ico">
     <title>Basic AI in Machine Learning - Nebatech Software Solution Ltd</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">

@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Read through our insightful blog posts on various topics related to technology, business, and more.">
+    <meta name="keywords" content="Blog, Technology Blog, Business Blog, Blog Posts, Blog Topics, Blog Articles, Blog Insights, Blog Read, Blog Information, Blog Technology, Blog Business, Blog Posts, Blog Topics, Blog Articles, Blog Insights, Blog Read, Blog Information, Blog Technology, Blog Business">
+    <meta name="author" content="Nebatech Software Solution Ltd">
+    <meta name="robots" content="noindex, nofollow">
     <link rel="icon" href="assets/images/favicon.ico">
     <title>Blog - Nebatech Software Solution Ltd</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
