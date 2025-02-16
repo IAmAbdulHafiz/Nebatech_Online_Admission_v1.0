@@ -109,6 +109,19 @@
             box-shadow: none;
         }
 
+        .btn-primary {
+            background-color: #002060;
+            border-color: #002060;
+            color: white;
+            transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+        }
+
+        .btn-primary:hover {
+            background-color: orange;
+            border-color: orange;
+            color: white;
+        }
+
         /* Responsive styling for hero section */
         @media (max-width: 768px) {
             .hero-section {
@@ -193,7 +206,7 @@
                         </div>
                     </div>
                 </div>
-                
+                <!--Navigate to other pages-->
                 <div class="container mt-5 text-center card-section">
                     <h2 style="color: orange;">Explore Our Solutions</h2>
                     <div class="row mt-5">
@@ -205,9 +218,7 @@
                                         <i class="fas fa-chalkboard-teacher fa-3x mb-3" style="color: #002060"></i>
                                         <h5 class="card-title">Our Programmes</h5>
                                         <p class="card-text">Join our learners and advance your skills</p>
-                                        <button class="btn btn-lgs ">
-                                            <i class="fas fa-arrow-right"></i>
-                                        </button>
+                                        <a href="programmes.php" class="btn btn-primary mt-3">Learn More</a>
                                     </div>
                                 </div>
                             </a>
@@ -220,9 +231,7 @@
                                         <i class="fas fa-cogs fa-3x mb-3" style="color: #002060"></i>
                                         <h5 class="card-title">Our Services</h5>
                                         <p class="card-text">Explore the solutions we offer</p>
-                                        <button class="btn btn-lgs">
-                                            <i class="fas fa-arrow-right"></i>
-                                        </button>
+                                        <a href="services.php" class="btn btn-primary mt-3">Learn More</a>
                                     </div>
                                 </div>
                             </a>
@@ -235,9 +244,7 @@
                                         <i class="fas fa-project-diagram fa-3x mb-3" style="color: #002060"></i>
                                         <h5 class="card-title">Our Projects</h5>
                                         <p class="card-text">Discover our successful projects</p>
-                                        <button class="btn btn-lgs">
-                                            <i class="fas fa-arrow-right"></i>
-                                        </button>
+                                        <a href="projects.php" class="btn btn-primary mt-3">Learn More</a>
                                     </div>
                                 </div>
                             </a>
@@ -250,9 +257,7 @@
                                         <i class="fas fa-envelope fa-3x mb-3" style="color: #002060"></i>
                                         <h5 class="card-title">Get in Touch</h5>
                                         <p class="card-text">Contact us for more details</p>
-                                        <button class="btn btn-lgs">
-                                            <i class="fas fa-arrow-right"></i>
-                                        </button>
+                                        <a href="contact.php" class="btn btn-primary mt-3">Learn More</a>
                                     </div>
                                 </div>
                             </a>

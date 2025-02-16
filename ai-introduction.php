@@ -36,6 +36,18 @@
             margin-left: 1rem;
             margin-right: 1rem;
         }
+        .btn-primary {
+            background-color: #002060;
+            border-color: #002060;
+            color: white;
+            transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+        }
+
+        .btn-primary:hover {
+            background-color: orange;
+            border-color: orange;
+            color: white;
+        }
         @media (max-width: 768px) {
             .course-section {
                 padding: 100px 0;

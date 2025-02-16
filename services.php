@@ -34,6 +34,7 @@
             margin-left: 1rem;
             margin-right: 1rem;
         }
+        
         /* Responsive styling */
         @media (max-width: 768px) {
             .services-section {
@@ -57,7 +58,7 @@
 </head>
 <body>
 
-    <?php include("includes/public_header.php"); ?>
+<?php include("includes/public_header.php"); ?>
 <div class="content">
     <div class="container mt-5 services-section">
         <h2 class="text-center" style="color: orange;">Our Services</h2>

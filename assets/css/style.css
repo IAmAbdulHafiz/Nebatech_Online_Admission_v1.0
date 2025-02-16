@@ -1,20 +1,16 @@
 /* Home Page */
-body {
+html, body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    overflow-x: hidden;
     
-}
-/* Hide scrollbar for Chrome, Safari and Opera */
-body::-webkit-scrollbar {
-    display: none;
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
 body {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    overflow-y: auto;
         }
 
 .content {
@@ -132,6 +128,19 @@ welcome-text {
         background-color: #FFD700; /* Slightly darker gold */
         color: #002060; /* White text on hover */
         text-decoration: none;
+    }
+
+    .btn-primary {
+        background-color: #002060;
+        border-color: #002060;
+        color: white;
+        transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+    }
+
+    .btn-primary:hover {
+        background-color: orange;
+        border-color: orange;
+        color: white;
     }
 
 /* Home Page - Responsive */
