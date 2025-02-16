@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nebatech specializes in custom Mobile & Web Application Development. We build responsive websites, mobile apps for Android & iOS, and scalable web applications. Get a tailored solution for your business today!">
+    <meta name="keywords" content="Mobile app development, web application development, Android apps, iOS apps, custom web development, responsive websites, Nebatech app development, web solutions, software development, scalable applications, business applications">
+    <meta name="author" content="Nebatech Software Solution Ltd">
     <link rel="icon" href="assets/images/favicon.ico">
     <title>Mobile & Web Application Development - Nebatech Software Solution Ltd</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">

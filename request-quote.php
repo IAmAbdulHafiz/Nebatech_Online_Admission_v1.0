@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Get a personalized quote for your project with Nebatech. We offer custom software development, mobile & web apps, IT solutions, and more. Contact us today to discuss your requirements and get a free estimate!">
+    <meta name="keywords" content="request a quote, get a quote, custom software pricing, IT solutions estimate, web development cost, mobile app development quote, Nebatech pricing, IT project quote, software development estimate, contact Nebatech">
+    <meta name="author" content="Nebatech Software Solution Ltd">
+    <meta name="robots" content="index, follow">
     <link rel="icon" href="assets/images/favicon.ico">
     <title>Request a Quote - Nebatech Software Solution Ltd</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">

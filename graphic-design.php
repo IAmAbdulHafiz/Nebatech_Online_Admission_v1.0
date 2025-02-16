@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn the essentials of graphic design and digital arts. This course will teach you how to create stunning designs for various digital platforms using industry-standard software.">
+    <meta name="keywords" content="Graphic Design, Digital Arts, Adobe Photoshop, Adobe Illustrator, Adobe InDesign, Typography, Color Theory, Branding, Motion Graphics, Animation">
+    <meta name="author" content="Nebatech Software Solution Ltd">
+    <meta name="robots" content="index, follow">
     <link rel="icon" href="assets/images/favicon.ico">
     <title>Graphic Design & Digital Arts - Nebatech Software Solution Ltd</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">

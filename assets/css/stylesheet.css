@@ -204,3 +204,21 @@ body {
         border-radius: 5px;
     }
 }
+
+@media (max-width: 768px) {
+    .service-section {
+        padding: 100px 0;
+    }
+    .service-content {
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+    }
+    .card {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+    .lead {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+}

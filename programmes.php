@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Enhance your skills with Nebatech's Competency-Based Training Programs. Learn AI, web development, database management, digital literacy, video editing, and more. Enroll today to advance your career!">
+    <meta name="keywords" content="Competency-Based Training, skill development, AI training, web development courses, database management, digital literacy, video editing, IT training, Nebatech training programs, professional courses, technology education">
+    <meta name="author" content="Nebatech Software Solution Ltd">
+    <meta name="robots" content="index, follow">
     <link rel="icon" href="assets/images/favicon.ico">
     <title>Our Programmes - Nebatech Software Solution Ltd</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">

@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Get professional Website Design & Development services from Nebatech. We create custom, responsive, and SEO-friendly websites tailored for businesses and individuals. Build your online presence today!">
+    <meta name="keywords" content="website design, web development, responsive web design, custom websites, e-commerce development, SEO-friendly websites, front-end development, back-end development, Nebatech web services, UI/UX design, web development company">
+    <meta name="author" content="Nebatech Software Solution Ltd">
+    <meta name="robots" content="index, follow">
     <link rel="icon" href="assets/images/favicon.ico">
     <title>Website Design & Development - Nebatech Software Solution Ltd</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">

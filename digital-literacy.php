@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master essential digital skills required for everyday life. This course will introduce you to basic computer concepts, internet usage, and productivity tools.">
+    <meta name="keywords" content="Digital Literacy, Digital Skills, Computer Basics, Internet Usage, Productivity Tools, Microsoft Office, Digital Security, Online Safety, Email Communication, Online Collaboration, Digital Literacy Course, Digital Skills Course, Computer Basics Course, Internet Usage Course, Productivity Tools Course, Microsoft Office Course, Digital Security Course, Online Safety Course, Email Communication Course, Online Collaboration Course">
+    <meta name="author" content="Nebatech Software Solution Ltd">
+    <meta name="robots" content="noindex, nofollow">
     <link rel="icon" href="assets/images/favicon.ico">
     <title>Digital Literacy - Nebatech Software Solution Ltd</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">

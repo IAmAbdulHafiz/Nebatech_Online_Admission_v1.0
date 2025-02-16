@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore Nebatech's accomplished projects, including website development, mobile apps, POS systems, CCTV installations, network setups, and AI solutions. See how we deliver innovative technology solutions for businesses.">
+    <meta name="keywords" content="Nebatech projects, accomplished projects, software development, mobile apps, POS systems, e-commerce platforms, network installation, CCTV setup, AI solutions, barcode systems, IT solutions, project portfolio">
+    <meta name="author" content="Nebatech Software Solution Ltd">
+    <meta name="robots" content="index, follow">
     <link rel="icon" href="assets/images/favicon.ico">
     <title>Our Projects - Nebatech Software Solution Ltd</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">

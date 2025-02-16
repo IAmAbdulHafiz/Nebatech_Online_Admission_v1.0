@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="We specialize in custom POS (Point of Sale) systems designed to streamline your business operations. Our POS systems are tailored to meet the unique needs of your business, improving efficiency and accuracy in transactions.">
+    <meta name="keywords" content="POS System, Point of Sale, POS Development, POS Software, Retail POS, Hospitality POS, POS Solutions">
+    <meta name="author" content="Nebatech Software Solution Ltd">
+    <meta name="robots" content="index, follow">
     <link rel="icon" href="assets/images/favicon.ico">
     <title>POS System Development - Nebatech Software Solution Ltd</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">

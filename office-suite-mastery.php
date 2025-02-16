@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master the essential Microsoft Office applications: Word, Excel, PowerPoint, Outlook, and more. This course is designed to help you become proficient in using Office tools for professional success.">
+    <meta name="keywords" content="Microsoft Office, Microsoft Word, Microsoft Excel, Microsoft PowerPoint, Microsoft Outlook, Office Suite, Office Tools, Office Applications, Office Mastery">
+    <meta name="author" content="Nebatech Software Solution Ltd">
+    <meta name="robots" content="index, follow">
     <link rel="icon" href="assets/images/favicon.ico">
     <title>Microsoft Office Suite Mastery - Nebatech Software Solution Ltd</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">

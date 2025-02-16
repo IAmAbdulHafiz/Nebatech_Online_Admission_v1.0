@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore Nebatech's top-notch IT services, including mobile & web development, network installation, CCTV setup, POS systems, software development, and IT training. Get innovative solutions tailored for your business.">
+    <meta name="keywords" content="IT services, software development, mobile app development, web design, network installation, CCTV installation, POS systems, custom software, IT training, digital solutions, Nebatech services, technology solutions">
+    <meta name="author" content="Nebatech Software Solution Ltd">
+    <meta name="robots" content="index, follow">
     <link rel="icon" href="assets/images/favicon.ico">
     <title>Our Services - Nebatech Software Solution Ltd</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">

@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Find answers to some of the most common questions about Nebatech and our services.">
+    <meta name="keywords" content="FAQs, Frequently Asked Questions, Nebatech FAQs, Nebatech Frequently Asked Questions, Nebatech Software Solution FAQs, Nebatech Software Solution Frequently Asked Questions, Nebatech Software Solution Ltd FAQs, Nebatech Software Solution Ltd Frequently Asked Questions, Nebatech Software Solution Limited FAQs, Nebatech Software Solution Limited Frequently Asked Questions, Nebatech Software FAQs, Nebatech Software Frequently Asked Questions, Nebatech Ltd FAQs, Nebatech Ltd Frequently Asked Questions, Nebatech Limited FAQs, Nebatech Limited Frequently Asked Questions">
+    <meta name="author" content="Nebatech Software Solution Ltd">
+    <meta name="robots" content="noindex, nofollow">
     <link rel="icon" href="assets/images/favicon.ico">
     <title>FAQs - Nebatech Software Solution Ltd</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
