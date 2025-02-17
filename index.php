@@ -127,6 +127,26 @@
             color: white;
         }
 
+
+    .card {
+        border: none;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hover-effect:hover {
+        transform: scale(1.05);
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .text-decoration-none {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+        font-weight: bold;
+    }
         /* Responsive styling for hero section */
         @media (max-width: 768px) {
             .hero-section {
@@ -211,62 +231,64 @@
                         </div>
                     </div>
                 </div>
-                <!--Navigate to other pages-->
-                <div class="container mt-5 text-center card-section">
-                    <h2 style="color: orange;">Explore Our Solutions</h2>
-                    <div class="row mt-5">
-                        <!-- Programmes Card -->
-                        <div class="col-md-3 mb-4">
-                            <a href="programmes.php" class="card-link">
-                                <div class="card text-center">
-                                    <div class="card-body">
-                                        <i class="fas fa-chalkboard-teacher fa-3x mb-3" style="color: #002060"></i>
-                                        <h5 class="card-title">Our Programmes</h5>
-                                        <p class="card-text">Join our learners and advance your skills</p>
-                                        <a href="programmes.php" class="btn btn-primary mt-3">Learn More</a>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- Services Card -->
-                        <div class="col-md-3 mb-4">
-                            <a href="services.php" class="card-link">
-                                <div class="card text-center">
-                                    <div class="card-body">
-                                        <i class="fas fa-cogs fa-3x mb-3" style="color: #002060"></i>
-                                        <h5 class="card-title">Our Services</h5>
-                                        <p class="card-text">Explore the solutions we offer</p>
-                                        <a href="services.php" class="btn btn-primary mt-3">Learn More</a>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- Projects Card -->
-                        <div class="col-md-3 mb-4">
-                            <a href="projects.php" class="card-link">
-                                <div class="card text-center">
-                                    <div class="card-body">
-                                        <i class="fas fa-project-diagram fa-3x mb-3" style="color: #002060"></i>
-                                        <h5 class="card-title">Our Projects</h5>
-                                        <p class="card-text">Discover our successful projects</p>
-                                        <a href="projects.php" class="btn btn-primary mt-3">Learn More</a>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- Contact Us Card -->
-                        <div class="col-md-3 mb-4">
-                            <a href="contact.php" class="card-link">
-                                <div class="card text-center">
-                                    <div class="card-body">
-                                        <i class="fas fa-envelope fa-3x mb-3" style="color: #002060"></i>
-                                        <h5 class="card-title">Get in Touch</h5>
-                                        <p class="card-text">Contact us for more details</p>
-                                        <a href="contact.php" class="btn btn-primary mt-3">Learn More</a>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
+<!-- Navigate to other pages -->
+<div class="container mt-5 text-center">
+    <h2 class="section-title" style="color: orange; font-weight: bold;">Explore Our Solutions</h2>
+    <div class="row mt-4">
+        <!-- Programmes Card -->
+        <div class="col-md-3 mb-4">
+            <a href="programmes.php" class="text-decoration-none">
+                <div class="card shadow-sm p-3 text-center hover-effect">
+                    <div class="card-body">
+                        <i class="fas fa-chalkboard-teacher fa-4x mb-3" style="color: #002060"></i>
+                        <h5 class="card-title mt-2 font-weight-bold">Our Programmes</h5>
+                        <p class="card-text">Join our learners</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Services Card -->
+        <div class="col-md-3 mb-4">
+            <a href="services.php" class="text-decoration-none">
+                <div class="card shadow-sm p-3 text-center hover-effect">
+                    <div class="card-body">
+                        <i class="fas fa-cogs fa-4x mb-3" style="color: #002060"></i>
+                        <h5 class="card-title mt-2 font-weight-bold">Our Services</h5>
+                        <p class="card-text">Explore the solutions we offer</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Projects Card -->
+        <div class="col-md-3 mb-4">
+            <a href="projects.php" class="text-decoration-none">
+                <div class="card shadow-sm p-3 text-center hover-effect">
+                    <div class="card-body">
+                        <i class="fas fa-project-diagram fa-4x mb-3" style="color: #002060"></i>
+                        <h5 class="card-title mt-2 font-weight-bold">Our Projects</h5>
+                        <p class="card-text">Discover our successful projects</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Contact Us Card -->
+        <div class="col-md-3 mb-4">
+            <a href="contact.php" class="text-decoration-none">
+                <div class="card shadow-sm p-3 text-center hover-effect">
+                    <div class="card-body">
+                        <i class="fas fa-envelope fa-4x mb-3" style="color: #002060"></i>
+                        <h5 class="card-title mt-2 font-weight-bold">Get in Touch</h5>
+                        <p class="card-text">Contact us for more details</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
                         </div>
                     </div>
                 </div>
