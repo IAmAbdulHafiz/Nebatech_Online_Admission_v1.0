@@ -49,14 +49,22 @@
 
         .card {
             border: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
             cursor: pointer; /* Make the card appear clickable */
-            transition: transform 0.3s ease-in-out;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 15px;
             height: 100%;
             color: #002060;
         }
         .card:hover {
             transform: scale(1.05);
+        }
+
+        .nav-card{
+
         }
 
         .btn-lgs{
@@ -127,26 +135,68 @@
             color: white;
         }
 
+        .hover-effect:hover {
+            transform: scale(1.03);
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+        }
 
-    .card {
-        border: none;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+        .text-decoration-none {
+            text-decoration: none;
+            color: inherit;
+        }
 
-    .hover-effect:hover {
-        transform: scale(1.05);
-        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-    }
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
 
-    .text-decoration-none {
-        text-decoration: none;
-        color: inherit;
-    }
+        /* Icon Wrapper */
+        .icon-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 70px;
+            height: 70px;
+            background-color: #002060;
+            color: white;
+            font-size: 2rem;
+            border-radius: 50%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            cursor: pointer;
+        }
 
-    .section-title {
-        font-size: 1.8rem;
-        font-weight: bold;
-    }
+        /* Icon Hover Effect */
+        .icon-wrapper:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 4px 10px rgba(0, 32, 96, 0.4);
+            background-color: #FFA500; /* Gold color on hover */
+            color: #002060;
+        }
+
+        .ml-3 {
+            margin-left: 15px;
+        }
+
+        /* Arrow Styling */
+        .arrow-wrapper {
+            font-size: 1.5rem;
+            color: #002060;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .hover-effect:hover .arrow-wrapper {
+            transform: translateX(5px);
+            color: #FFA500; /* Gold color on hover */
+        }
+
+        .why-choose-nebatech {
+    background-color:rgba(255, 166, 0, 0.71);
+    color: white;
+    padding: 60px 0;
+    position: relative;
+    border-radius: 5px;
+}
+
         /* Responsive styling for hero section */
         @media (max-width: 768px) {
             .hero-section {
@@ -186,109 +236,191 @@
             <div class="overlay"></div>
             <div class="content">
                 <div class="container mt-5">
-                    <!-- Why Choose Nebatech Section -->
-                    <div class="container text-center mt-5">
-                        <h2 style="color: orange;">Why Choose Nebatech?</h2>
-                        <p class="lead text-start" style="color: white;">
-                            Nebatech Software Solution Ltd is a leading provider of software development and IT consultancy services. We are committed to delivering innovative solutions that drive business growth and digital transformation. Here are some reasons to choose Nebatech:
-                        </p>
-                    <div class="row mt-5">
-                        <div class="col-md-3 mb-4">
-                            <div class="card text-center">
-                                <div class="card-body">
-                                    <i class="fas fa-award fa-3x mb-3" style="color: #002060"></i>
-                                    <h5 class="card-title">Expertise</h5>
-                                    <p class="card-text">Highly skilled team with expertise in diverse technologies.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 mb-4">
-                            <div class="card text-center">
-                                <div class="card-body">
-                                    <i class="fas fa-handshake fa-3x mb-3" style="color: #002060"></i>
-                                    <h5 class="card-title">Reliability</h5>
-                                    <p class="card-text">Trusted partner for reliable and robust solutions.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 mb-4">
-                            <div class="card text-center">
-                                <div class="card-body">
-                                    <i class="fas fa-users fa-3x mb-3" style="color: #002060"></i>
-                                    <h5 class="card-title">Customer-Centric</h5>
-                                    <p class="card-text">Dedicated to delivering exceptional customer service.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 mb-4">
-                            <div class="card text-center">
-                                <div class="card-body">
-                                    <i class="fas fa-cogs fa-3x mb-3" style="color: #002060"></i>
-                                    <h5 class="card-title">Innovation</h5>
-                                    <p class="card-text">Constantly innovating to stay ahead in technology trends.</p><p></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-<!-- Navigate to other pages -->
-<div class="container mt-5 text-center">
-    <h2 class="section-title" style="color: orange; font-weight: bold;">Explore Our Solutions</h2>
-    <div class="row mt-4">
-        <!-- Programmes Card -->
-        <div class="col-md-3 mb-4">
-            <a href="programmes.php" class="text-decoration-none">
-                <div class="card shadow-sm p-3 text-center hover-effect">
-                    <div class="card-body">
-                        <i class="fas fa-chalkboard-teacher fa-4x mb-3" style="color: #002060"></i>
-                        <h5 class="card-title mt-2 font-weight-bold">Our Programmes</h5>
-                        <p class="card-text">Join our learners</p>
-                    </div>
-                </div>
-            </a>
+<!-- Why Choose Nebatech Section -->
+<div class="container text-center mt-5">
+    <h2 class="section-title">Why Choose Nebatech?</h2>
+    <p class="lead text-start" style="color: #fff;">
+        Nebatech Software Solution Ltd is a leading provider of software development and IT consultancy services. 
+        We are committed to delivering innovative solutions that drive business growth and digital transformation. 
+        Here are some reasons to choose Nebatech:
+    </p>
+
+    <!-- New Flexbox Layout Without Cards -->
+    <div class="row mt-5 justify-content-center why-choose-nebatech" style="color: #fff;">
+        <div class="col-md-3 d-flex align-items-center feature-item ">
+            <div class="icon-box">
+                <i class="fas fa-award"></i>
+            </div>
+            <div class="text-left">
+                <h5>Expertise</h5>
+                <p>Highly skilled team with expertise in diverse technologies.</p>
+            </div>
         </div>
 
-        <!-- Services Card -->
-        <div class="col-md-3 mb-4">
-            <a href="services.php" class="text-decoration-none">
-                <div class="card shadow-sm p-3 text-center hover-effect">
-                    <div class="card-body">
-                        <i class="fas fa-cogs fa-4x mb-3" style="color: #002060"></i>
-                        <h5 class="card-title mt-2 font-weight-bold">Our Services</h5>
-                        <p class="card-text">Explore the solutions we offer</p>
-                    </div>
-                </div>
-            </a>
+        <div class="col-md-3 d-flex align-items-center feature-item">
+            <div class="icon-box">
+                <i class="fas fa-handshake"></i>
+            </div>
+            <div class="text-left">
+                <h5>Reliability</h5>
+                <p>Trusted partner for reliable and robust solutions.</p>
+            </div>
         </div>
 
-        <!-- Projects Card -->
-        <div class="col-md-3 mb-4">
-            <a href="projects.php" class="text-decoration-none">
-                <div class="card shadow-sm p-3 text-center hover-effect">
-                    <div class="card-body">
-                        <i class="fas fa-project-diagram fa-4x mb-3" style="color: #002060"></i>
-                        <h5 class="card-title mt-2 font-weight-bold">Our Projects</h5>
-                        <p class="card-text">Discover our successful projects</p>
-                    </div>
-                </div>
-            </a>
+        <div class="col-md-3 d-flex align-items-center feature-item">
+            <div class="icon-box">
+                <i class="fas fa-users"></i>
+            </div>
+            <div class="text-left">
+                <h5>Customer-Centric</h5>
+                <p>Dedicated to delivering exceptional customer service.</p>
+            </div>
         </div>
 
-        <!-- Contact Us Card -->
-        <div class="col-md-3 mb-4">
-            <a href="contact.php" class="text-decoration-none">
-                <div class="card shadow-sm p-3 text-center hover-effect">
-                    <div class="card-body">
-                        <i class="fas fa-envelope fa-4x mb-3" style="color: #002060"></i>
-                        <h5 class="card-title mt-2 font-weight-bold">Get in Touch</h5>
-                        <p class="card-text">Contact us for more details</p>
-                    </div>
-                </div>
-            </a>
+        <div class="col-md-3 d-flex align-items-center feature-item">
+            <div class="icon-box">
+                <i class="fas fa-cogs"></i>
+            </div>
+            <div class="text-left">
+                <h5>Innovation</h5>
+                <p>Constantly innovating to stay ahead in technology trends.</p>
+            </div>
         </div>
     </div>
 </div>
 
+<!-- Custom Styling -->
+<style>
+
+    /* Flexbox Layout */
+    .feature-item {
+        display: flex;
+        gap: 15px;
+        text-align: left;
+        margin-bottom: 20px;
+    }
+
+    /* Icon Styling */
+    .icon-box {
+        width: 60px;
+        height: 60px;
+        min-width: 60px;  /* Ensures it doesn’t stretch */
+        min-height: 60px; /* Prevents distortion */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #002060;
+        color: white;
+        border-radius: 50%;  /* Ensures perfect circle */
+        font-size: 1.8rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+
+    .icon-box:hover {
+        transform: scale(1.1);
+        box-shadow: 0px 4px 10px rgba(0, 32, 96, 0.4);
+        background-color: #FFD700; /* Gold on hover */
+        color: #002060;
+    }
+
+    .text-left h5 {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .text-left p {
+        margin: 0;
+        font-size: 1rem;
+    }
+</style>
+
+
+                <!-- Navigate to other pages -->
+                <div class="container nav-card mt-5">
+                    <h2 class="section-title text-center" style="color: orange; font-weight: bold;">Explore Our Solutions</h2>
+                    <div class="row mt-4">
+                        <!-- Programmes Card -->
+                        <div class="col-md-6 mb-4">
+                            <a href="programmes.php" class="text-decoration-none">
+                                <div class="card shadow-sm p-3 d-flex align-items-center justify-content-between flex-row hover-effect">
+                                    <div class="d-flex align-items-center">
+                                        <div class="icon-wrapper">
+                                            <i class="fas fa-chalkboard-teacher"></i>
+                                        </div>
+                                        <div class="ml-3">
+                                            <h5 class="card-title font-weight-bold">Our Programmes</h5>
+                                            <p class="card-text">Join our learners and advance your skills</p>
+                                        </div>
+                                    </div>
+                                    <div class="arrow-wrapper">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <!-- Services Card -->
+                        <div class="col-md-6 mb-4">
+                            <a href="services.php" class="text-decoration-none">
+                                <div class="card shadow-sm p-3 d-flex align-items-center justify-content-between flex-row hover-effect">
+                                    <div class="d-flex align-items-center">
+                                        <div class="icon-wrapper">
+                                            <i class="fas fa-cogs"></i>
+                                        </div>
+                                        <div class="ml-3">
+                                            <h5 class="card-title font-weight-bold">Our Services</h5>
+                                            <p class="card-text">Explore the solutions we offer</p>
+                                        </div>
+                                    </div>
+                                    <div class="arrow-wrapper">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <!-- Projects Card -->
+                        <div class="col-md-6 mb-4">
+                            <a href="projects.php" class="text-decoration-none">
+                                <div class="card shadow-sm p-3 d-flex align-items-center justify-content-between flex-row hover-effect">
+                                    <div class="d-flex align-items-center">
+                                        <div class="icon-wrapper">
+                                            <i class="fas fa-project-diagram"></i>
+                                        </div>
+                                        <div class="ml-3">
+                                            <h5 class="card-title font-weight-bold">Our Projects</h5>
+                                            <p class="card-text">Discover our successful projects</p>
+                                        </div>
+                                    </div>
+                                    <div class="arrow-wrapper">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <!-- Contact Us Card -->
+                        <div class="col-md-6 mb-4">
+                            <a href="contact.php" class="text-decoration-none">
+                                <div class="card shadow-sm p-3 d-flex align-items-center justify-content-between flex-row hover-effect">
+                                    <div class="d-flex align-items-center">
+                                        <div class="icon-wrapper">
+                                            <i class="fas fa-envelope"></i>
+                                        </div>
+                                        <div class="ml-3">
+                                            <h5 class="card-title font-weight-bold">Get in Touch</h5>
+                                            <p class="card-text">Contact us for more details</p>
+                                        </div>
+                                    </div>
+                                    <div class="arrow-wrapper">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
                         </div>
                     </div>
                 </div>
