@@ -148,6 +148,7 @@
         .section-title {
             font-size: 1.8rem;
             font-weight: bold;
+            color: #FFA500;
         }
 
         /* Icon Wrapper */
