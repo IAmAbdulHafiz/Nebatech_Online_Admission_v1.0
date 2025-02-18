@@ -71,7 +71,7 @@
         }
     </style>
 </head>
-<body>
+<body> 
 
     <?php include("includes/public_header.php"); ?>
 

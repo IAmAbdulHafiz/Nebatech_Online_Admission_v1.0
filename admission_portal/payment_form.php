@@ -4,12 +4,18 @@
 <head>
     <title>Payment Portal</title>
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <style>
+        .paymetn-form{
+            padding-top: 100px;
+            max-width: 500px;
+        }
+    </style>
 </head>
 <body>
     <!-- Include Header -->
     <?php include("includes/header.php"); ?>
 
-    <div class="container mt-5">
+    <div class="paymetn-form container mt-5">
         <h2 class="text-center">Pay for Admission Form</h2>
 
         <?php if (!empty($_SESSION['success_message'])) : ?>
@@ -30,7 +36,11 @@
                 <input type="email" name="customer_email" class="form-control" required>
             </div>
             <div class="mb-3">
-                <label>Phone Number:</label>
+                <label>Phone Number to recieve Serial Number & PIN:</label>
+                <input type="text" name="customer_phone" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label>Phone Number for Payment:</label>
                 <input type="text" name="customer_phone" class="form-control" required>
             </div>
             <div class="mb-3">
