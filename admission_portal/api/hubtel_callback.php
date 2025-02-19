@@ -17,7 +17,7 @@ if ($data && isset($data['ResponseCode']) && $data['ResponseCode'] === '0000') {
     $stmt->execute();
 
     // Optionally, you can send a confirmation SMS to the customer
-    $smsMessage = "Your payment of $amount was successful. You will recieve your Serial Number & PIN shortly.";
+    $smsMessage = "Your payment of $amount was successful. You will receive your Serial Number & PIN shortly.";
     $smsData = [
         'From' => 'Nebatech',
         'To' => $customerPhoneNumber,

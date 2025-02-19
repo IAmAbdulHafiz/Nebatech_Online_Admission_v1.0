@@ -66,7 +66,7 @@
                 <div class="alert alert-danger"><?php echo $_SESSION['error_message']; unset($_SESSION['error_message']); ?></div>
             <?php endif; ?>
 
-            <form method="POST" action="../api/hubtel_payment.php">
+            <form method="POST" action="api/hubtel_payment.php">
                 <div class="mb-3">
                     <label><i class="fas fa-user"></i> Full Name:</label>
                     <input type="text" name="customer_name" class="form-control" placeholder="Enter full name" required>
