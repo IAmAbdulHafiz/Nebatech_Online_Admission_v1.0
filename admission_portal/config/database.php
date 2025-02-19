@@ -1,9 +1,9 @@
 <?php
 // Database configuration
 $host = "localhost";
-$db_name = "online_admission";
-$username = "root";
-$password = "";
+$db_name = "u948335622_nebatech";
+$username = "u948335622_nebatech";
+$password = "AbdulP@$$w0r_D";
 
 try {
     $conn = new PDO("mysql:host=$host;dbname=$db_name", $username, $password);
