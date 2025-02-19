@@ -6,12 +6,19 @@ $error = "";
 $success = "";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['action']) && $_POST['action'] === 'signup') {
-    $serial = $_SESSION['validated_serial'] ?? null;
-    $pin = $_SESSION['validated_pin'] ?? null;
+    $serial = $_POST['serial'];
+    $pin = $_POST['pin'];
     $email = $_POST["email"];
     $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
 
-    if ($serial && $pin) {
+    // Validate Serial Number and PIN
+    $query = "SELECT * FROM transactions WHERE serial_number = :serial AND pin = :pin AND status = 'Completed'";
+    $stmt = $conn->prepare($query);
+    $stmt->bindParam(":serial", $serial);
+    $stmt->bindParam(":pin", $pin);
+    $stmt->execute();
+
+    if ($stmt->rowCount() > 0) {
         // Check if the user already exists
         $checkUserQuery = "SELECT * FROM applicants WHERE serial_number = :serial";
         $checkStmt = $conn->prepare($checkUserQuery);
@@ -41,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['action']) && $_POST['
             exit();
         }
     } else {
-        $error = "Please validate your payment first.";
+        $error = "Invalid Serial Number or PIN, or payment not completed.";
     }
 }
 ?>
@@ -80,6 +87,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['action']) && $_POST['
             <!-- Signup Form -->
             <form method="POST">
                 <input type="hidden" name="action" value="signup">
+                <div class="mb-3">
+                    <label for="serial" class="form-label">Serial Number</label>
+                    <input type="text" id="serial" name="serial" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="pin" class="form-label">PIN</label>
+                    <input type="text" id="pin" name="pin" class="form-control" required>
+                </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email Address</label>
                     <input type="email" id="email" name="email" class="form-control" required>

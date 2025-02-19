@@ -51,13 +51,13 @@
                 <div id="welcomeCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="assets/images/welcome1.jpg" alt="Welcome to NTSS" class="d-block w-20">
+                            <img src="assets/images/welcome1.JPG" alt="Welcome to NTSS" class="d-block w-20">
                         </div>
                         <div class="carousel-item">
-                            <img src="assets/images/welcome2.jpg" alt="Learning Environment" class="d-block w-20">
+                            <img src="assets/images/welcome2.JPG" alt="Learning Environment" class="d-block w-20">
                         </div>
                         <div class="carousel-item">
-                            <img src="assets/images/welcome3.jpg" alt="Our Community" class="d-block w-20">
+                            <img src="assets/images/welcome3.JPG" alt="Our Community" class="d-block w-20">
                         </div>
                     </div>
                 </div>
