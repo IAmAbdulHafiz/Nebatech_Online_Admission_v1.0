@@ -4,27 +4,26 @@ include("../config/database.php");
 
 $apiUsername = "YQVXq5A";  // API ID (username)
 $apiPassword = "53efb3af42f244e4aad8bb6888be9af8"; // API Key (password)
-$merchantAccountNumber = "11684";
+$merchantAccountNumber = "11684"; // Your Hubtel merchant account number
 $callbackUrl = "https://admissions.nebatech.com/api/hubtel_callback.php";
-$returnUrl = "http://hubtel.com/online";
-$cancellationUrl = "http://hubtel.com/online";
+$returnUrl = "https://admissions.nebatech.com/payment_success.php";
+$cancellationUrl = "https://admissions.nebatech.com/payment_failed.php";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $customerName = $_POST['customer_name'];
     $customerEmail = $_POST['customer_email'];
     $customerPhone = $_POST['customer_phone'];
     $amount = 100; // Admission form cost
-
     $clientReference = uniqid('INV_');
 
     $postData = [
-        'totalAmount' => $amount,
-        'description' => 'NTSS Admission Form Payment',
-        'callbackUrl' => $callbackUrl,
-        'returnUrl' => $returnUrl,
-        'merchantAccountNumber' => $merchantAccountNumber,
-        'cancellationUrl' => $cancellationUrl,
-        'clientReference' => $clientReference
+        "totalAmount" => $amount,
+        "description" => "NTSS Admission Form Payment",
+        "callbackUrl" => $callbackUrl,
+        "returnUrl" => $returnUrl,
+        "cancellationUrl" => $cancellationUrl,
+        "merchantAccountNumber" => $merchantAccountNumber,
+        "clientReference" => $clientReference
     ];
 
     $ch = curl_init("https://payproxyapi.hubtel.com/items/initiate");
@@ -41,9 +40,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $paymentResponse = json_decode($response, true);
 
-    if ($paymentResponse && isset($paymentResponse['responseCode']) && $paymentResponse['responseCode'] === '0000') {
-        $checkoutDirectUrl = $paymentResponse['data']['checkoutDirectUrl'];
+    if ($paymentResponse && isset($paymentResponse['status']) && $paymentResponse['status'] === 'Success') {
+        $checkoutUrl = $paymentResponse['data']['checkoutDirectUrl']; // URL for iframe
 
+        // Save transaction in the database as pending
         $query = "INSERT INTO transactions (customer_name, customer_email, customer_phone, amount, reference, status) 
                   VALUES (:customer_name, :customer_email, :customer_phone, :amount, :reference, 'Pending')";
         $stmt = $conn->prepare($query);
@@ -54,10 +54,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $stmt->bindParam(':reference', $clientReference);
         $stmt->execute();
 
-        echo "<iframe src='$checkoutDirectUrl' width='100%' height='600px'></iframe>";
+        // Redirect to a page where the iframe is displayed
+        $_SESSION['checkout_url'] = $checkoutUrl;
+        header("Location: ../public/payment_page.php");
+        exit();
     } else {
         $_SESSION['error_message'] = "Failed to initiate payment.";
-        header("Location: ../payment_form.php");
+        header("Location: ../public/payment_form.php");
         exit();
     }
 }
