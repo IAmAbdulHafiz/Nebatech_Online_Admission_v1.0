@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +7,7 @@
     <title>NEBATECH - Online Admission</title>
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         .carousel-item {
             height: 100%;
@@ -37,6 +39,35 @@
         .card-body {
             min-height: 400px; /* Maintain consistent height for the right-side card */
         }
+
+        .form-control {
+            border-radius: 8px;
+        }
+
+        .btn-primary {
+            background: #ff6a00;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            padding: 12px;
+            transition: 0.3s;
+        }
+
+        .btn-primary:hover {
+            background: #e55c00;
+        }
+
+        .alert {
+            font-size: 14px;
+            text-align: center;
+        }
+
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -63,16 +94,39 @@
                 </div>
             </div>
 
-            <!-- Admission Info -->
+            <!-- Admission Info and Payment Form -->
             <div class="col-md-6">
                 <div class="card shadow-lg">
                     <div class="card-body d-flex flex-column justify-content-between">
                         <h2 class="text-center" style="color: #002060;">Online Admission Form</h2>
                         <p class="text-center">Application Fee: <b>GH₵100</b></p>
                         <p class="text-center">Purchase the application form online through this platform.</p>
-                    </div>
-                    <div class="text-center mt-3">
-                        <a href="payment_form.php" class="btn btn-primary" style="background-color: #002060; border: 1px solid #002060; width: 200px;">Buy Form Now</a>
+
+                        <?php if (!empty($_SESSION['success_message'])) : ?>
+                            <div class="alert alert-success"><?php echo $_SESSION['success_message']; unset($_SESSION['success_message']); ?></div>
+                        <?php endif; ?>
+
+                        <?php if (!empty($_SESSION['error_message'])) : ?>
+                            <div class="alert alert-danger"><?php echo $_SESSION['error_message']; unset($_SESSION['error_message']); ?></div>
+                        <?php endif; ?>
+
+                        <form method="POST" action="api/hubtel_payment.php">
+                            <div class="mb-3">
+                                <label><i class="fas fa-user"></i> Full Name:</label>
+                                <input type="text" name="customer_name" class="form-control" placeholder="Enter full name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label><i class="fas fa-envelope"></i> Email:</label>
+                                <input type="email" name="customer_email" class="form-control" placeholder="Enter email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label><i class="fas fa-phone"></i> Phone Number (For Serial & PIN):</label>
+                                <input type="text" name="customer_phone" class="form-control" placeholder="Enter phone number" required>
+                            </div>
+                            <div class="mb-3">
+                            <button type="submit" class="btn btn-primary w-100">
+                                <i class="fas fa-money-check-alt"></i> Pay with Hubtel
+                            </button>
                     </div>
                     <hr>
                     <p class="text-center">Already applied? <a href="login.php">Login to continue</a></p>
