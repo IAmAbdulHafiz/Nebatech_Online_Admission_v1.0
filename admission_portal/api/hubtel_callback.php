@@ -4,9 +4,9 @@ include("../config/database.php");
 $input = file_get_contents('php://input');
 $data = json_decode($input, true);
 
-if ($data && isset($data['status']) && isset($data['clientReference'])) {
+if ($data && isset($data['status']) && isset($data['data']['clientReference'])) {
     $status = $data['status'];
-    $clientReference = $data['clientReference'];
+    $clientReference = $data['data']['clientReference'];
 
     $finalStatus = $status === "Success" ? "Completed" : ($status === "Cancelled" ? "Cancelled" : "Pending");
 

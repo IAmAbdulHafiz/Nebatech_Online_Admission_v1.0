@@ -64,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         // Redirect to a page where the iframe is displayed
         $_SESSION['checkout_url'] = $checkoutUrl;
-        header("Location: ../public/payment_page.php");
+        header("Location: ../payment_page.php");
         exit();
     } else {
         $_SESSION['error_message'] = "Failed to initiate payment.";
