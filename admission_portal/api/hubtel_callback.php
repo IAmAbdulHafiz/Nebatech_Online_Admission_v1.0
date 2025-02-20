@@ -1,26 +1,18 @@
 <?php
 include("../config/database.php");
 
-// Read JSON payload
-$payload = file_get_contents("php://input");
-$data = json_decode($payload, true);
+$input = file_get_contents('php://input');
+$data = json_decode($input, true);
 
-if ($data && isset($data["Data"])) {
-    $clientReference = $data["Data"]["ClientReference"];
-    $status = $data["Data"]["Status"];
+if ($data && isset($data['status']) && isset($data['clientReference'])) {
+    $status = $data['status'];
+    $clientReference = $data['clientReference'];
 
-    if ($status === "Success") {
-        $newStatus = "Completed";
-    } elseif ($status === "Cancelled") {
-        $newStatus = "Cancelled";
-    } else {
-        $newStatus = "Pending";
-    }
+    $finalStatus = $status === "Success" ? "Completed" : ($status === "Cancelled" ? "Cancelled" : "Pending");
 
-    // Update transaction status in the database
     $query = "UPDATE transactions SET status = :status WHERE reference = :reference";
     $stmt = $conn->prepare($query);
-    $stmt->bindParam(':status', $newStatus);
+    $stmt->bindParam(':status', $finalStatus);
     $stmt->bindParam(':reference', $clientReference);
     $stmt->execute();
 }

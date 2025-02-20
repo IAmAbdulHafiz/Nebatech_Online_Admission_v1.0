@@ -4,7 +4,7 @@ include("../config/database.php");
 
 $apiUsername = "YQVXq5A";  // API ID (username)
 $apiPassword = "53efb3af42f244e4aad8bb6888be9af8"; // API Key (password)
-$merchantAccountNumber = "11684"; // Your Hubtel merchant account number
+$merchantAccountNumber = "2029059"; // Your Hubtel merchant account number
 $callbackUrl = "https://admissions.nebatech.com/api/hubtel_callback.php";
 $returnUrl = "https://admissions.nebatech.com/payment_success.php";
 $cancellationUrl = "https://admissions.nebatech.com/payment_failed.php";
@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $amount = 100; // Admission form cost
     $clientReference = uniqid('INV_');
 
-    $postData = [
+    $postData = [ 
         "totalAmount" => $amount,
         "description" => "NTSS Admission Form Payment",
         "callbackUrl" => $callbackUrl,
@@ -26,14 +26,22 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         "clientReference" => $clientReference
     ];
 
-    $ch = curl_init("https://payproxyapi.hubtel.com/items/initiate");
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, [
-        'Authorization: Basic ' . base64_encode("$apiUsername:$apiPassword"),
-        'Content-Type: application/json'
+    $ch = curl_init();
+    curl_setopt_array($ch, [
+        CURLOPT_URL => 'https://payproxyapi.hubtel.com/items/initiate',
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'POST',
+        CURLOPT_POSTFIELDS => json_encode($postData),
+        CURLOPT_HTTPHEADER => [
+            'Content-Type: application/json',
+            'Authorization: Basic ' . base64_encode("$apiUsername:$apiPassword")
+        ],
     ]);
-    curl_setopt($ch, CURLOPT_POST, true);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($postData));
 
     $response = curl_exec($ch);
     curl_close($ch);
