@@ -2,8 +2,8 @@
 session_start();
 include("../config/database.php");
 
-$apiUsername = "YQVXq5A";  // API ID (username)
-$apiPassword = "53efb3af42f244e4aad8bb6888be9af8"; // API Key (password)
+$apiUsername = "lp7pGzl";  // API ID (username)
+$apiPassword = "90027d3ef08646b29947a7e8fdfe8a31"; // API Key (password)
 $merchantAccountNumber = "2029059"; // Your Hubtel merchant account number
 $callbackUrl = "https://admissions.nebatech.com/api/hubtel_callback.php";
 $returnUrl = "https://admissions.nebatech.com/payment_success.php";
@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $customerName = $_POST['customer_name'];
     $customerEmail = $_POST['customer_email'];
     $customerPhone = $_POST['customer_phone'];
-    $amount = 100; // Admission form cost
+    $amount = 0.30; // Admission form cost
     $clientReference = uniqid('INV_');
 
     $postData = [ 

@@ -47,6 +47,12 @@
             font-size: 14px;
             text-align: center;
         }
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -95,6 +101,9 @@
                     <i class="fas fa-money-check-alt"></i> Pay with Hubtel
                 </button>
             </form>
+            <?php if (isset($_SESSION['checkout_url'])) : ?>
+                <iframe src="<?php echo htmlspecialchars($_SESSION['checkout_url']); ?>"></iframe>
+            <?php endif; ?>
         </div>
     </div>
 
