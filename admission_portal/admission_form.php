@@ -125,10 +125,12 @@
                                 <input type="text" name="customer_phone" class="form-control" placeholder="Enter phone number" required>
                             </div>
                             <div class="mb-3">
-                            <button type="submit" class="btn btn-primary w-100">
-                                <i class="fas fa-money-check-alt"></i> Pay with Hubtel
-                            </button>
-                    </div>
+                                <button type="submit" class="btn btn-primary w-100">
+                                    <i class="fas fa-money-check-alt"></i> Pay with Hubtel
+                                </button>
+                            </div>
+                        </form> <!-- Closing form tag added -->
+                    </div> <!-- Closing div tag added -->
                     <hr>
                     <p class="text-center">Already applied? <a href="login.php">Login to continue</a></p>
                 </div>
