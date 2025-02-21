@@ -62,6 +62,10 @@
             border: none;
             margin-top: 20px;
         }
+        .admission_form{
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
     </style>
 </head>
 <body>
@@ -69,7 +73,7 @@
     <?php include("includes/header.php"); ?>
 
     <!-- Main Content -->
-    <div class="container mt-4">
+    <div class="container admission_form mt-4">
         <div class="row align-items-center">
             <!-- Left Side: Fading Slideshow -->
             <div class="col-md-6 mb-3 py-4">
