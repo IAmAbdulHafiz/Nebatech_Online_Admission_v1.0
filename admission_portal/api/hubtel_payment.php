@@ -6,7 +6,7 @@ $apiUsername = "lp7pGzl";  // API ID (username)
 $apiPassword = "90027d3ef08646b29947a7e8fdfe8a31"; // API Key (password)
 $merchantAccountNumber = "2029059"; // Your Hubtel merchant account number
 $callbackUrl = "https://admissions.nebatech.com/api/hubtel_callback.php";
-$returnUrl = "https://admissions.nebatech.com/payment_success.php";
+$returnUrl = "https://admissions.nebatech.com/admission_portal/payment_success.php";
 $cancellationUrl = "https://admissions.nebatech.com/payment_failed.php";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -126,7 +126,11 @@ function sendSMS($phone, $message) {
     ]);
 
     $response = curl_exec($ch);
+    $error = curl_error($ch);
     curl_close($ch);
+
+    // Log the response and error if any
+    file_put_contents('sms_log.txt', "Response: $response\nError: $error\n", FILE_APPEND);
 
     // Handle the response if needed
 }
@@ -136,7 +140,10 @@ function sendEmail($to, $subject, $body) {
     $headers .= "Reply-To: no-reply@nebatech.com\r\n";
     $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 
-    mail($to, $subject, $body, $headers);
+    $success = mail($to, $subject, $body, $headers);
+
+    // Log the email sending status
+    file_put_contents('email_log.txt', "Email to: $to\nSubject: $subject\nSuccess: $success\n", FILE_APPEND);
 }
 
 function getTransactionByReference($reference) {
