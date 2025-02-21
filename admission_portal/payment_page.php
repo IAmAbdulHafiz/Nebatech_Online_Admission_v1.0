@@ -26,6 +26,7 @@ $checkoutUrl = htmlspecialchars($_SESSION['checkout_url']);
             align-items: center;
             min-height: 100vh;
             padding-top: 100px;
+            padding-bottom: 50px;
         }
         .payment-card {
             background: white;
