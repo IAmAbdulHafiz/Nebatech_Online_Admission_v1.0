@@ -1,7 +1,11 @@
 <?php
 session_start();
 
-
+// Check if payment details exist, otherwise redirect to homepage
+if (!isset($_SESSION['payment_details'])) {
+    header("Location: admission_portal.php"); 
+    exit();
+}
 
 $paymentDetails = $_SESSION['payment_details'];
 unset($_SESSION['payment_details']); // Clear session after displaying success message
@@ -88,9 +92,9 @@ unset($_SESSION['payment_details']); // Clear session after displaying success m
         <p>Thank you for your payment. Below are the transaction details:</p>
 
         <div class="details">
-            <p><strong>Transaction ID:</strong> <?php echo $paymentDetails['transaction_id']; ?></p>
+            <p><strong>Transaction ID:</strong> <?php echo htmlspecialchars($paymentDetails['transaction_id']); ?></p>
             <p><strong>Amount Paid:</strong> GHS <?php echo number_format($paymentDetails['amount'], 2); ?></p>
-            <p><strong>Payment Method:</strong> <?php echo strtoupper($paymentDetails['payment_method']); ?></p>
+            <p><strong>Payment Method:</strong> <?php echo strtoupper(htmlspecialchars($paymentDetails['payment_method'])); ?></p>
             <p><strong>Date:</strong> <?php echo date("F j, Y, g:i a", strtotime($paymentDetails['date'])); ?></p>
         </div>
 
