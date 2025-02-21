@@ -127,7 +127,7 @@
                     </div> <!-- Closing div tag added -->
                     <hr>
                     <p class="text-center">Already applied? <a href="login.php">Login to continue</a></p>
-                    <p class="text-center">Yet to Start your application? <a href="admission_portal/signup.php">Signup</a></p>
+                    <p class="text-center">Yet to Start your application? <a href="signup.php">Signup</a></p>
                 </div>
             </div>
         </div>
