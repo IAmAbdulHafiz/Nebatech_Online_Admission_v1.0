@@ -30,12 +30,6 @@
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
         }
 
-        /* Adjust page content to fit with fixed header and footer */
-        body {
-            padding-top: 70px; /* Adjust to the height of the header */
-            padding-bottom: 60px; /* Adjust to the height of the footer */
-        }
-
         .card-body {
             min-height: 400px; /* Maintain consistent height for the right-side card */
         }
