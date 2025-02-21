@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $customerEmail = $_POST['customer_email'];
     $customerPhone = $_POST['customer_phone'];
     $amount = 1; // Admission form cost
-    $clientReference = uniqid('INV_');
+    $clientReference = uniqid('NTSS_');
 
     $postData = [ 
         "totalAmount" => $amount,

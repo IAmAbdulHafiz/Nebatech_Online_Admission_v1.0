@@ -143,9 +143,6 @@
             </div>
         </div>
     </div>
-    
-    <!-- Include Footer -->
-    <?php include("../includes/public_footer.php"); ?>
 
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -162,5 +159,7 @@
         // Call the function to generate Serial Number and PIN on page load
         window.onload = generateSerialAndPin;
     </script>
+    <!-- Include Footer -->
+    <?php include("../includes/public_footer.php"); ?>
 </body>
 </html>
