@@ -127,6 +127,8 @@
                                 <label><i class="fas fa-phone"></i> Phone Number (For Serial & PIN):</label>
                                 <input type="text" name="customer_phone" class="form-control" placeholder="Enter phone number" required>
                             </div>
+                            <input type="hidden" name="serial_number" id="serial_number">
+                            <input type="hidden" name="pin" id="pin">
                             <div class="mb-3">
                                 <button type="submit" class="btn btn-primary w-100">
                                     <i class="fas fa-money-check-alt"></i> Pay with Hubtel
@@ -136,6 +138,7 @@
                     </div> <!-- Closing div tag added -->
                     <hr>
                     <p class="text-center">Already applied? <a href="login.php">Login to continue</a></p>
+                    <p class="text-center">Yet to Start your application? <a href="admission_portal/signup.php">Signup</a></p>
                 </div>
             </div>
         </div>
@@ -147,5 +150,17 @@
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Generate Serial Number and PIN
+        function generateSerialAndPin() {
+            const serialNumber = 'SN' + Math.floor(Math.random() * 1000000);
+            const pin = Math.floor(1000 + Math.random() * 9000);
+            document.getElementById('serial_number').value = serialNumber;
+            document.getElementById('pin').value = pin;
+        }
+
+        // Call the function to generate Serial Number and PIN on page load
+        window.onload = generateSerialAndPin;
+    </script>
 </body>
 </html>
