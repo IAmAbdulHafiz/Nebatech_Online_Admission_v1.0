@@ -22,7 +22,7 @@ $checkoutUrl = $_SESSION['checkout_url'];
             padding-bottom: 60px;
         }
         .container {
-            max-width: 800px;
+            max-width: 500px;
         }
         .card {
             border-radius: 15px;
