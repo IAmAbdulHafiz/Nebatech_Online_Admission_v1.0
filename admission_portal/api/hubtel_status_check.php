@@ -25,8 +25,8 @@ foreach ($pendingPayments as $payment) {
     curl_close($ch);
     $statusResponse = json_decode($response, true);
 
-    if ($statusResponse && isset($statusResponse["Status"])) {
-        $finalStatus = $statusResponse["Status"] === "Success" ? "Completed" : ($statusResponse["Status"] === "Cancelled" ? "Cancelled" : "Pending");
+    if ($statusResponse && isset($statusResponse["data"]["status"])) {
+        $finalStatus = $statusResponse["data"]["status"] === "Paid" ? "Completed" : ($statusResponse["data"]["status"] === "Unpaid" ? "Pending" : "Cancelled");
 
         $query = "UPDATE transactions SET status = :status WHERE reference = :reference";
         $stmt = $conn->prepare($query);
