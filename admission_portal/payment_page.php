@@ -68,7 +68,7 @@ $checkoutUrl = htmlspecialchars($_SESSION['checkout_url']);
     <!-- Include Header -->
     <?php include("includes/header.php"); ?>
 
-    <div class="payment-container">
+    <div class="container mt-5">
         <div class="payment-card">
             <h2><i class="fas fa-credit-card"></i> Complete Your Payment</h2>
             <p>Please complete your payment through the secured checkout page below.</p>
