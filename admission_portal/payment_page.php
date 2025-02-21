@@ -25,6 +25,8 @@ $checkoutUrl = $_SESSION['checkout_url'];
             max-width: 500px;
         }
         .card {
+            max-width: 500px;
+            margin: 0 auto;
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
