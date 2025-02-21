@@ -115,7 +115,7 @@
             <!-- Student Handbook Section -->
             <div class="container student-handbook py-5 text-center">
                 <p>For more information on our programs, admission requirements, and policies, please download our Student Handbook.</p>
-                <a href="student_handbook.pdf" class="btn btn-primary btn-lg">
+                <a href="downloads/student_handbook.pdf" class="btn btn-primary btn-lg">
                     <i class="fas fa-file-pdf"></i> Download Student Handbook
                 </a>
             </div>
