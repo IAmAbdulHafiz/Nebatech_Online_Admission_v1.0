@@ -25,12 +25,11 @@ $checkoutUrl = htmlspecialchars($_SESSION['checkout_url']);
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding-top: 100px;
             padding: 20px;
         }
         .payment-card {
             background: white;
-            padding: 30px;
+            padding-top: 100px;
             border-radius: 12px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
             max-width: 550px;
