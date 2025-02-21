@@ -39,7 +39,7 @@ $checkoutUrl = $_SESSION['checkout_url'];
             font-size: 24px;
         }
         iframe {
-            width: 50%;
+            width: 100%;
             height: 400px;
             border: none;
             border-radius: 0 0 15px 15px;
