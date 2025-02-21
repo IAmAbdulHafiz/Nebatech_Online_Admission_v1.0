@@ -1,11 +1,7 @@
 <?php
 session_start();
 
-// Check if payment details exist, otherwise redirect to homepage
-if (!isset($_SESSION['payment_details'])) {
-    header("Location: index.php"); 
-    exit();
-}
+
 
 $paymentDetails = $_SESSION['payment_details'];
 unset($_SESSION['payment_details']); // Clear session after displaying success message
