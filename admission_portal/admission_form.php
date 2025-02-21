@@ -15,7 +15,7 @@
 
         .carousel-item img {
             object-fit: cover;
-            height: 100%;
+            height: 100hv; /* Full height */
             width: 100%;
             filter: brightness(90%); /* Dark overlay effect */
             border-radius: 15px; /* Rounded corners */
@@ -32,6 +32,7 @@
 
         .card-body {
             min-height: 400px; /* Maintain consistent height for the right-side card */
+            border-radius: 15px;
         }
 
         .form-control {
@@ -54,13 +55,6 @@
         .alert {
             font-size: 14px;
             text-align: center;
-        }
-
-        iframe {
-            width: 100%;
-            height: 600px;
-            border: none;
-            margin-top: 20px;
         }
         .admission_form{
             padding-top: 50px;
