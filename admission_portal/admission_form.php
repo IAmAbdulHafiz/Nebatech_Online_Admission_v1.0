@@ -68,6 +68,9 @@
             border: none;
             margin-top: 20px;
         }
+        .container{
+            padding-bottom: 50px;
+        }
     </style>
 </head>
 <body>
