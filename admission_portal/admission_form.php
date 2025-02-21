@@ -100,7 +100,8 @@
                     <div class="card-body d-flex flex-column justify-content-between">
                         <h2 class="text-center" style="color: #002060;">Online Admission Form</h2>
                         <p class="text-center">Application Fee: <b>GH₵100</b></p>
-                        <p class="text-center">Purchase the application form online through this platform.</p>
+                        <p class="text-center">Fill the form below to Purchase the application form online</p>
+                        <p class="text-center"><b>Note:</b> After completing the payment, you will receive your Serial Number and PIN, which you will use to sign up and complete the application form online.</p>
 
                         <?php if (!empty($_SESSION['success_message'])) : ?>
                             <div class="alert alert-success"><?php echo $_SESSION['success_message']; unset($_SESSION['success_message']); ?></div>
