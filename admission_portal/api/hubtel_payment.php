@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $customerName = $_POST['customer_name'];
     $customerEmail = $_POST['customer_email'];
     $customerPhone = $_POST['customer_phone'];
-    $amount = 0.30; // Admission form cost
+    $amount = 0.13; // Admission form cost
     $clientReference = uniqid('INV_');
 
     $postData = [ 
@@ -52,8 +52,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $checkoutUrl = $paymentResponse['data']['checkoutDirectUrl']; // URL for iframe
 
         // Generate Serial Number and PIN
-        $serialNumber = 'SN' . mt_rand(100000, 999999);
-        $pin = mt_rand(1000, 9999);
+        $serialNumber = generateSerialNumber();
+        $pin = generatePin();
 
         // Save transaction in the database as pending
         $query = "INSERT INTO transactions (customer_name, customer_email, customer_phone, amount, reference, status, serial_number, pin) 
@@ -146,5 +146,15 @@ function getTransactionByReference($reference) {
     $stmt->bindParam(':reference', $reference);
     $stmt->execute();
     return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
+function generateSerialNumber() {
+    $year = date('y'); // Get the current year in two digits
+    $randomDigits = strtoupper(bin2hex(random_bytes(4))); // Generates 8 random hexadecimal digits
+    return 'N' . $year . $randomDigits; // Combine to form the serial number
+}
+
+function generatePin() {
+    return rand(100000, 999999); // Generates a 6-digit pin
 }
 ?>
