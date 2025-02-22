@@ -171,6 +171,7 @@
     </style>
 </head>
 <body>
+    <?php include("includes/header.php"); ?>
     <header class="hero">
         <h1>Nebatech Updates & Events</h1>
         <p>Stay updated with the latest news, events, and innovations from Nebatech Software Solution Ltd.</p>
@@ -250,5 +251,6 @@
             });
         });
     </script>
+    <?php include("includes/footer.php"); ?>
 </body>
 </html>
