@@ -209,7 +209,7 @@
                                 <i class="fas fa-cogs"></i>
                             </div>
                             <div>
-                                <h5 class="mb-1" style="color: var (--primary-color);">Our Services</h5>
+                                <h5 class="mb-1" style="color: var(--primary-color);">Our Services</h5>
                                 <p class="mb-0 text-muted">Explore the solutions we offer</p>
                             </div>
                             <i class="fas fa-arrow-right ms-auto" style="color: var(--secondary-color);"></i>
