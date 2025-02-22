@@ -38,6 +38,7 @@
             justify-content: center;
             text-align: center;
             color: white;
+            padding-top: 5rem;
             padding: 2rem;
         }
 
