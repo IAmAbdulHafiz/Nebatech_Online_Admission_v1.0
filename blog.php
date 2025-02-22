@@ -11,6 +11,8 @@
     <title>Updates & Events - Nebatech Software Solution Ltd</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
 
     <style>
@@ -53,7 +55,8 @@
 
         /* Category filters */
         .filters {
-            padding: 2rem;
+            height: 50px;
+            padding: 10rem 0;
             background: white;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
@@ -78,7 +81,7 @@
 
         .filter-btn:hover,
         .filter-btn.active {
-            background: #2563eb;
+            background: #002060;
             color: white;
         }
 
@@ -126,7 +129,7 @@
         .event-title {
             font-size: 1.25rem;
             margin-bottom: 0.5rem;
-            color: #1f2937;
+            color: #002060;
         }
 
         .event-date {
@@ -143,7 +146,7 @@
         .cta-button {
             display: inline-block;
             padding: 0.5rem 1rem;
-            background: #2563eb;
+            background: #002060;
             color: white;
             text-decoration: none;
             border-radius: 15px;
@@ -151,7 +154,7 @@
         }
 
         .cta-button:hover {
-            background: #1d4ed8;
+            background: #FFA500;
         }
 
         /* Responsive adjustments */
@@ -171,7 +174,7 @@
     </style>
 </head>
 <body>
-    <?php include("includes/header.php"); ?>
+    <?php include("includes/public_header.php"); ?>
     <!--<header class="hero">
         <h1>Nebatech Updates & Events</h1>
         <p>Stay updated with the latest news, events, and innovations from Nebatech Software Solution Ltd.</p>
@@ -251,6 +254,6 @@
             });
         });
     </script>
-    <?php include("includes/footer.php"); ?>
+    <?php include("includes/public_footer.php"); ?>
 </body>
 </html>

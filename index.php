@@ -122,10 +122,10 @@
         @media (max-width: 768px) {
             .hero-section {
                 height: 70vh;
-                padding: 10rem 0;
+                padding: 3rem 0;
             }
             .why-choose-section{
-                margin: 3rem 1rem;
+                margin: 2rem 1rem;
             }
             .feature-card {
                 margin-bottom: 1rem;

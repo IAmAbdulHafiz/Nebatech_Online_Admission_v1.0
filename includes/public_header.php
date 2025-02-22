@@ -86,7 +86,6 @@
         lastScrollTop = st <= 0 ? 0 : st;
     });
 
-
     // Set active class dynamically based on current page URL
     document.addEventListener("DOMContentLoaded", function () {
         let navLinks = document.querySelectorAll(".nav-link");
