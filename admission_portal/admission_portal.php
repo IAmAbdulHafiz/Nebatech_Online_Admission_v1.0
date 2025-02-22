@@ -38,7 +38,6 @@
             justify-content: center;
             text-align: center;
             color: white;
-            padding-top: 5rem;
             padding: 2rem;
         }
 
@@ -79,7 +78,11 @@
             transition: transform 0.3s ease;
             height: 100%;
         }
-
+        .welcome-btn {
+            color: white;
+            font-weight: 600;  
+            
+        }
         .card:hover {
             transform: translateY(-10px);
         }
@@ -161,7 +164,7 @@
             <h1 class="welcome-text" data-aos="fade-up">Welcome to Nebatech Admission Portal</h1>
             <p class="lead mb-4" data-aos="fade-up" data-aos-delay="200">
                 Where technology meets innovation and learning fosters transformation.
-            </p>
+            </p class="welcome-btn mb-4">
             <a href="admission_form.php" class="btn login-btn" data-aos="fade-up" data-aos-delay="400">
                 Get Started
             </a>
