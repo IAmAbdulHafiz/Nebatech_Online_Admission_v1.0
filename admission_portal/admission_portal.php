@@ -152,7 +152,7 @@
 
 <body>
     <!-- Header -->
-    <?php include("includes/header.php"); ?>
+
 
     <!-- Hero Section -->
     <section class="welcome-section">
