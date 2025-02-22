@@ -1,131 +1,305 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <icon href="assets/images/favicon.ico" rel="icon">
-    <title>NEBATECH-Online Admission</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/style1.css">
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <title>NEBATECH - Online Admission</title>
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/favicon.ico">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Custom CSS -->
     <style>
-        .carousel-item {
+        :root {
+            --primary-color: #002060;
+            --secondary-color: #0056b3;
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Hero Section */
+        .welcome-section {
+            position: relative;
+            height: 100vh;
+            background: linear-gradient(rgba(0, 32, 96, 0.8), rgba(0, 32, 96, 0.9)),
+                        url('assets/images/hero-bg.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 2rem;
+        }
+
+        .welcome-text {
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .login-btn {
+            background-color: white;
+            color: var(--primary-color);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Welcome Message */
+        .welcome-message {
+            padding: 5rem 0;
+            background-color: var(--light-bg);
+        }
+
+        /* Cards */
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
             height: 100%;
         }
 
-        .carousel-item img {
-            object-fit: cover;
-            height: 100%;
-            width: 100%;
-            filter: brightness(90%); /* Dark overlay effect */
-            border-radius: 15px; /* Rounded corners */
+        .card:hover {
+            transform: translateY(-10px);
         }
 
-        .carousel-caption {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: #fff;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        .card-icon {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
         }
-        .card-body {
-            min-height: 400px; /* Maintain consistent height for the right-side card */
+
+        .list-item {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: start;
+            gap: 0.5rem;
+        }
+
+        .list-icon {
+            color: #28a745;
+            flex-shrink: 0;
+            margin-top: 0.25rem;
+        }
+
+        /* Student Handbook */
+        .student-handbook {
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 15px;
+            margin: 3rem 0;
+            padding: 3rem !important;
+        }
+
+        .download-btn {
+            background-color: white;
+            color: var(--primary-color);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background-color: var(--secondary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .welcome-section {
+                height: 70vh;
+            }
+            
+            .card {
+                margin-bottom: 2rem;
+            }
         }
     </style>
 </head>
 
 <body>
-    <!-- Include Header -->
+    <!-- Header -->
     <?php include("includes/header.php"); ?>
 
-    <!-- Welcome Section -->
-    <div class="welcome-section">
-        <div class="overlay"></div>
-        <div class="content">
-            <h1 class="welcome-text" style="font-size: 3em;">Welcome to Nebatech Admission Portal</h1>
-            <p>Where technology meets innovation and learning fosters transformation.</p>
-            <a href="admission_form.php" class="btn btn-light btn-lg login-btn">Get Started</a>
+    <!-- Hero Section -->
+    <section class="welcome-section">
+        <div class="container">
+            <h1 class="welcome-text" data-aos="fade-up">Welcome to Nebatech Admission Portal</h1>
+            <p class="lead mb-4" data-aos="fade-up" data-aos-delay="200">
+                Where technology meets innovation and learning fosters transformation.
+            </p>
+            <a href="admission_form.php" class="btn login-btn" data-aos="fade-up" data-aos-delay="400">
+                Get Started
+            </a>
         </div>
-    </div>
+    </section>
 
-    <!-- Welcome Message Section -->
-    <div class="container text-center mt-5">
-        <h2>Welcome Message</h2>
-        <p class="lead text-start">
-            Dear Student,<br><br>
-            Welcome to Nebatech Software Solution Ltd, where technology meets innovation and learning fosters transformation. 
-            We are thrilled to have you join our growing community of passionate learners and professionals dedicated to 
-            leveraging technology for impact and excellence.<br><br>At Nebatech, we believe in your potential to innovate and 
-            create a better future through technology. With our competence base training programs, exceptional faculty, and 
-            supportive community, we are committed to equipping you with the knowledge, skills, and tools needed to excel 
-            in today’s fast-evolving digital world. We also want to express our gratitude to our investor, <strong>Mr. Rafik 
-                Fuseini</strong>, for believing in our vision and supporting our growth.<br><br> Additionally, we extend our 
-                heartfelt appreciation to <strong>Alhaj Dr. Tanko Mohammed</strong>, a valued member of our Board of Advisory, 
-                and <strong>Mr. Awal Fuseini</strong>, who serves as the Board Advisor Secretary, for their immense contributions 
-                toward the success of Nebatech Software Solution Ltd. Their guidance and dedication continue to inspire and 
-                propel us forward.<br><br>Warm regards,<br>
-            <strong>Abdul-Hafiz Yussif</strong><br>
-            Founder & CEO, Nebatech Software Solution Ltd.
-        </p>
-    </div>
+    <!-- Welcome Message -->
+    <section class="welcome-message">
+        <div class="container">
+            <h2 class="text-center mb-5" data-aos="fade-up">Welcome Message</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="bg-white p-5 rounded-3 shadow-sm" data-aos="fade-up" data-aos-delay="200">
+                        <p class="lead">
+                            Dear Student,<br><br>
+                            Welcome to Nebatech Software Solution Ltd, where technology meets innovation and learning fosters transformation. 
+                            We are thrilled to have you join our growing community of passionate learners and professionals dedicated to 
+                            leveraging technology for impact and excellence.<br><br>
+                            
+                            At Nebatech, we believe in your potential to innovate and create a better future through technology. With our 
+                            competence base training programs, exceptional faculty, and supportive community, we are committed to equipping 
+                            you with the knowledge, skills, and tools needed to excel in today's fast-evolving digital world.<br><br>
+                            
+                            We also want to express our gratitude to our investor, <strong>Mr. Rafik Fuseini</strong>, for believing in 
+                            our vision and supporting our growth. Additionally, we extend our heartfelt appreciation to <strong>Alhaj Dr. 
+                            Tanko Mohammed</strong>, a valued member of our Board of Advisory, and <strong>Mr. Awal Fuseini</strong>, 
+                            who serves as the Board Advisor Secretary, for their immense contributions toward the success of Nebatech 
+                            Software Solution Ltd.<br><br>
+                            
+                            Warm regards,<br>
+                            <strong>Abdul-Hafiz Yussif</strong><br>
+                            Founder & CEO, Nebatech Software Solution Ltd.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Cards Section -->
-    <div class="container card-section">
-        <div class="row">
-            <!-- Admission Information -->
-            <div class="col-md-6 mb-4">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <i class="fas fa-user-graduate fa-3x mb-3" style="color: #002060"></i>
-                        <h5 class="card-title">Admission Requirements</h5>
-                        <p class="card-text">
-                            To enroll in any of our programs, students must meet the following requirements:
-                        </p>
-                        <ul class="list-unstyled text-left">
-                            <li><i class="fas fa-check-circle text-success"></i> Basic literacy and numeracy skills (minimum JHS certificate).</li>
-                            <li><i class="fas fa-check-circle text-success"></i> A passion for technology and a commitment to learning.</li>
-                            <li><i class="fas fa-check-circle text-success"></i> Access to a laptop is highly recommended for technical programs.</li>
-                            <br>
-                        </ul>
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <!-- Admission Requirements -->
+                <div class="col-md-6 mb-4" data-aos="fade-right">
+                    <div class="card">
+                        <div class="card-body p-5">
+                            <div class="text-center mb-4">
+                                <i class="fas fa-user-graduate fa-4x card-icon"></i>
+                                <h3 class="card-title mt-4">Admission Requirements</h3>
+                            </div>
+                            <div class="card-text">
+                                <p class="text-center mb-4">To enroll in any of our programs, students must meet the following requirements:</p>
+                                <div class="list-items">
+                                    <div class="list-item">
+                                        <i class="fas fa-check-circle list-icon"></i>
+                                        <span>Basic literacy and numeracy skills (minimum JHS certificate)</span>
+                                    </div>
+                                    <div class="list-item">
+                                        <i class="fas fa-check-circle list-icon"></i>
+                                        <span>A passion for technology and a commitment to learning</span>
+                                    </div>
+                                    <div class="list-item">
+                                        <i class="fas fa-check-circle list-icon"></i>
+                                        <span>Access to a laptop is highly recommended for technical programs</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!-- Learning Tools and Resources -->
-            <div class="col-md-6 mb-4">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <i class="fas fa-book-open fa-3x mb-3" style="color: #002060"></i>
-                        <h5 class="card-title">Learning Tools and Resources</h5>
-                        <p class="card-text">
-                            Nebatech provides the following tools and resources to enhance your learning experience:
-                        </p>
-                        <ul class="list-unstyled text-left">
-                            <li><i class="fas fa-check-circle text-success"></i> Modern Classroom with high-speed internet.</li>
-                            <li><i class="fas fa-check-circle text-success"></i> Free Wi-Fi for research and assignments.</li>
-                            <li><i class="fas fa-check-circle text-success"></i> Access to licensed software and tools relevant to your program.</li>
-                            <li><i class="fas fa-check-circle text-success"></i> Study guides, e-books, and video tutorials for each course.</li>
-                        </ul>
+
+                <!-- Learning Tools -->
+                <div class="col-md-6 mb-4" data-aos="fade-left">
+                    <div class="card">
+                        <div class="card-body p-5">
+                            <div class="text-center mb-4">
+                                <i class="fas fa-book-open fa-4x card-icon"></i>
+                                <h3 class="card-title mt-4">Learning Tools and Resources</h3>
+                            </div>
+                            <div class="card-text">
+                                <p class="text-center mb-4">Nebatech provides the following tools and resources to enhance your learning experience:</p>
+                                <div class="list-items">
+                                    <div class="list-item">
+                                        <i class="fas fa-check-circle list-icon"></i>
+                                        <span>Modern Classroom with high-speed internet</span>
+                                    </div>
+                                    <div class="list-item">
+                                        <i class="fas fa-check-circle list-icon"></i>
+                                        <span>Free Wi-Fi for research and assignments</span>
+                                    </div>
+                                    <div class="list-item">
+                                        <i class="fas fa-check-circle list-icon"></i>
+                                        <span>Access to licensed software and tools relevant to your program</span>
+                                    </div>
+                                    <div class="list-item">
+                                        <i class="fas fa-check-circle list-icon"></i>
+                                        <span>Study guides, e-books, and video tutorials for each course</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Student Handbook Section -->
-            <div class="container student-handbook py-5 text-center">
-                <p>For more information on our programs, admission requirements, and policies, please download our Student Handbook.</p>
-                <a href="downloads/student_handbook.pdf" class="btn btn-primary btn-lg">
-                    <i class="fas fa-file-pdf"></i> Download Student Handbook
+            <!-- Student Handbook -->
+            <div class="student-handbook text-center" data-aos="fade-up">
+                <h3 class="mb-4">Student Handbook</h3>
+                <p class="lead mb-4">For more information on our programs, admission requirements, and policies, please download our Student Handbook.</p>
+                <a href="downloads/student_handbook.pdf" class="btn download-btn">
+                    <i class="fas fa-file-pdf me-2"></i> Download Student Handbook
                 </a>
             </div>
         </div>
-    </div>
-    <!-- Include Footer -->
+    </section>
+
+    <!-- Footer -->
     <?php include("../includes/public_footer.php"); ?>
 
-    <!-- Bootstrap JS -->
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-</body>
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
 
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
 </html>
