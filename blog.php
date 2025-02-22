@@ -8,147 +8,247 @@
     <meta name="author" content="Nebatech Software Solution Ltd">
     <meta name="robots" content="noindex, nofollow">
     <link rel="icon" href="assets/images/favicon.ico">
-    <title>Blog - Nebatech Software Solution Ltd</title>
+    <title>Updates & Events - Nebatech Software Solution Ltd</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
+
     <style>
-        .blog-section {
-            padding: 100px 0;
-        }
-        .card {
-            border: none;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-        .card:hover {
-            transform: scale(1.05);
-        }
-        .card-body {
-            padding: 2rem;
-        }
-        .card-title {
-            color: #002060;
-        }
-        .card-text {
-            color: #555;
-        }
-        .section-title {
-            color: orange;
-        }
-        .btn-primary {
-            background-color: #002060;
-            border-color: #002060;
-            color: white;
-            transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        .btn-primary:hover {
-            background-color: orange;
-            border-color: orange;
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        /* Header styles */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                        url('https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* Category filters */
+        .filters {
+            padding: 2rem;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .filter-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 25px;
+            background: #f0f0f0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #2563eb;
             color: white;
         }
+
+        /* Events grid */
+        .events-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .event-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .event-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .event-content {
+            padding: 1.5rem;
+        }
+
+        .event-category {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: #e5e7eb;
+            border-radius: 15px;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .event-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: #1f2937;
+        }
+
+        .event-date {
+            color: #6b7280;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .event-description {
+            color: #4b5563;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: #1d4ed8;
+        }
+
+        /* Responsive adjustments */
         @media (max-width: 768px) {
-            .blog-section {
-                padding: 100px 0;
+            .hero h1 {
+                font-size: 2rem;
             }
-            .card {
-                margin-left: 1rem;
-                margin-right: 1rem;
+
+            .hero p {
+                font-size: 1rem;
             }
-            .card-body {
-                padding: 1rem;
-            }
-            .card-title {
-                font-size: 1.2rem;
-            }
-            .card-text {
-                font-size: 0.9rem;
+
+            .events-container {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
+    <header class="hero">
+        <h1>Nebatech Updates & Events</h1>
+        <p>Stay updated with the latest news, events, and innovations from Nebatech Software Solution Ltd.</p>
+    </header>
 
-    <?php include("includes/public_header.php"); ?>
-<div class="content">
-    <div class="container mt-5 blog-section">
-        <!-- Blogs Section -->
-        <h2 class="text-center section-title">Blogs</h2>
-        <p class="text-center lead">Read through our insightful blog posts on various topics related to technology, business, and more:</p>
-
-        <div class="row mt-5">
-            <!-- Blog 1 -->
-            <div class="col-md-6 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">The Power of Custom Mobile Apps: How They Can Transform Your Business</h5>
-                        <p class="card-text">In today's digital age, mobile applications are more than just a convenience – they can be a game changer for businesses. At Nebatech, we specialize in creating custom mobile apps tailored to your business needs. Whether you're looking to enhance customer engagement, streamline operations, or expand your market reach, a well-designed mobile app can be the key to success.</p>
-                        <ul>
-                            <li>Enhanced User Experience: Custom apps allow businesses to create personalized experiences for their users.</li>
-                            <li>Improved Efficiency: Apps can streamline tasks like booking, purchasing, and customer support.</li>
-                            <li>Data Collection: Apps help collect valuable insights into user behavior, which can be used for smarter business decisions.</li>
-                        </ul>
-                        <a href="custom-mobile-apps-blog.php" class="btn btn-primary">Read More</a>
-                    </div>
-                </div>
-            </div>
-            <!-- Blog 2 -->
-            <div class="col-md-6 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Why Every Business Needs a Responsive Website: The Role of Web Design in Business Growth</h5>
-                        <p class="card-text">In today’s competitive digital landscape, having an attractive and functional website is more important than ever. But it's not just about having any website – it's about having a responsive website that adapts to different devices.</p>
-                        <ul>
-                            <li>User Experience: A responsive site ensures visitors have a smooth experience, leading to higher conversion rates.</li>
-                            <li>SEO Benefits: Google prioritizes mobile-friendly websites, which can improve your search engine ranking.</li>
-                            <li>Cost-Efficiency: A responsive design saves you time and money, avoiding the need for separate desktop and mobile sites.</li>
-                        </ul>
-                        <a href="responsive-web-design-blog.php" class="btn btn-primary">Read More</a>
-                    </div>
-                </div>
-            </div>
+    <section class="filters">
+        <div class="filter-container">
+            <button class="filter-btn active" data-category="all">All</button>
+            <button class="filter-btn" data-category="company">🏢 Company News</button>
+            <button class="filter-btn" data-category="tech">🔬 Tech Insights</button>
+            <button class="filter-btn" data-category="events">🎓 Events & Workshops</button>
+            <button class="filter-btn" data-category="success">🌟 Success Stories</button>
         </div>
+    </section>
 
-        <!-- More Blogs Section -->
-        <h2 class="text-center section-title mt-5">More Blogs</h2>
-        <p class="text-center lead">Learn about other important topics to help you stay ahead in the digital world:</p>
-
-        <div class="row mt-5">
-            <!-- Blog 3 -->
-            <div class="col-md-6 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">The Importance of Network Security for Your Business</h5>
-                        <p class="card-text">As more businesses move online, ensuring your network is secure has never been more important. A single data breach can have severe consequences, including loss of customer trust, financial penalties, and even a damaged reputation.</p>
-                        <ul>
-                            <li>Common Network Security Risks: What hackers are after and how they target businesses.</li>
-                            <li>Best Practices for Network Security: Simple steps like firewalls, secure passwords, and encryption.</li>
-                            <li>Why You Need Expert Help: Ensuring network security requires professional expertise.</li>
-                        </ul>
-                        <a href="network-security-blog.php" class="btn btn-primary">Read More</a>
-                    </div>
-                </div>
+    <main class="events-container">
+        <!-- Event Card 1 -->
+        <article class="event-card" data-category="tech">
+            <img src="https://images.unsplash.com/photo-1504384764586-bb4cdc1707b0?auto=format&fit=crop&q=80" alt="Tech Conference 2024" class="event-image">
+            <div class="event-content">
+                <span class="event-category">🔬 Tech Insights</span>
+                <h2 class="event-title">AI Innovation Summit 2024</h2>
+                <p class="event-date">🗓 March 15, 2024 | 📍 Virtual Event</p>
+                <p class="event-description">Join us for an exciting discussion on the latest AI trends and their impact on software development.</p>
+                <a href="#" class="cta-button">Register Now</a>
             </div>
-            <!-- Blog 4 -->
-            <div class="col-md-6 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">How Barcode Systems Are Revolutionizing Inventory Management</h5>
-                        <p class="card-text">Inventory management can be a complex and time-consuming task. With barcode systems, businesses can automate and streamline inventory tracking, ensuring accuracy and efficiency.</p>
-                        <ul>
-                            <li>What Is a Barcode System?: A simple explanation of how barcode systems work in inventory management.</li>
-                            <li>Benefits for Businesses: Reducing human errors, improving stock control, and speeding up the checkout process.</li>
-                            <li>Custom Solutions for Your Business: How Nebatech designs barcode systems tailored to your needs.</li>
-                        </ul>
-                        <a href="barcode-system-blog.php" class="btn btn-primary">Read More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<?php include("includes/public_footer.php"); ?>
+        </article>
 
+        <!-- Event Card 2 -->
+        <article class="event-card" data-category="company">
+            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80" alt="Company Milestone" class="event-image">
+            <div class="event-content">
+                <span class="event-category">🏢 Company News</span>
+                <h2 class="event-title">Nebatech Expands to Southeast Asia</h2>
+                <p class="event-date">🗓 February 28, 2024</p>
+                <p class="event-description">We're excited to announce our expansion into the Southeast Asian market with a new office in Singapore.</p>
+                <a href="#" class="cta-button">Read More</a>
+            </div>
+        </article>
+
+        <!-- Event Card 3 -->
+        <article class="event-card" data-category="events">
+            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80" alt="Workshop Event" class="event-image">
+            <div class="event-content">
+                <span class="event-category">🎓 Events & Workshops</span>
+                <h2 class="event-title">Web Development Masterclass</h2>
+                <p class="event-date">🗓 April 5, 2024 | 📍 Hybrid Event</p>
+                <p class="event-description">Learn advanced web development techniques from industry experts in this hands-on workshop.</p>
+                <a href="#" class="cta-button">Register Now</a>
+            </div>
+        </article>
+    </main>
+
+    <script>
+        // Category filtering functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const eventCards = document.querySelectorAll('.event-card');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    button.classList.add('active');
+
+                    const category = button.getAttribute('data-category');
+
+                    eventCards.forEach(card => {
+                        if (category === 'all' || card.getAttribute('data-category') === category) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
 </body>
 </html>
