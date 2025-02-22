@@ -10,14 +10,12 @@
     <link rel="icon" href="assets/images/favicon.ico">
     <title>Nebatech Software Solution Ltd</title>
     <!-- Bootstrap 5 -->
-    <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
---><!-- Font Awesome 6 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/all.min.css">
-    
-    
     <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
@@ -44,7 +42,7 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 5rem 0;
+            padding: 7rem 0;
         }
 
         .hero-text {
@@ -117,7 +115,8 @@
             color: white;
             border-radius: 2rem;
             padding: 4rem 2rem;
-            margin: 4rem 0;
+            margin: 4rem 4rem;
+            text-align: center;
         }
 
         @media (max-width: 768px) {
@@ -134,7 +133,9 @@
 </head>
 <body>
     <!-- Header will be included here -->
+    <?php include 'includes/public_header.php'; ?>
 
+    <!-- Main Content -->
     <main>
         <!-- Hero Section -->
         <section class="hero-section">
@@ -146,9 +147,9 @@
         </section>
 
         <!-- Why Choose Section -->
-        <section class="container why-choose-section" data-aos="fade-up">
+        <section class="why-choose-section" data-aos="fade-up">
             <h2 class="text-center mb-5">Why Choose Nebatech?</h2>
-            <div class="row g-4">
+            <div class="row g-4 justify-content-center">
                 <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
                     <div class="feature-card h-100">
                         <i class="fas fa-award fa-2x mb-3 text-warning"></i>
@@ -206,7 +207,7 @@
                                 <i class="fas fa-cogs"></i>
                             </div>
                             <div>
-                                <h5 class="mb-1" style="color: var(--primary-color);">Our Services</h5>
+                                <h5 class="mb-1" style="color: var (--primary-color);">Our Services</h5>
                                 <p class="mb-0 text-muted">Explore the solutions we offer</p>
                             </div>
                             <i class="fas fa-arrow-right ms-auto" style="color: var(--secondary-color);"></i>
@@ -279,5 +280,7 @@
             showCursor: true
         });
     </script>
+    <!-- Footer will be included here -->
+    <?php include 'includes/public_footer.php'; ?>
 </body>
 </html>
