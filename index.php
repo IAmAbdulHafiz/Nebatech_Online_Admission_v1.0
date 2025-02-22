@@ -122,7 +122,7 @@
         @media (max-width: 768px) {
             .hero-section {
                 min-height: 60vh;
-                padding: 5rem 0;
+                padding: 10rem 0;
             }
             .why-choose-section{
                 margin: 3rem 1rem;
