@@ -124,7 +124,9 @@
                 min-height: 60vh;
                 padding: 3rem 0;
             }
-
+            .why-choose-section{
+                margin: 3rem 1rem;
+            }
             .feature-card {
                 margin-bottom: 1rem;
             }
