@@ -94,7 +94,7 @@
 
         .event-card {
             background: white;
-            border-radius: 10px;
+            border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
@@ -146,7 +146,7 @@
             background: #2563eb;
             color: white;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 15px;
             transition: background 0.3s ease;
         }
 

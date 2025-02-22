@@ -24,7 +24,7 @@
         .accordion .card {
             margin-bottom: 15px;
             border: none;
-            border-radius: 10px;
+            border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         .accordion .card-header {

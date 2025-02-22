@@ -64,7 +64,7 @@ body {
     border: none;
     font-weight: bold;
     padding: 5px 15px;
-    border-radius: 5px;
+    border-radius: 15px;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -94,7 +94,7 @@ body {
 .nav-link {
     color: white !important;
     padding: 10px 15px;
-    border-radius: 5px;
+    border-radius: 15px;
     transition: all 0.3s ease;
 }
 
@@ -117,7 +117,7 @@ body {
     border: none;
     font-weight: bold;
     padding: 5px 15px;
-    border-radius: 5px;
+    border-radius: 15px;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -201,7 +201,7 @@ body {
     .navbar-collapse {
         background-color: rgba(0, 32, 96, 0.95); /* Dark blue background for mobile menu */
         padding: 10px;
-        border-radius: 5px;
+        border-radius: 15px;
     }
 }
 

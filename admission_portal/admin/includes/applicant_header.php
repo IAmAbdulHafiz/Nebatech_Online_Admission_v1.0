@@ -13,7 +13,7 @@
             border: none;
             font-weight: bold;
             padding: 5px 15px;
-            border-radius: 5px;
+            border-radius: 15px;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 

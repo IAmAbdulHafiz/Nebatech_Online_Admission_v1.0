@@ -21,14 +21,14 @@
 
         .faq-card {
             border: none;
-            border-radius: 10px;
+            border-radius: 15px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
         }
 
         .faq-card .card-header {
             background-color: #f9f9f9;
-            border-radius: 10px;
+            border-radius: 15px;
         }
     </style>
 </head>

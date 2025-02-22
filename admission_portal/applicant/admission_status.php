@@ -44,7 +44,7 @@ $status = $stmt->fetch(PDO::FETCH_ASSOC);
         }
         .status-card {
             border: 1px solid #ddd;
-            border-radius: 10px;
+            border-radius: 15px;
             padding: 20px;
             background-color: #f9f9f9;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);

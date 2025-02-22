@@ -23,7 +23,7 @@
             margin: 2rem auto;
             padding: 2rem;
             background-color: #fff;
-            border-radius: 10px;
+            border-radius: 15px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         }
 
@@ -56,7 +56,7 @@
             width: 100%;
             padding: 0.75rem;
             border: 1px solid #ddd;
-            border-radius: 5px;
+            border-radius: 15px;
             font-size: 1rem;
             transition: border-color 0.3s;
         }
@@ -84,7 +84,7 @@
             color: #fff;
             padding: 1rem 2rem;
             border: none;
-            border-radius: 5px;
+            border-radius: 15px;
             cursor: pointer;
             font-size: 1rem;
             width: 100%;

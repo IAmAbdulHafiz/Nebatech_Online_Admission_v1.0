@@ -29,7 +29,7 @@ unset($_SESSION['payment_details']); // Clear session after displaying success m
         .success-container {
             background: white;
             padding: 40px;
-            border-radius: 12px;
+            border-radius: 15px;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
             max-width: 550px;
             margin: auto;

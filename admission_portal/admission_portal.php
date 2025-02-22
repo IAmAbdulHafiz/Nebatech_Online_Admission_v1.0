@@ -115,7 +115,7 @@
             color: var(--primary-color);
             border: none;
             padding: 1rem 2rem;
-            border-radius: 50px;
+            border-radius: 15px;
             transition: all 0.3s ease;
         }
 

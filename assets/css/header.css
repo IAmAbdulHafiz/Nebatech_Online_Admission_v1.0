@@ -85,7 +85,7 @@
     background-color: var(--primary-color);
     color: var(--text-light);
     padding: 8px 20px;
-    border-radius: 5px;
+    border-radius: 15px;
     transition: var(--transition);
 }
 

@@ -31,7 +31,7 @@ $checkoutUrl = htmlspecialchars($_SESSION['checkout_url']);
         .payment-card {
             background: white;
             padding: 30px;
-            border-radius: 12px;
+            border-radius: 15px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
             max-width: 550px;
             width: 100%;

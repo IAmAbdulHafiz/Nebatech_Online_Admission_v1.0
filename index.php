@@ -195,7 +195,7 @@
             color: white;
             padding: 60px 0;
             position: relative;
-            border-radius: 5px;
+            border-radius: 15px;
         }
 
         /* Flexbox Layout */
