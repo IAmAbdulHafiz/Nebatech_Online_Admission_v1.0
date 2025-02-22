@@ -141,6 +141,7 @@
         @media (max-width: 768px) {
             .welcome-section {
                 height: 70vh;
+                padding-top: 100px;
             }
             
             .card {
