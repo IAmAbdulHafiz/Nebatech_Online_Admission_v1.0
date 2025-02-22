@@ -32,7 +32,7 @@
             position: relative;
             height: 100vh;
             background: linear-gradient(rgba(0, 32, 96, 0.8), rgba(0, 32, 96, 0.9)),
-                        url('assets/images/hero-bg.jpg') center/cover no-repeat;
+                        url('assets/images/welcome2.JPG') center/cover no-repeat;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -175,7 +175,7 @@
                 <div class="col-lg-10">
                     <div class="bg-white p-5 rounded-3 shadow-sm" data-aos="fade-up" data-aos-delay="200">
                         <p class="lead">
-                            Dear Student,<br><br>
+                            Dear Learner,<br><br>
                             Welcome to Nebatech Software Solution Ltd, where technology meets innovation and learning fosters transformation. 
                             We are thrilled to have you join our growing community of passionate learners and professionals dedicated to 
                             leveraging technology for impact and excellence.<br><br>
