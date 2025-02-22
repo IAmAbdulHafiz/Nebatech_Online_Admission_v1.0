@@ -1,5 +1,5 @@
 <head>
-    <link rel="stylesheet" href="assets/css/stylesheet.css">
+    <link rel="stylesheet" href="../assets/css/stylesheet.css">
 </head>
 
 <div class="topbar" id="topbar">
