@@ -12,6 +12,25 @@ body {
     color: var(--text-color);
 }
 
+    /* Styling the Login Button */
+    .login-btn {
+        background-color: #fff; /* Gold */
+        color: #002060; /* Dark blue for contrast */
+        border: none;
+        font-weight: bold;
+        margin-left: 20px;
+        margin-top: 6px;
+        padding: 5px 15px;
+        border-radius: 15px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+
+    }
+
+.login-btn:hover {
+    background-color: #FFD700; /* Slightly darker gold */
+    color: #002060; /* White text on hover */
+    text-decoration: none;
+}
 /* Hero Section */
 .hero-section {
     background: linear-gradient(rgba(0, 32, 96, 0.9), rgba(0, 32, 96, 0.9)), url('../images/welcome3.JPG');
