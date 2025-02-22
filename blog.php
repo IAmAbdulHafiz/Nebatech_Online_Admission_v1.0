@@ -32,13 +32,13 @@
 
         /* Header styles */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-                        url('https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&q=80');
+            background: linear-gradient(rgba(0, 32, 96, 0.9), rgba(0, 32, 96, 0.9)),url('assets/images/bg1.jpg');
             background-size: cover;
             background-position: center;
             color: white;
-            padding: 4rem 2rem;
+            padding: 7rem 2rem; /* Reduced padding */
             text-align: center;
+            margin-bottom: 0;
         }
 
         .hero h1 {
@@ -55,8 +55,7 @@
 
         /* Category filters */
         .filters {
-            height: 50px;
-            padding: 10rem 0;
+            padding: 2rem 0;
             background: white;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
@@ -175,10 +174,10 @@
 </head>
 <body>
     <?php include("includes/public_header.php"); ?>
-    <!--<header class="hero">
+    <header class="hero">
         <h1>Nebatech Updates & Events</h1>
         <p>Stay updated with the latest news, events, and innovations from Nebatech Software Solution Ltd.</p>
-    </header>-->
+    </header>
 
     <section class="filters">
         <div class="filter-container">
@@ -191,41 +190,131 @@
     </section>
 
     <main class="events-container">
-        <!-- Event Card 1 -->
-        <article class="event-card" data-category="tech">
-            <img src="https://images.unsplash.com/photo-1504384764586-bb4cdc1707b0?auto=format&fit=crop&q=80" alt="Tech Conference 2024" class="event-image">
-            <div class="event-content">
-                <span class="event-category">🔬 Tech Insights</span>
-                <h2 class="event-title">AI Innovation Summit 2024</h2>
-                <p class="event-date">🗓 March 15, 2024 | 📍 Virtual Event</p>
-                <p class="event-description">Join us for an exciting discussion on the latest AI trends and their impact on software development.</p>
-                <a href="#" class="cta-button">Register Now</a>
-            </div>
-        </article>
+    <!-- Event Card: New Location Announcement -->
+    <article class="event-card" data-category="company">
+        <img src="https://images.unsplash.com/photo-1593642532400-2682810df593?auto=format&fit=crop&q=80" alt="Nebatech New Location in Tamale" class="event-image">
+        <div class="event-content">
+            <span class="event-category">🏢 Company News</span>
+            <h2 class="event-title">Now Operating from Choggu Yapalsi, Tamale</h2>
+            <p class="event-date">🗓 February 5, 2025</p>
+            <p class="event-description">
+                We are excited to announce that Nebatech has moved to our new location at Choggu Yapalsi, Tamale. Operations have officially started!
+            </p>
+            <a href="#" class="cta-button">Read More</a>
+        </div>
+    </article>
 
-        <!-- Event Card 2 -->
-        <article class="event-card" data-category="company">
-            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80" alt="Company Milestone" class="event-image">
-            <div class="event-content">
-                <span class="event-category">🏢 Company News</span>
-                <h2 class="event-title">Nebatech Expands to Southeast Asia</h2>
-                <p class="event-date">🗓 February 28, 2024</p>
-                <p class="event-description">We're excited to announce our expansion into the Southeast Asian market with a new office in Singapore.</p>
-                <a href="#" class="cta-button">Read More</a>
-            </div>
-        </article>
+    <!-- Event Card: New Courses Launch -->
+    <article class="event-card" data-category="success">
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80" alt="New Courses Launch" class="event-image">
+        <div class="event-content">
+            <span class="event-category">🌟 Success Stories</span>
+            <h2 class="event-title">Launch of New Courses</h2>
+            <p class="event-date">🗓 February 10, 2025</p>
+            <p class="event-description">
+                We are proud to introduce our new courses: Introduction to AI, Basic AI in Machine Learning, and iPhone & Computer Hardware Technician. Enroll now to upgrade your skills!
+            </p>
+            <a href="#" class="cta-button">Learn More</a>
+        </div>
+    </article>
 
-        <!-- Event Card 3 -->
-        <article class="event-card" data-category="events">
-            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80" alt="Workshop Event" class="event-image">
-            <div class="event-content">
-                <span class="event-category">🎓 Events & Workshops</span>
-                <h2 class="event-title">Web Development Masterclass</h2>
-                <p class="event-date">🗓 April 5, 2024 | 📍 Hybrid Event</p>
-                <p class="event-description">Learn advanced web development techniques from industry experts in this hands-on workshop.</p>
-                <a href="#" class="cta-button">Register Now</a>
-            </div>
-        </article>
+    <!-- Event Card: Additional Services -->
+    <article class="event-card" data-category="company">
+        <img src="https://images.unsplash.com/photo-1573497491208-6b1acb260507?auto=format&fit=crop&q=80" alt="New Services" class="event-image">
+        <div class="event-content">
+            <span class="event-category">🏢 Company News</span>
+            <h2 class="event-title">New Services Now Available</h2>
+            <p class="event-date">🗓 February 12, 2025</p>
+            <p class="event-description">
+                In addition to our core offerings, we now provide CCTV Camera Installation and Network Installation & Troubleshooting.
+            </p>
+            <a href="#" class="cta-button">Discover More</a>
+        </div>
+    </article>
+
+    <!-- Event Card: Online Admission Portal Launch -->
+    <article class="event-card" data-category="events">
+        <img src="https://images.unsplash.com/photo-1573164574572-cb89e39749b4?auto=format&fit=crop&q=80" alt="Admission Portal Launch" class="event-image">
+        <div class="event-content">
+            <span class="event-category">🎓 Events & Workshops</span>
+            <h2 class="event-title">Online Admission Portal Launch</h2>
+            <p class="event-date">🗓 February 25, 2025</p>
+            <p class="event-description">
+                Our online admission portal goes live on February 25, 2025. Admissions will commence on March 10, 2025 – don’t miss your chance to apply!
+            </p>
+            <a href="#" class="cta-button">Apply Now</a>
+        </div>
+    </article>
+
+    <!-- Article Card: AI Article 1 -->
+    <article class="event-card" data-category="tech">
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80" alt="The Future of AI" class="event-image">
+        <div class="event-content">
+            <span class="event-category">🔬 Tech Insights</span>
+            <h2 class="event-title">The Future of AI: Trends & Innovations</h2>
+            <p class="event-date">🗓 February 20, 2025</p>
+            <p class="event-description">
+                Explore the latest trends and breakthrough innovations in artificial intelligence and their impact on various industries.
+            </p>
+            <a href="#" class="cta-button">Read Article</a>
+        </div>
+    </article>
+
+    <!-- Article Card: AI Article 2 -->
+    <article class="event-card" data-category="tech">
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80" alt="Innovations in AI" class="event-image">
+        <div class="event-content">
+            <span class="event-category">🔬 Tech Insights</span>
+            <h2 class="event-title">Innovations in Artificial Intelligence</h2>
+            <p class="event-date">🗓 February 22, 2025</p>
+            <p class="event-description">
+                Delve into how emerging AI technologies are transforming the business landscape and driving innovation across sectors.
+            </p>
+            <a href="#" class="cta-button">Read Article</a>
+        </div>
+    </article>
+
+    <!-- Article Card: Front-End Development -->
+    <article class="event-card" data-category="tech">
+        <img src="https://images.unsplash.com/photo-1509395062183-67c5ad6faff9?auto=format&fit=crop&q=80" alt="Front-End Development" class="event-image">
+        <div class="event-content">
+            <span class="event-category">🔬 Tech Insights</span>
+            <h2 class="event-title">Front-End Development: Building the Web of Tomorrow</h2>
+            <p class="event-date">🗓 February 24, 2025</p>
+            <p class="event-description">
+                Discover practical tips and modern tools that empower developers in creating innovative and responsive web designs.
+            </p>
+            <a href="#" class="cta-button">Read Article</a>
+        </div>
+    </article>
+
+    <!-- Article Card: Back-End Development -->
+    <article class="event-card" data-category="tech">
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80" alt="Back-End Development" class="event-image">
+        <div class="event-content">
+            <span class="event-category">🔬 Tech Insights</span>
+            <h2 class="event-title">Back-End Development: The Power Behind Web Applications</h2>
+            <p class="event-date">🗓 February 26, 2025</p>
+            <p class="event-description">
+                An in-depth look at back-end development practices and technologies that drive robust, scalable web applications.
+            </p>
+            <a href="#" class="cta-button">Read Article</a>
+        </div>
+    </article>
+
+    <!-- Article Card: Digital Literacy -->
+    <article class="event-card" data-category="tech">
+        <img src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&q=80" alt="Digital Literacy" class="event-image">
+        <div class="event-content">
+            <span class="event-category">🔬 Tech Insights</span>
+            <h2 class="event-title">Digital Literacy in the 21st Century</h2>
+            <p class="event-date">🗓 February 28, 2025</p>
+            <p class="event-description">
+                Empower yourself with essential digital skills in our comprehensive guide to thriving in the modern digital landscape.
+            </p>
+            <a href="#" class="cta-button">Read Article</a>
+        </div>
+    </article>
     </main>
 
     <script>
