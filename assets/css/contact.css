@@ -14,7 +14,7 @@ body {
 
 /* Hero Section */
 .hero-section {
-    background: linear-gradient(rgba(0, 32, 96, 0.9), rgba(0, 32, 96, 0.9)), url('../images/hero-bg.jpg');
+    background: linear-gradient(rgba(0, 32, 96, 0.9), rgba(0, 32, 96, 0.9)), url('../images/welcome3.JPG');
     background-size: cover;
     background-position: center;
     padding: 100px 0;
