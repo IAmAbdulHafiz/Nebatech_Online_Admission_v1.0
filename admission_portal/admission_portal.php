@@ -52,7 +52,7 @@
             background-color: white;
             color: var(--primary-color);
             padding: 1rem 2.5rem;
-            border-radius: 50px;
+            border-radius: 15px;
             font-weight: 600;
             transition: all 0.3s ease;
         }

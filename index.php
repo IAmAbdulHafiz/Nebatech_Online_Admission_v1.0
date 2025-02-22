@@ -33,7 +33,7 @@
         }
 
         .hero-section {
-            min-height: 80vh;
+            height: 100vh;
             background-image: linear-gradient(rgba(0, 32, 96, 0.8), rgba(0, 32, 96, 0.8)), url('assets/images/bg1.jpg');
             background-size: cover;
             background-position: center;
@@ -121,7 +121,7 @@
 
         @media (max-width: 768px) {
             .hero-section {
-                min-height: 60vh;
+                height: 70vh;
                 padding: 10rem 0;
             }
             .why-choose-section{
