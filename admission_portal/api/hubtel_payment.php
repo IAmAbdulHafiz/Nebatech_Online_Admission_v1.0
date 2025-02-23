@@ -55,6 +55,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $serialNumber = generateSerialNumber();
         $pin = generatePin();
 
+        // Ensure the generated serial number and pin exist in the serial_pins table
+        $query = "INSERT INTO serial_pins (serial_number, pin, used) VALUES (:serial_number, :pin, 0)";
+        $stmt = $conn->prepare($query);
+        $stmt->bindParam(':serial_number', $serialNumber);
+        $stmt->bindParam(':pin', $pin);
+        $stmt->execute();
+
         // Save transaction in the database as pending
         $query = "INSERT INTO transactions (customer_name, customer_email, customer_phone, amount, reference, status, serial_number, pin) 
                   VALUES (:customer_name, :customer_email, :customer_phone, :amount, :reference, 'Pending', :serial_number, :pin)";
