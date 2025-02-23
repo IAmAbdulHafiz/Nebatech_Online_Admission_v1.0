@@ -173,14 +173,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         Forgot your password? <a href="reset_password.php">Reset it here</a>.
       </small>
 
-      <!-- Submit Button -->
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="rememberMe">
-          <label class="form-check-label" for="rememberMe">
-            Remember me on this device
-          </label>
-            <button type="submit" class="btn btn-primary w-100">Login</button>
-        </div>
+      <!-- Remember me checkbox and Submit Button -->
+      <div class="form-check mb-3">
+        <input class="form-check-input" type="checkbox" value="" id="rememberMe">
+        <label class="form-check-label" for="rememberMe">
+          Remember me on this device
+        </label>
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Login</button>
     </form>
 
     <!-- Footer Links -->
