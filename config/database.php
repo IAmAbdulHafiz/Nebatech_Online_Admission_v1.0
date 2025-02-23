@@ -1,18 +1,20 @@
 <?php
-require '../vendor/autoload.php';
+var_dump($_ENV);
+
+require __DIR__ . '/../vendor/autoload.php'; // Ensure autoload is loaded
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
 $dotenv->load();
 
 $host = $_ENV['DB_HOST'];
-$db = $_ENV['DB_NAME'];
-$user = $_ENV['DB_USER'];
-$pass = $_ENV['DB_PASS'];
+$db_name = $_ENV['DB_NAME'];
+$username = $_ENV['DB_USERNAME'];
+$password = $_ENV['DB_PASSWORD'];
 
 try {
-    $conn = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
+    $conn = new PDO("mysql:host=$host;dbname=$db_name", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
+} catch (PDOException $exception) {
+    echo "Connection error: " . $exception->getMessage();
 }
 ?>
