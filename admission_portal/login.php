@@ -69,6 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       text-align: center;
     }
     .btn-primary {
+      width: 100%;
       background-color: #002060;
       border-color: #002060;
     }
@@ -180,7 +181,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
           Remember me on this device
         </label>
       </div>
-      <button type="submit" class="btn btn-primary w-100">Login</button>
+      <button type="submit" class="btn btn-primary">Login</button>
     </form>
 
     <!-- Footer Links -->
