@@ -60,6 +60,11 @@
             padding-top: 50px;
             padding-bottom: 50px;
         }
+        .carousel-item img {
+        object-fit: cover;
+        height: 100vh; /* Fixed from '100hv' to '100vh' */
+        width: 100%;
+        }
     </style>
 </head>
 <body>
@@ -105,25 +110,19 @@
 
                         <form method="POST" action="api/hubtel_payment.php">
                             <div class="mb-3">
-                                <label><i class="fas fa-user"></i> Full Name:</label>
-                                <input type="text" name="customer_name" class="form-control" placeholder="Enter full name" required>
+                                <label>Full Name:</label>
+                                <input type="text" name="customer_name" class="form-control" required>
                             </div>
                             <div class="mb-3">
-                                <label><i class="fas fa-envelope"></i> Email:</label>
-                                <input type="email" name="customer_email" class="form-control" placeholder="Enter email" required>
+                                <label>Email:</label>
+                                <input type="email" name="customer_email" class="form-control" required>
                             </div>
                             <div class="mb-3">
-                                <label><i class="fas fa-phone"></i> Phone Number (For Serial & PIN):</label>
-                                <input type="text" name="customer_phone" class="form-control" placeholder="Enter phone number" required>
+                                <label>Phone Number:</label>
+                                <input type="text" name="customer_phone" class="form-control" required>
                             </div>
-                            <input type="hidden" name="serial_number" id="serial_number">
-                            <input type="hidden" name="pin" id="pin">
-                            <div class="mb-3">
-                                <button type="submit" class="btn btn-primary w-100">
-                                    <i class="fas fa-money-check-alt"></i> Pay with Hubtel
-                                </button>
-                            </div>
-                        </form> <!-- Closing form tag added -->
+                            <button type="submit" class="btn btn-primary w-100">Pay with Hubtel</button>
+                        </form>
                     </div> <!-- Closing div tag added -->
                     <hr>
                     <p class="text-center">Already applied? <a href="login.php">Login to continue</a></p>
