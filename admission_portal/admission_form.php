@@ -63,7 +63,7 @@
     </style>
 </head>
 <body>
-    <!-- Include Header -->
+    <!-- Include Header --> 
     <?php include("includes/header.php"); ?>
 
     <!-- Main Content -->
@@ -103,7 +103,7 @@
                             <div class="alert alert-danger"><?php echo $_SESSION['error_message']; unset($_SESSION['error_message']); ?></div>
                         <?php endif; ?>
 
-                        <form method="POST" action="api/hubtel_payment.php">
+                        <form id="paymentForm">
                             <div class="mb-3">
                                 <label><i class="fas fa-user"></i> Full Name:</label>
                                 <input type="text" name="customer_name" class="form-control" placeholder="Enter full name" required>
@@ -119,12 +119,12 @@
                             <input type="hidden" name="serial_number" id="serial_number">
                             <input type="hidden" name="pin" id="pin">
                             <div class="mb-3">
-                                <button type="submit" class="btn btn-primary w-100">
+                                <button type="button" id="payButton" class="btn btn-primary w-100">
                                     <i class="fas fa-money-check-alt"></i> Pay with Hubtel
                                 </button>
                             </div>
-                        </form> <!-- Closing form tag added -->
-                    </div> <!-- Closing div tag added -->
+                        </form>
+                    </div>
                     <hr>
                     <p class="text-center">Already applied? <a href="login.php">Login to continue</a></p>
                     <p class="text-center">Yet to Start your application? <a href="signup.php">Signup</a></p>
@@ -147,6 +147,19 @@
 
         // Call the function to generate Serial Number and PIN on page load
         window.onload = generateSerialAndPin;
+
+        // Handle payment process
+        document.getElementById('payButton').addEventListener('click', function() {
+            // Simulate payment process
+            // Replace this with actual payment gateway integration
+            const paymentSuccessful = true; // Simulate successful payment
+
+            if (paymentSuccessful) {
+                document.getElementById('paymentForm').submit();
+            } else {
+                alert('Payment failed. Please try again.');
+            }
+        });
     </script>
     <!-- Include Footer -->
     <?php include("includes/public_footer.php"); ?>
