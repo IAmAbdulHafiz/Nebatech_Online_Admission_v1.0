@@ -15,7 +15,7 @@
 
         .carousel-item img {
             object-fit: cover;
-            height: 100hv; /* Full height */
+            height: 100vh; /* Full height */
             width: 100%;
             filter: brightness(90%); /* Dark overlay effect */
             border-radius: 15px; /* Rounded corners */
@@ -59,11 +59,6 @@
         .admission_form{
             padding-top: 50px;
             padding-bottom: 50px;
-        }
-        .carousel-item img {
-        object-fit: cover;
-        height: 100vh; /* Fixed from '100hv' to '100vh' */
-        width: 100%;
         }
     </style>
 </head>
