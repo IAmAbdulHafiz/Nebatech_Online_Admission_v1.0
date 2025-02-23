@@ -60,7 +60,7 @@
     </style>
 </head>
 <body>
-
+    <!--Include Header -->
     <?php include("includes/public_header.php"); ?>
 
     <!-- Course Section -->
