@@ -1,6 +1,6 @@
 <?php 
 session_start();
-include("config/database.php");
+include("../config/database.php");
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $identifier = $_POST['identifier'];
@@ -129,7 +129,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   </style>
 </head>
 <body>
-  <?php include("includes/public_header.php"); ?>
+  <?php include("../includes/public_header.php"); ?>
+<main>
   <div class="login-container">
     <h3>Login to Your Account</h3>
     <?php if (!empty($error)) : ?>
@@ -162,7 +163,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       <p>Don't have an account? <a href="payment_and_signup.php">Sign Up</a></p>
     </div>
   </div>
-  <?php include("includes/public_footer.php"); ?>
+</main>
+  <?php include("../includes/public_footer.php"); ?>
   <script src="assets/js/jquery.min.js"></script>
   <script src="assets/js/bootstrap.bundle.min.js"></script>
 </body>
