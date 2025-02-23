@@ -6,10 +6,10 @@ require __DIR__ . '/../vendor/autoload.php'; // Ensure autoload is loaded
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
 $dotenv->load();
 
-// Use environment variables for API credentials (Recommended)
-$apiUsername = getenv('HUBTEL_API_USERNAME');  
-$apiPassword = getenv('HUBTEL_API_PASSWORD');  
-$merchantAccountNumber = getenv('HUBTEL_MERCHANT_ACCOUNT');
+// Use environment variables for API credentials
+$apiUsername = $_ENV['HUBTEL_API_USERNAME'];
+$apiPassword = $_ENV['HUBTEL_API_PASSWORD'];
+$merchantAccountNumber = $_ENV['HUBTEL_MERCHANT_ACCOUNT'];
 
 // Define URLs
 $callbackUrl = "https://admissions.nebatech.com/api/hubtel_callback.php";
@@ -89,16 +89,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         } catch (Exception $e) {
             $conn->rollBack();
             $_SESSION['error_message'] = "Database error: " . $e->getMessage();
-            header("Location: ../admission_form.php");
+            header("Location: ../public/payment_form.php");
             exit();
         }
 
         $_SESSION['checkout_url'] = $checkoutUrl;
-        header("Location: ../payment_form.php");
+        header("Location: ../public/payment_form.php");
         exit();
     } else {
         $_SESSION['error_message'] = "Failed to initiate payment.";
-        header("Location: ../admission_form.php");
+        header("Location: ../public/payment_form.php");
         exit();
     }
 }
@@ -123,14 +123,21 @@ if (!empty($_GET['reference'])) {
         $stmt->execute(['reference' => $clientReference]);
 
         $_SESSION['success_message'] = "Payment successful! Check SMS & Email.";
-        header("Location: ../admission_form.php");
+        header("Location: ../public/admission_form.php");
         exit();
     }
 }
 
 // Functions
 function generateSerialNumber() {
-    return 'N' . date('y') . strtoupper(bin2hex(random_bytes(4)));
+    global $conn;
+    do {
+        $serial = 'N' . date('y') . strtoupper(bin2hex(random_bytes(6)));
+        $stmt = $conn->prepare("SELECT COUNT(*) FROM serial_pins WHERE serial_number = :serial");
+        $stmt->execute(['serial' => $serial]);
+    } while ($stmt->fetchColumn() > 0);
+    
+    return $serial;
 }
 
 function generatePin() {
@@ -138,11 +145,15 @@ function generatePin() {
 }
 
 function sendSMS($phone, $message) {
+    // Use an SMS gateway API (e.g., Twilio, Hubtel SMS)
     file_put_contents('sms_log.txt', "SMS to: $phone\nMessage: $message\n", FILE_APPEND);
 }
 
 function sendEmail($to, $subject, $body) {
-    mail($to, $subject, $body, "From: no-reply@nebatech.com\r\nContent-Type: text/plain;");
+    $headers = "From: no-reply@nebatech.com\r\nContent-Type: text/plain;";
+    if (!mail($to, $subject, $body, $headers)) {
+        file_put_contents('email_log.txt', "Failed to send email to: $to\nSubject: $subject\n", FILE_APPEND);
+    }
 }
 
 function getTransactionByReference($reference) {
