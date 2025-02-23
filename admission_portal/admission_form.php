@@ -15,7 +15,7 @@
 
         .carousel-item img {
             object-fit: cover;
-            height: 100vh; /* Full height */
+            height: 100hv; /* Full height */
             width: 100%;
             filter: brightness(90%); /* Dark overlay effect */
             border-radius: 15px; /* Rounded corners */
@@ -63,7 +63,7 @@
     </style>
 </head>
 <body>
-    <!-- Include Header --> 
+    <!-- Include Header -->
     <?php include("includes/header.php"); ?>
 
     <!-- Main Content -->
@@ -105,19 +105,25 @@
 
                         <form method="POST" action="api/hubtel_payment.php">
                             <div class="mb-3">
-                                <label>Full Name:</label>
-                                <input type="text" name="customer_name" class="form-control" required>
+                                <label><i class="fas fa-user"></i> Full Name:</label>
+                                <input type="text" name="customer_name" class="form-control" placeholder="Enter full name" required>
                             </div>
                             <div class="mb-3">
-                                <label>Email:</label>
-                                <input type="email" name="customer_email" class="form-control" required>
+                                <label><i class="fas fa-envelope"></i> Email:</label>
+                                <input type="email" name="customer_email" class="form-control" placeholder="Enter email" required>
                             </div>
                             <div class="mb-3">
-                                <label>Phone Number:</label>
-                                <input type="text" name="customer_phone" class="form-control" required>
+                                <label><i class="fas fa-phone"></i> Phone Number (For Serial & PIN):</label>
+                                <input type="text" name="customer_phone" class="form-control" placeholder="Enter phone number" required>
                             </div>
-                            <button type="submit" class="btn btn-primary w-100">Pay with Hubtel</button>
-                        </form>
+                            <input type="hidden" name="serial_number" id="serial_number">
+                            <input type="hidden" name="pin" id="pin">
+                            <div class="mb-3">
+                                <button type="submit" class="btn btn-primary w-100">
+                                    <i class="fas fa-money-check-alt"></i> Pay with Hubtel
+                                </button>
+                            </div>
+                        </form> <!-- Closing form tag added -->
                     </div> <!-- Closing div tag added -->
                     <hr>
                     <p class="text-center">Already applied? <a href="login.php">Login to continue</a></p>
@@ -143,6 +149,6 @@
         window.onload = generateSerialAndPin;
     </script>
     <!-- Include Footer -->
-    <?php include("includes/public_footer.php"); ?>
+    <?php include("../includes/public_footer.php"); ?>
 </body>
 </html>
