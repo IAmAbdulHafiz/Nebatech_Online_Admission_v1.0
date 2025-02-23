@@ -150,15 +150,18 @@
 
         // Handle payment process
         document.getElementById('payButton').addEventListener('click', function() {
-            // Simulate payment process
-            // Replace this with actual payment gateway integration
-            const paymentSuccessful = true; // Simulate successful payment
+            // Store form data in session storage
+            const formData = {
+                customer_name: document.querySelector('input[name="customer_name"]').value,
+                customer_email: document.querySelector('input[name="customer_email"]').value,
+                customer_phone: document.querySelector('input[name="customer_phone"]').value,
+                serial_number: document.getElementById('serial_number').value,
+                pin: document.getElementById('pin').value
+            };
+            sessionStorage.setItem('formData', JSON.stringify(formData));
 
-            if (paymentSuccessful) {
-                document.getElementById('paymentForm').submit();
-            } else {
-                alert('Payment failed. Please try again.');
-            }
+            // Redirect to hubtel_payment.php for payment processing
+            window.location.href = 'api/hubtel_payment.php';
         });
     </script>
     <!-- Include Footer -->
