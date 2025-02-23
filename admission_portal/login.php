@@ -156,7 +156,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       </div>
 
       <!-- Submit Button -->
-      <button type="submit" class="btn btn-primary w-100">Login</button>
+      <button type="submit" class="btn btn-primary" style="width: 100px">Login</button>
     </form>
 
     <!-- Footer Links -->
