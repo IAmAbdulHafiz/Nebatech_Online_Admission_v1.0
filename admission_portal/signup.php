@@ -1,248 +1,250 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nebatech Admission Portal - Sign Up</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nebatech Admission Portal - Sign Up</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-        body {
-            background-color: #f0f2f5;
-            color: #333;
-            line-height: 1.6;
-        }
+    body {
+      background-color: #f0f2f5;
+      color: #333;
+      line-height: 1.6;
+    }
 
-        .container {
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 2rem;
-            background-color: #fff;
-            border-radius: 15px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-        }
+    .container-signup {
+      max-width: 500px;
+      margin: 7rem auto;
+      padding: 2rem;
+      background-color: #fff;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
 
-        .header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
+    .header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
 
-        .header h1 {
-            color: #1a73e8;
-            margin-bottom: 0.5rem;
-        }
+    .header h1 {
+      color: #1a73e8;
+      margin-bottom: 0.5rem;
+    }
 
-        .header p {
-            color: #666;
-        }
+    .header p {
+      color: #666;
+    }
 
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
+    /* Floating label container */
+    .floating-label-group {
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
 
-        label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-            color: #444;
-        }
+    /* Style the input */
+    .floating-label-group input {
+      width: 100%;
+      padding: 1rem 0.75rem 0.75rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border-color 0.3s;
+    }
 
-        input {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #ddd;
-            border-radius: 15px;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-        }
+    .floating-label-group input:focus {
+      outline: none;
+      border-color: #1a73e8;
+    }
 
-        input:focus {
-            outline: none;
-            border-color: #1a73e8;
-        }
+    /* Position the label inside the input */
+    .floating-label-group label {
+      position: absolute;
+      top: 0.75rem;
+      left: 0.75rem;
+      font-weight: 500;
+      color: #444;
+      background-color: #fff;
+      padding: 0 5px;
+      transition: all 0.2s ease;
+      pointer-events: none;
+    }
 
-        .form-row {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-        }
+    /* When the input is focused or has text, move the label */
+    .floating-label-group input:focus + label,
+    .floating-label-group input:not(:placeholder-shown) + label {
+      top: -0.5rem;
+      left: 0.5rem;
+      font-size: 0.75rem;
+      color: #1a73e8;
+    }
 
-        .error {
-            color: #dc3545;
-            font-size: 0.875rem;
-            margin-top: 0.25rem;
-            display: none;
-        }
+    .error {
+      color: #dc3545;
+      font-size: 0.875rem;
+      margin-top: 0.25rem;
+      display: none;
+    }
 
-        button {
-            background-color: #1a73e8;
-            color: #fff;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 15px;
-            cursor: pointer;
-            font-size: 1rem;
-            width: 100%;
-            transition: background-color 0.3s;
-        }
+    button {
+      background-color: #1a73e8;
+      color: #fff;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 15px;
+      cursor: pointer;
+      font-size: 1rem;
+      width: 100%;
+      transition: background-color 0.3s;
+    }
 
-        button:hover {
-            background-color: #1557b0;
-        }
+    button:hover {
+      background-color: #1557b0;
+    }
 
-        .required::after {
-            content: "*";
-            color: #dc3545;
-            margin-left: 4px;
-        }
-    </style>
+    /* Add the required asterisk via CSS */
+    .required::after {
+      content: "*";
+      color: #dc3545;
+      margin-left: 4px;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>Nebatech Admission Portal</h1>
-            <p>Create your account to begin the application process</p>
-        </div>
-
-        <form id="signupForm" onsubmit="return validateForm(event)">
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="serialNumber" class="required">Serial Number</label>
-                    <input type="text" id="serialNumber" name="serialNumber" required>
-                    <div class="error" id="serialNumberError"></div>
-                </div>
-
-                <div class="form-group">
-                    <label for="pin" class="required">PIN</label>
-                    <input type="text" id="pin" name="pin" required>
-                    <div class="error" id="pinError"></div>
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="firstName" class="required">First Name</label>
-                    <input type="text" id="firstName" name="firstName" required>
-                    <div class="error" id="firstNameError"></div>
-                </div>
-
-                <div class="form-group">
-                    <label for="surname" class="required">Surname</label>
-                    <input type="text" id="surname" name="surname" required>
-                    <div class="error" id="surnameError"></div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="otherName">Other Name</label>
-                <input type="text" id="otherName" name="otherName">
-            </div>
-
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="email" class="required">Email Address</label>
-                    <input type="email" id="email" name="email" required>
-                    <div class="error" id="emailError"></div>
-                </div>
-
-                <div class="form-group">
-                    <label for="phone" class="required">Phone Number</label>
-                    <input type="tel" id="phone" name="phone" required>
-                    <div class="error" id="phoneError"></div>
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="password" class="required">Password</label>
-                    <input type="password" id="password" name="password" required>
-                    <div class="error" id="passwordError"></div>
-                </div>
-
-                <div class="form-group">
-                    <label for="confirmPassword" class="required">Confirm Password</label>
-                    <input type="password" id="confirmPassword" name="confirmPassword" required>
-                    <div class="error" id="confirmPasswordError"></div>
-                </div>
-            </div>
-
-            <button type="submit">Create Account</button>
-        </form>
+  <?php include("includes/header.php"); ?>
+  <div class="container-signup">
+    <div class="header">
+      <h1>Register</h1>
+      <p>Create your account to begin the application process</p>
     </div>
 
-    <script>
-        function validateForm(event) {
-            event.preventDefault();
-            let isValid = true;
-            
-            // Reset errors
-            const errors = document.querySelectorAll('.error');
-            errors.forEach(error => error.style.display = 'none');
+    <form id="signupForm" onsubmit="return validateForm(event)">
+        <div class="form-group">
+          <div class="floating-label-group">
+            <input type="text" id="serialNumber" name="serialNumber" placeholder=" " required>
+            <label for="serialNumber" class="required">Serial Number</label>
+          </div>
+          <div class="error" id="serialNumberError"></div>
+        </div>
 
-            // Validate Serial Number
-            const serialNumber = document.getElementById('serialNumber').value;
-            if (serialNumber.length !== 10) {
-                showError('serialNumberError', 'Serial Number must be 10 characters long');
-                isValid = false;
-            }
+        <div class="form-group">
+          <div class="floating-label-group">
+            <input type="text" id="pin" name="pin" placeholder=" " required>
+            <label for="pin" class="required">PIN</label>
+          </div>
+          <div class="error" id="pinError"></div>
+        </div>
 
-            // Validate PIN
-            const pin = document.getElementById('pin').value;
-            if (pin.length !== 6) {
-                showError('pinError', 'PIN must be 6 characters long');
-                isValid = false;
-            }
+        <div class="form-group">
+          <div class="floating-label-group">
+            <input type="text" id="firstName" name="firstName" placeholder=" " required>
+            <label for="firstName" class="required">First Name</label>
+          </div>
+          <div class="error" id="firstNameError"></div>
+        </div>
 
-            // Validate Email
-            const email = document.getElementById('email').value;
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                showError('emailError', 'Please enter a valid email address');
-                isValid = false;
-            }
+        <div class="form-group">
+          <div class="floating-label-group">
+            <input type="text" id="surname" name="surname" placeholder=" " required>
+            <label for="surname" class="required">Surname</label>
+          </div>
+          <div class="error" id="surnameError"></div>
+        </div>
 
-            // Validate Phone Number
-            const phone = document.getElementById('phone').value;
-            const phoneRegex = /^\d{11}$/;
-            if (!phoneRegex.test(phone)) {
-                showError('phoneError', 'Please enter a valid 11-digit phone number');
-                isValid = false;
-            }
+      <div class="form-group">
+        <div class="floating-label-group">
+          <input type="email" id="email" name="email" placeholder=" " required>
+          <label for="email" class="required">Email Address</label>
+        </div>
+        <div class="error" id="emailError"></div>
+      </div>
 
-            // Validate Password
-            const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
-            
-            if (password.length < 8) {
-                showError('passwordError', 'Password must be at least 8 characters long');
-                isValid = false;
-            }
+        <div class="form-group">
+          <div class="floating-label-group">
+            <input type="password" id="password" name="password" placeholder=" " required>
+            <label for="password" class="required">Password</label>
+          </div>
+          <div class="error" id="passwordError"></div>
+        </div>
 
-            if (password !== confirmPassword) {
-                showError('confirmPasswordError', 'Passwords do not match');
-                isValid = false;
-            }
+        <div class="form-group">
+          <div class="floating-label-group">
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder=" " required>
+            <label for="confirmPassword" class="required">Confirm Password</label>
+          </div>
+          <div class="error" id="confirmPasswordError"></div>
+        </div>
 
-            if (isValid) {
-                // Here you would typically submit the form to your backend
-                alert('Form submitted successfully!');
-                // Uncomment the line below to submit the form to a backend
-                // document.getElementById('signupForm').submit();
-            }
+      <button type="submit">Create Account</button>
+    </form>
+  </div>
 
-            return false;
-        }
+  <script>
+    function validateForm(event) {
+      event.preventDefault();
+      let isValid = true;
+      
+      // Reset errors
+      const errors = document.querySelectorAll('.error');
+      errors.forEach(error => error.style.display = 'none');
 
-        function showError(elementId, message) {
-            const errorElement = document.getElementById(elementId);
-            errorElement.textContent = message;
-            errorElement.style.display = 'block';
-        }
-    </script>
+      // Validate Serial Number
+      const serialNumber = document.getElementById('serialNumber').value;
+      if (serialNumber.length !== 10) {
+        showError('serialNumberError', 'Serial Number must be 10 characters long');
+        isValid = false;
+      }
+
+      // Validate PIN
+      const pin = document.getElementById('pin').value;
+      if (pin.length !== 6) {
+        showError('pinError', 'PIN must be 6 characters long');
+        isValid = false;
+      }
+
+      // Validate Email
+      const email = document.getElementById('email').value;
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        showError('emailError', 'Please enter a valid email address');
+        isValid = false;
+      }
+
+      // Validate Password
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+      
+      if (password.length < 8) {
+        showError('passwordError', 'Password must be at least 8 characters long');
+        isValid = false;
+      }
+
+      if (password !== confirmPassword) {
+        showError('confirmPasswordError', 'Passwords do not match');
+        isValid = false;
+      }
+
+      if (isValid) {
+        // Here you would typically submit the form to your backend
+        alert('Form submitted successfully!');
+        // Uncomment the line below to submit the form to a backend
+        // document.getElementById('signupForm').submit();
+      }
+
+      return false;
+    }
+
+    function showError(elementId, message) {
+      const errorElement = document.getElementById(elementId);
+      errorElement.textContent = message;
+      errorElement.style.display = 'block';
+    }
+  </script>
+  <?php include("../includes/public_footer.php"); ?>
 </body>
 </html>
