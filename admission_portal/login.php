@@ -170,7 +170,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <span class="toggle-password" onclick="togglePasswordVisibility()">Show</span>
       </div>
 
-      <small class="form-text mb-3">
+      <small class="form-text center mb-3">
         Forgot your password? <a href="reset_password.php">Reset it here</a>.
       </small>
 
@@ -186,7 +186,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     <!-- Footer Links -->
     <div class="login-footer mt-3">
-      <p>Don't have an account? <a href="payment_and_signup.php">Sign Up</a></p>
+      <p>Don't have an account? <a href="signup.php">Sign Up</a></p>
     </div>
   </div>
   <?php include("includes/public_footer.php"); ?>
