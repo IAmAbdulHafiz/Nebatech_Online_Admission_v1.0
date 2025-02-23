@@ -230,6 +230,12 @@
         isValid = false;
       }
 
+      // Check if Serial Number is already used
+      if (isSerialNumberUsed(serialNumber)) {
+        showError('serialNumberError', 'Serial Number is already used');
+        isValid = false;
+      }
+
       if (isValid) {
         // Here you would typically submit the form to your backend
         alert('Form submitted successfully!');
@@ -244,6 +250,13 @@
       const errorElement = document.getElementById(elementId);
       errorElement.textContent = message;
       errorElement.style.display = 'block';
+    }
+
+    function isSerialNumberUsed(serialNumber) {
+      // This is a placeholder function. Replace with actual logic to check if the serial number is already used.
+      // For example, you could make an AJAX request to your backend to check the serial number.
+      const usedSerialNumbers = ['1234567890', '0987654321']; // Example used serial numbers
+      return usedSerialNumbers.includes(serialNumber);
     }
   </script>
   <?php include("../includes/public_footer.php"); ?>

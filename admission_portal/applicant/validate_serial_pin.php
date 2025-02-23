@@ -31,24 +31,35 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     if ($result) {
-        // Serial number and pin are valid
-        if ($password === $confirmPassword) {
-            // Proceed with the registration process
-            // Hash the password
-            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        // Check if the serial number is already used
+        $checkSerialQuery = "SELECT * FROM applicants WHERE serial_number = :serial";
+        $checkSerialStmt = $conn->prepare($checkSerialQuery);
+        $checkSerialStmt->bindParam(':serial', $serial);
+        $checkSerialStmt->execute();
+        $serialUsed = $checkSerialStmt->fetch(PDO::FETCH_ASSOC);
 
-            // Save user details to the database
-            $insertQuery = "INSERT INTO applicants (email, password, serial_number, pin) VALUES (:email, :password, :serial, :pin)";
-            $insertStmt = $conn->prepare($insertQuery);
-            $insertStmt->bindParam(':email', $email);
-            $insertStmt->bindParam(':password', $hashedPassword);
-            $insertStmt->bindParam(':serial', $serial);
-            $insertStmt->bindParam(':pin', $pin);
-            $insertStmt->execute();
-
-            echo "Registration successful!";
+        if ($serialUsed) {
+            echo "Serial Number is already used.";
         } else {
-            echo "Passwords do not match.";
+            // Serial number and pin are valid
+            if ($password === $confirmPassword) {
+                // Proceed with the registration process
+                // Hash the password
+                $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+                // Save user details to the database
+                $insertQuery = "INSERT INTO applicants (email, password, serial_number, pin) VALUES (:email, :password, :serial, :pin)";
+                $insertStmt = $conn->prepare($insertQuery);
+                $insertStmt->bindParam(':email', $email);
+                $insertStmt->bindParam(':password', $hashedPassword);
+                $insertStmt->bindParam(':serial', $serial);
+                $insertStmt->bindParam(':pin', $pin);
+                $insertStmt->execute();
+
+                echo "Registration successful!";
+            } else {
+                echo "Passwords do not match.";
+            }
         }
     } else {
         echo "Invalid Serial Number or PIN.";
