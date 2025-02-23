@@ -15,7 +15,7 @@
 
         .carousel-item img {
             object-fit: cover;
-            height: 100%;
+            height: 100vh; /* Full height */
             width: 100%;
             filter: brightness(90%); /* Dark overlay effect */
             border-radius: 15px; /* Rounded corners */
@@ -30,14 +30,9 @@
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
         }
 
-        /* Adjust page content to fit with fixed header and footer */
-        body {
-            padding-top: 70px; /* Adjust to the height of the header */
-            padding-bottom: 60px; /* Adjust to the height of the footer */
-        }
-
         .card-body {
             min-height: 400px; /* Maintain consistent height for the right-side card */
+            border-radius: 15px;
         }
 
         .form-control {
@@ -61,24 +56,18 @@
             font-size: 14px;
             text-align: center;
         }
-
-        iframe {
-            width: 100%;
-            height: 600px;
-            border: none;
-            margin-top: 20px;
-        }
-        .container{
+        .admission_form{
+            padding-top: 50px;
             padding-bottom: 50px;
         }
     </style>
 </head>
 <body>
-    <!-- Include Header -->
+    <!-- Include Header --> 
     <?php include("includes/header.php"); ?>
 
     <!-- Main Content -->
-    <div class="container mt-4">
+    <div class="container admission_form mt-4">
         <div class="row align-items-center">
             <!-- Left Side: Fading Slideshow -->
             <div class="col-md-6 mb-3 py-4">
@@ -116,36 +105,44 @@
 
                         <form method="POST" action="api/hubtel_payment.php">
                             <div class="mb-3">
-                                <label><i class="fas fa-user"></i> Full Name:</label>
-                                <input type="text" name="customer_name" class="form-control" placeholder="Enter full name" required>
+                                <label>Full Name:</label>
+                                <input type="text" name="customer_name" class="form-control" required>
                             </div>
                             <div class="mb-3">
-                                <label><i class="fas fa-envelope"></i> Email:</label>
-                                <input type="email" name="customer_email" class="form-control" placeholder="Enter email" required>
+                                <label>Email:</label>
+                                <input type="email" name="customer_email" class="form-control" required>
                             </div>
                             <div class="mb-3">
-                                <label><i class="fas fa-phone"></i> Phone Number (For Serial & PIN):</label>
-                                <input type="text" name="customer_phone" class="form-control" placeholder="Enter phone number" required>
+                                <label>Phone Number:</label>
+                                <input type="text" name="customer_phone" class="form-control" required>
                             </div>
-                            <div class="mb-3">
-                                <button type="submit" class="btn btn-primary w-100">
-                                    <i class="fas fa-money-check-alt"></i> Pay with Hubtel
-                                </button>
-                            </div>
-                        </form> <!-- Closing form tag added -->
+                            <button type="submit" class="btn btn-primary w-100">Pay with Hubtel</button>
+                        </form>
                     </div> <!-- Closing div tag added -->
                     <hr>
                     <p class="text-center">Already applied? <a href="login.php">Login to continue</a></p>
+                    <p class="text-center">Yet to Start your application? <a href="signup.php">Signup</a></p>
                 </div>
             </div>
         </div>
     </div>
-    
-    <!-- Include Footer -->
-    <?php include("../includes/public_footer.php"); ?>
 
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Generate Serial Number and PIN
+        function generateSerialAndPin() {
+            const serialNumber = 'SN' + Math.floor(Math.random() * 1000000);
+            const pin = Math.floor(1000 + Math.random() * 9000);
+            document.getElementById('serial_number').value = serialNumber;
+            document.getElementById('pin').value = pin;
+        }
+
+        // Call the function to generate Serial Number and PIN on page load
+        window.onload = generateSerialAndPin;
+    </script>
+    <!-- Include Footer -->
+    <?php include("includes/public_footer.php"); ?>
 </body>
 </html>
