@@ -1,15 +1,18 @@
 <?php
 session_start();
 
-require __DIR__ . '/../vendor/autoload.php'; // Ensure autoload is loaded
+//require __DIR__ . '/../vendor/autoload.php'; // Ensure autoload is loaded
 
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
-$dotenv->load();
+//$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
+//$dotenv->load();
 
 // Use environment variables for API credentials
-$apiUsername = $_ENV['HUBTEL_API_USERNAME'];
-$apiPassword = $_ENV['HUBTEL_API_PASSWORD'];
-$merchantAccountNumber = $_ENV['HUBTEL_MERCHANT_ACCOUNT'];
+//$apiUsername = $_ENV['HUBTEL_API_USERNAME'];
+//$apiPassword = $_ENV['HUBTEL_API_PASSWORD'];
+//$merchantAccountNumber = $_ENV['HUBTEL_MERCHANT_ACCOUNT'];
+$apiUsername = 'lp7pGzl';  
+$apiPassword = '90027d3ef08646b29947a7e8fdfe8a31';  
+$merchantAccountNumber = '2029059';
 
 // Define URLs
 $callbackUrl = "https://admissions.nebatech.com/api/hubtel_callback.php";
