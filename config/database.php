@@ -1,7 +1,7 @@
 <?php
-var_dump($_ENV);
-
 require __DIR__ . '/../vendor/autoload.php'; // Ensure autoload is loaded
+
+var_dump($_ENV);
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
 $dotenv->load();

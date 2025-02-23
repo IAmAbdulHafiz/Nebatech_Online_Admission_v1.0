@@ -1,6 +1,10 @@
 <?php
 session_start();
 
+require __DIR__ . '/../vendor/autoload.php'; // Ensure autoload is loaded
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
+$dotenv->load();
 
 // Use environment variables for API credentials (Recommended)
 $apiUsername = getenv('HUBTEL_API_USERNAME');  
@@ -85,7 +89,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         } catch (Exception $e) {
             $conn->rollBack();
             $_SESSION['error_message'] = "Database error: " . $e->getMessage();
-            header("Location: ../public/payment_form.php");
+            header("Location: ../admission_form.php");
             exit();
         }
 
@@ -94,7 +98,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         exit();
     } else {
         $_SESSION['error_message'] = "Failed to initiate payment.";
-        header("Location: ../public/payment_form.php");
+        header("Location: ../admission_form.php");
         exit();
     }
 }
