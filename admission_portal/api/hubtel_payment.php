@@ -75,15 +75,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $stmt->bindParam(':pin', $pin);
         $stmt->execute();
 
-        // Save form data to session storage
-        $_SESSION['formData'] = json_encode([
-            'customer_name' => $customerName,
-            'customer_email' => $customerEmail,
-            'customer_phone' => $customerPhone,
-            'serial_number' => $serialNumber,
-            'pin' => $pin
-        ]);
-
         // Redirect to a page where the iframe is displayed
         $_SESSION['checkout_url'] = $checkoutUrl;
         header("Location: ../payment_form.php");
@@ -95,36 +86,32 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 
-// Simulate payment process
-// Replace this with actual Hubtel API integration
-$paymentSuccessful = true; // Simulate successful payment
+// After payment is confirmed
+if ($payment_successful) {
+    $transaction = getTransactionByReference($clientReference);
+    $serial_number = $transaction['serial_number'];
+    $pin = $transaction['pin'];
+    $customer_phone = $transaction['customer_phone'];
+    $customer_email = $transaction['customer_email'];
 
-if ($paymentSuccessful) {
-    // Retrieve form data from session storage
-    $formData = json_decode($_SESSION['formData'], true);
+    // Send SMS
+    $sms_message = "Your Serial Number: $serial_number and PIN: $pin. Visit our Admission Portal to continue with your application: https://nebatech.com/admission_portal/signup.php";
+    sendSMS($customer_phone, $sms_message);
 
-    // Save form data to the database
-    $customer_name = $formData['customer_name'];
-    $customer_email = $formData['customer_email'];
-    $customer_phone = $formData['customer_phone'];
-    $serial_number = $formData['serial_number'];
-    $pin = $formData['pin'];
+    // Send Email
+    $email_subject = "Your Serial Number and PIN";
+    $email_body = "Dear Applicant,\n\nYour Serial Number: $serial_number\nYour PIN: $pin\n\nThank you for your payment.\n\nVisit our Admission Portal to continue with your application: https://nebatech.com/admission_portal/signup.php";
+    sendEmail($customer_email, $email_subject, $email_body);
 
-    // Example database insertion code
-    $query = "INSERT INTO admissions (customer_name, customer_email, customer_phone, serial_number, pin) VALUES (:customer_name, :customer_email, :customer_phone, :serial_number, :pin)";
+    // Update transaction status to completed
+    $query = "UPDATE transactions SET status = 'Completed' WHERE reference = :reference";
     $stmt = $conn->prepare($query);
-    $stmt->bindParam(':customer_name', $customer_name);
-    $stmt->bindParam(':customer_email', $customer_email);
-    $stmt->bindParam(':customer_phone', $customer_phone);
-    $stmt->bindParam(':serial_number', $serial_number);
-    $stmt->bindParam(':pin', $pin);
+    $stmt->bindParam(':reference', $clientReference);
     $stmt->execute();
 
-    $_SESSION['success_message'] = 'Payment successful and form data saved.';
-    header('Location: ../admission_form.php');
-} else {
-    $_SESSION['error_message'] = 'Payment failed. Please try again.';
-    header('Location: ../admission_form.php');
+    $_SESSION['success_message'] = "Payment successful! Your Serial Number and PIN have been sent to your phone and email.";
+    header("Location: ../admission_form.php");
+    exit();
 }
 
 function sendSMS($phone, $message) {
