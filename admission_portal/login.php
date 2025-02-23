@@ -174,7 +174,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       </small>
 
       <!-- Submit Button -->
-       <div class="form-group">
         <div class="form-check">
           <input class="form-check-input" type="checkbox" value="" id="rememberMe">
           <label class="form-check-label" for="rememberMe">
