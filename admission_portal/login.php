@@ -174,7 +174,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       </small>
 
       <!-- Submit Button -->
-      <button type="submit" class="btn btn-primary w-100">Login</button>
+       <div class="form-group">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="rememberMe">
+          <label class="form-check-label" for="rememberMe">
+            Remember me on this device
+          </label>
+            <button type="submit" class="btn btn-primary w-100">Login</button>
+        </div>
     </form>
 
     <!-- Footer Links -->
