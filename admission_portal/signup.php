@@ -13,9 +13,13 @@
     }
 
     body {
-      background-color: #f0f2f5;
-      color: #333;
-      line-height: 1.6;
+      background: linear-gradient(135deg, #002060, #0056b3);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
     }
 
     .container-signup {
