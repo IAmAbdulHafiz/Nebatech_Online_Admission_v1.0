@@ -14,12 +14,9 @@
 
     body {
       background: linear-gradient(135deg, #002060, #0056b3);
-      color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      color: #333;
       height: 100vh;
-      margin: 0;
+      line-height: 1.6;
     }
 
     .container-signup {
