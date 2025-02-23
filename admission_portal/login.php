@@ -126,11 +126,29 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       font-size: 0.75rem;
       color: #0056b3;
     }
+    /* Password toggle button */
+    .toggle-password {
+      position: absolute;
+      top: 50%;
+      right: 0.75rem;
+      transform: translateY(-50%);
+      cursor: pointer;
+      font-size: 0.9rem;
+      color: #0056b3;
+      user-select: none;
+    }
+    /* Fade in animation for alerts */
+    .alert {
+      animation: fadeIn 0.5s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
   </style>
 </head>
 <body>
   <?php include("includes/public_header.php"); ?>
-<main>
   <div class="login-container">
     <h3>Login to Your Account</h3>
     <?php if (!empty($error)) : ?>
@@ -140,23 +158,23 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <form method="POST" action="login.php">
       <!-- Email or Serial Number -->
       <div class="floating-label-group">
-        <input type="text" id="identifier" name="identifier" class="form-control" placeholder=" " required>
+        <input type="text" id="identifier" name="identifier" class="form-control" placeholder=" " required autofocus>
         <label for="identifier" class="form-label">Email or Serial Number</label>
       </div>
 
-      <!-- Password -->
+      <!-- Password with toggle -->
       <div class="floating-label-group">
         <input type="password" id="password" name="password" class="form-control" placeholder=" " required>
         <label for="password" class="form-label">Password</label>
-      </div>
-      <div>
-        <small class="form-text mb-3">
-            Forgot your password? <a href="reset_password.php">Reset it here</a>.
-        </small>
+        <span class="toggle-password" onclick="togglePasswordVisibility()">Show</span>
       </div>
 
+      <small class="form-text mb-3">
+        Forgot your password? <a href="reset_password.php">Reset it here</a>.
+      </small>
+
       <!-- Submit Button -->
-      <button type="submit" class="btn btn-primary" style="width: 100px">Login</button>
+      <button type="submit" class="btn btn-primary w-100">Login</button>
     </form>
 
     <!-- Footer Links -->
@@ -164,9 +182,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       <p>Don't have an account? <a href="payment_and_signup.php">Sign Up</a></p>
     </div>
   </div>
-</main>
-  <?php include("../includes/public_footer.php"); ?>
+  <?php include("includes/public_footer.php"); ?>
   <script src="assets/js/jquery.min.js"></script>
   <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function togglePasswordVisibility() {
+      const passwordInput = document.getElementById('password');
+      const toggleBtn = document.querySelector('.toggle-password');
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleBtn.textContent = 'Hide';
+      } else {
+        passwordInput.type = 'password';
+        toggleBtn.textContent = 'Show';
+      }
+    }
+  </script>
 </body>
 </html>
