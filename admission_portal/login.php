@@ -1,40 +1,4 @@
-<?php 
-session_start();
-include("config/database.php");
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $identifier = $_POST['identifier'];
-    $password = $_POST['password'];
-
-    // Query to check for the user by email or serial number
-    $query = "SELECT * FROM applicants WHERE email = :identifier OR serial_number = :identifier";
-    $stmt = $conn->prepare($query);
-    $stmt->bindParam(":identifier", $identifier);
-    $stmt->execute();
-
-    if ($stmt->rowCount() > 0) {
-        $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        // Verify the password
-        if (password_verify($password, $user['password'])) {
-            $_SESSION['applicant'] = [
-                'id' => $user['id'],
-                'email' => $user['email'],
-                'serial_number' => $user['serial_number'],
-                'first_name' => $user['first_name'],
-                'surname' => $user['surname']
-            ];
-            $_SESSION['user_id'] = $user['id'];
-            header("Location: applicant/applicant_dashboard.php");
-            exit();
-        } else {
-            $error = "Invalid password.";
-        }
-    } else {
-        $error = "No account found with that email or serial number.";
-    }
-}
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -79,7 +43,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
     .form-text {
       color: #666;
-      font-size: 0.9rem;
+      font-size: 1rem;
+      text-align: center;
+      margin-top: 10px;
+    }
+    .form-check{
+      color: #666;
+      font-size: 1rem;
+      text-align: center;
+      margin-top: 10px;
     }
     .login-footer {
       text-align: center;
@@ -149,7 +121,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   </style>
 </head>
 <body>
-  <?php include("includes/public_header.php"); ?>
+  <?php include("includes/header.php"); ?>
   <div class="login-container">
     <h3>Login to Your Account</h3>
     <?php if (!empty($error)) : ?>
@@ -189,7 +161,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       <p>Don't have an account? <a href="signup.php">Sign Up</a></p>
     </div>
   </div>
-  <?php include("includes/public_footer.php"); ?>
+ 
   <script src="assets/js/jquery.min.js"></script>
   <script src="assets/js/bootstrap.bundle.min.js"></script>
   <script>
@@ -205,5 +177,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       }
     }
   </script>
+  <?php include("includes/footer.php"); ?>
+
 </body>
 </html>

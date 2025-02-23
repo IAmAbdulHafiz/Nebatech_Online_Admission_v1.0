@@ -5,13 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nebatech Admission Portal - Sign Up</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
     body {
       background: linear-gradient(135deg, #002060, #0056b3);
       color: #333;
@@ -93,7 +86,7 @@
     }
 
     button {
-      background-color: #1a73e8;
+      background-color: #002060;
       color: #fff;
       padding: 1rem 2rem;
       border: none;
@@ -105,7 +98,7 @@
     }
 
     button:hover {
-      background-color: #1557b0;
+      background-color: #e55c00;
     }
 
     /* Add the required asterisk via CSS */

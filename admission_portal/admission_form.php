@@ -149,6 +149,6 @@
         window.onload = generateSerialAndPin;
     </script>
     <!-- Include Footer -->
-    <?php include("../includes/public_footer.php"); ?>
+    <?php include("includes/public_footer.php"); ?>
 </body>
 </html>
