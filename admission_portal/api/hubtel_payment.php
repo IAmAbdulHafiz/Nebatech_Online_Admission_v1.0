@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+include("../config/database.php");
 //require __DIR__ . '/../vendor/autoload.php'; // Ensure autoload is loaded
 
 //$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
@@ -18,8 +18,6 @@ $merchantAccountNumber = '2029059';
 $callbackUrl = "https://admissions.nebatech.com/api/hubtel_callback.php";
 $returnUrl = "https://admissions.nebatech.com/admission_portal/payment_success.php";
 $cancellationUrl = "https://admissions.nebatech.com/payment_failed.php";
-
-include("../config/database.php");
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $customerName = trim($_POST['customer_name']);
