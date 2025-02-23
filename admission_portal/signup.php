@@ -124,10 +124,10 @@
       <p>Create your account to begin the application process</p>
     </div>
 
-    <form id="signupForm" onsubmit="return validateForm(event)">
+    <form id="signupForm" action="applicant/validate_serial_pin.php" method="POST" onsubmit="return validateForm(event)">
         <div class="form-group">
           <div class="floating-label-group">
-            <input type="text" id="serialNumber" name="serialNumber" placeholder=" " required>
+            <input type="text" id="serialNumber" name="serial" placeholder=" " required>
             <label for="serialNumber" class="required">Serial Number</label>
           </div>
           <div class="error" id="serialNumberError"></div>
@@ -175,7 +175,7 @@
 
         <div class="form-group">
           <div class="floating-label-group">
-            <input type="password" id="confirmPassword" name="confirmPassword" placeholder=" " required>
+            <input type="password" id="confirmPassword" name="confirm-password" placeholder=" " required>
             <label for="confirmPassword" class="required">Confirm Password</label>
           </div>
           <div class="error" id="confirmPasswordError"></div>
