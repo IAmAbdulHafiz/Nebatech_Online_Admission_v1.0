@@ -196,7 +196,7 @@
 
       // Validate Serial Number
       const serialNumber = document.getElementById('serialNumber').value;
-      if (serialNumber.length !== 10) {
+      if (serialNumber.length !== 11) {
         showError('serialNumberError', 'Serial Number must be 10 characters long');
         isValid = false;
       }
