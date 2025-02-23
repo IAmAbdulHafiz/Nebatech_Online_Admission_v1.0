@@ -67,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         header("Location: ../payment_page.php");
         exit();
     } else {
-        $_SESSION['error_message'] = "Failed to initiate payment.";
+        $_SESSION['error_message'] = "Hmmm Failed to initiate payment.";
         header("Location: ../public/payment_form.php");
         exit();
     }
