@@ -1,6 +1,6 @@
 <?php 
 session_start();
-include("../config/database.php");
+include("config/database.php");
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $identifier = $_POST['identifier'];
@@ -129,7 +129,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   </style>
 </head>
 <body>
-  <?php include("../includes/public_header.php"); ?>
+  <?php include("includes/public_header.php"); ?>
 <main>
   <div class="login-container">
     <h3>Login to Your Account</h3>
@@ -149,10 +149,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <input type="password" id="password" name="password" class="form-control" placeholder=" " required>
         <label for="password" class="form-label">Password</label>
       </div>
-
-      <small class="form-text mb-3">
-        Forgot your password? <a href="reset_password.php">Reset it here</a>.
-      </small>
+      <div>
+        <small class="form-text mb-3">
+            Forgot your password? <a href="reset_password.php">Reset it here</a>.
+        </small>
+      </div>
 
       <!-- Submit Button -->
       <button type="submit" class="btn btn-primary w-100">Login</button>
