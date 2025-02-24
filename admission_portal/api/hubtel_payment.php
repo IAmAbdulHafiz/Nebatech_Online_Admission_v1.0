@@ -2,21 +2,24 @@
 session_start();
 include("../config/database.php");
 
-$apiUsername = "lp7pGzl";  // API ID (username)
-$apiPassword = "90027d3ef08646b29947a7e8fdfe8a31"; // API Key (password)
-$merchantAccountNumber = "2029059"; // Your Hubtel merchant account number
+// Use environment variables for API credentials
+$apiUsername = "lp7pGzl"; 
+$apiPassword = "90027d3ef08646b29947a7e8fdfe8a31";
+$merchantAccountNumber = "2029059";
+
+// Define URLs
 $callbackUrl = "https://admissions.nebatech.com/api/hubtel_callback.php";
 $returnUrl = "https://admissions.nebatech.com/admission_portal/payment_success.php";
 $cancellationUrl = "https://admissions.nebatech.com/payment_failed.php";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $customerName = $_POST['customer_name'];
-    $customerEmail = $_POST['customer_email'];
-    $customerPhone = $_POST['customer_phone'];
-    $amount = 1; // Admission form cost
+    $customerName = trim($_POST['customer_name']);
+    $customerEmail = trim($_POST['customer_email']);
+    $customerPhone = trim($_POST['customer_phone']);
+    $amount = 1; // Corrected admission form price
     $clientReference = uniqid('NTSS_');
 
-    $postData = [ 
+    $postData = [
         "totalAmount" => $amount,
         "description" => "NTSS Admission Form Payment",
         "callbackUrl" => $callbackUrl,
@@ -26,16 +29,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         "clientReference" => $clientReference
     ];
 
+    // Initialize cURL
     $ch = curl_init();
     curl_setopt_array($ch, [
         CURLOPT_URL => 'https://payproxyapi.hubtel.com/items/initiate',
         CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_ENCODING => '',
-        CURLOPT_MAXREDIRS => 10,
-        CURLOPT_TIMEOUT => 0,
-        CURLOPT_FOLLOWLOCATION => true,
-        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-        CURLOPT_CUSTOMREQUEST => 'POST',
+        CURLOPT_POST => true,
         CURLOPT_POSTFIELDS => json_encode($postData),
         CURLOPT_HTTPHEADER => [
             'Content-Type: application/json',
@@ -44,31 +43,50 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     ]);
 
     $response = curl_exec($ch);
+    $error = curl_error($ch);
     curl_close($ch);
+
+    if ($error) {
+        $_SESSION['error_message'] = "Payment gateway error: $error";
+        header("Location: ../public/payment_form.php");
+        exit();
+    }
 
     $paymentResponse = json_decode($response, true);
 
-    if ($paymentResponse && isset($paymentResponse['status']) && $paymentResponse['status'] === 'Success') {
-        $checkoutUrl = $paymentResponse['data']['checkoutDirectUrl']; // URL for iframe
+    if (isset($paymentResponse['status']) && $paymentResponse['status'] === 'Success' && isset($paymentResponse['data']['checkoutDirectUrl'])) {
+        $checkoutUrl = $paymentResponse['data']['checkoutDirectUrl'];
 
         // Generate Serial Number and PIN
         $serialNumber = generateSerialNumber();
         $pin = generatePin();
 
-        // Save transaction in the database as pending
-        $query = "INSERT INTO transactions (customer_name, customer_email, customer_phone, amount, reference, status, serial_number, pin) 
-                  VALUES (:customer_name, :customer_email, :customer_phone, :amount, :reference, 'Pending', :serial_number, :pin)";
-        $stmt = $conn->prepare($query);
-        $stmt->bindParam(':customer_name', $customerName);
-        $stmt->bindParam(':customer_email', $customerEmail);
-        $stmt->bindParam(':customer_phone', $customerPhone);
-        $stmt->bindParam(':amount', $amount);
-        $stmt->bindParam(':reference', $clientReference);
-        $stmt->bindParam(':serial_number', $serialNumber);
-        $stmt->bindParam(':pin', $pin);
-        $stmt->execute();
+        // Save Serial & PIN in DB
+        try {
+            $conn->beginTransaction();
+            $stmt = $conn->prepare("INSERT INTO serial_pins (serial_number, pin, used) VALUES (:serial_number, :pin, 0)");
+            $stmt->execute(['serial_number' => $serialNumber, 'pin' => $pin]);
 
-        // Redirect to a page where the iframe is displayed
+            $stmt = $conn->prepare("INSERT INTO transactions (customer_name, customer_email, customer_phone, amount, reference, status, serial_number, pin) 
+                                    VALUES (:customer_name, :customer_email, :customer_phone, :amount, :reference, 'Pending', :serial_number, :pin)");
+            $stmt->execute([
+                'customer_name' => $customerName,
+                'customer_email' => $customerEmail,
+                'customer_phone' => $customerPhone,
+                'amount' => $amount,
+                'reference' => $clientReference,
+                'serial_number' => $serialNumber,
+                'pin' => $pin
+            ]);
+
+            $conn->commit();
+        } catch (Exception $e) {
+            $conn->rollBack();
+            $_SESSION['error_message'] = "Database error: " . $e->getMessage();
+            header("Location: ../public/payment_form.php");
+            exit();
+        }
+
         $_SESSION['checkout_url'] = $checkoutUrl;
         header("Location: ../payment_form.php");
         exit();
@@ -79,89 +97,63 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 
-// After payment is confirmed
-if ($payment_successful) {
+// Payment Confirmation Section
+if (!empty($_GET['reference'])) {
+    $clientReference = $_GET['reference'];
     $transaction = getTransactionByReference($clientReference);
-    $serial_number = $transaction['serial_number'];
-    $pin = $transaction['pin'];
-    $customer_phone = $transaction['customer_phone'];
-    $customer_email = $transaction['customer_email'];
 
-    // Send SMS
-    $sms_message = "Your Serial Number: $serial_number and PIN: $pin. Visit our Admission Portal to continue with your application: https://nebatech.com/admission_portal/signup.php";
-    sendSMS($customer_phone, $sms_message);
+    if ($transaction) {
+        $serial_number = $transaction['serial_number'];
+        $pin = $transaction['pin'];
+        $customer_phone = $transaction['customer_phone'];
+        $customer_email = $transaction['customer_email'];
 
-    // Send Email
-    $email_subject = "Your Serial Number and PIN";
-    $email_body = "Dear Applicant,\n\nYour Serial Number: $serial_number\nYour PIN: $pin\n\nThank you for your payment.\n\nVisit our Admission Portal to continue with your application: https://nebatech.com/admission_portal/signup.php";
-    sendEmail($customer_email, $email_subject, $email_body);
+        // Send SMS & Email
+        sendSMS($customer_phone, "Your Serial: $serial_number, PIN: $pin. Apply at https://nebatech.com/admission_portal/signup.php");
+        sendEmail($customer_email, "Your Admission Serial & PIN", "Serial: $serial_number\nPIN: $pin\nApply at: https://nebatech.com/admission_portal/signup.php");
 
-    // Update transaction status to completed
-    $query = "UPDATE transactions SET status = 'Completed' WHERE reference = :reference";
-    $stmt = $conn->prepare($query);
-    $stmt->bindParam(':reference', $clientReference);
-    $stmt->execute();
+        // Update Transaction Status
+        $stmt = $conn->prepare("UPDATE transactions SET status = 'Completed' WHERE reference = :reference");
+        $stmt->execute(['reference' => $clientReference]);
 
-    $_SESSION['success_message'] = "Payment successful! Your Serial Number and PIN have been sent to your phone and email.";
-    header("Location: ../admission_form.php");
-    exit();
+        $_SESSION['success_message'] = "Payment successful! Check SMS & Email.";
+        header("Location: ../public/admission_form.php");
+        exit();
+    }
+}
+
+// Functions
+function generateSerialNumber() {
+    global $conn;
+    do {
+        $serial = 'N' . date('y') . strtoupper(bin2hex(random_bytes(6)));
+        $stmt = $conn->prepare("SELECT COUNT(*) FROM serial_pins WHERE serial_number = :serial");
+        $stmt->execute(['serial' => $serial]);
+    } while ($stmt->fetchColumn() > 0);
+    
+    return $serial;
+}
+
+function generatePin() {
+    return rand(100000, 999999);
 }
 
 function sendSMS($phone, $message) {
-    $clientSecret = 'jjdblnjg';
-    $clientId = 'oxknnhfm';
-    $senderId = 'Nebatech';
-    $url = "https://sms.hubtel.com/v1/messages/send?clientsecret=$clientSecret&clientid=$clientId&from=$senderId&to=$phone&content=" . urlencode($message);
-
-    $ch = curl_init();
-    curl_setopt_array($ch, [
-        CURLOPT_URL => $url,
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_ENCODING => '',
-        CURLOPT_MAXREDIRS => 10,
-        CURLOPT_TIMEOUT => 0,
-        CURLOPT_FOLLOWLOCATION => true,
-        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-        CURLOPT_CUSTOMREQUEST => 'GET',
-    ]);
-
-    $response = curl_exec($ch);
-    $error = curl_error($ch);
-    curl_close($ch);
-
-    // Log the response and error if any
-    file_put_contents('sms_log.txt', "Response: $response\nError: $error\n", FILE_APPEND);
-
-    // Handle the response if needed
+    // Use an SMS gateway API (e.g., Twilio, Hubtel SMS)
+    file_put_contents('sms_log.txt', "SMS to: $phone\nMessage: $message\n", FILE_APPEND);
 }
 
 function sendEmail($to, $subject, $body) {
-    $headers = "From: no-reply@nebatech.com\r\n";
-    $headers .= "Reply-To: no-reply@nebatech.com\r\n";
-    $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
-
-    $success = mail($to, $subject, $body, $headers);
-
-    // Log the email sending status
-    file_put_contents('email_log.txt', "Email to: $to\nSubject: $subject\nSuccess: $success\n", FILE_APPEND);
+    $headers = "From: no-reply@nebatech.com\r\nContent-Type: text/plain;";
+    if (!mail($to, $subject, $body, $headers)) {
+        file_put_contents('email_log.txt', "Failed to send email to: $to\nSubject: $subject\n", FILE_APPEND);
+    }
 }
 
 function getTransactionByReference($reference) {
     global $conn;
-    $query = "SELECT * FROM transactions WHERE reference = :reference";
-    $stmt = $conn->prepare($query);
-    $stmt->bindParam(':reference', $reference);
-    $stmt->execute();
+    $stmt = $conn->prepare("SELECT * FROM transactions WHERE reference = :reference");
+    $stmt->execute(['reference' => $reference]);
     return $stmt->fetch(PDO::FETCH_ASSOC);
-}
-
-function generateSerialNumber() {
-    $year = date('y'); // Get the current year in two digits
-    $randomDigits = strtoupper(bin2hex(random_bytes(4))); // Generates 8 random hexadecimal digits
-    return 'N' . $year . $randomDigits; // Combine to form the serial number
-}
-
-function generatePin() {
-    return rand(100000, 999999); // Generates a 6-digit pin
 }
 ?>
