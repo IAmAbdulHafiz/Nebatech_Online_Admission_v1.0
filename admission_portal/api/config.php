@@ -1,5 +1,5 @@
 <?php
-var_dump($_ENV);
+var_dump($env);
 
 if (file_exists(__DIR__ . '/../../.env')) {
     $env = parse_ini_file(__DIR__ . '/../../.env');
