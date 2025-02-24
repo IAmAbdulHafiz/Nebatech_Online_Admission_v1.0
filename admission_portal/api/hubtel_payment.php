@@ -10,7 +10,7 @@ $merchantAccountNumber = getenv('HUBTEL_MERCHANT_ACCOUNT_NUMBER');
 
 // Define URLs
 $callbackUrl = "https://admissions.nebatech.com/api/hubtel_callback.php";
-$returnUrl = "https://admissions.nebatech.com/admission_portal/signup.ph";
+$returnUrl = "https://admissions.nebatech.com/admission_portal/payment_form.php"; // Ensure this is correct
 $cancellationUrl = "https://admissions.nebatech.com/admission_portal/admission_form.php";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if ($error) {
         $_SESSION['error_message'] = "Payment gateway error: $error";
-        header("Location: ../public/payment_form.php");
+        header("Location: ../admission_form.php");
         exit();
     }
 
@@ -66,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             'reference'      => $clientReference
         ];
         $checkoutUrl = $paymentResponse['data']['checkoutDirectUrl'];
-        header("Location: $checkoutUrl");
+        header("Location: $checkoutUrl"); // Redirect to Hubtel payment page
         exit();
     } else {
         $_SESSION['error_message'] = "Failed to initiate payment.";
@@ -111,7 +111,7 @@ if (!empty($_GET['reference']) && !empty($_SESSION['pending_payment'])) {
         } catch (Exception $e) {
             $conn->rollBack();
             $_SESSION['error_message'] = "Database error: " . $e->getMessage();
-            header("Location: ../public/payment_form.php");
+            header("Location: ../payment_form.php");
             exit();
         }
 
@@ -127,7 +127,7 @@ if (!empty($_GET['reference']) && !empty($_SESSION['pending_payment'])) {
         exit();
     } else {
         $_SESSION['error_message'] = "Payment reference mismatch.";
-        header("Location: ../public/payment_form.php");
+        header("Location: ../payment_form.php");
         exit();
     }
 }
