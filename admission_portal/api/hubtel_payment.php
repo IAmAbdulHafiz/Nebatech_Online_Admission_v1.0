@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $customerName  = trim($_POST['customer_name']);
     $customerEmail = trim($_POST['customer_email']);
     $customerPhone = trim($_POST['customer_phone']);
-    $amount = 100; // Admission form fee: GH₵100
+    $amount = 0.30; // Admission form fee: GH₵100
     $clientReference = uniqid('NTSS_');
 
     $postData = [
