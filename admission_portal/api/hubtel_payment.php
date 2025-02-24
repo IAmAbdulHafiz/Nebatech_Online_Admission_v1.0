@@ -1,11 +1,12 @@
 <?php
 session_start();
 include("../config/database.php");
+include("config.php"); // Add this line to load environment variables
 
 // Use environment variables for API credentials
-$apiUsername = "lp7pGzl"; 
-$apiPassword = "90027d3ef08646b29947a7e8fdfe8a31";
-$merchantAccountNumber = "2029059";
+$apiUsername = getenv('HUBTEL_API_USERNAME');
+$apiPassword = getenv('HUBTEL_API_PASSWORD');
+$merchantAccountNumber = getenv('HUBTEL_MERCHANT_ACCOUNT_NUMBER');
 
 // Define URLs
 $callbackUrl = "https://admissions.nebatech.com/api/hubtel_callback.php";
@@ -53,20 +54,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     $paymentResponse = json_decode($response, true);
-
     if (isset($paymentResponse['status']) && $paymentResponse['status'] === 'Success' && isset($paymentResponse['data']['checkoutDirectUrl'])) {
         $checkoutUrl = $paymentResponse['data']['checkoutDirectUrl'];
-
         // Generate Serial Number and PIN
         $serialNumber = generateSerialNumber();
         $pin = generatePin();
-
         // Save Serial & PIN in DB
         try {
             $conn->beginTransaction();
             $stmt = $conn->prepare("INSERT INTO serial_pins (serial_number, pin, used) VALUES (:serial_number, :pin, 0)");
             $stmt->execute(['serial_number' => $serialNumber, 'pin' => $pin]);
-
             $stmt = $conn->prepare("INSERT INTO transactions (customer_name, customer_email, customer_phone, amount, reference, status, serial_number, pin) 
                                     VALUES (:customer_name, :customer_email, :customer_phone, :amount, :reference, 'Pending', :serial_number, :pin)");
             $stmt->execute([
@@ -78,7 +75,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 'serial_number' => $serialNumber,
                 'pin' => $pin
             ]);
-
             $conn->commit();
         } catch (Exception $e) {
             $conn->rollBack();
@@ -86,7 +82,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             header("Location: ../public/payment_form.php");
             exit();
         }
-
         $_SESSION['checkout_url'] = $checkoutUrl;
         header("Location: ../payment_form.php");
         exit();
@@ -101,23 +96,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 if (!empty($_GET['reference'])) {
     $clientReference = $_GET['reference'];
     $transaction = getTransactionByReference($clientReference);
-
     if ($transaction) {
         $serial_number = $transaction['serial_number'];
         $pin = $transaction['pin'];
         $customer_phone = $transaction['customer_phone'];
         $customer_email = $transaction['customer_email'];
-
         // Send SMS & Email
         sendSMS($customer_phone, "Your Serial: $serial_number, PIN: $pin. Apply at https://nebatech.com/admission_portal/signup.php");
         sendEmail($customer_email, "Your Admission Serial & PIN", "Serial: $serial_number\nPIN: $pin\nApply at: https://nebatech.com/admission_portal/signup.php");
-
         // Update Transaction Status
         $stmt = $conn->prepare("UPDATE transactions SET status = 'Completed' WHERE reference = :reference");
         $stmt->execute(['reference' => $clientReference]);
-
         $_SESSION['success_message'] = "Payment successful! Check SMS & Email.";
-        header("Location: ../public/admission_form.php");
+        header("Location: ../signup.php");
         exit();
     }
 }
@@ -130,7 +121,6 @@ function generateSerialNumber() {
         $stmt = $conn->prepare("SELECT COUNT(*) FROM serial_pins WHERE serial_number = :serial");
         $stmt->execute(['serial' => $serial]);
     } while ($stmt->fetchColumn() > 0);
-    
     return $serial;
 }
 
