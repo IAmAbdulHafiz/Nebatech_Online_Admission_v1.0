@@ -181,7 +181,7 @@ function sendSMS($phone, $message) {
 }
 
 function sendEmail($to, $subject, $body) {
-    $headers = "From: no-reply@nebatech.com\r\nContent-Type: text/plain;";
+    $headers = "From: info@nebatech.com\r\nContent-Type: text/plain;";
     if (!mail($to, $subject, $body, $headers)) {
         file_put_contents('email_log.txt', "Failed to send email to: $to\nSubject: $subject\n", FILE_APPEND);
     }
