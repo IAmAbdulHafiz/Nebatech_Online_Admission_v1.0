@@ -54,6 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     $paymentResponse = json_decode($response, true);
+
     if (isset($paymentResponse['status']) && $paymentResponse['status'] === 'Success' 
         && isset($paymentResponse['data']['checkoutDirectUrl'])) {
 
@@ -74,12 +75,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // Redirect to your internal payment page instead of directly to the checkout URL
         header("Location: ../payment_form.php");
         exit();
-
     } else {
         $_SESSION['error_message'] = "Failed to initiate payment.";
         header("Location: ../admission_form.php");
         exit();
     }
+
 }
 
 // Payment Confirmation Section – executed when the payment gateway redirects back
