@@ -11,10 +11,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = $_POST['password'];
     $confirmPassword = $_POST['confirm-password'];
 
-    // Debug: Print received values
-    echo "Received Serial: $serial<br>";
-    echo "Received PIN: $pin<br>";
-
     // Validate serial number and PIN using the transactions table,
     // ensuring the transaction is completed and unused.
     $query = "SELECT * FROM transactions 
@@ -28,10 +24,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->execute();
     $transaction = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($transaction) {
-        echo "Serial and PIN found in transactions and are unused.<br>";
-    } else {
-        echo "Invalid Serial Number or PIN, or it has already been used.<br>";
+    if (!$transaction) {
+        // No valid transaction record found
+        header("Location: signup.php?error=Invalid+Serial+Number+or+PIN+or+already+used");
         exit();
     }
 
@@ -43,21 +38,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $serialUsed = $checkSerialStmt->fetch(PDO::FETCH_ASSOC);
 
     if ($serialUsed) {
-        echo "Serial Number is already used in registration.";
+        header("Location: signup.php?error=Serial+Number+is+already+used");
         exit();
     }
 
     // Check if the passwords match
     if ($password !== $confirmPassword) {
-        echo "Passwords do not match.";
+        header("Location: signup.php?error=Passwords+do+not+match");
         exit();
     }
 
     // Hash the password
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    // Save user details to the applicants table,
-    // setting is_used = 1 to indicate that this serial has been used.
+    // Insert user details into the applicants table, marking the serial as used
     $insertQuery = "INSERT INTO applicants (email, password, serial_number, pin, is_used) 
                     VALUES (:email, :password, :serial, :pin, 1)";
     $insertStmt = $conn->prepare($insertQuery);
@@ -76,6 +70,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $updateStmt->bindParam(':pin', $pin);
     $updateStmt->execute();
 
-    echo "Registration successful!";
+    // Redirect to login after successful registration
+    header("Location: login.php?msg=Registration+successful");
+    exit();
 }
 ?>

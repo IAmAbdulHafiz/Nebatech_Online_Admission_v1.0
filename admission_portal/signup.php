@@ -5,20 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nebatech Admission Portal - Sign Up</title>
   <style>
+    /* Your existing CSS styles */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-
     body {
       background: linear-gradient(135deg, #002060, #0056b3);
       color: #333;
       height: 100vh;
       line-height: 1.6;
     }
-
     .container-signup {
       max-width: 500px;
       margin: 7rem auto;
@@ -27,28 +26,21 @@
       border-radius: 15px;
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     }
-
     .header {
       text-align: center;
       margin-bottom: 2rem;
     }
-
     .header h1 {
       color: #1a73e8;
       margin-bottom: 0.5rem;
     }
-
     .header p {
       color: #666;
     }
-
-    /* Floating label container */
     .floating-label-group {
       position: relative;
       margin-bottom: 1.5rem;
     }
-
-    /* Style the input */
     .floating-label-group input {
       width: 100%;
       padding: 1rem 0.75rem 0.75rem;
@@ -57,13 +49,10 @@
       font-size: 1rem;
       transition: border-color 0.3s;
     }
-
     .floating-label-group input:focus {
       outline: none;
       border-color: #1a73e8;
     }
-
-    /* Position the label inside the input */
     .floating-label-group label {
       position: absolute;
       top: 0.75rem;
@@ -75,8 +64,6 @@
       transition: all 0.2s ease;
       pointer-events: none;
     }
-
-    /* When the input is focused or has text, move the label */
     .floating-label-group input:focus + label,
     .floating-label-group input:not(:placeholder-shown) + label {
       top: -0.5rem;
@@ -84,14 +71,12 @@
       font-size: 0.75rem;
       color: #1a73e8;
     }
-
     .error {
       color: #dc3545;
       font-size: 0.875rem;
       margin-top: 0.25rem;
       display: none;
     }
-
     button {
       background-color: #1a73e8;
       color: #fff;
@@ -103,12 +88,9 @@
       width: 100%;
       transition: background-color 0.3s;
     }
-
     button:hover {
       background-color: #1557b0;
     }
-
-    /* Add the required asterisk via CSS */
     .required::after {
       content: "*";
       color: #dc3545;
@@ -187,7 +169,7 @@
 
   <script>
     function validateForm(event) {
-      event.preventDefault();
+      // Remove the preventDefault() so that form can submit if valid.
       let isValid = true;
       
       // Reset errors
@@ -230,20 +212,14 @@
         isValid = false;
       }
 
-      // Check if Serial Number is already used
+      // Check if Serial Number is already used (you may remove this placeholder if backend check is sufficient)
       if (isSerialNumberUsed(serialNumber)) {
         showError('serialNumberError', 'Serial Number is already used');
         isValid = false;
       }
 
-      if (isValid) {
-        // Here you would typically submit the form to your backend
-        alert('Form submitted successfully!');
-        // Uncomment the line below to submit the form to a backend
-        // document.getElementById('signupForm').submit();
-      }
-
-      return false;
+      // If valid, allow the form to submit
+      return isValid;
     }
 
     function showError(elementId, message) {
@@ -253,9 +229,8 @@
     }
 
     function isSerialNumberUsed(serialNumber) {
-      // This is a placeholder function. Replace with actual logic to check if the serial number is already used.
-      // For example, you could make an AJAX request to your backend to check the serial number.
-      const usedSerialNumbers = ['1234567890', '0987654321']; // Example used serial numbers
+      // Placeholder logic: Remove this if you perform the check on the server side.
+      const usedSerialNumbers = ['123456789012345', '098765432109876']; // Example used serial numbers
       return usedSerialNumbers.includes(serialNumber);
     }
   </script>
