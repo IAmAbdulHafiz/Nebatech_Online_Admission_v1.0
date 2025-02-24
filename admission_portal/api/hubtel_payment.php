@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $customerName  = trim($_POST['customer_name']);
     $customerEmail = trim($_POST['customer_email']);
     $customerPhone = trim($_POST['customer_phone']);
-    $amount = 0.30; // For testing purposes. Change to the actual amount (e.g. 100) for production.
+    $amount = 0.30; // For testing; change to the actual amount in production.
     $clientReference = uniqid('NTSS_');
 
     // Insert a pending transaction record
@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         exit();
     }
 
-    // Save pending data in session (optional for further use)
+    // Save pending data in session for later use
     $_SESSION['pending_payment'] = [
         'customer_name'  => $customerName,
         'customer_email' => $customerEmail,
@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         'reference'      => $clientReference
     ];
 
-    // Prepare the request payload for Hubtel
+    // Prepare the payload for Hubtel
     $postData = [
         "totalAmount"           => $amount,
         "description"           => "NTSS Admission Form Payment",
@@ -87,7 +87,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $checkoutUrl = $paymentResponse['data']['checkoutDirectUrl'];
         $_SESSION['checkout_url'] = $checkoutUrl;
 
-        // Redirect to an internal payment page (if using an iframe) or directly to the checkout URL
+        // Redirect to an internal payment page (with an iframe) or directly to the checkout URL
         header("Location: ../payment_form.php");
         exit();
     } else {
@@ -98,12 +98,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 }
 
 // --- Payment Confirmation Section ---
-// This block is executed when Hubtel redirects back with a ?reference=... parameter.
-if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET['reference'])) {
-    $clientReference = $_GET['reference'];
-    
-    // (Optional) You can verify here if the reference exists in your database.
-    
+// Instead of relying on a GET parameter named "reference", we now use the pending session data.
+if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_SESSION['pending_payment'])) {
+    // Use the clientReference stored in session
+    $clientReference = $_SESSION['pending_payment']['reference'];
+
     // Generate Serial Number and PIN upon successful payment
     $serialNumber = generateSerialNumber();
     $pin = generatePin();
@@ -122,7 +121,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET['reference'])) {
         exit();
     }
 
-    // Retrieve customer details (if needed) from the updated record
+    // Retrieve customer details from the transaction record
     $stmt = $conn->prepare("SELECT customer_phone, customer_email FROM transactions WHERE reference = :reference");
     $stmt->execute(['reference' => $clientReference]);
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -133,6 +132,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET['reference'])) {
         sendEmail($customerEmail, "Your Admission Serial & PIN", "Serial: $serialNumber\nPIN: $pin\nApply at: https://nebatech.com/admission_portal/signup.php");
     }
 
+    // Clear the pending payment session data
     unset($_SESSION['pending_payment']);
     $_SESSION['success_message'] = "Payment successful! Serial number and PIN have been sent via SMS and Email.";
     header("Location: ../signup.php");
@@ -181,7 +181,7 @@ function sendSMS($phone, $message) {
 }
 
 function sendEmail($to, $subject, $body) {
-    $headers = "From: info@nebatech.com\r\nContent-Type: text/plain;";
+    $headers = "From: no-reply@nebatech.com\r\nContent-Type: text/plain;";
     if (!mail($to, $subject, $body, $headers)) {
         file_put_contents('email_log.txt', "Failed to send email to: $to\nSubject: $subject\n", FILE_APPEND);
     }
