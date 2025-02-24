@@ -1,5 +1,5 @@
 <?php
-include '../config/database.php'; // Include your database connection
+include 'config/database.php'; // Include your database connection
 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
