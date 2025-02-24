@@ -9,15 +9,17 @@ $apiPassword = getenv('HUBTEL_API_PASSWORD');
 $merchantAccountNumber = getenv('HUBTEL_MERCHANT_ACCOUNT_NUMBER');
 
 // Define URLs
-$callbackUrl = "https://admissions.nebatech.com/api/hubtel_callback.php";
-$returnUrl = "https://admissions.nebatech.com/admission_portal/signup.php";
+$callbackUrl = "https://admissions.nebatech.com/admission_portal/api/hubtel_callback.php";
+// IMPORTANT: Change the return URL so the payment confirmation block in this file is reached.
+$returnUrl = "https://admissions.nebatech.com/admission_portal/api/hubtel_payment.php";
 $cancellationUrl = "https://admissions.nebatech.com/admission_portal/admission_form.php";
 
+// --- Payment Initiation ---
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $customerName  = trim($_POST['customer_name']);
     $customerEmail = trim($_POST['customer_email']);
     $customerPhone = trim($_POST['customer_phone']);
-    $amount = 0.30; // Admission form fee: GH₵100
+    $amount = 0.30; // For testing (GH₵0.30). Change to 100 (or desired amount) for production.
     $clientReference = uniqid('NTSS_');
 
     $postData = [
@@ -69,10 +71,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         $checkoutUrl = $paymentResponse['data']['checkoutDirectUrl'];
 
-        // Save checkout URL to session so payment_form.php can load it in an iframe
+        // Save checkout URL to session so payment_form.php can load it in an iframe if needed
         $_SESSION['checkout_url'] = $checkoutUrl;
 
-        // Redirect to your internal payment page instead of directly to the checkout URL
+        // Redirect to your internal payment page (payment_form.php) so the user can complete the payment in an iframe
         header("Location: ../payment_form.php");
         exit();
     } else {
@@ -80,13 +82,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         header("Location: ../admission_form.php");
         exit();
     }
-
 }
 
-// Payment Confirmation Section – executed when the payment gateway redirects back
+// --- Payment Confirmation Section ---
+// This block is executed when the payment gateway returns with a ?reference=... parameter.
 if (!empty($_GET['reference']) && !empty($_SESSION['pending_payment'])) {
     $clientReference = $_GET['reference'];
-    // Verify that the session-stored reference matches the callback reference
+    // Verify that the session-stored reference matches the callback/reference parameter
     if ($_SESSION['pending_payment']['reference'] === $clientReference) {
         $customerName  = $_SESSION['pending_payment']['customer_name'];
         $customerEmail = $_SESSION['pending_payment']['customer_email'];
@@ -140,8 +142,7 @@ if (!empty($_GET['reference']) && !empty($_SESSION['pending_payment'])) {
     }
 }
 
-// Functions
-
+// --- Functions ---
 function generateSerialNumber() {
     global $conn;
     do {
@@ -187,7 +188,6 @@ function sendSMS($phone, $message) {
          file_put_contents('sms_log.txt', "SMS sent to: $phone, response: $response\n", FILE_APPEND);
     }
 }
-
 
 function sendEmail($to, $subject, $body) {
     $headers = "From: no-reply@nebatech.com\r\nContent-Type: text/plain;";
