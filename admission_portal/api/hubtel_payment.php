@@ -10,7 +10,7 @@ $merchantAccountNumber = getenv('HUBTEL_MERCHANT_ACCOUNT_NUMBER');
 
 // Define URLs
 $callbackUrl = "https://admissions.nebatech.com/api/hubtel_callback.php";
-$returnUrl = "https://admissions.nebatech.com/admission_portal/payment_form.php"; // Ensure this is correct
+$returnUrl = "https://admissions.nebatech.com/admission_portal/signup.php";
 $cancellationUrl = "https://admissions.nebatech.com/admission_portal/admission_form.php";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if ($error) {
         $_SESSION['error_message'] = "Payment gateway error: $error";
-        header("Location: ../admission_form.php");
+        header("Location: ../payment_form.php");
         exit();
     }
 
@@ -65,9 +65,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             'amount'         => $amount,
             'reference'      => $clientReference
         ];
+
         $checkoutUrl = $paymentResponse['data']['checkoutDirectUrl'];
-        header("Location: $checkoutUrl"); // Redirect to Hubtel payment page
+
+        // Save checkout URL to session so payment_form.php can load it in an iframe
+        $_SESSION['checkout_url'] = $checkoutUrl;
+
+        // Redirect to your internal payment page instead of directly to the checkout URL
+        header("Location: ../payment_form.php");
         exit();
+
     } else {
         $_SESSION['error_message'] = "Failed to initiate payment.";
         header("Location: ../admission_form.php");
