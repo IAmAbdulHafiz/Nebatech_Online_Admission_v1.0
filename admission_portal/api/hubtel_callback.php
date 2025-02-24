@@ -6,7 +6,7 @@ $data = json_decode($input, true);
 $logFile = 'callback_log.txt';
 $timestamp = date('Y-m-d H:i:s');
 
-// Log the received data for debugging
+// Log received callback data for debugging
 file_put_contents($logFile, "[$timestamp] Received data: " . print_r($data, true) . "\n", FILE_APPEND);
 
 if ($data && isset($data['ResponseCode']) && isset($data['Data']['ClientReference'])) {
@@ -20,12 +20,14 @@ if ($data && isset($data['ResponseCode']) && isset($data['Data']['ClientReferenc
     $finalStatus = ($status === "Success") ? "Completed" : (($status === "Cancelled") ? "Cancelled" : "Pending");
 
     try {
-        $query = "UPDATE transactions SET status = :status, amount = :amount, customer_phone = :customer_phone, payment_details = :payment_details WHERE reference = :reference";
+        // Update the transaction record if it exists
+        $query = "UPDATE transactions 
+                  SET status = :status, amount = :amount, customer_phone = :customer_phone, payment_details = :payment_details 
+                  WHERE reference = :reference";
         $stmt = $conn->prepare($query);
         $stmt->bindParam(':status', $finalStatus);
         $stmt->bindParam(':amount', $amount);
         $stmt->bindParam(':customer_phone', $customerPhoneNumber);
-        // Store payment details as JSON
         $paymentDetailsJson = json_encode($paymentDetails);
         $stmt->bindParam(':payment_details', $paymentDetailsJson);
         $stmt->bindParam(':reference', $clientReference);
@@ -37,7 +39,6 @@ if ($data && isset($data['ResponseCode']) && isset($data['Data']['ClientReferenc
     }
 }
 
-// Optionally return a simple response to acknowledge receipt
 header('Content-Type: application/json');
 echo json_encode(["status" => "ok"]);
 ?>

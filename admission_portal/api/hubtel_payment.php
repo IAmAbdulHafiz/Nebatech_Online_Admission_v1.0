@@ -8,10 +8,9 @@ $apiUsername = getenv('HUBTEL_API_USERNAME');
 $apiPassword = getenv('HUBTEL_API_PASSWORD');
 $merchantAccountNumber = getenv('HUBTEL_MERCHANT_ACCOUNT_NUMBER');
 
-// Define URLs
-$callbackUrl = "https://admissions.nebatech.com/admission_portal/api/hubtel_callback.php";
-// IMPORTANT: Change the return URL so the payment confirmation block in this file is reached.
-$returnUrl = "https://admissions.nebatech.com/admission_portal/api/hubtel_payment.php";
+// Define URLs – note: the return URL is set to this file for processing confirmation
+$callbackUrl = "https://admissions.nebatech.com/api/hubtel_callback.php";
+$returnUrl = "https://admissions.nebatech.com/admission_portal/hubtel_payment.php";
 $cancellationUrl = "https://admissions.nebatech.com/admission_portal/admission_form.php";
 
 // --- Payment Initiation ---
@@ -19,20 +18,46 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $customerName  = trim($_POST['customer_name']);
     $customerEmail = trim($_POST['customer_email']);
     $customerPhone = trim($_POST['customer_phone']);
-    $amount = 0.30; // For testing (GH₵0.30). Change to 100 (or desired amount) for production.
+    $amount = 0.30; // For testing purposes. Change to the actual amount (e.g. 100) for production.
     $clientReference = uniqid('NTSS_');
 
-    $postData = [
-        "totalAmount"             => $amount,
-        "description"             => "NTSS Admission Form Payment",
-        "callbackUrl"             => $callbackUrl,
-        "returnUrl"               => $returnUrl,
-        "cancellationUrl"         => $cancellationUrl,
-        "merchantAccountNumber"   => $merchantAccountNumber,
-        "clientReference"         => $clientReference
+    // Insert a pending transaction record
+    try {
+        $stmt = $conn->prepare("INSERT INTO transactions (customer_name, customer_email, customer_phone, amount, reference, status) VALUES (:customer_name, :customer_email, :customer_phone, :amount, :reference, 'Pending')");
+        $stmt->execute([
+            'customer_name'  => $customerName,
+            'customer_email' => $customerEmail,
+            'customer_phone' => $customerPhone,
+            'amount'         => $amount,
+            'reference'      => $clientReference
+        ]);
+    } catch (Exception $e) {
+        $_SESSION['error_message'] = "Database error: " . $e->getMessage();
+        header("Location: ../admission_form.php");
+        exit();
+    }
+
+    // Save pending data in session (optional for further use)
+    $_SESSION['pending_payment'] = [
+        'customer_name'  => $customerName,
+        'customer_email' => $customerEmail,
+        'customer_phone' => $customerPhone,
+        'amount'         => $amount,
+        'reference'      => $clientReference
     ];
 
-    // Initialize cURL for payment initiation
+    // Prepare the request payload for Hubtel
+    $postData = [
+        "totalAmount"           => $amount,
+        "description"           => "NTSS Admission Form Payment",
+        "callbackUrl"           => $callbackUrl,
+        "returnUrl"             => $returnUrl,
+        "cancellationUrl"       => $cancellationUrl,
+        "merchantAccountNumber" => $merchantAccountNumber,
+        "clientReference"       => $clientReference
+    ];
+
+    // Initiate payment via Hubtel API
     $ch = curl_init();
     curl_setopt_array($ch, [
         CURLOPT_URL            => 'https://payproxyapi.hubtel.com/items/initiate',
@@ -42,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         CURLOPT_HTTPHEADER     => [
             'Content-Type: application/json',
             'Authorization: Basic ' . base64_encode("$apiUsername:$apiPassword")
-        ],
+        ]
     ]);
 
     $response = curl_exec($ch);
@@ -56,25 +81,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     $paymentResponse = json_decode($response, true);
-
     if (isset($paymentResponse['status']) && $paymentResponse['status'] === 'Success' 
         && isset($paymentResponse['data']['checkoutDirectUrl'])) {
 
-        // Store customer data in session for use after payment confirmation
-        $_SESSION['pending_payment'] = [
-            'customer_name'  => $customerName,
-            'customer_email' => $customerEmail,
-            'customer_phone' => $customerPhone,
-            'amount'         => $amount,
-            'reference'      => $clientReference
-        ];
-
         $checkoutUrl = $paymentResponse['data']['checkoutDirectUrl'];
-
-        // Save checkout URL to session so payment_form.php can load it in an iframe if needed
         $_SESSION['checkout_url'] = $checkoutUrl;
 
-        // Redirect to your internal payment page (payment_form.php) so the user can complete the payment in an iframe
+        // Redirect to an internal payment page (if using an iframe) or directly to the checkout URL
         header("Location: ../payment_form.php");
         exit();
     } else {
@@ -85,61 +98,45 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 }
 
 // --- Payment Confirmation Section ---
-// This block is executed when the payment gateway returns with a ?reference=... parameter.
-if (!empty($_GET['reference']) && !empty($_SESSION['pending_payment'])) {
+// This block is executed when Hubtel redirects back with a ?reference=... parameter.
+if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET['reference'])) {
     $clientReference = $_GET['reference'];
-    // Verify that the session-stored reference matches the callback/reference parameter
-    if ($_SESSION['pending_payment']['reference'] === $clientReference) {
-        $customerName  = $_SESSION['pending_payment']['customer_name'];
-        $customerEmail = $_SESSION['pending_payment']['customer_email'];
-        $customerPhone = $_SESSION['pending_payment']['customer_phone'];
-        $amount        = $_SESSION['pending_payment']['amount'];
+    
+    // (Optional) You can verify here if the reference exists in your database.
+    
+    // Generate Serial Number and PIN upon successful payment
+    $serialNumber = generateSerialNumber();
+    $pin = generatePin();
 
-        // Generate Serial Number and PIN
-        $serialNumber = generateSerialNumber();
-        $pin = generatePin();
-
-        // Save Serial & PIN and transaction details in the database after successful payment
-        try {
-            $conn->beginTransaction();
-            $stmt = $conn->prepare("INSERT INTO serial_pins (serial_number, pin, used) VALUES (:serial_number, :pin, 0)");
-            $stmt->execute(['serial_number' => $serialNumber, 'pin' => $pin]);
-
-            $stmt = $conn->prepare("INSERT INTO transactions 
-                (customer_name, customer_email, customer_phone, amount, reference, status, serial_number, pin) 
-                VALUES (:customer_name, :customer_email, :customer_phone, :amount, :reference, 'Completed', :serial_number, :pin)");
-            $stmt->execute([
-                'customer_name'  => $customerName,
-                'customer_email' => $customerEmail,
-                'customer_phone' => $customerPhone,
-                'amount'         => $amount,
-                'reference'      => $clientReference,
-                'serial_number'  => $serialNumber,
-                'pin'            => $pin
-            ]);
-            $conn->commit();
-        } catch (Exception $e) {
-            $conn->rollBack();
-            $_SESSION['error_message'] = "Database error: " . $e->getMessage();
-            header("Location: ../payment_form.php");
-            exit();
-        }
-
-        // Send SMS & Email with the Serial Number and PIN
-        sendSMS($customerPhone, "Your Serial: $serialNumber, PIN: $pin. Apply at https://nebatech.com/admission_portal/signup.php");
-        sendEmail($customerEmail, "Your Admission Serial & PIN", "Serial: $serialNumber\nPIN: $pin\nApply at: https://nebatech.com/admission_portal/signup.php");
-
-        // Clear the pending payment session data
-        unset($_SESSION['pending_payment']);
-
-        $_SESSION['success_message'] = "Payment successful! Serial number and PIN have been sent via SMS and Email.";
-        header("Location: ../signup.php");
-        exit();
-    } else {
-        $_SESSION['error_message'] = "Payment reference mismatch.";
+    // Update the existing transaction record to "Completed" and store the serial & PIN
+    try {
+        $stmt = $conn->prepare("UPDATE transactions SET status = 'Completed', serial_number = :serial_number, pin = :pin WHERE reference = :reference");
+        $stmt->execute([
+            'serial_number' => $serialNumber,
+            'pin'           => $pin,
+            'reference'     => $clientReference
+        ]);
+    } catch (Exception $e) {
+        $_SESSION['error_message'] = "Database update error: " . $e->getMessage();
         header("Location: ../payment_form.php");
         exit();
     }
+
+    // Retrieve customer details (if needed) from the updated record
+    $stmt = $conn->prepare("SELECT customer_phone, customer_email FROM transactions WHERE reference = :reference");
+    $stmt->execute(['reference' => $clientReference]);
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    if ($row) {
+        $customerPhone = $row['customer_phone'];
+        $customerEmail = $row['customer_email'];
+        sendSMS($customerPhone, "Your Serial: $serialNumber, PIN: $pin. Apply at https://nebatech.com/admission_portal/signup.php");
+        sendEmail($customerEmail, "Your Admission Serial & PIN", "Serial: $serialNumber\nPIN: $pin\nApply at: https://nebatech.com/admission_portal/signup.php");
+    }
+
+    unset($_SESSION['pending_payment']);
+    $_SESSION['success_message'] = "Payment successful! Serial number and PIN have been sent via SMS and Email.";
+    header("Location: ../signup.php");
+    exit();
 }
 
 // --- Functions ---
@@ -158,14 +155,10 @@ function generatePin() {
 }
 
 function sendSMS($phone, $message) {
-    // Your Hubtel SMS API credentials
     $clientSecret = 'jjdblnjg';
     $clientId = 'oxknnhfm';
     $from = 'Nebatech';
-    
-    // Construct the API URL with dynamic phone number and message content
     $apiUrl = "https://sms.hubtel.com/v1/messages/send?clientsecret={$clientSecret}&clientid={$clientId}&from={$from}&to={$phone}&content=" . urlencode($message);
-    
     $ch = curl_init();
     curl_setopt_array($ch, [
          CURLOPT_URL            => $apiUrl,
@@ -175,13 +168,11 @@ function sendSMS($phone, $message) {
          CURLOPT_TIMEOUT        => 0,
          CURLOPT_FOLLOWLOCATION => true,
          CURLOPT_HTTP_VERSION   => CURL_HTTP_VERSION_1_1,
-         CURLOPT_CUSTOMREQUEST  => 'GET',
+         CURLOPT_CUSTOMREQUEST  => 'GET'
     ]);
-    
     $response = curl_exec($ch);
     $error = curl_error($ch);
     curl_close($ch);
-    
     if ($error) {
          file_put_contents('sms_error_log.txt', "Error sending SMS to: $phone, error: $error\n", FILE_APPEND);
     } else {

@@ -2,7 +2,6 @@
 include("../config/database.php");
 include("config.php"); // Load environment variables
 
-// Use environment variables for API credentials
 $apiUsername = getenv('HUBTEL_API_USERNAME');
 $apiPassword = getenv('HUBTEL_API_PASSWORD');
 $posSalesId = getenv('HUBTEL_MERCHANT_ACCOUNT_NUMBER');
@@ -10,7 +9,7 @@ $posSalesId = getenv('HUBTEL_MERCHANT_ACCOUNT_NUMBER');
 $logFile = 'status_check_log.txt';
 $timestamp = date('Y-m-d H:i:s');
 
-// Fetch pending transactions
+// Fetch transactions with status 'Pending'
 $query = "SELECT reference FROM transactions WHERE status = 'Pending'";
 $stmt = $conn->prepare($query);
 $stmt->execute();
