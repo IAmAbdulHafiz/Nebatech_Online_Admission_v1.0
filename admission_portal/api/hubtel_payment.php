@@ -9,8 +9,8 @@ $apiPassword = getenv('HUBTEL_API_PASSWORD');
 $merchantAccountNumber = getenv('HUBTEL_MERCHANT_ACCOUNT_NUMBER');
 
 // Define URLs – note: the return URL is set to this file for processing confirmation
-$callbackUrl = "https://admissions.nebatech.com/api/hubtel_callback.php";
-$returnUrl = "https://admissions.nebatech.com/admission_portal/hubtel_payment.php";
+$callbackUrl = "https://admissions.nebatech.com/admission_portal/api/hubtel_callback.php";
+$returnUrl = "https://admissions.nebatech.com/admission_portal/api/hubtel_payment.php";
 $cancellationUrl = "https://admissions.nebatech.com/admission_portal/admission_form.php";
 
 // --- Payment Initiation ---
