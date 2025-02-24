@@ -10,8 +10,8 @@ $merchantAccountNumber = getenv('HUBTEL_MERCHANT_ACCOUNT_NUMBER');
 
 // Define URLs
 $callbackUrl = "https://admissions.nebatech.com/api/hubtel_callback.php";
-$returnUrl = "https://admissions.nebatech.com/admission_portal/payment_success.php";
-$cancellationUrl = "https://admissions.nebatech.com/payment_failed.php";
+$returnUrl = "https://admissions.nebatech.com/admission_portal/signup.ph";
+$cancellationUrl = "https://admissions.nebatech.com/admission_portal/admission_form.php";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $customerName  = trim($_POST['customer_name']);
@@ -70,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         exit();
     } else {
         $_SESSION['error_message'] = "Failed to initiate payment.";
-        header("Location: ../public/payment_form.php");
+        header("Location: ../admission_form.php");
         exit();
     }
 }
