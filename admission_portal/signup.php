@@ -124,7 +124,7 @@
       <p>Create your account to begin the application process</p>
     </div>
 
-    <form id="signupForm" action="applicant/validate_serial_pin.php" method="POST" onsubmit="return validateForm(event)">
+    <form id="signupForm" action="validate_serial_pin.php" method="POST" onsubmit="return validateForm(event)">
         <div class="form-group">
           <div class="floating-label-group">
             <input type="text" id="serialNumber" name="serial" placeholder=" " required>
