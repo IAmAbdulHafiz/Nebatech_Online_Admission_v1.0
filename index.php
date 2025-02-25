@@ -144,7 +144,7 @@
             <div class="container">
                 <h1 class="hero-text" id="typed-text"></h1>
                 <p class="text-light mb-4 fs-5">Empowering businesses and individuals with cutting-edge technology solutions.</p>
-                <a href="request-quote.php" class="quote-btn" data-aos="fade-up">Request a Quote</a>
+                <a href="public/request-quote.php" class="quote-btn" data-aos="fade-up">Request a Quote</a>
             </div>
         </section>
 
