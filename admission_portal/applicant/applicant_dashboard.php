@@ -15,10 +15,13 @@ $applicant = $_SESSION['applicant'];
 // Include database connection
 include('../config/database.php');
 
-// Fetch the current application status from the database
-$stmt = $conn->prepare("SELECT application_status FROM applications WHERE user_id = ?");
-$stmt->execute([$applicant['id']]);
-$applicationStatus = $stmt->fetchColumn();
+// Set a default application status.
+// Alternatively, if your applicants table has an application_status column, use that.
+// Example:
+// $stmt = $conn->prepare("SELECT application_status FROM applicants WHERE id = ?");
+// $stmt->execute([$applicant['id']]);
+// $applicationStatus = $stmt->fetchColumn();
+$applicationStatus = 'Not Started';
 
 // Fetch notifications from the database
 $stmt = $conn->prepare("SELECT * FROM notifications WHERE user_id = ? AND is_read = 0 ORDER BY created_at DESC");
@@ -104,7 +107,7 @@ $unreadCount = count($notifications);
                         </div>
                     </div>
                 </div>
-                <p>Status: <strong><?= htmlspecialchars($applicationStatus ?? 'Not Started') ?></strong></p>
+                <p>Status: <strong><?= htmlspecialchars($applicationStatus) ?></strong></p>
                 <?php if ($applicationStatus === 'Not Started'): ?>
                     <a href="personal_info.php" class="btn btn-primary">Start Application</a>
                 <?php endif; ?>
@@ -158,7 +161,7 @@ $unreadCount = count($notifications);
                             <p class="card-text">You have <?= $unreadCount ?> new updates regarding your application process.</p>
                             <a href="notifications.php" class="btn btn-warning">View All</a>
                             <?php if ($unreadCount > 0): ?>
-                                <span class="notification-badge"><?= $unreadCount ?></span> <!-- Notification badge -->
+                                <span class="notification-badge"><?= $unreadCount ?></span>
                             <?php endif; ?>
                         </div>
                     </div>
