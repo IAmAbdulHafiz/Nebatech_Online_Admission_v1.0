@@ -4,7 +4,8 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 session_start();
-include("../admission/config/database.php");
+include __DIR__ . "/../config/database.php";
+
 include("config.php"); // Load environment variables
 
 // Use environment variables for API credentials
