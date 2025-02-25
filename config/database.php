@@ -1,9 +1,19 @@
 <?php
+require __DIR__ . '/../vendor/autoload.php'; // Ensure Composer autoload is loaded
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
+$dotenv->load();
+
 // Database configuration
-$host = "localhost";
-$db_name = "u948335622_nebatech";
-$username = "u948335622_nebatech";
-$password = "imAbdulHafiz@122996";
+
+$host = getenv('DB_HOST');
+$db_name = getenv('DB_NAME');
+$username = getenv('DB_USERNAME');
+$password = getenv('DB_PASSWORD');
+
+//$db_name = "u948335622_nebatech";
+//$username = "u948335622_nebatech";
+//$password = "imAbdulHafiz@122996";
 
 try {
     $conn = new PDO("mysql:host=$host;dbname=$db_name", $username, $password);
