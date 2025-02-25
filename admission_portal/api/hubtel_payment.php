@@ -1,5 +1,12 @@
 <?php
 session_start();
+
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+
 include("../config/database.php");
 include("config.php"); // Load environment variables
 
@@ -97,48 +104,43 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 
-// --- Payment Confirmation Section ---
-// Payment Confirmation Section – executed when the payment gateway redirects back
+// Payment Confirmation Section
 if ($_SERVER["REQUEST_METHOD"] === "GET" 
     && (!empty($_GET['reference']) || !empty($_GET['checkoutid']))
     && !empty($_SESSION['pending_payment'])) {
 
-    // Use the clientReference stored in session
     $clientReference = $_SESSION['pending_payment']['reference'];
 
-    // Generate Serial Number and PIN
+    // Debug: output clientReference
+    error_log("Processing payment confirmation for reference: " . $clientReference);
+
     $serialNumber = generateSerialNumber();
     $pin = generatePin();
 
-    // Save Serial & PIN and transaction details in the database after successful payment
     try {
         $conn->beginTransaction();
-        // Insert serial number and PIN into serial_pins table
+        error_log("Inserting into serial_pins: Serial=$serialNumber, PIN=$pin");
         $stmt = $conn->prepare("INSERT INTO serial_pins (serial_number, pin, used) VALUES (:serial_number, :pin, 0)");
         $stmt->execute(['serial_number' => $serialNumber, 'pin' => $pin]);
 
-        // Insert a new record into the transactions table with the generated serial and PIN
-        $stmt = $conn->prepare("INSERT INTO transactions 
-            (customer_name, customer_email, customer_phone, amount, reference, status, serial_number, pin) 
-            VALUES (:customer_name, :customer_email, :customer_phone, :amount, :reference, 'Completed', :serial_number, :pin)");
+        error_log("Updating transaction for reference: " . $clientReference);
+        $stmt = $conn->prepare("UPDATE transactions 
+                                SET serial_number = :serial_number, pin = :pin, status = 'Completed'
+                                WHERE reference = :reference");
         $stmt->execute([
-            'customer_name'  => $_SESSION['pending_payment']['customer_name'],
-            'customer_email' => $_SESSION['pending_payment']['customer_email'],
-            'customer_phone' => $_SESSION['pending_payment']['customer_phone'],
-            'amount'         => $_SESSION['pending_payment']['amount'],
-            'reference'      => $clientReference,
-            'serial_number'  => $serialNumber,
-            'pin'            => $pin
+            'serial_number' => $serialNumber,
+            'pin'           => $pin,
+            'reference'     => $clientReference
         ]);
         $conn->commit();
     } catch (Exception $e) {
         $conn->rollBack();
+        error_log("Database error in GET branch: " . $e->getMessage());
         $_SESSION['error_message'] = "Database error: " . $e->getMessage();
         header("Location: ../payment_form.php");
         exit();
     }
 
-    // Retrieve customer details (if needed) from the transaction record
     $stmt = $conn->prepare("SELECT customer_phone, customer_email FROM transactions WHERE reference = :reference");
     $stmt->execute(['reference' => $clientReference]);
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -152,7 +154,6 @@ if ($_SERVER["REQUEST_METHOD"] === "GET"
     header("Location: ../signup.php");
     exit();
 }
-
 
 // --- Functions ---
 function generateSerialNumber() {
