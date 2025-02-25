@@ -1,8 +1,5 @@
 <?php
-require __DIR__ . '/../vendor/autoload.php'; // Ensure Composer autoload is loaded
-
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
-$dotenv->load();
+include 'config/config.php';
 
 // Database configuration
 
