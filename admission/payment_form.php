@@ -67,7 +67,7 @@ $checkoutUrl = htmlspecialchars($_SESSION['checkout_url']);
 <body>
 
     <!-- Include Header -->
-    <?php include("includes/header.php"); ?>
+    <?php include("includes/header_form_payment.php"); ?>
 
     <div class="payment-container">
         <div class="payment-card">
