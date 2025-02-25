@@ -1,5 +1,5 @@
 <?php
-include("../admission/api/config.php"); // Load environment variables
+include("../api/config.php"); // Load environment variables
 
 // Database configuration
 $host = getenv('DB_HOST');
