@@ -25,9 +25,9 @@
       background-color: #fff;
       border-radius: 15px;
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
     }
     .header {
-      text-align: center;
       margin-bottom: 2rem;
     }
     .header h1 {
@@ -40,6 +40,7 @@
     .floating-label-group {
       position: relative;
       margin-bottom: 1.5rem;
+      text-align: left;
     }
     .floating-label-group input {
       width: 100%;
@@ -76,6 +77,7 @@
       font-size: 0.875rem;
       margin-top: 0.25rem;
       display: none;
+      text-align: left;
     }
     button {
       background-color: #1a73e8;
@@ -96,85 +98,114 @@
       color: #dc3545;
       margin-left: 4px;
     }
+    /* Success message styling */
+    .success-message {
+      padding: 2rem;
+    }
+    .success-message h1 {
+      color: #28a745;
+      margin-bottom: 1rem;
+    }
+    .success-message p {
+      margin-bottom: 1rem;
+    }
   </style>
+  <?php
+  // If a success message is set in the GET parameters, add JavaScript for auto-redirect.
+  if (isset($_GET['msg'])) {
+      echo '<script>
+              setTimeout(function(){
+                window.location.href = "login.php";
+              }, 5000);
+            </script>';
+  }
+  ?>
 </head>
 <body>
   <?php include("includes/header.php"); ?>
   <div class="container-signup">
-    <div class="header">
-      <h1>Register</h1>
-      <p>Create your account to begin the application process</p>
-    </div>
-
-    <form id="signupForm" action="validate_serial_pin.php" method="POST" onsubmit="return validateForm(event)">
-        <div class="form-group">
-          <div class="floating-label-group">
-            <input type="text" id="serialNumber" name="serial" placeholder=" " required>
-            <label for="serialNumber" class="required">Serial Number</label>
-          </div>
-          <div class="error" id="serialNumberError"></div>
-        </div>
-
-        <div class="form-group">
-          <div class="floating-label-group">
-            <input type="text" id="pin" name="pin" placeholder=" " required>
-            <label for="pin" class="required">PIN</label>
-          </div>
-          <div class="error" id="pinError"></div>
-        </div>
-
-        <div class="form-group">
-          <div class="floating-label-group">
-            <input type="text" id="firstName" name="firstName" placeholder=" " required>
-            <label for="firstName" class="required">First Name</label>
-          </div>
-          <div class="error" id="firstNameError"></div>
-        </div>
-
-        <div class="form-group">
-          <div class="floating-label-group">
-            <input type="text" id="surname" name="surname" placeholder=" " required>
-            <label for="surname" class="required">Surname</label>
-          </div>
-          <div class="error" id="surnameError"></div>
-        </div>
-
-      <div class="form-group">
-        <div class="floating-label-group">
-          <input type="email" id="email" name="email" placeholder=" " required>
-          <label for="email" class="required">Email Address</label>
-        </div>
-        <div class="error" id="emailError"></div>
+    <?php if (isset($_GET['msg'])): ?>
+      <!-- Display success message and auto-redirect -->
+      <div class="success-message">
+        <h1>Registration Successful!</h1>
+        <p><?php echo htmlspecialchars($_GET['msg']); ?></p>
+        <p>You will be redirected to the login page shortly.</p>
       </div>
-
-        <div class="form-group">
-          <div class="floating-label-group">
-            <input type="password" id="password" name="password" placeholder=" " required>
-            <label for="password" class="required">Password</label>
+    <?php else: ?>
+      <!-- Registration form -->
+      <div class="header">
+        <h1>Register</h1>
+        <p>Create your account to begin the application process</p>
+      </div>
+      <form id="signupForm" action="validate_serial_pin.php" method="POST" onsubmit="return validateForm(event)">
+          <div class="form-group">
+            <div class="floating-label-group">
+              <input type="text" id="serialNumber" name="serial" placeholder=" " required>
+              <label for="serialNumber" class="required">Serial Number</label>
+            </div>
+            <div class="error" id="serialNumberError"></div>
           </div>
-          <div class="error" id="passwordError"></div>
-        </div>
 
-        <div class="form-group">
-          <div class="floating-label-group">
-            <input type="password" id="confirmPassword" name="confirm-password" placeholder=" " required>
-            <label for="confirmPassword" class="required">Confirm Password</label>
+          <div class="form-group">
+            <div class="floating-label-group">
+              <input type="text" id="pin" name="pin" placeholder=" " required>
+              <label for="pin" class="required">PIN</label>
+            </div>
+            <div class="error" id="pinError"></div>
           </div>
-          <div class="error" id="confirmPasswordError"></div>
-        </div>
 
-      <button type="submit">Create Account</button>
-    </form>
+          <div class="form-group">
+            <div class="floating-label-group">
+              <input type="text" id="firstName" name="firstName" placeholder=" " required>
+              <label for="firstName" class="required">First Name</label>
+            </div>
+            <div class="error" id="firstNameError"></div>
+          </div>
+
+          <div class="form-group">
+            <div class="floating-label-group">
+              <input type="text" id="surname" name="surname" placeholder=" " required>
+              <label for="surname" class="required">Surname</label>
+            </div>
+            <div class="error" id="surnameError"></div>
+          </div>
+
+          <div class="form-group">
+            <div class="floating-label-group">
+              <input type="email" id="email" name="email" placeholder=" " required>
+              <label for="email" class="required">Email Address</label>
+            </div>
+            <div class="error" id="emailError"></div>
+          </div>
+
+          <div class="form-group">
+            <div class="floating-label-group">
+              <input type="password" id="password" name="password" placeholder=" " required>
+              <label for="password" class="required">Password</label>
+            </div>
+            <div class="error" id="passwordError"></div>
+          </div>
+
+          <div class="form-group">
+            <div class="floating-label-group">
+              <input type="password" id="confirmPassword" name="confirm-password" placeholder=" " required>
+              <label for="confirmPassword" class="required">Confirm Password</label>
+            </div>
+            <div class="error" id="confirmPasswordError"></div>
+          </div>
+
+        <button type="submit">Create Account</button>
+      </form>
+    <?php endif; ?>
   </div>
 
   <script>
     function validateForm(event) {
-      // Remove the preventDefault() so that form can submit if valid.
-      let isValid = true;
-      
       // Reset errors
       const errors = document.querySelectorAll('.error');
       errors.forEach(error => error.style.display = 'none');
+
+      let isValid = true;
 
       // Validate Serial Number
       const serialNumber = document.getElementById('serialNumber').value;
@@ -201,25 +232,16 @@
       // Validate Password
       const password = document.getElementById('password').value;
       const confirmPassword = document.getElementById('confirmPassword').value;
-      
       if (password.length < 8) {
         showError('passwordError', 'Password must be at least 8 characters long');
         isValid = false;
       }
-
       if (password !== confirmPassword) {
         showError('confirmPasswordError', 'Passwords do not match');
         isValid = false;
       }
 
-      // Check if Serial Number is already used (you may remove this placeholder if backend check is sufficient)
-      if (isSerialNumberUsed(serialNumber)) {
-        showError('serialNumberError', 'Serial Number is already used');
-        isValid = false;
-      }
-
-      // If valid, allow the form to submit
-      return isValid;
+      return isValid; // if isValid is true, form will submit normally
     }
 
     function showError(elementId, message) {
@@ -229,8 +251,8 @@
     }
 
     function isSerialNumberUsed(serialNumber) {
-      // Placeholder logic: Remove this if you perform the check on the server side.
-      const usedSerialNumbers = ['123456789012345', '098765432109876']; // Example used serial numbers
+      // Placeholder function: remove if you perform the check on the server side.
+      const usedSerialNumbers = ['123456789012345', '098765432109876'];
       return usedSerialNumbers.includes(serialNumber);
     }
   </script>
