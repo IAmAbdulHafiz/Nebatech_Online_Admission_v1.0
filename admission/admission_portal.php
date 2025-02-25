@@ -16,7 +16,7 @@
     <style>
         :root {
             --primary-color: #002060;
-            --secondary-color: #FFA500;;
+            --secondary-color: #FFA500;
             --text-color: #333;
             --light-bg: #f8f9fa;
         }
@@ -49,10 +49,10 @@
         }
 
         .welcome-btn {
-            background-color: white;
+            background-color: var(--secondary-color);
             color: var(--primary-color);
-            padding: 1rem 2.5rem;
-            border-radius: 15px;
+            padding: 0.7rem 2.5rem;
+            border-radius: 0.5rem;
             font-weight: 600;
             transition: all 0.3s ease;
         }
@@ -60,7 +60,7 @@
         .welcome-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-            background-color: var(--secondary-color);
+            background-color: #fff;
             color: #002060;
         }
 
@@ -270,7 +270,7 @@
             <div class="student-handbook text-center" data-aos="fade-up">
                 <h3 class="mb-4">Student Handbook</h3>
                 <p class="lead mb-4">For more information on our programs, admission requirements, and policies, please download our Student Handbook.</p>
-                <a href="downloads/student_handbook.pdf" class="btn download-btn">
+                <a href="../downloads/student_handbook.pdf" class="btn download-btn">
                     <i class="fas fa-file-pdf me-2"></i> Download Student Handbook
                 </a>
             </div>
@@ -283,32 +283,13 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Typed.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script>
         // Initialize AOS
         AOS.init({
             duration: 1000,
             once: true
-        });
-
-        // Initialize Typed.js
-        new Typed("#typed-text", {
-            strings: [
-                "Welcome to Nebatech Admission Portal",
-                "Mobile and Web Application Development",
-                "e-Commerce Development",
-                "POS System Development",
-                "Website Design and Development",
-                "Networking Installation & Troubleshooting",
-                "CCTV Camera Installation",
-                "iPhone and Laptop Repairs",
-                "Competency-Based IT Training Programs"
-            ],
-            typeSpeed: 100,
-            backSpeed: 25,
-            startDelay: 500,
-            backDelay: 1500,
-            loop: true,
-            showCursor: true
         });
 
         // Smooth scroll for anchor links
@@ -319,6 +300,29 @@
                     behavior: 'smooth'
                 });
             });
+        });
+
+        // Initialize Typed.js
+        new Typed("#typed-text", {
+            strings: [
+                "Welcome to Nebatech Admission Portal",
+                "Introduction to Artificial Intelligence",
+                "Basic AI in Machine Learning",
+                "Front-End Development",
+                "Back-End Development",
+                "Database Management & Administration",
+                "Cybersecurity & Ethical Hacking",
+                "Microsoft Office Suite Mastery",
+                "Video Editing & Production",
+                "Graphic Design & Digital Art",
+                "Digital Literacy & Online Safety",
+            ],
+            typeSpeed: 100,
+            backSpeed: 25,
+            startDelay: 500,
+            backDelay: 1500,
+            loop: true,
+            showCursor: true
         });
     </script>
 </body>
