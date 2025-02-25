@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("../config/database.php");
+include(__DIR__ . "/../config/database.php");
 include("config.php"); // Load environment variables
 
 // Use environment variables for API credentials
