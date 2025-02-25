@@ -16,122 +16,9 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <style>
-        :root {
-            --primary-color: #002060;
-            --secondary-color: #FFA500;
-            --text-light: #ffffff;
-            --text-dark: #333333;
-            --transition: all 0.3s ease-in-out;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #F5F5F5;
-        }
-
-        .hero-section {
-            height: 100vh;
-            background-image: linear-gradient(rgba(0, 32, 96, 0.8), rgba(0, 32, 96, 0.8)), url('assets/images/bg1.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 7rem 0;
-        }
-
-        .hero-text {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            color: var(--secondary-color);
-            margin-bottom: 1.5rem;
-        }
-
-        .feature-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 1rem;
-            padding: 2rem;
-            transition: var(--transition);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .nav-card {
-            background: white;
-            border-radius: 1rem;
-            transition: var(--transition);
-            overflow: hidden;
-            border: none;
-        }
-
-        .nav-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .icon-wrapper {
-            width: 60px;
-            height: 60px;
-            background: var(--primary-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            transition: var(--transition);
-        }
-
-        .nav-card:hover .icon-wrapper {
-            background: var(--secondary-color);
-        }
-
-        .quote-btn {
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 2rem;
-            text-decoration: none;
-            transition: var(--transition);
-            border: none;
-            font-weight: 600;
-        }
-
-        .quote-btn:hover {
-            background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
-            transform: scale(1.05);
-            color: white;
-        }
-
-        .why-choose-section {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            border-radius: 2rem;
-            padding: 4rem 2rem;
-            margin: 4rem 4rem;
-            text-align: center;
-        }
-
-        @media (max-width: 768px) {
-            .hero-section {
-                height: 70vh;
-                padding: 3rem 0;
-            }
-            .why-choose-section{
-                margin: 2rem 1rem;
-            }
-            .feature-card {
-                margin-bottom: 1rem;
-            }
-        }
-    </style>
 </head>
 <body>
     <!-- Header will be included here -->
@@ -142,8 +29,9 @@
         <!-- Hero Section -->
         <section class="hero-section">
             <div class="container">
-                <h1 class="hero-text" id="typed-text"></h1>
+                <h1 class="hero-text" data-aos="fade-up" id="typed-text"></h1>
                 <p class="text-light mb-4 fs-5">Empowering businesses and individuals with cutting-edge technology solutions.</p>
+                <br><br>
                 <a href="public/request-quote.php" class="quote-btn" data-aos="fade-up">Request a Quote</a>
             </div>
         </section>
@@ -188,7 +76,7 @@
             <h2 class="text-center mb-5" style="color: var(--primary-color);">Explore Our Solutions</h2>
             <div class="row g-4">
                 <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
-                    <a href="programmes.php" class="text-decoration-none">
+                    <a href="public/programmes.php" class="text-decoration-none">
                         <div class="nav-card p-4 d-flex align-items-center">
                             <div class="icon-wrapper me-3">
                                 <i class="fas fa-chalkboard-teacher"></i>
@@ -203,7 +91,7 @@
                 </div>
 
                 <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <a href="services.php" class="text-decoration-none">
+                    <a href="public/services.php" class="text-decoration-none">
                         <div class="nav-card p-4 d-flex align-items-center">
                             <div class="icon-wrapper me-3">
                                 <i class="fas fa-cogs"></i>
@@ -218,7 +106,7 @@
                 </div>
 
                 <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
-                    <a href="projects.php" class="text-decoration-none">
+                    <a href="public/projects.php" class="text-decoration-none">
                         <div class="nav-card p-4 d-flex align-items-center">
                             <div class="icon-wrapper me-3">
                                 <i class="fas fa-project-diagram"></i>
@@ -233,7 +121,7 @@
                 </div>
 
                 <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
-                    <a href="contact.php" class="text-decoration-none">
+                    <a href="public/contact.php" class="text-decoration-none">
                         <div class="nav-card p-4 d-flex align-items-center">
                             <div class="icon-wrapper me-3">
                                 <i class="fas fa-envelope"></i>

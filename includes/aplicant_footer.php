@@ -3,14 +3,17 @@
         <div class="row align-items-center">
             <!-- Social Media Links -->
             <div class="col-12 col-md-3 text-center text-md-start mb-2 mb-md-0">
-                <a href="https://facebook.com" target="_blank" style="text-decoration: none; color: white; margin-right: 15px;">
+                <a href="https://web.facebook.com/nebatechsoftware" target="_blank" style="text-decoration: none; color: white; margin-right: 15px;">
                     <i class="fab fa-facebook"></i>
                 </a>
-                <a href="https://twitter.com" target="_blank" style="text-decoration: none; color: white; margin-right: 15px;">
+                <a href="https://twitter.com/nebatechSS" target="_blank" style="text-decoration: none; color: white; margin-right: 15px;">
                     <i class="fab fa-twitter"></i>
                 </a>
-                <a href="https://linkedin.com" target="_blank" style="text-decoration: none; color: white;">
+                <a href="https://www.linkedin.com/company/nebatech/" target="_blank" style="text-decoration: none; color: white;">
                     <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://www.instagram.com/nebatechsoftwaresolution/" target="_blank" style="text-decoration: none; color: white;">
+                    <i class="fab fa-instagram"></i>
                 </a>
             </div>
 

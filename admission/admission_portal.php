@@ -16,7 +16,7 @@
     <style>
         :root {
             --primary-color: #002060;
-            --secondary-color: #0056b3;
+            --secondary-color: #FFA500;;
             --text-color: #333;
             --light-bg: #f8f9fa;
         }
@@ -32,7 +32,7 @@
             position: relative;
             height: 100vh;
             background: linear-gradient(rgba(0, 32, 96, 0.8), rgba(0, 32, 96, 0.9)),
-                        url('assets/images/welcome2.JPG') center/cover no-repeat;
+                        url('../assets/images/welcome2.JPG') center/cover no-repeat;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -42,10 +42,10 @@
         }
 
         .welcome-text {
-            font-size: clamp(2rem, 5vw, 4rem);
+            padding-top: 100px;
+            font-size: 4.5em;
             font-weight: 700;
-            margin-bottom: 1.5rem;
-            animation: fadeInUp 1s ease-out;
+            margin-bottom: 20px;
         }
 
         .welcome-btn {
@@ -60,8 +60,8 @@
         .welcome-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-            background-color: var(--primary-color);
-            color: white;
+            background-color: var(--secondary-color);
+            color: #002060;
         }
 
         /* Welcome Message */
@@ -69,7 +69,6 @@
             padding: 5rem 0;
             background-color: var(--light-bg);
         }
-
         /* Cards */
         .card {
             border: none;
@@ -157,7 +156,7 @@
     <!-- Hero Section -->
     <section class="welcome-section">
         <div class="container">
-            <h1 class="welcome-text" data-aos="fade-up">Welcome to Nebatech Admission Portal</h1>
+            <h1 class="welcome-text" data-aos="fade-up" id="typed-text"></h1>
             <p class="lead mb-4" data-aos="fade-up" data-aos-delay="200">
                 Where technology meets innovation and learning fosters transformation.
             </p>
@@ -289,6 +288,27 @@
         AOS.init({
             duration: 1000,
             once: true
+        });
+
+        // Initialize Typed.js
+        new Typed("#typed-text", {
+            strings: [
+                "Welcome to Nebatech Admission Portal",
+                "Mobile and Web Application Development",
+                "e-Commerce Development",
+                "POS System Development",
+                "Website Design and Development",
+                "Networking Installation & Troubleshooting",
+                "CCTV Camera Installation",
+                "iPhone and Laptop Repairs",
+                "Competency-Based IT Training Programs"
+            ],
+            typeSpeed: 100,
+            backSpeed: 25,
+            startDelay: 500,
+            backDelay: 1500,
+            loop: true,
+            showCursor: true
         });
 
         // Smooth scroll for anchor links
