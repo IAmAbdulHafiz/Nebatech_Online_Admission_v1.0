@@ -96,7 +96,7 @@ $monthly_admissions = $conn->query($monthly_admissions_query)->fetchAll(PDO::FET
             margin-top: 30px;
         }
         .chart-container canvas {
-            border-radius: 15px;
+            border-radius: 0.5rem;
         }
     </style>
 </head>

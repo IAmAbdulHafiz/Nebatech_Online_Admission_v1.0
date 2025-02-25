@@ -117,7 +117,7 @@ body {
     border: none;
     font-weight: bold;
     padding: 10px 15px;
-    border-radius: 15px;
+    border-radius: 0.5rem;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -201,7 +201,7 @@ body {
     .navbar-collapse {
         background-color: rgba(0, 32, 96, 0.95); /* Dark blue background for mobile menu */
         padding: 10px;
-        border-radius: 15px;
+        border-radius: 0.5rem;
     }
 }
 

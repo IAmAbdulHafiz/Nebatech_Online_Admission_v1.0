@@ -21,7 +21,7 @@ body {
         margin-left: 20px;
         margin-top: 6px;
         padding: 5px 15px;
-        border-radius: 15px;
+        border-radius: 0.5rem;
         transition: background-color 0.3s ease, color 0.3s ease;
 
     }
@@ -68,7 +68,7 @@ body {
 .contact-form-wrapper {
     background: white;
     padding: 2rem;
-    border-radius: 15px;
+    border-radius: 0.5rem;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
 
@@ -99,7 +99,7 @@ body {
 .contact-info-wrapper {
     background: white;
     padding: 2rem;
-    border-radius: 15px;
+    border-radius: 0.5rem;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
 
@@ -176,13 +176,13 @@ body {
 .map-wrapper {
     background: white;
     padding: 2rem;
-    border-radius: 15px;
+    border-radius: 0.5rem;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     margin-top: 2rem;
 }
 
 .map-container {
-    border-radius: 15px;
+    border-radius: 0.5rem;
     overflow: hidden;
 }
 

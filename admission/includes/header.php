@@ -100,7 +100,7 @@
             border: none;
             font-weight: bold;
             padding: 10px 15px;
-            border-radius: 15px;
+            border-radius: 0.5rem;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 

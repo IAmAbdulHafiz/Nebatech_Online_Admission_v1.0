@@ -23,7 +23,7 @@
       margin: 7rem auto;
       padding: 2rem;
       background-color: #fff;
-      border-radius: 15px;
+      border-radius: 0.5rem;
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
       text-align: center;
     }
@@ -84,7 +84,7 @@
       color: #fff;
       padding: 1rem 2rem;
       border: none;
-      border-radius: 15px;
+      border-radius: 0.5rem;
       cursor: pointer;
       font-size: 1rem;
       width: 100%;

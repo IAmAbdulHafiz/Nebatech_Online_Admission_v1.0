@@ -72,7 +72,7 @@
         /* Cards */
         .card {
             border: none;
-            border-radius: 15px;
+            border-radius: 0.5rem;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
             height: 100%;
@@ -104,7 +104,7 @@
         .student-handbook {
             background-color: var(--primary-color);
             color: white;
-            border-radius: 15px;
+            border-radius: 0.5rem;
             margin: 3rem 0;
             padding: 3rem !important;
         }
@@ -114,7 +114,7 @@
             color: var(--primary-color);
             border: none;
             padding: 1rem 2rem;
-            border-radius: 15px;
+            border-radius: 0.5rem;
             transition: all 0.3s ease;
         }
 
@@ -152,7 +152,7 @@
 
 <body>
     <!-- Header -->
-    <?php include("includes/public_header.php"); ?>
+    <?php include("includes/header.php"); ?>
     <!-- Hero Section -->
     <section class="welcome-section">
         <div class="container">

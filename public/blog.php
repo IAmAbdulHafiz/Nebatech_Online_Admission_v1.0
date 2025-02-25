@@ -96,7 +96,7 @@
 
         .event-card {
             background: white;
-            border-radius: 15px;
+            border-radius: 0.5rem;
             overflow: hidden;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
@@ -120,7 +120,7 @@
             display: inline-block;
             padding: 0.25rem 0.75rem;
             background: #e5e7eb;
-            border-radius: 15px;
+            border-radius: 0.5rem;
             font-size: 0.875rem;
             margin-bottom: 1rem;
         }
@@ -148,7 +148,7 @@
             background: #002060;
             color: white;
             text-decoration: none;
-            border-radius: 15px;
+            border-radius: 0.5rem;
             transition: background 0.3s ease;
         }
 
