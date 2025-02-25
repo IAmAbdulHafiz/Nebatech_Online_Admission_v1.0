@@ -283,6 +283,6 @@
         });
     </script>
     <!-- Footer will be included here -->
-    <?php include 'includes/public_footer.php'; ?>
+    <?php include 'includes/footer.php'; ?>
 </body>
 </html>

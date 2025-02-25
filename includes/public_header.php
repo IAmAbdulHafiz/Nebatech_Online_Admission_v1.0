@@ -60,7 +60,7 @@
                         <a class="nav-link" href="contact.php">Contact</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn login-btn btn-sm ms-3" href="admission_portal/admission_portal.php">Admission Portal</a>
+                        <a class="btn login-btn btn-sm ms-3" href="admission/admission.php">Admission Portal</a>
                     </li>
                 </ul>
             </div>

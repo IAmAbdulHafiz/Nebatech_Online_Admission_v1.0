@@ -1,65 +1,45 @@
-<aside class="vh-100 position-fixed top-0 start-0 text-white shadow" style="width: 250px; background-color: #FFA500;">
+<?php
+// Fetch the passport photo from the personal_information table
+include('../config/database.php');
+$user_id = $_SESSION['applicant']['id'];
+$stmt = $conn->prepare("SELECT passport_photo FROM personal_information WHERE application_id = (SELECT id FROM applications WHERE user_id = ?)");
+$stmt->execute([$user_id]);
+$profilePicture = $stmt->fetchColumn();
+?>
+
+<aside id="sidebar" class="vh-100 position-fixed top-0 start-0 text-white shadow" style="width: 250px; padding-top: 10vh; background-color: #003366;">
     <nav class="vh-100 d-flex flex-column align-items-center">
         <!-- Profile Section -->
         <div class="text-center py-4">
-            <img src="../assets/images/profile-placeholder.png" alt="Profile" class="rounded-circle mb-2" style="width: 80px; height: 80px; object-fit: cover;">
-            <h5 class="mb-0"><?php echo isset($_SESSION['admin']['email']) ? $_SESSION['admin']['email'] : "Admin"; ?></h5>
+            <img src="<?= htmlspecialchars($profilePicture ?? '../assets/images/profile-placeholder.png') ?>" alt="Profile" class="rounded-circle mb-2" style="width: 80px; height: 80px; object-fit: cover;">
+            <h5 class="mb-0"><?php echo isset($_SESSION['applicant']['first_name']) ? $_SESSION['applicant']['first_name'] : "Applicant"; ?></h5>
+            <small class="text-white"><?php echo isset($_SESSION['applicant']['email']) ? $_SESSION['applicant']['email'] : ""; ?></small>
         </div>
 
         <!-- Navigation Links -->
         <ul class="nav flex-column w-100 px-3">
             <li class="nav-item mb-2">
-                <a href="admin_dashboard.php" class="nav-link text-dark p-2 rounded <?php echo basename($_SERVER['PHP_SELF']) == 'admin_dashboard.php' ? 'active' : ''; ?>">
+                <a href="applicant_dashboard.php" class="nav-link text-white p-2 rounded <?php echo basename($_SERVER['PHP_SELF']) == 'applicant_dashboard.php' ? 'active' : ''; ?>">
                     <i class="fas fa-home me-2"></i> Dashboard
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="generate_serial_pin.php" class="nav-link text-dark p-2 rounded <?php echo basename($_SERVER['PHP_SELF']) == 'generate_serial_pin.php' ? 'active' : ''; ?>">
-                    <i class="fas fa-key me-2"></i> Generate SN & PIN
+                <a href="admission_status.php" class="nav-link text-white p-2 rounded <?php echo basename($_SERVER['PHP_SELF']) == 'admission_status.php' ? 'active' : ''; ?>">
+                    <i class="fas fa-check-circle me-2"></i> Admission Status
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="manage_applications.php" class="nav-link text-dark p-2 rounded <?php echo basename($_SERVER['PHP_SELF']) == 'manage_applications.php' ? 'active' : ''; ?>">
-                    <i class="fas fa-users me-2"></i> Manage Applications
+                <a href="print_admission_letter.php" class="nav-link text-white p-2 rounded <?php echo basename($_SERVER['PHP_SELF']) == 'print_admission_letter.php' ? 'active' : ''; ?>">
+                    <i class="fas fa-print me-2"></i> Print Admission Letter
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="manage_admissions.php" class="nav-link text-dark p-2 rounded <?php echo basename($_SERVER['PHP_SELF']) == 'manage_admissions.php' ? 'active' : ''; ?>">
-                    <i class="fas fa-graduation-cap me-2"></i> Manage Admissions
+                <a href="profile.php" class="nav-link text-white p-2 rounded <?php echo basename($_SERVER['PHP_SELF']) == 'profile.php' ? 'active' : ''; ?>">
+                    <i class="fas fa-user me-2"></i> Profile
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="manage_payments.php" class="nav-link text-dark p-2 rounded <?php echo basename($_SERVER['PHP_SELF']) == 'manage_payments.php' ? 'active' : ''; ?>">
-                    <i class="fas fa-dollar-sign me-2"></i> Manage Payments
-                </a>
-            </li>
-            <li class="nav-item mb-2">
-                <a href="notifications.php" class="nav-link text-dark p-2 rounded <?php echo basename($_SERVER['PHP_SELF']) == 'notifications.php' ? 'active' : ''; ?>">
-                    <i class="fas fa-bell me-2"></i> Notifications
-                </a>
-            </li>
-            <li class="nav-item mb-2">
-                <a href="reports_analytics.php" class="nav-link text-dark p-2 rounded <?php echo basename($_SERVER['PHP_SELF']) == 'reports_analytics.php' ? 'active' : ''; ?>">
-                    <i class="fas fa-chart-line me-2"></i> Reports & Analytics
-                </a>
-            </li>
-            <li class="nav-item mb-2">
-                <a href="help_support.php" class="nav-link text-dark p-2 rounded <?php echo basename($_SERVER['PHP_SELF']) == 'help_support.php' ? 'active' : ''; ?>">
-                    <i class="fas fa-life-ring me-2"></i> Help & Support
-                </a>
-            </li>
-            <li class="nav-item mb-2">
-                <a href="user_management.php" class="nav-link text-dark p-2 rounded <?php echo basename($_SERVER['PHP_SELF']) == 'user_management.php' ? 'active' : ''; ?>">
-                    <i class="fas fa-user-cog me-2"></i> User Management
-                </a>
-            </li>
-            <li class="nav-item mb-2">
-                <a href="logs.php" class="nav-link text-dark p-2 rounded <?php echo basename($_SERVER['PHP_SELF']) == 'logs.php' ? 'active' : ''; ?>">
-                    <i class="fas fa-history me-2"></i> Audit Logs
-                </a>
-            </li>
-            <li class="nav-item mb-2">
-                <a href="settings.php" class="nav-link text-dark p-2 rounded <?php echo basename($_SERVER['PHP_SELF']) == 'settings.php' ? 'active' : ''; ?>">
+                <a href="settings.php" class="nav-link text-white p-2 rounded <?php echo basename($_SERVER['PHP_SELF']) == 'settings.php' ? 'active' : ''; ?>">
                     <i class="fas fa-cog me-2"></i> Settings
                 </a>
             </li>
@@ -72,6 +52,11 @@
     </nav>
 </aside>
 
+<!-- Toggle Button for Sidebar -->
+<button id="sidebarToggle" class="btn btn-primary d-md-none" style="position: fixed; top: 10px; left: 10px; z-index: 1040;">
+    <i class="fas fa-bars"></i>
+</button>
+
 <!-- Include Font Awesome for icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
@@ -79,14 +64,14 @@
 <style>
     /* Active link style */
     .nav-link.active {
-        background-color: #002060; /* A darker shade of blue for active items */
+        background-color: #FFA500; /* A darker shade of blue for active items */
         color: white !important;
         font-weight: bold;
     }
 
     /* Hover effects for links */
     .nav-link:hover {
-        background-color:orange; /* Lighter blue shade on hover */
+        background-color: #2234AB; /* Lighter blue shade on hover */
         color: white;
         text-decoration: none;
     }
@@ -95,6 +80,32 @@
     @media (max-width: 768px) {
         aside {
             width: 200px;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        aside.show {
+            transform: translateX(0);
+        }
+    }
+
+    /* Adjust text and spacing for smaller screens */
+    @media (max-width: 576px) {
+        .nav-link {
+            font-size: 0.9rem;
+            padding: 0.75rem;
+        }
+        .rounded-circle {
+            width: 60px;
+            height: 60px;
+        }
+        h5 {
+            font-size: 1rem;
         }
     }
 </style>
+
+<script>
+    document.getElementById('sidebarToggle').addEventListener('click', function () {
+        document.getElementById('sidebar').classList.toggle('show');
+    });
+</script>

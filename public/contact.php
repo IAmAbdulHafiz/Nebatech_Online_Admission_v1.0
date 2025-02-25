@@ -1,99 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - NTSS</title>
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <style>
-        .contact-header {
-            background-color: #002060;
-            color: white;
-            padding: 40px;
-            margin-top:70px;
-            text-align: center;
-        }
-
-        .contact-details {
-            padding: 40px 0;
-        }
-
-        .map-container {
-            height: 400px;
-            margin-bottom: 40px;
-        }
-
-        .contact-form {
-            background-color: #f9f9f9;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-    </style>
+    <meta name="description" content="Get in touch with us. Contact Nebatech Software Solution Ltd through our contact form or find our location in Tamale, Ghana.">
+    <meta name="keywords" content="Contact Nebatech, Software Solution, Ghana, Tamale">
+    <meta name="author" content="Nebatech Software Solution Ltd">
+    <link rel="icon" href="assets/images/favicon.ico">
+    <title>Contact Us - Nebatech Software Solution Ltd</title>
+    
+    <!-- CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/contact.css">
 </head>
-
 <body>
     <?php include("includes/public_header.php"); ?>
 
-    <!-- Page Header -->
-    <div class="contact-header">
-        <h1>Contact Us</h1>
-        <p>We’re here to help. Reach out to us for any assistance or inquiries.</p>
-    </div>
-
-    <!-- Contact Details and Form -->
-    <div class="container">
-        <div class="row">
-            <!-- Contact Details -->
-            <div class="col-md-6 contact-details">
-                <h2>Get in Touch</h2>
-                <p>If you have any questions, feel free to contact us through the following channels:</p>
-                <ul class="list-unstyled">
-                    <li><strong>Phone:</strong> +233 249 241 156</li>
-                    <li><strong>Email:</strong> info@nebatech.com</li>
-                    <li><strong>Address:</strong> Choggu Yapalsi, Tamale, Northern Region, Ghana</li>
-                </ul>
-                <p>Our team is available Monday to Friday, 9 AM to 5 PM.</p>
-            </div>
-
-            <!-- Contact Form -->
-            <div class="col-md-6">
-                <div class="contact-form">
-                    <h2>Send Us a Message</h2>
-                    <form action="send_message.php" method="POST">
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Full Name</label>
-                            <input type="text" id="name" name="name" class="form-control" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email Address</label>
-                            <input type="email" id="email" name="email" class="form-control" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="subject" class="form-label">Subject</label>
-                            <input type="text" id="subject" name="subject" class="form-control" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="message" class="form-label">Message</label>
-                            <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary w-100">Send Message</button>
-                    </form>
-                </div>
-            </div>
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="container">
+            <h1 class="display-4 text-center text-white mb-4">Get in Touch</h1>
+            <p class="lead text-center text-white">We're here to help and answer any questions you might have</p>
         </div>
     </div>
 
-    <!-- Google Map -->
-    <div class="map-container">
-        <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3944.137533050229!2d-0.8545!3d9.4401!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x102b4f8342b7f42d%3A0x95e6439b122c8057!2sChoggu%20Yapalsi%2C%20Tamale%2C%20Ghana!5e0!3m2!1sen!2sgh!4v1618263810335!5m2!1sen!2sgh"
-            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-    </div>
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="row g-4">
+                <!-- Contact Form -->
+                <div class="col-lg-6">
+                    <div class="contact-form-wrapper">
+                        <h3 class="section-title">Send us a Message</h3>
+                        <form id="contactForm" action="submit_contact.php" method="POST" class="needs-validation" novalidate>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Full Name" required>
+                                <label for="name">Full Name</label>
+                                <div class="invalid-feedback">Please enter your name</div>
+                            </div>
 
-    <?php include("includes/public_footer.php"); ?>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
+                            <div class="form-floating mb-3">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Email Address" required>
+                                <label for="email">Email Address</label>
+                                <div class="invalid-feedback">Please enter a valid email</div>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input type="tel" class="form-control" id="phone" name="phone" placeholder="Phone Number" required>
+                                <label for="phone">Phone Number</label>
+                                <div class="invalid-feedback">Please enter your phone number</div>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <textarea class="form-control" id="message" name="message" placeholder="Your Message" style="height: 150px" required></textarea>
+                                <label for="message">Your Message</label>
+                                <div class="invalid-feedback">Please enter your message</div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-lg w-100">
+                                <span class="button-text">Send Message</span>
+                                <div class="spinner-border spinner-border-sm d-none" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="col-lg-6">
+                    <div class="contact-info-wrapper">
+                        <h3 class="section-title">Contact Information</h3>
+                        
+                        <div class="contact-info-item">
+                            <div class="icon-box">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="info-content">
+                                <h4>Phone Numbers</h4>
+                                <p><a href="tel:0247636080">024 763 6080</a></p>
+                                <p><a href="tel:0206789600">020 678 9600</a></p>
+                                <p><a href="tel:0249241156">024 924 1156</a></p>
+                            </div>
+                        </div>
+
+                        <div class="contact-info-item">
+                            <div class="icon-box">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="info-content">
+                                <h4>Email</h4>
+                                <p><a href="mailto:info@nebatech.com">info@nebatech.com</a></p>
+                            </div>
+                        </div>
+
+                        <div class="contact-info-item">
+                            <div class="icon-box">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="info-content">
+                                <h4>Location</h4>
+                                <p>Choggu Yapalsi, Tamale,<br>Northern Ghana</p>
+                            </div>
+                        </div>
+
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Map Section -->
+                <div class="col-12">
+                    <div class="map-wrapper">
+                        <h3 class="section-title">Our Location</h3>
+                        <div class="map-container">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3935.728530530022!2d-0.8559374999999998!3d9.4451875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfd43d5eea5f0bd7%3A0xae93c3a8941f1fcd!2sNebatech%20Software%20Solution%20Ltd.!5e0!3m2!1sen!2sgh!4v1739412809299!5m2!1sen!2sgh" 
+                                width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <?php include("includes/footer.php"); ?>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/contact.js"></script>
 </body>
-
 </html>
