@@ -98,46 +98,61 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 }
 
 // --- Payment Confirmation Section ---
-// Instead of relying on a GET parameter named "reference", we now use the pending session data.
-if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_SESSION['pending_payment'])) {
+// Payment Confirmation Section – executed when the payment gateway redirects back
+if ($_SERVER["REQUEST_METHOD"] === "GET" 
+    && (!empty($_GET['reference']) || !empty($_GET['checkoutid']))
+    && !empty($_SESSION['pending_payment'])) {
+
     // Use the clientReference stored in session
     $clientReference = $_SESSION['pending_payment']['reference'];
 
-    // Generate Serial Number and PIN upon successful payment
+    // Generate Serial Number and PIN
     $serialNumber = generateSerialNumber();
     $pin = generatePin();
 
-    // Update the existing transaction record to "Completed" and store the serial & PIN
+    // Save Serial & PIN and transaction details in the database after successful payment
     try {
-        $stmt = $conn->prepare("UPDATE transactions SET status = 'Completed', serial_number = :serial_number, pin = :pin WHERE reference = :reference");
+        $conn->beginTransaction();
+        // Insert serial number and PIN into serial_pins table
+        $stmt = $conn->prepare("INSERT INTO serial_pins (serial_number, pin, used) VALUES (:serial_number, :pin, 0)");
+        $stmt->execute(['serial_number' => $serialNumber, 'pin' => $pin]);
+
+        // Insert a new record into the transactions table with the generated serial and PIN
+        $stmt = $conn->prepare("INSERT INTO transactions 
+            (customer_name, customer_email, customer_phone, amount, reference, status, serial_number, pin) 
+            VALUES (:customer_name, :customer_email, :customer_phone, :amount, :reference, 'Completed', :serial_number, :pin)");
         $stmt->execute([
-            'serial_number' => $serialNumber,
-            'pin'           => $pin,
-            'reference'     => $clientReference
+            'customer_name'  => $_SESSION['pending_payment']['customer_name'],
+            'customer_email' => $_SESSION['pending_payment']['customer_email'],
+            'customer_phone' => $_SESSION['pending_payment']['customer_phone'],
+            'amount'         => $_SESSION['pending_payment']['amount'],
+            'reference'      => $clientReference,
+            'serial_number'  => $serialNumber,
+            'pin'            => $pin
         ]);
+        $conn->commit();
     } catch (Exception $e) {
-        $_SESSION['error_message'] = "Database update error: " . $e->getMessage();
+        $conn->rollBack();
+        $_SESSION['error_message'] = "Database error: " . $e->getMessage();
         header("Location: ../payment_form.php");
         exit();
     }
 
-    // Retrieve customer details from the transaction record
+    // Retrieve customer details (if needed) from the transaction record
     $stmt = $conn->prepare("SELECT customer_phone, customer_email FROM transactions WHERE reference = :reference");
     $stmt->execute(['reference' => $clientReference]);
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
     if ($row) {
-        $customerPhone = $row['customer_phone'];
-        $customerEmail = $row['customer_email'];
-        sendSMS($customerPhone, "Your Serial: $serialNumber, PIN: $pin. Apply at https://nebatech.com/admission_portal/signup.php");
-        sendEmail($customerEmail, "Your Admission Serial & PIN", "Serial: $serialNumber\nPIN: $pin\nApply at: https://nebatech.com/admission_portal/signup.php");
+        sendSMS($row['customer_phone'], "Your Serial: $serialNumber, PIN: $pin. Apply at https://nebatech.com/admission_portal/signup.php");
+        sendEmail($row['customer_email'], "Your Admission Serial & PIN", "Serial: $serialNumber\nPIN: $pin\nApply at: https://nebatech.com/admission_portal/signup.php");
     }
 
-    // Clear the pending payment session data
     unset($_SESSION['pending_payment']);
     $_SESSION['success_message'] = "Payment successful! Serial number and PIN have been sent via SMS and Email.";
     header("Location: ../signup.php");
     exit();
 }
+
 
 // --- Functions ---
 function generateSerialNumber() {
