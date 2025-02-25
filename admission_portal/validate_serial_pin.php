@@ -10,6 +10,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = trim($_POST['email']);
     $password = $_POST['password'];
     $confirmPassword = $_POST['confirm-password'];
+    $firstName = trim($_POST['firstName']);
+    $surname = trim($_POST['surname']);
 
     // Validate serial number and PIN using the transactions table,
     // ensuring the transaction is completed and unused.
@@ -51,14 +53,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Hash the password
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    // Insert user details into the applicants table, marking the serial as used
-    $insertQuery = "INSERT INTO applicants (email, password, serial_number, pin, is_used) 
-                    VALUES (:email, :password, :serial, :pin, 1)";
+    // Insert user details into the applicants table,
+    // including first name and surname, and marking the serial as used.
+    $insertQuery = "INSERT INTO applicants (email, password, serial_number, pin, first_name, surname, is_used) 
+                    VALUES (:email, :password, :serial, :pin, :first_name, :surname, 1)";
     $insertStmt = $conn->prepare($insertQuery);
     $insertStmt->bindParam(':email', $email);
     $insertStmt->bindParam(':password', $hashedPassword);
     $insertStmt->bindParam(':serial', $serial);
     $insertStmt->bindParam(':pin', $pin);
+    $insertStmt->bindParam(':first_name', $firstName);
+    $insertStmt->bindParam(':surname', $surname);
     $insertStmt->execute();
 
     // Mark the serial number/PIN as used in the transactions table
