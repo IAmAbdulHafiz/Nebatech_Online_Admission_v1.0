@@ -15,7 +15,7 @@
         }
         .carousel-item img { 
             object-fit: cover; 
-            height: 85vh; 
+            height: 100vh; 
             width: 100%; 
             filter: brightness(90%); 
             border-radius: 0.5rem; 
