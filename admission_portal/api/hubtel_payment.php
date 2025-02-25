@@ -103,57 +103,47 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 
-// Payment Confirmation Section
-if ($_SERVER["REQUEST_METHOD"] === "GET" 
-    && (!empty($_GET['reference']) || !empty($_GET['checkoutid']))
-    && !empty($_SESSION['pending_payment'])) {
-
+// --- Payment Confirmation Section ---
+// Instead of relying on a GET parameter named "reference", we now use the pending session data.
+if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_SESSION['pending_payment'])) {
+    // Use the clientReference stored in session
     $clientReference = $_SESSION['pending_payment']['reference'];
 
-    // Debug: output clientReference
-    error_log("Processing payment confirmation for reference: " . $clientReference);
-
+    // Generate Serial Number and PIN upon successful payment
     $serialNumber = generateSerialNumber();
     $pin = generatePin();
 
+    // Update the existing transaction record to "Completed" and store the serial & PIN
     try {
-        $conn->beginTransaction();
-        error_log("Inserting into serial_pins: Serial=$serialNumber, PIN=$pin");
-        $stmt = $conn->prepare("INSERT INTO serial_pins (serial_number, pin, used) VALUES (:serial_number, :pin, 0)");
-        $stmt->execute(['serial_number' => $serialNumber, 'pin' => $pin]);
-
-        error_log("Updating transaction for reference: " . $clientReference);
-        $stmt = $conn->prepare("UPDATE transactions 
-                                SET serial_number = :serial_number, pin = :pin, status = 'Completed'
-                                WHERE reference = :reference");
+        $stmt = $conn->prepare("UPDATE transactions SET status = 'Completed', serial_number = :serial_number, pin = :pin WHERE reference = :reference");
         $stmt->execute([
             'serial_number' => $serialNumber,
             'pin'           => $pin,
             'reference'     => $clientReference
         ]);
-        $conn->commit();
     } catch (Exception $e) {
-        $conn->rollBack();
-        error_log("Database error in GET branch: " . $e->getMessage());
-        $_SESSION['error_message'] = "Database error: " . $e->getMessage();
+        $_SESSION['error_message'] = "Database update error: " . $e->getMessage();
         header("Location: ../payment_form.php");
         exit();
     }
 
+    // Retrieve customer details from the transaction record
     $stmt = $conn->prepare("SELECT customer_phone, customer_email FROM transactions WHERE reference = :reference");
     $stmt->execute(['reference' => $clientReference]);
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
     if ($row) {
-        sendSMS($row['customer_phone'], "Your Serial: $serialNumber, PIN: $pin. Apply at https://nebatech.com/admission_portal/signup.php");
-        sendEmail($row['customer_email'], "Your Admission Serial & PIN", "Serial: $serialNumber\nPIN: $pin\nApply at: https://nebatech.com/admission_portal/signup.php");
+        $customerPhone = $row['customer_phone'];
+        $customerEmail = $row['customer_email'];
+        sendSMS($customerPhone, "Your Serial: $serialNumber, PIN: $pin. Apply at https://nebatech.com/admission_portal/signup.php");
+        sendEmail($customerEmail, "Your Admission Serial & PIN", "Serial: $serialNumber\nPIN: $pin\nApply at: https://nebatech.com/admission_portal/signup.php");
     }
 
+    // Clear the pending payment session data
     unset($_SESSION['pending_payment']);
     $_SESSION['success_message'] = "Payment successful! Serial number and PIN have been sent via SMS and Email.";
     header("Location: ../signup.php");
     exit();
 }
-
 
 // --- Functions ---
 function generateSerialNumber() {
