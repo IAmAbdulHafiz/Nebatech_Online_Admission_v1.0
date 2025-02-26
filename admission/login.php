@@ -42,7 +42,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login - NTSS</title>
-  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <style>
     body {
       background: linear-gradient(135deg, #002060, #0056b3);
@@ -72,10 +73,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       width: 100%;
       background-color: #002060;
       border-color: #002060;
+      border-radius: 8px;
+      font-size: 16px;
+      padding: 12px;
+      transition: 0.3s;
     }
     .btn-primary:hover {
-      background-color: #0056b3;
-      border-color: #0056b3;
+      background-color: #FFA500;
+      border-color: #FFA500;
     }
     .form-text {
       color: #666;
@@ -92,7 +97,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     .login-footer a:hover {
       text-decoration: underline;
     }
-    /* Floating label container styles */
     .floating-label-group {
       position: relative;
       margin-bottom: 1.5rem;
@@ -127,7 +131,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       font-size: 0.75rem;
       color: #0056b3;
     }
-    /* Password toggle button */
     .toggle-password {
       position: absolute;
       top: 50%;
@@ -138,7 +141,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       color: #0056b3;
       user-select: none;
     }
-    /* Fade in animation for alerts */
     .alert {
       animation: fadeIn 0.5s;
     }
@@ -190,8 +192,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </div>
   </div>
   <?php include("includes/footer.php"); ?>
-  <script src="assets/js/jquery.min.js"></script>
-  <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
   <script>
     function togglePasswordVisibility() {
       const passwordInput = document.getElementById('password');
