@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 }
 
 // Set the page type for the header
-$pageType = 'signup';
+$pageType = 'login';
 ?>
 
 <!DOCTYPE html>
