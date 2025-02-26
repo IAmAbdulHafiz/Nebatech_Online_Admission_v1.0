@@ -27,28 +27,28 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $stmt->execute(['token' => $token, 'email' => $email]);
 
             // Create a reset link.
-            $resetLink = "https://admissions.nebatech.com/admission/reset_password.php?token=" . $token;
+            $resetLink = "https://nebatech.com/admission/reset_password.php?token=" . $token;
 
-            // Send the reset link via email. (This is a basic example using mail().)
+            // Send the reset link via email.
             $subject = "Password Reset Request - Nebatech Admissions";
-            $message = "Hello,
-            
+            $message = 
+            "Hello Applicant,
+
             We received a request to reset the password for your Nebatech Admissions account.
-            
+
             If you initiated this request, please click the link below to reset your password:
             " . $resetLink . "
-            
+
             Please note:
             - This reset link is valid for 30 minutes only.
             - If you do not reset your password within this time, you will need to request a new password reset.
-            
+
             If you did not request a password reset, please ignore this email or contact our support team immediately at support@nebatech.com.
-            
+
             Thank you,
             Nebatech Admissions Team";
             $headers = "From: no-reply@nebatech.com\r\n";
             
-
             if (mail($email, $subject, $message, $headers)) {
                 $msg = "An email has been sent to your address with instructions to reset your password.";
             } else {
@@ -107,7 +107,76 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       text-align: center;
       margin-bottom: 15px;
     }
+    .floating-label-group {
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+    .floating-label-group input {
+      width: 100%;
+      padding: 1.25rem 0.75rem 0.75rem;
+      border: 1px solid #ddd;
+      border-radius: 0.375rem;
+      font-size: 1rem;
+    }
+    .floating-label-group label {
+      position: absolute;
+      top: 0.75rem;
+      left: 0.75rem;
+      font-weight: 500;
+      color: #444;
+      background-color: #fff;
+      padding: 0 5px;
+      pointer-events: none;
+      transition: all 0.2s ease;
+    }
+    .floating-label-group input:focus + label,
+    .floating-label-group input:not(:placeholder-shown) + label {
+      top: -0.5rem;
+      left: 0.5rem;
+      font-size: 0.75rem;
+      color: #0056b3;
+    }
+    .toggle-password {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      cursor: pointer;
+      font-size: 0.9rem;
+      color: #0056b3;
+      user-select: none;
+    }
   </style>
+  <script>
+    // If a success message is present, redirect after 5 seconds.
+    document.addEventListener('DOMContentLoaded', function() {
+      const params = new URLSearchParams(window.location.search);
+      const msg = params.get('msg');
+      if (msg) {
+        const container = document.querySelector('.reset-container');
+        const alertDiv = document.createElement('div');
+        alertDiv.className = 'alert alert-success';
+        alertDiv.textContent = msg + ' You will be redirected to the login page in 5 seconds...';
+        container.prepend(alertDiv);
+        
+        setTimeout(function() {
+          window.location.href = "login.php";
+        }, 5000);
+      }
+    });
+
+    // Toggle password visibility for a given input field.
+    function togglePasswordVisibility(fieldId, toggleEl) {
+      const inputField = document.getElementById(fieldId);
+      if (inputField.type === 'password') {
+        inputField.type = 'text';
+        toggleEl.textContent = 'Hide';
+      } else {
+        inputField.type = 'password';
+        toggleEl.textContent = 'Show';
+      }
+    }
+  </script>
 </head>
 <body>
   <?php include 'includes/header_login_register.php'; ?>
@@ -133,8 +202,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <h3>Set New Password</h3>
         <form action="reset_password.php" method="POST">
           <input type="hidden" name="token" value="<?php echo htmlspecialchars($token); ?>">
-          <input type="password" name="new_password" class="form-control" placeholder="New Password" required>
-          <input type="password" name="confirm_password" class="form-control" placeholder="Confirm New Password" required>
+          <div class="floating-label-group">
+            <input type="password" id="new_password" name="new_password" class="form-control" placeholder="New Password" required>
+            <label for="new_password">New Password</label>
+            <span class="toggle-password" onclick="togglePasswordVisibility('new_password', this)">Show</span>
+          </div>
+          <div class="floating-label-group">
+            <input type="password" id="confirm_password" name="confirm_password" class="form-control" placeholder="Confirm New Password" required>
+            <label for="confirm_password">Confirm New Password</label>
+            <span class="toggle-password" onclick="togglePasswordVisibility('confirm_password', this)">Show</span>
+          </div>
           <button type="submit" class="btn btn-primary w-100">Reset Password</button>
         </form>
       <?php endif; ?>
