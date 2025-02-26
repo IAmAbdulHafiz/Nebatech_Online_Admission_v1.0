@@ -40,21 +40,6 @@ $pageType = 'signup';
       background-color: #FFA500;
       border-color: #FFA500;
     }
-    .form-text {
-      color: #666;
-      font-size: 0.9rem;
-    }
-    .signup-footer {
-      text-align: center;
-      margin-top: 10px;
-    }
-    .signup-footer a {
-      color: #0056b3;
-      text-decoration: none;
-    }
-    .signup-footer a:hover {
-      text-decoration: underline;
-    }
     .floating-label-group {
       position: relative;
       margin-bottom: 1.5rem;
@@ -89,6 +74,20 @@ $pageType = 'signup';
       font-size: 0.75rem;
       color: #0056b3;
     }
+    .error-message {
+      color: red;
+      font-size: 0.875rem;
+      display: none;
+      margin-top: 5px;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #002060, #0056b3);
+      color: #333;
+      line-height: 1.6;
+    }
   </style>
 </head>
 <body>
@@ -96,20 +95,22 @@ $pageType = 'signup';
 
   <div class="container">
     <div class="signup-container">
-      <h3>Register</h3>
+      <h3 class="text-center">Register</h3>
       <p class="text-center">Create your account to begin the application process</p>
-      <form action="validate_serial_pin.php" method="POST" onsubmit="return validateForm()">
+      <form id="signupForm" action="validate_serial_pin.php" method="POST">
         <div class="row">
           <div class="col-md-6">
             <div class="floating-label-group">
               <input type="text" id="serialNumber" name="serial" class="form-control" placeholder=" " required>
               <label for="serialNumber">Serial Number</label>
+              <small id="serialNumberError" class="error-message"></small>
             </div>
           </div>
           <div class="col-md-6">
             <div class="floating-label-group">
               <input type="text" id="pin" name="pin" class="form-control" placeholder=" " required>
               <label for="pin">PIN</label>
+              <small id="pinError" class="error-message"></small>
             </div>
           </div>
         </div>
@@ -118,36 +119,41 @@ $pageType = 'signup';
             <div class="floating-label-group">
               <input type="text" id="firstName" name="firstName" class="form-control" placeholder=" " required>
               <label for="firstName">First Name</label>
+              <small id="firstNameError" class="error-message"></small>
             </div>
           </div>
           <div class="col-md-6">
             <div class="floating-label-group">
               <input type="text" id="surname" name="surname" class="form-control" placeholder=" " required>
               <label for="surname">Surname</label>
+              <small id="surnameError" class="error-message"></small>
             </div>
           </div>
         </div>
         <div class="floating-label-group">
           <input type="email" id="email" name="email" class="form-control" placeholder=" " required>
           <label for="email">Email Address</label>
+          <small id="emailError" class="error-message"></small>
         </div>
         <div class="row">
           <div class="col-md-6">
             <div class="floating-label-group">
               <input type="password" id="password" name="password" class="form-control" placeholder=" " required>
               <label for="password">Password</label>
+              <small id="passwordError" class="error-message"></small>
             </div>
           </div>
           <div class="col-md-6">
             <div class="floating-label-group">
               <input type="password" id="confirmPassword" name="confirm-password" class="form-control" placeholder=" " required>
               <label for="confirmPassword">Confirm Password</label>
+              <small id="confirmPasswordError" class="error-message"></small>
             </div>
           </div>
         </div>
         <button type="submit" class="btn btn-primary">Create Account</button>
       </form>
-      <div class="signup-footer mt-3">
+      <div class="signup-footer mt-3 text-center">
         <p>Already have an account? <a href="login.php">Login</a></p>
       </div>
     </div>
@@ -156,37 +162,94 @@ $pageType = 'signup';
   <?php include 'includes/footer.php'; ?>
 
   <script>
-    function validateForm() {
-      let isValid = true;
-      const serialNumber = document.getElementById('serialNumber').value;
-      const pin = document.getElementById('pin').value;
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-      const confirmPassword = document.getElementById('confirmPassword').value;
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    document.addEventListener('DOMContentLoaded', function() {
+      const serialInput = document.getElementById('serialNumber');
+      const pinInput = document.getElementById('pin');
+      const emailInput = document.getElementById('email');
+      const passwordInput = document.getElementById('password');
+      const confirmPasswordInput = document.getElementById('confirmPassword');
 
-      if (serialNumber.length !== 15) {
-        alert('Serial Number must be 15 characters long');
-        isValid = false;
-      }
-      if (pin.length !== 6) {
-        alert('PIN must be 6 characters long');
-        isValid = false;
-      }
-      if (!emailRegex.test(email)) {
-        alert('Invalid email format');
-        isValid = false;
-      }
-      if (password.length < 8) {
-        alert('Password must be at least 8 characters long');
-        isValid = false;
-      }
-      if (password !== confirmPassword) {
-        alert('Passwords do not match');
-        isValid = false;
-      }
-      return isValid; // Allow submission if true
+      serialInput.addEventListener('input', function() {
+        if (this.value.length !== 15) {
+          showError('serialNumberError', 'Serial Number must be 15 characters long');
+        } else {
+          hideError('serialNumberError');
+        }
+      });
+
+      pinInput.addEventListener('input', function() {
+        if (this.value.length !== 6) {
+          showError('pinError', 'PIN must be 6 characters long');
+        } else {
+          hideError('pinError');
+        }
+      });
+
+      emailInput.addEventListener('input', function() {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(this.value)) {
+          showError('emailError', 'Invalid email format');
+        } else {
+          hideError('emailError');
+        }
+      });
+
+      passwordInput.addEventListener('input', function() {
+        if (this.value.length < 8) {
+          showError('passwordError', 'Password must be at least 8 characters long');
+        } else {
+          hideError('passwordError');
+        }
+      });
+
+      confirmPasswordInput.addEventListener('input', function() {
+        if (this.value !== passwordInput.value) {
+          showError('confirmPasswordError', 'Passwords do not match');
+        } else {
+          hideError('confirmPasswordError');
+        }
+      });
+    });
+
+    function showError(elementId, message) {
+      const errorElement = document.getElementById(elementId);
+      errorElement.textContent = message;
+      errorElement.style.display = 'block';
     }
+
+    function hideError(elementId) {
+      const errorElement = document.getElementById(elementId);
+      errorElement.textContent = '';
+      errorElement.style.display = 'none';
+    }
+
+    document.getElementById('signupForm').addEventListener('submit', function(e) {
+      let valid = true;
+      if (document.getElementById('serialNumber').value.length !== 15) {
+        showError('serialNumberError', 'Serial Number must be 15 characters long');
+        valid = false;
+      }
+      if (document.getElementById('pin').value.length !== 6) {
+        showError('pinError', 'PIN must be 6 characters long');
+        valid = false;
+      }
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(document.getElementById('email').value)) {
+        showError('emailError', 'Invalid email format');
+        valid = false;
+      }
+      if (document.getElementById('password').value.length < 8) {
+        showError('passwordError', 'Password must be at least 8 characters long');
+        valid = false;
+      }
+      if (document.getElementById('password').value !== document.getElementById('confirmPassword').value) {
+        showError('confirmPasswordError', 'Passwords do not match');
+        valid = false;
+      }
+      if (!valid) {
+        e.preventDefault();
+      }
+    });
   </script>
 </body>
 </html>
