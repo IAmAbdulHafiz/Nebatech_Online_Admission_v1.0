@@ -94,6 +94,10 @@ if (!$profilePicture) {
 <body>
   <header class="dashboard-header">
     <div class="container-fluid">
+        <!-- Sidebar Toggle Button -->
+        <button id="sidebarToggle" class="btn btn-light d-md-none">
+        <i class="fas fa-bars"></i>
+        </button>
       <!-- Brand Section -->
       <div class="brand">
         <a href="/admission/index.php" class="text-white text-decoration-none">
@@ -118,6 +122,11 @@ if (!$profilePicture) {
   </header>
 
   <!-- Include Bootstrap JS -->
+  <script>
+    document.getElementById('sidebarToggle').addEventListener('click', function () {
+        document.getElementById('sidebar').classList.toggle('show');
+    });
+    </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
