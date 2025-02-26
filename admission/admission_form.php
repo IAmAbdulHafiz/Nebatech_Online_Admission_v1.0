@@ -75,7 +75,7 @@
 </head>
 <body>
     <!-- Include Header -->
-    <?php include("header_potal_login.php"); ?>
+    <?php include("includes/header_potal_login.php"); ?>
 
     <!-- Main Content -->
     <div class="container admission_form mt-4">
