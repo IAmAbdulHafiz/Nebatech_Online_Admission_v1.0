@@ -45,10 +45,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <style>
-
+    .login-container-body {
+      background: linear-gradient(135deg, #002060, #0056b3);
+    }
     .login-container {
       background: #fff;
       color: #333;
+      margin-top: 7rem;
       padding: 30px;
       border-radius: 0.5rem;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -144,43 +147,45 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 </head>
 <?php include("includes/header_login_register.php"); ?>
 <body>
-  <div class="container login-container">
-    <h3>Login to Your Account</h3>
-    <?php if (!empty($error)) : ?>
-      <div class="alert alert-danger"><?php echo $error; ?></div>
-    <?php endif; ?>
+  <div class="container .login-container-body">
+    <div class="login-container">
+      <h3>Login to Your Account</h3>
+      <?php if (!empty($error)) : ?>
+        <div class="alert alert-danger"><?php echo $error; ?></div>
+      <?php endif; ?>
 
-    <form method="POST" action="login.php">
-      <!-- Email or Serial Number -->
-      <div class="floating-label-group">
-        <input type="text" id="identifier" name="identifier" class="form-control" placeholder=" " required autofocus>
-        <label for="identifier" class="form-label">Email or Serial Number</label>
+      <form method="POST" action="login.php">
+        <!-- Email or Serial Number -->
+        <div class="floating-label-group">
+          <input type="text" id="identifier" name="identifier" class="form-control" placeholder=" " required autofocus>
+          <label for="identifier" class="form-label">Email or Serial Number</label>
+        </div>
+
+        <!-- Password with toggle -->
+        <div class="floating-label-group">
+          <input type="password" id="password" name="password" class="form-control" placeholder=" " required>
+          <label for="password" class="form-label">Password</label>
+          <span class="toggle-password" onclick="togglePasswordVisibility()">Show</span>
+        </div>
+
+        <small class="form-text center mb-3">
+          Forgot your password? <a href="reset_password.php">Reset it here</a>.
+        </small>
+
+        <!-- Remember me checkbox and Submit Button -->
+        <div class="form-check mb-3">
+          <input class="form-check-input" type="checkbox" value="" id="rememberMe">
+          <label class="form-check-label" for="rememberMe">
+            Remember me on this device
+          </label>
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+      </form>
+
+      <!-- Footer Links -->
+      <div class="login-footer mt-3">
+        <p>Don't have an account? <a href="signup.php">Sign Up</a></p>
       </div>
-
-      <!-- Password with toggle -->
-      <div class="floating-label-group">
-        <input type="password" id="password" name="password" class="form-control" placeholder=" " required>
-        <label for="password" class="form-label">Password</label>
-        <span class="toggle-password" onclick="togglePasswordVisibility()">Show</span>
-      </div>
-
-      <small class="form-text center mb-3">
-        Forgot your password? <a href="reset_password.php">Reset it here</a>.
-      </small>
-
-      <!-- Remember me checkbox and Submit Button -->
-      <div class="form-check mb-3">
-        <input class="form-check-input" type="checkbox" value="" id="rememberMe">
-        <label class="form-check-label" for="rememberMe">
-          Remember me on this device
-        </label>
-      </div>
-      <button type="submit" class="btn btn-primary">Login</button>
-    </form>
-
-    <!-- Footer Links -->
-    <div class="login-footer mt-3">
-      <p>Don't have an account? <a href="signup.php">Sign Up</a></p>
     </div>
   </div>
   <?php include("includes/footer.php"); ?>
