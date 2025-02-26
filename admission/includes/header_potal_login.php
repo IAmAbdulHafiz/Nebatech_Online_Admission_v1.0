@@ -174,7 +174,7 @@
                         <a class="nav-link" href="../contact.php">Contact</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn login-btn btn-sm ms-3" href="../admission/login.php">Admission Portal</a>
+                        <a class="btn login-btn btn-sm ms-3" href="../admission/login.php">Login</a>
                     </li>
                 </ul>
             </div>
