@@ -62,6 +62,12 @@ $checkoutUrl = htmlspecialchars($_SESSION['checkout_url']);
         .btn-reload:hover {
             background: #e55c00;
         }
+        @media (max-width: 768px) {
+            .payment-container {
+                margin-left: 0.5rem;
+                margin-right: 0.5rem;
+            }
+        }
     </style>
 </head>
 <body>
