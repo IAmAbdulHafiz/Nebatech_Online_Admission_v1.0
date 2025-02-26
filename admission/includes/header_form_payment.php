@@ -12,7 +12,7 @@
       </a>
     </div>
     <!-- Minimal Indicator -->
-    <div style="font-size: 1rem; color: #555;">
+    <div style="font-size: 1rem; color: snow;">
       Payment Process
     </div>
   </div>
