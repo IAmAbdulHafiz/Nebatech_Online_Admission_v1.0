@@ -175,7 +175,7 @@ $pageType = 'login';
           <span class="toggle-password" onclick="togglePasswordVisibility()">Show</span>
         </div>
 
-        <small class="form-text center mb-3">
+        <small class="form-text center mb-5 text-center">
           Forgot your password? <a href="reset_password.php">Reset it here</a>.
         </small>
 
