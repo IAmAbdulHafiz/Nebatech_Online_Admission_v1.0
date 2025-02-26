@@ -76,7 +76,19 @@ $pageType = 'signup';
       justify-content: center;
       align-items: center;
       height: 100%;
-      padding: 1rem;
+    }
+    .btn-primary {
+      width: 30%;
+      background-color: #002060;
+      border-color: #002060;
+      border-radius: 8px;
+      font-size: 16px;
+      padding: 12px;
+      transition: 0.3s;
+    }
+    .btn-primary:hover {
+      background-color: #FFA500;
+      border-color: #FFA500;
     }
   </style>
   <script>
@@ -162,7 +174,7 @@ $pageType = 'signup';
             </div>
           </div>
         </div>
-        <div class="button-container mb-4">
+        <div class="button-container mb-3">
         <button type="submit" class="btn btn-primary">Create Account</button>
         </div>
       </form>

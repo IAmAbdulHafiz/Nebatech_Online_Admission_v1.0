@@ -66,7 +66,7 @@ $pageType = 'login';
       text-align: center;
     }
     .btn-primary {
-      width: 100%;
+      width: 30%;
       background-color: #002060;
       border-color: #002060;
       border-radius: 8px;
