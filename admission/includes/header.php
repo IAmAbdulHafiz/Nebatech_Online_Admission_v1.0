@@ -1,5 +1,4 @@
 <?php
-session_start();
 if (!isset($_SESSION['applicant'])) {
     header("Location: login.php");
     exit();
@@ -52,8 +51,7 @@ if (!$profilePicture) {
     }
     .brand img {
       height: 40px;
-      width: 40px;
-      border-radius: 50%;
+      width: 60px;
       object-fit: cover;
     }
     .brand span {

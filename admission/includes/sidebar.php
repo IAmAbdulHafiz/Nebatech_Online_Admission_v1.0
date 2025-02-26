@@ -24,7 +24,7 @@ $profilePicture = $stmt->fetchColumn();
   <div class="p-4">
     <!-- Profile Section -->
     <div class="text-center mb-4">
-      <img src="<?= htmlspecialchars($profilePicture ?? '/assets/images/profile-placeholder.png') ?>" alt="Profile" class="rounded-circle mb-2" style="width: 80px; height: 80px; object-fit: cover;">
+      <img src="<?= htmlspecialchars($profilePicture ?? '../assets/images/profile-placeholder.png') ?>" alt="Profile" class="rounded-circle mb-2" style="width: 80px; height: 80px; object-fit: cover;">
       <h5 class="mb-0"><?= htmlspecialchars($applicant['first_name'] . ' ' . $applicant['surname']) ?></h5>
       <small><?= htmlspecialchars($applicant['email']) ?></small>
     </div>
