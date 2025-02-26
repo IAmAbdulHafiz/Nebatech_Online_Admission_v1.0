@@ -162,7 +162,7 @@ $pageType = 'signup';
             </div>
           </div>
         </div>
-        <div class=".button-container mb-3">
+        <div class="button-container mb-3">
         <button type="submit" class="btn btn-primary">Create Account</button>
         </div>
       </form>
