@@ -59,6 +59,14 @@ if (!$profilePicture) {
       font-weight: bold;
       margin-left: 10px;
     }
+    /* Hide brand text on mobile using Bootstrap utilities */
+    /* Alternatively, you can use a media query:
+    @media (max-width: 768px) {
+      .brand span {
+        display: none;
+      }
+    }
+    */
     /* User menu */
     .user-menu {
       position: relative;
@@ -94,15 +102,12 @@ if (!$profilePicture) {
 <body>
   <header class="dashboard-header">
     <div class="container-fluid">
-        <!-- Sidebar Toggle Button -->
-        <button id="sidebarToggle" class="btn btn-light d-md-none">
-        <i class="fas fa-bars"></i>
-        </button>
       <!-- Brand Section -->
       <div class="brand">
         <a href="/admission/index.php" class="text-white text-decoration-none">
           <img src="/assets/images/logo.png" alt="Nebatech Logo">
-          <span>Nebatech Admissions</span>
+          <!-- Hide text on mobile using Bootstrap classes -->
+          <span class="d-none d-md-inline">Nebatech Admissions</span>
         </a>
       </div>
       <!-- User Dropdown Menu -->
@@ -118,15 +123,19 @@ if (!$profilePicture) {
           <li><a class="dropdown-item text-danger" href="logout.php">Logout</a></li>
         </ul>
       </div>
+      <!-- Sidebar Toggle Button for Mobile -->
+      <button id="sidebarToggle" class="btn btn-light d-md-none">
+        <i class="fas fa-bars"></i>
+      </button>
     </div>
   </header>
 
-  <!-- Include Bootstrap JS -->
-  <script>
-    document.getElementById('sidebarToggle').addEventListener('click', function () {
-        document.getElementById('sidebar').classList.toggle('show');
-    });
-    </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Toggle the sidebar on mobile view.
+    document.getElementById('sidebarToggle').addEventListener('click', function () {
+      document.getElementById('sidebar').classList.toggle('show');
+    });
+  </script>
 </body>
 </html>
