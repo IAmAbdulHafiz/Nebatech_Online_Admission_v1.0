@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $stmt->execute(['token' => $token, 'email' => $email]);
 
             // Create a reset link.
-            $resetLink = "https://admissions/nebatech.com/admission/reset_password.php?token=" . $token;
+            $resetLink = "https://admissions.nebatech.com/admission/reset_password.php?token=" . $token;
 
             // Send the reset link via email. (This is a basic example using mail().)
             $subject = "Password Reset Request - Nebatech Admissions";
