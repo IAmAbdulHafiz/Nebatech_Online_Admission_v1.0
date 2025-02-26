@@ -64,8 +64,8 @@ $checkoutUrl = htmlspecialchars($_SESSION['checkout_url']);
         }
         @media (max-width: 768px) {
             .payment-container {
-                margin-left: 0.5rem;
-                margin-right: 0.5rem;
+                margin-left: 1rem;
+                margin-right: 1rem;
             }
         }
     </style>
