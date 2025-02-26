@@ -30,9 +30,24 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $resetLink = "https://nebatech.com/reset_password.php?token=" . $token;
 
             // Send the reset link via email. (This is a basic example using mail().)
-            $subject = "Password Reset Request";
-            $message = "Hello,\n\nClick the link below to reset your password:\n" . $resetLink . "\n\nIf you did not request a password reset, please ignore this email.";
+            $subject = "Password Reset Request - Nebatech Admissions";
+            $message = "Hello,
+            
+            We received a request to reset the password for your Nebatech Admissions account.
+            
+            If you initiated this request, please click the link below to reset your password:
+            " . $resetLink . "
+            
+            Please note:
+            - This reset link is valid for 30 minutes only.
+            - If you do not reset your password within this time, you will need to request a new password reset.
+            
+            If you did not request a password reset, please ignore this email or contact our support team immediately at support@nebatech.com.
+            
+            Thank you,
+            Nebatech Admissions Team";
             $headers = "From: no-reply@nebatech.com\r\n";
+            
 
             if (mail($email, $subject, $message, $headers)) {
                 $msg = "An email has been sent to your address with instructions to reset your password.";

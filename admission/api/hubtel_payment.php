@@ -128,8 +128,28 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_SESSION['pending_payment']))
     if ($row) {
         $customerPhone = $row['customer_phone'];
         $customerEmail = $row['customer_email'];
-        sendSMS($customerPhone, "Your Serial: $serialNumber, PIN: $pin. Apply at https://nebatech.com/admission/signup.php");
-        sendEmail($customerEmail, "Your Admission Serial & PIN", "Serial: $serialNumber\nPIN: $pin\nApply at: https://nebatech.com/admission/signup.php");
+        sendSMS($customerPhone, "Your Admission Serial: $serialNumber and PIN: $pin. Use these to register at https://nebatech.com/admission/signup.php. For assistance, call 0247636080.");
+
+        sendEmail(
+            $customerEmail, 
+            "Your Admission Serial & PIN", 
+            "Hello,
+
+        Thank you for completing your payment for the NTSS Admission Form.
+
+        Your Admission credentials are as follows:
+        Serial: $serialNumber
+        PIN: $pin
+
+        Please use these credentials to sign up and complete your application at:
+        https://nebatech.com/admission/signup.php
+
+        If you have any questions or need assistance, please contact us at info@nebatech.com or call 0247636080.
+
+        Best regards,
+        Nebatech Admissions Team"
+        );
+
     }
 
     // Clear the pending payment session data
