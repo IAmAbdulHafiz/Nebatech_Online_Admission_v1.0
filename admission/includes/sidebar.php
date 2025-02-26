@@ -9,18 +9,15 @@ if (!isset($_SESSION['applicant'])) {
 }
 
 $applicant = $_SESSION['applicant'];
-
-// Include database connection
 include('../config/database.php');
 
 $user_id = $applicant['id'];
-// Adjust this query to reflect your schema; ensure personal_information has a column that references the applicant's ID.
 $stmt = $conn->prepare("SELECT passport_photo FROM personal_information WHERE applicant_id = ?");
 $stmt->execute([$user_id]);
 $profilePicture = $stmt->fetchColumn();
 ?>
 
-<aside id="sidebar" class="text-white position-fixed top-0 start-0 shadow" style="width: 250px; min-height: 100vh; padding-top: 10vh; background-color: #002060;">
+<aside id="sidebar" class="text-white position-fixed top-0 shadow" style="width: 250px; min-height: 100vh; padding-top: 10vh; background-color: #002060;">
   <div class="p-4">
     <!-- Profile Section -->
     <div class="text-center mb-4">
@@ -28,7 +25,6 @@ $profilePicture = $stmt->fetchColumn();
       <h5 class="mb-0"><?= htmlspecialchars($applicant['first_name'] . ' ' . $applicant['surname']) ?></h5>
       <small><?= htmlspecialchars($applicant['email']) ?></small>
     </div>
-
     <!-- Navigation Links -->
     <nav>
       <ul class="nav flex-column">
