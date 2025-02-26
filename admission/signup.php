@@ -71,12 +71,12 @@ $pageType = 'signup';
       display: none;
       margin-top: 5px;
     }
-    .button-container 
-    {
+    .button-container {
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100%;
+      padding: 1rem;
     }
   </style>
   <script>
