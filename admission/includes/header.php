@@ -132,10 +132,15 @@ if (!$profilePicture) {
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // Toggle the sidebar on mobile view.
-    document.getElementById('sidebarToggle').addEventListener('click', function () {
-      document.getElementById('sidebar').classList.toggle('show');
+    document.addEventListener('DOMContentLoaded', function() {
+        const toggleBtn = document.getElementById('sidebarToggle');
+        if (toggleBtn) {
+        toggleBtn.addEventListener('click', function () {
+            document.getElementById('sidebar').classList.toggle('show');
+        });
+        }
     });
   </script>
+
 </body>
 </html>

@@ -86,16 +86,19 @@ $profilePicture = $stmt->fetchColumn();
   }
   /* Mobile sidebar adjustments */
   @media (max-width: 768px) {
-    #sidebar {
-      position: fixed;
-      top: 0;
-      left: -250px;
-      transition: left 0.3s ease-in-out;
-    }
-    #sidebar.show {
-      left: 0;
-    }
+  #sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    transition: left 0.3s ease-in-out;
   }
+  #sidebar.show {
+    left: 0;
+  }
+}
+
   @media (max-width: 576px) {
     .nav-link {
       font-size: 0.9rem;
