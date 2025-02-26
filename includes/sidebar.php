@@ -1,8 +1,23 @@
 <?php
-// Fetch the passport photo from the personal_information table
+session_start();
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+if (!isset($_SESSION['applicant'])) {
+    header("Location: login.php"); // Redirect to login if not authenticated
+    exit();
+}
+
+$applicant = $_SESSION['applicant'];
+
+// Include database connection
 include('../config/database.php');
-$user_id = $_SESSION['applicant']['id'];
-$stmt = $conn->prepare("SELECT passport_photo FROM personal_information WHERE application_id = (SELECT id FROM applications WHERE user_id = ?)");
+
+$user_id = $applicant['id'];
+// Update the query to reference the applicants table (assuming personal_information uses applicant_id)
+$stmt = $conn->prepare("SELECT passport_photo FROM personal_information WHERE applicant_id = ?");
 $stmt->execute([$user_id]);
 $profilePicture = $stmt->fetchColumn();
 ?>
@@ -12,8 +27,8 @@ $profilePicture = $stmt->fetchColumn();
         <!-- Profile Section -->
         <div class="text-center py-4">
             <img src="<?= htmlspecialchars($profilePicture ?? '../assets/images/profile-placeholder.png') ?>" alt="Profile" class="rounded-circle mb-2" style="width: 80px; height: 80px; object-fit: cover;">
-            <h5 class="mb-0"><?php echo isset($_SESSION['applicant']['first_name']) ? $_SESSION['applicant']['first_name'] : "Applicant"; ?></h5>
-            <small class="text-white"><?php echo isset($_SESSION['applicant']['email']) ? $_SESSION['applicant']['email'] : ""; ?></small>
+            <h5 class="mb-0"><?php echo isset($applicant['first_name']) ? $applicant['first_name'] : "Applicant"; ?></h5>
+            <small class="text-white"><?php echo isset($applicant['email']) ? $applicant['email'] : ""; ?></small>
         </div>
 
         <!-- Navigation Links -->
@@ -64,19 +79,15 @@ $profilePicture = $stmt->fetchColumn();
 <style>
     /* Active link style */
     .nav-link.active {
-        background-color: #FFA500; /* A darker shade of blue for active items */
+        background-color: #FFA500;
         color: white !important;
         font-weight: bold;
     }
-
-    /* Hover effects for links */
     .nav-link:hover {
-        background-color: #2234AB; /* Lighter blue shade on hover */
+        background-color: #2234AB;
         color: white;
         text-decoration: none;
     }
-
-    /* Sidebar width for smaller screens */
     @media (max-width: 768px) {
         aside {
             width: 200px;
@@ -87,8 +98,6 @@ $profilePicture = $stmt->fetchColumn();
             transform: translateX(0);
         }
     }
-
-    /* Adjust text and spacing for smaller screens */
     @media (max-width: 576px) {
         .nav-link {
             font-size: 0.9rem;

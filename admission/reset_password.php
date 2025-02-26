@@ -203,12 +203,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <form action="reset_password.php" method="POST">
           <input type="hidden" name="token" value="<?php echo htmlspecialchars($token); ?>">
           <div class="floating-label-group">
-            <input type="password" id="new_password" name="new_password" class="form-control" placeholder="New Password" required>
+            <input type="password" id="new_password" name="new_password" class="form-control" required>
             <label for="new_password">New Password</label>
             <span class="toggle-password" onclick="togglePasswordVisibility('new_password', this)">Show</span>
           </div>
           <div class="floating-label-group">
-            <input type="password" id="confirm_password" name="confirm_password" class="form-control" placeholder="Confirm New Password" required>
+            <input type="password" id="confirm_password" name="confirm_password" class="form-control" required>
             <label for="confirm_password">Confirm New Password</label>
             <span class="toggle-password" onclick="togglePasswordVisibility('confirm_password', this)">Show</span>
           </div>
