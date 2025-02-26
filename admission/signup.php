@@ -99,33 +99,51 @@ $pageType = 'signup';
       <h3>Register</h3>
       <p class="text-center">Create your account to begin the application process</p>
       <form action="validate_serial_pin.php" method="POST" onsubmit="return validateForm()">
-        <div class="floating-label-group">
-          <input type="text" id="serialNumber" name="serial" class="form-control" placeholder=" " required>
-          <label for="serialNumber">Serial Number</label>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="floating-label-group">
+              <input type="text" id="serialNumber" name="serial" class="form-control" placeholder=" " required>
+              <label for="serialNumber">Serial Number</label>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="floating-label-group">
+              <input type="text" id="pin" name="pin" class="form-control" placeholder=" " required>
+              <label for="pin">PIN</label>
+            </div>
+          </div>
         </div>
-        <div class="floating-label-group">
-          <input type="text" id="pin" name="pin" class="form-control" placeholder=" " required>
-          <label for="pin">PIN</label>
-        </div>
-        <div class="floating-label-group">
-          <input type="text" id="firstName" name="firstName" class="form-control" placeholder=" " required>
-          <label for="firstName">First Name</label>
-        </div>
-        <div class="floating-label-group">
-          <input type="text" id="surname" name="surname" class="form-control" placeholder=" " required>
-          <label for="surname">Surname</label>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="floating-label-group">
+              <input type="text" id="firstName" name="firstName" class="form-control" placeholder=" " required>
+              <label for="firstName">First Name</label>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="floating-label-group">
+              <input type="text" id="surname" name="surname" class="form-control" placeholder=" " required>
+              <label for="surname">Surname</label>
+            </div>
+          </div>
         </div>
         <div class="floating-label-group">
           <input type="email" id="email" name="email" class="form-control" placeholder=" " required>
           <label for="email">Email Address</label>
         </div>
-        <div class="floating-label-group">
-          <input type="password" id="password" name="password" class="form-control" placeholder=" " required>
-          <label for="password">Password</label>
-        </div>
-        <div class="floating-label-group">
-          <input type="password" id="confirmPassword" name="confirm-password" class="form-control" placeholder=" " required>
-          <label for="confirmPassword">Confirm Password</label>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="floating-label-group">
+              <input type="password" id="password" name="password" class="form-control" placeholder=" " required>
+              <label for="password">Password</label>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="floating-label-group">
+              <input type="password" id="confirmPassword" name="confirm-password" class="form-control" placeholder=" " required>
+              <label for="confirmPassword">Confirm Password</label>
+            </div>
+          </div>
         </div>
         <button type="submit" class="btn btn-primary">Create Account</button>
       </form>
