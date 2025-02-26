@@ -1,4 +1,4 @@
-<?php
+<?php 
 $pageType = 'signup';
 ?>
 <!DOCTYPE html>
@@ -30,7 +30,6 @@ $pageType = 'signup';
       margin-bottom: 20px;
       text-align: center;
     }
-    /* (Your existing styles for form, floating labels, etc.) */
     .floating-label-group {
       position: relative;
       margin-bottom: 1.5rem;
@@ -64,6 +63,16 @@ $pageType = 'signup';
       left: 0.5rem;
       font-size: 0.75rem;
       color: #0056b3;
+    }
+    .toggle-password {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      cursor: pointer;
+      font-size: 0.9rem;
+      color: #0056b3;
+      user-select: none;
     }
     .error-message {
       color: red;
@@ -110,6 +119,18 @@ $pageType = 'signup';
         }, 5000);
       }
     });
+
+    // Password toggle function
+    function togglePasswordVisibility(fieldId, toggleEl) {
+      const inputField = document.getElementById(fieldId);
+      if (inputField.type === 'password') {
+        inputField.type = 'text';
+        toggleEl.textContent = 'Hide';
+      } else {
+        inputField.type = 'password';
+        toggleEl.textContent = 'Show';
+      }
+    }
   </script>
 </head>
 <body>
@@ -163,6 +184,8 @@ $pageType = 'signup';
             <div class="floating-label-group">
               <input type="password" id="password" name="password" class="form-control" placeholder=" " required>
               <label for="password">Password</label>
+              <!-- Toggle for password -->
+              <span class="toggle-password" onclick="togglePasswordVisibility('password', this)">Show</span>
               <small id="passwordError" class="error-message"></small>
             </div>
           </div>
@@ -170,12 +193,14 @@ $pageType = 'signup';
             <div class="floating-label-group">
               <input type="password" id="confirmPassword" name="confirm-password" class="form-control" placeholder=" " required>
               <label for="confirmPassword">Confirm Password</label>
+              <!-- Toggle for confirm password -->
+              <span class="toggle-password" onclick="togglePasswordVisibility('confirmPassword', this)">Show</span>
               <small id="confirmPasswordError" class="error-message"></small>
             </div>
           </div>
         </div>
         <div class="button-container mb-3">
-        <button type="submit" class="btn btn-primary">Create Account</button>
+          <button type="submit" class="btn btn-primary">Create Account</button>
         </div>
       </form>
       <div class="signup-footer mt-3 text-center">

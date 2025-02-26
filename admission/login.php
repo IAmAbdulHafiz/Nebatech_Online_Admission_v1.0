@@ -2,7 +2,6 @@
 session_start();
 include("../config/database.php");
 
-
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $identifier = $_POST['identifier'];
     $password = $_POST['password'];
@@ -15,7 +14,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if ($stmt->rowCount() > 0) {
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
         // Verify the password
         if (password_verify($password, $user['password'])) {
             $_SESSION['applicant'] = [
@@ -39,7 +37,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 // Set the page type for the header
 $pageType = 'login';
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -75,8 +72,8 @@ $pageType = 'login';
       transition: 0.3s;
     }
     .btn-primary:hover {
-      background-color: #FFA500;
-      border-color: #FFA500;
+      background-color: #0056b3;
+      border-color: #0056b3;
     }
     .button-container {
       display: flex;
@@ -150,6 +147,13 @@ $pageType = 'login';
       from { opacity: 0; }
       to { opacity: 1; }
     }
+    /* Inline error messages */
+    .error-message {
+      color: red;
+      font-size: 0.875rem;
+      margin-top: 5px;
+      display: none;
+    }
   </style>
 </head>
 <?php include("includes/header_login_register.php"); ?>
@@ -161,11 +165,12 @@ $pageType = 'login';
         <div class="alert alert-danger"><?php echo $error; ?></div>
       <?php endif; ?>
 
-      <form method="POST" action="login.php">
+      <form id="loginForm" method="POST" action="login.php">
         <!-- Email or Serial Number -->
         <div class="floating-label-group">
           <input type="text" id="identifier" name="identifier" class="form-control" placeholder=" " required autofocus>
           <label for="identifier" class="form-label">Email or Serial Number</label>
+          <small id="identifierError" class="error-message"></small>
         </div>
 
         <!-- Password with toggle -->
@@ -173,9 +178,10 @@ $pageType = 'login';
           <input type="password" id="password" name="password" class="form-control" placeholder=" " required>
           <label for="password" class="form-label">Password</label>
           <span class="toggle-password" onclick="togglePasswordVisibility()">Show</span>
+          <small id="passwordError" class="error-message"></small>
         </div>
 
-        <small class="form-text center mb-5 text-center">
+        <small class="form-text center mb-3">
           Forgot your password? <a href="reset_password.php">Reset it here</a>.
         </small>
 
@@ -187,7 +193,7 @@ $pageType = 'login';
           </label>
         </div>
         <div class="button-container">
-        <button type="submit" class="btn btn-primary">Login</button>
+          <button type="submit" class="btn btn-primary">Login</button>
         </div>
       </form>
 
@@ -201,6 +207,7 @@ $pageType = 'login';
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
   <script>
+    // Toggle password visibility
     function togglePasswordVisibility() {
       const passwordInput = document.getElementById('password');
       const toggleBtn = document.querySelector('.toggle-password');
@@ -212,6 +219,76 @@ $pageType = 'login';
         toggleBtn.textContent = 'Show';
       }
     }
+
+    // Real-time input validation for login form
+    document.addEventListener('DOMContentLoaded', function() {
+      const identifierInput = document.getElementById('identifier');
+      const passwordInput = document.getElementById('password');
+
+      identifierInput.addEventListener('input', function() {
+        if (this.value.trim() === '') {
+          showError('identifierError', 'This field is required.');
+        } else {
+          hideError('identifierError');
+          // If identifier looks like an email, validate format.
+          if (this.value.includes('@')) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(this.value)) {
+              showError('identifierError', 'Invalid email format.');
+            } else {
+              hideError('identifierError');
+            }
+          }
+        }
+      });
+
+      passwordInput.addEventListener('input', function() {
+        if (this.value.trim() === '') {
+          showError('passwordError', 'Password is required.');
+        } else {
+          hideError('passwordError');
+        }
+      });
+    });
+
+    function showError(elementId, message) {
+      const errorElement = document.getElementById(elementId);
+      errorElement.textContent = message;
+      errorElement.style.display = 'block';
+    }
+
+    function hideError(elementId) {
+      const errorElement = document.getElementById(elementId);
+      errorElement.textContent = '';
+      errorElement.style.display = 'none';
+    }
+
+    // Final form submission check
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      let valid = true;
+      const identifierValue = document.getElementById('identifier').value.trim();
+      const passwordValue = document.getElementById('password').value.trim();
+
+      if (identifierValue === '') {
+        showError('identifierError', 'This field is required.');
+        valid = false;
+      }
+      // If identifier contains an '@', validate email format
+      if (identifierValue.includes('@')) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(identifierValue)) {
+          showError('identifierError', 'Invalid email format.');
+          valid = false;
+        }
+      }
+      if (passwordValue === '') {
+        showError('passwordError', 'Password is required.');
+        valid = false;
+      }
+      if (!valid) {
+        e.preventDefault();
+      }
+    });
   </script>
 </body>
 </html>
