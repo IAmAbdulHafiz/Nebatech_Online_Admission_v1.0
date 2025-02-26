@@ -1,13 +1,24 @@
 <?php
-// Ensure applicant session data is available.
+session_start();
 if (!isset($_SESSION['applicant'])) {
     header("Location: login.php");
     exit();
 }
 $applicant = $_SESSION['applicant'];
 
-// Use a profile picture from the applicant record, or fallback if not available.
-$profilePic = isset($applicant['profile_picture']) ? $applicant['profile_picture'] : '/assets/images/profile-placeholder.png';
+// Include database connection
+include('../config/database.php');
+
+// Fetch the applicant's profile picture from the personal_information table
+$user_id = $applicant['id'];
+$stmt = $conn->prepare("SELECT passport_photo FROM personal_information WHERE applicant_id = ?");
+$stmt->execute([$user_id]);
+$profilePicture = $stmt->fetchColumn();
+
+// If no profile picture is found, use a default placeholder
+if (!$profilePicture) {
+    $profilePicture = '/assets/images/profile-placeholder.png';
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,38 +45,50 @@ $profilePic = isset($applicant['profile_picture']) ? $applicant['profile_picture
       align-items: center;
       justify-content: space-between;
     }
-    .dashboard-header .brand {
+    /* Brand section */
+    .brand {
       display: flex;
       align-items: center;
     }
-    .dashboard-header .brand img {
+    .brand img {
       height: 40px;
+      width: 40px;
       border-radius: 50%;
       object-fit: cover;
-      margin-right: 10px;
     }
-    .dashboard-header .brand span {
+    .brand span {
       font-size: 1.25rem;
       font-weight: bold;
+      margin-left: 10px;
     }
-    .dashboard-header .user-info .profile {
+    /* User menu */
+    .user-menu {
+      position: relative;
+    }
+    .user-menu .dropdown-toggle {
+      color: #fff;
+      text-decoration: none;
       display: flex;
       align-items: center;
     }
-    .dashboard-header .user-info .profile img {
+    .user-menu img {
       height: 40px;
       width: 40px;
       border-radius: 50%;
       object-fit: cover;
       margin-right: 8px;
     }
-    .dashboard-header .user-info .profile span {
+    .user-menu span {
       font-size: 1rem;
       font-weight: 500;
     }
-    /* Ensure body content does not hide under the fixed header */
+    .dropdown-menu {
+      min-width: 150px;
+      right: 0;
+      left: auto;
+    }
     body {
-      padding-top: 70px;
+      padding-top: 70px; /* Ensure content isn't hidden behind the fixed header */
     }
   </style>
 </head>
@@ -79,17 +102,23 @@ $profilePic = isset($applicant['profile_picture']) ? $applicant['profile_picture
           <span>Nebatech Admissions</span>
         </a>
       </div>
-      <!-- Applicant Profile Section -->
-      <div class="user-info">
-        <div class="profile">
-          <img src="<?= htmlspecialchars($profilePic) ?>" alt="Profile Picture">
-          <span><?= htmlspecialchars($applicant['first_name'] . ' ' . $applicant['surname']) ?></span>
-        </div>
+      <!-- User Dropdown Menu -->
+      <div class="user-menu dropdown">
+        <a href="#" class="dropdown-toggle" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+          <img src="<?= htmlspecialchars($profilePicture) ?>" alt="Profile Picture">
+          <span><?= htmlspecialchars($applicant['first_name']) ?></span>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+          <li><a class="dropdown-item" href="profile.php">Profile</a></li>
+          <li><a class="dropdown-item" href="settings.php">Settings</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item text-danger" href="logout.php">Logout</a></li>
+        </ul>
       </div>
     </div>
   </header>
-  <!-- The rest of your dashboard page content goes here -->
-  
+
+  <!-- Include Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
