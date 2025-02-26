@@ -22,19 +22,19 @@
     </div>
     <!-- Navigation / Support Links -->
     <div>
-      <a href="../public/contact.php" style="margin-right: 15px; text-decoration: none; color: #1a73e8;">Help</a>
+      <a href="../public/contact.php" style="margin-right: 15px; text-decoration: none; color: #fff;">Help</a>
       <?php 
       // Conditionally mark the active link if $pageType is set
       if (isset($pageType) && $pageType === 'login') {
-          echo '<span style="margin-right:15px; text-decoration: none; color: #1a73e8; font-weight:bold;">Login</span>';
-          echo '<a href="../signup.php" style="text-decoration: none; color: #1a73e8;">Sign Up</a>';
+          echo '<span style="margin-right:15px; text-decoration: none; color: #fff; font-weight:bold;">Login</span>';
+          echo '<a href="../admission/signup.php" style="text-decoration: none; color: #fff;">Sign Up</a>';
       } elseif (isset($pageType) && $pageType === 'signup') {
-          echo '<a href="../login.php" style="margin-right:15px; text-decoration: none; color: #1a73e8;">Login</a>';
-          echo '<span style="text-decoration: none; color: #1a73e8; font-weight:bold;">Sign Up</span>';
+          echo '<a href="../admission/login.php" style="margin-right:15px; text-decoration: none; color: #fff;">Login</a>';
+          echo '<span style="text-decoration: none; color: #fff; font-weight:bold;">Sign Up</span>';
       } else {
           // Default: show both links as normal
-          echo '<a href="../login.php" style="margin-right:15px; text-decoration: none; color: #1a73e8;">Login</a>';
-          echo '<a href="../signup.php" style="text-decoration: none; color: #1a73e8;">Sign Up</a>';
+          echo '<a href="../admission/login.php" style="margin-right:15px; text-decoration: none; color: #fff;">Login</a>';
+          echo '<a href="../admission/signup.php" style="text-decoration: none; color: #fff;">Sign Up</a>';
       }
       ?>
     </div>
