@@ -87,7 +87,7 @@ $pageType = 'signup';
       height: 100%;
     }
     .btn-primary {
-      width: 30%;
+      width: 40%;
       background-color: #002060;
       border-color: #002060;
       border-radius: 8px;
