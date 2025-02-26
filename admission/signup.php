@@ -15,16 +15,6 @@ $pageType = 'signup';
     * {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-    body {
-      margin: 0;
-      padding-top: 120px; /* Adjust for fixed header and topbar */
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-      background: linear-gradient(135deg, #002060, #0056b3);
-      color: #333;
-      line-height: 1.6;
-    }
     .container-signup {
       max-width: 600px;
       margin: 5rem auto;
@@ -94,7 +84,7 @@ $pageType = 'signup';
   <!-- Include the header (which is designed for login/signup pages) -->
   <?php include 'includes/header_login_register.php'; ?>
 
-  <div class="main-content">
+  <div class="container">
     <div class="container-signup">
       <div class="header-text">
         <h1>Register</h1>
