@@ -1,4 +1,4 @@
-<?php
+<?php 
 session_start();
 
 ini_set('display_errors', 1);
@@ -6,172 +6,169 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 if (!isset($_SESSION['applicant'])) {
-    header("Location: login.php"); // Redirect to login if not authenticated
+    header("Location: login.php");
     exit();
 }
 
 $applicant = $_SESSION['applicant'];
-
-// Include database connection
 include('../config/database.php');
 
-// Set a default application status.
-// Alternatively, if your applicants table has an application_status column, use that.
-// Example:
-// $stmt = $conn->prepare("SELECT application_status FROM applicants WHERE id = ?");
-// $stmt->execute([$applicant['id']]);
-// $applicationStatus = $stmt->fetchColumn();
-$applicationStatus = 'Not Started';
+// Retrieve application status from the applicant record if available; default otherwise.
+$applicationStatus = isset($applicant['application_status']) ? $applicant['application_status'] : 'Not Started';
 
-// Fetch notifications from the database
+// Fetch notifications for the applicant.
 $stmt = $conn->prepare("SELECT * FROM notifications WHERE user_id = ? AND is_read = 0 ORDER BY created_at DESC");
 $stmt->execute([$applicant['id']]);
 $notifications = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $unreadCount = count($notifications);
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Applicant Dashboard</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-            margin: 0;
-        }
-        .main-content {
-            flex: 1;
-            padding: 20px;
-            overflow-y: auto;
-        }
-        .content {
-            max-width: 1200px;
-            margin-left: 250px; /* Width of the sidebar */
-            margin-right: auto;
-        }
-        .card {
-            margin-bottom: 20px;
-        }
-        .progress-bar-container {
-            margin-top: 10px;
-        }
-        .notification-badge {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            border-radius: 50%;
-            background-color: #dc3545;
-            color: white;
-            font-size: 0.75rem;
-            width: 20px;
-            height: 20px;
-            text-align: center;
-        }
-        @media (max-width: 768px) {  
-            .content {
-                margin-left: 0;
-                padding: 10px;
-            }
-            .content h2 {
-                font-size: 1.5rem;
-            }
-            .content p {
-                font-size: 1rem;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Applicant Dashboard</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body {
+      background: #f8f9fa;
+      min-height: 100vh;
+    }
+    /* Main content layout taking the sidebar into account */
+    .main-content {
+      margin-left: 250px;
+      padding: 20px;
+    }
+    @media (max-width: 768px) {
+      .main-content {
+        margin-left: 0;
+      }
+    }
+    /* Modern progress bar */
+    .progress {
+      height: 30px;
+      background-color: #e9ecef;
+      border-radius: 15px;
+      overflow: hidden;
+    }
+    .progress-bar {
+      font-size: 1rem;
+      font-weight: bold;
+      line-height: 30px;
+    }
+    /* Notification badge styling */
+    .notification-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #dc3545;
+      color: #fff;
+      border-radius: 50%;
+      padding: 5px 10px;
+      font-size: 0.8rem;
+    }
+  </style>
 </head>
 <body>
+  <?php include("includes/sidebar.php"); ?>
 
-    <?php include("includes/sidebar.php"); ?>
-
-    <div class="main-content">
-        <div class="content">
-            <h2>Welcome, <?= htmlspecialchars($applicant['first_name'] . ' ' . $applicant['surname']) ?></h2>
-            <p>Serial Number: <strong><?= htmlspecialchars($applicant['serial_number']) ?></strong></p>
-
-            <!-- Application Progress -->
-            <div class="mt-4 py-4">
-                <h3>Your Application</h3>
-                <div class="progress-bar-container">
-                    <strong>Current Status:</strong>
-                    <div class="progress" style="height: 30px;">
-                        <div class="progress-bar" role="progressbar" style="width: <?= $applicationStatus === 'Pending' ? '50%' : ($applicationStatus === 'Approved' ? '100%' : '0%') ?>;" aria-valuenow="<?= $applicationStatus === 'Pending' ? '50' : ($applicationStatus === 'Approved' ? '100' : '0') ?>" aria-valuemin="0" aria-valuemax="100">
-                            <?= $applicationStatus === 'Pending' ? '50%' : ($applicationStatus === 'Approved' ? '100%' : '0%') ?>
-                        </div>
-                    </div>
-                </div>
-                <p>Status: <strong><?= htmlspecialchars($applicationStatus) ?></strong></p>
-                <?php if ($applicationStatus === 'Not Started'): ?>
-                    <a href="personal_info.php" class="btn btn-primary">Start Application</a>
-                <?php endif; ?>
-                <?php if ($applicationStatus === 'Pending' || $applicationStatus === 'Approved'): ?>
-                    <a href="view_application.php" class="btn btn-info">View Application</a>
-                <?php endif; ?>
+  <div class="main-content">
+    <div class="container">
+      <!-- Welcome & Basic Info -->
+      <div class="mb-4">
+        <h2 class="mb-3">Welcome, <?= htmlspecialchars($applicant['first_name'] . ' ' . $applicant['surname']) ?></h2>
+        <p class="lead">Serial Number: <strong><?= htmlspecialchars($applicant['serial_number']) ?></strong></p>
+      </div>
+      
+      <!-- Application Progress Card -->
+      <div class="card mb-4 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Your Application Progress</h5>
+          <p>Status: <strong><?= htmlspecialchars($applicationStatus) ?></strong></p>
+          <?php
+            // Define progress percentage based on status.
+            if ($applicationStatus === 'Not Started') {
+              $progress = 0;
+            } elseif ($applicationStatus === 'Pending') {
+              $progress = 50;
+            } elseif ($applicationStatus === 'Approved') {
+              $progress = 100;
+            } else {
+              $progress = 0;
+            }
+          ?>
+          <div class="progress">
+            <div class="progress-bar bg-success" role="progressbar" style="width: <?= $progress ?>%;" aria-valuenow="<?= $progress ?>" aria-valuemin="0" aria-valuemax="100">
+              <?= $progress ?>%
             </div>
-
-            <!-- Quick Links Section -->
-            <div class="mt-4">
-                <h3>Quick Links</h3>
-                <div class="row">
-                    <div class="col-md-4 col-sm-6 mb-3">
-                        <div class="card text-center">
-                            <div class="card-body">
-                                <i class="bi bi-file-earmark-text-fill" style="font-size: 2rem;"></i>
-                                <h5 class="card-title mt-2">View Application</h5>
-                                <a href="view_application.php" class="btn btn-primary">View</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6 mb-3">
-                        <div class="card text-center">
-                            <div class="card-body">
-                                <i class="bi bi-clipboard-check-fill" style="font-size: 2rem;"></i>
-                                <h5 class="card-title mt-2">Admission Status</h5>
-                                <a href="admission_status.php" class="btn btn-primary">Check Status</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6 mb-3">
-                        <div class="card text-center">
-                            <div class="card-body">
-                                <i class="bi bi-printer-fill" style="font-size: 2rem;"></i>
-                                <h5 class="card-title mt-2">Print Admission Letter</h5>
-                                <a href="print_admission_letter.php" class="btn btn-primary">Print</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Notifications Section -->
-            <div class="mt-4 py-4">
-                <h3>Notifications</h3>
-                <div class="position-relative">
-                    <div class="card">
-                        <div class="card-body">
-                            <i class="bi bi-bell-fill" style="font-size: 2rem;"></i>
-                            <h5 class="card-title mt-2">New Updates</h5>
-                            <p class="card-text">You have <?= $unreadCount ?> new updates regarding your application process.</p>
-                            <a href="notifications.php" class="btn btn-warning">View All</a>
-                            <?php if ($unreadCount > 0): ?>
-                                <span class="notification-badge"><?= $unreadCount ?></span>
-                            <?php endif; ?>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          </div>
+          <div class="mt-3">
+            <?php if ($applicationStatus === 'Not Started'): ?>
+              <a href="personal_info.php" class="btn btn-primary">Start Application</a>
+            <?php elseif ($applicationStatus === 'Pending' || $applicationStatus === 'Approved'): ?>
+              <a href="view_application.php" class="btn btn-info">View Application</a>
+            <?php endif; ?>
+          </div>
         </div>
-    </div>
-    <?php include("../includes/footer.php"); ?>
+      </div>
 
-    <!-- Bootstrap JS and dependencies -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+      <!-- Quick Links Section -->
+      <div class="row mb-4">
+        <div class="col-md-4">
+          <div class="card text-center shadow-sm">
+            <div class="card-body">
+              <i class="bi bi-file-earmark-text-fill display-4 text-primary"></i>
+              <h5 class="card-title mt-3">View Application</h5>
+              <a href="view_application.php" class="btn btn-primary">View</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card text-center shadow-sm">
+            <div class="card-body">
+              <i class="bi bi-clipboard-check-fill display-4 text-success"></i>
+              <h5 class="card-title mt-3">Admission Status</h5>
+              <a href="admission_status.php" class="btn btn-success">Check Status</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card text-center shadow-sm">
+            <div class="card-body">
+              <i class="bi bi-printer display-4 text-warning"></i>
+              <h5 class="card-title mt-3">Print Admission Letter</h5>
+              <a href="print_admission_letter.php" class="btn btn-warning">Print</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Notifications Section -->
+      <div class="card shadow-sm">
+        <div class="card-body position-relative">
+          <h5 class="card-title">Notifications</h5>
+          <?php if ($unreadCount > 0): ?>
+            <span class="notification-badge"><?= $unreadCount ?></span>
+          <?php endif; ?>
+          <?php if ($unreadCount > 0): ?>
+            <ul class="list-group list-group-flush">
+              <?php foreach($notifications as $notification): ?>
+                <li class="list-group-item">
+                  <?= htmlspecialchars($notification['message']) ?>
+                  <small class="text-muted float-end"><?= date("M d, Y H:i", strtotime($notification['created_at'])) ?></small>
+                </li>
+              <?php endforeach; ?>
+            </ul>
+          <?php else: ?>
+            <p class="mb-0">No new notifications.</p>
+          <?php endif; ?>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <?php include("../includes/footer.php"); ?>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
