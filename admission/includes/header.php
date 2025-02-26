@@ -95,7 +95,7 @@ if (!$profilePicture) {
     <div class="container-fluid">
       <!-- Brand Section -->
       <div class="brand">
-        <a href="/admission/index.php" class="text-white text-decoration-none">
+        <a href="../admission/index.php" class="text-white text-decoration-none">
           <img src="/assets/images/logo.png" alt="Nebatech Logo">
           <span>Nebatech Admissions</span>
         </a>
@@ -104,7 +104,7 @@ if (!$profilePicture) {
       <div class="user-menu dropdown">
         <a href="#" class="dropdown-toggle" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
           <img src="<?= htmlspecialchars($profilePicture) ?>" alt="Profile Picture">
-          <span><?= htmlspecialchars($applicant['first_name']) ?></span>
+          <span><?= htmlspecialchars($applicant['first_name'] . ' ' . $applicant['surname']) ?></span>
         </a>
         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
           <li><a class="dropdown-item" href="profile.php">Profile</a></li>
