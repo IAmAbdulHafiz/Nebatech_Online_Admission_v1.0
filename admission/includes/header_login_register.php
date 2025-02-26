@@ -8,7 +8,7 @@
   <!-- Font Awesome for the back arrow icon -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<header style="background: #002060; padding: 10px 20px; border-bottom: 1px solid #ddd;">
+<header style="background: #002060; padding: 10px 20px;">
   <div style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between;">
     <div style="display: flex; align-items: center;">
       <!-- Back Arrow (optional: if you prefer to allow users to go back) -->
@@ -16,7 +16,7 @@
         <i class="fas fa-arrow-left"></i>
       </a>
       <!-- Logo and Site Name -->
-      <a href="/admission/index.php" style="text-decoration: none; color: #002060;">
+      <a href="../index.php" style="text-decoration: none; color: #002060;">
         <img src="../assets/images/logo.png" alt="Nebatech Logo" style="height: 50px; vertical-align: middle;">
       </a>
     </div>
@@ -27,7 +27,7 @@
       // Conditionally mark the active link if $pageType is set
       if (isset($pageType) && $pageType === 'login') {
           echo '<span style="margin-right:15px; text-decoration: none; color: #1a73e8; font-weight:bold;">Login</span>';
-          echo '<a href="../includeW/signup.php" style="text-decoration: none; color: #1a73e8;">Sign Up</a>';
+          echo '<a href="../signup.php" style="text-decoration: none; color: #1a73e8;">Sign Up</a>';
       } elseif (isset($pageType) && $pageType === 'signup') {
           echo '<a href="../login.php" style="margin-right:15px; text-decoration: none; color: #1a73e8;">Login</a>';
           echo '<span style="text-decoration: none; color: #1a73e8; font-weight:bold;">Sign Up</span>';
