@@ -1,3 +1,14 @@
+<?php
+// Ensure applicant session data is available.
+if (!isset($_SESSION['applicant'])) {
+    header("Location: login.php");
+    exit();
+}
+$applicant = $_SESSION['applicant'];
+
+// Use a profile picture from the applicant record, or fallback if not available.
+$profilePic = isset($applicant['profile_picture']) ? $applicant['profile_picture'] : '/assets/images/profile-placeholder.png';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,34 +27,43 @@
       width: 100%;
       z-index: 1050;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 10px 20px;
     }
-    .dashboard-header .navbar {
-      padding: 0.5rem 1rem;
+    .dashboard-header .container-fluid {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
-    .dashboard-header .navbar-brand img {
+    .dashboard-header .brand {
+      display: flex;
+      align-items: center;
+    }
+    .dashboard-header .brand img {
       height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 10px;
     }
-    .dashboard-header .navbar-brand span {
+    .dashboard-header .brand span {
       font-size: 1.25rem;
       font-weight: bold;
-      margin-left: 0.5rem;
     }
-    .dashboard-header .navbar-nav .nav-link {
-      color: #fff;
-      margin-right: 1rem;
+    .dashboard-header .user-info .profile {
+      display: flex;
+      align-items: center;
+    }
+    .dashboard-header .user-info .profile img {
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 8px;
+    }
+    .dashboard-header .user-info .profile span {
+      font-size: 1rem;
       font-weight: 500;
-      transition: color 0.3s;
     }
-    .dashboard-header .navbar-nav .nav-link:hover,
-    .dashboard-header .navbar-nav .nav-link.active {
-      color: #FFA500; /* Gold */
-    }
-    /* User Dropdown */
-    .dashboard-header .user-menu .dropdown-menu {
-      right: 0;
-      left: auto;
-    }
-    /* Body padding to prevent content from being hidden behind fixed header */
+    /* Ensure body content does not hide under the fixed header */
     body {
       padding-top: 70px;
     }
@@ -51,46 +71,25 @@
 </head>
 <body>
   <header class="dashboard-header">
-    <nav class="navbar navbar-expand-lg navbar-dark">
-      <div class="container-fluid">
-        <!-- Logo and Brand -->
-        <a class="navbar-brand" href="/admission/index.php">
+    <div class="container-fluid">
+      <!-- Brand Section -->
+      <div class="brand">
+        <a href="/admission/index.php" class="text-white text-decoration-none">
           <img src="/assets/images/logo.png" alt="Nebatech Logo">
           <span>Nebatech Admissions</span>
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#dashboardNavbar" aria-controls="dashboardNavbar" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="dashboardNavbar">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" href="applicant_dashboard.php">Dashboard</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="admission_status.php">Admission Status</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="view_application.php">View Application</a>
-            </li>
-          </ul>
-          <ul class="navbar-nav">
-            <li class="nav-item dropdown user-menu">
-              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fas fa-user-circle fa-lg"></i>
-              </a>
-              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                <li><a class="dropdown-item" href="profile.php">Profile</a></li>
-                <li><a class="dropdown-item" href="settings.php">Settings</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item text-danger" href="logout.php">Logout</a></li>
-              </ul>
-            </li>
-          </ul>
+      </div>
+      <!-- Applicant Profile Section -->
+      <div class="user-info">
+        <div class="profile">
+          <img src="<?= htmlspecialchars($profilePic) ?>" alt="Profile Picture">
+          <span><?= htmlspecialchars($applicant['first_name'] . ' ' . $applicant['surname']) ?></span>
         </div>
       </div>
-    </nav>
+    </div>
   </header>
-
+  <!-- The rest of your dashboard page content goes here -->
+  
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
