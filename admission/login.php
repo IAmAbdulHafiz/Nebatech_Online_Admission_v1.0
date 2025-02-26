@@ -78,6 +78,12 @@ $pageType = 'login';
       background-color: #FFA500;
       border-color: #FFA500;
     }
+    .button-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
     .form-text {
       color: #666;
       font-size: 0.9rem;
@@ -180,7 +186,9 @@ $pageType = 'login';
             Remember me on this device
           </label>
         </div>
+        <div class="button-container">
         <button type="submit" class="btn btn-primary">Login</button>
+        </div>
       </form>
 
       <!-- Footer Links -->
