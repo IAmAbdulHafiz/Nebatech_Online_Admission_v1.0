@@ -20,7 +20,7 @@ $stmt->execute([$user_id]);
 $profilePicture = $stmt->fetchColumn();
 ?>
 
-<aside id="sidebar" class="bg-primary text-white position-fixed top-0 start-0 shadow" style="width: 250px; min-height: 100vh; padding-top: 10vh;">
+<aside id="sidebar" class="text-white position-fixed top-0 start-0 shadow" style="width: 250px; min-height: 100vh; padding-top: 10vh; background-color: #002060;">
   <div class="p-4">
     <!-- Profile Section -->
     <div class="text-center mb-4">
