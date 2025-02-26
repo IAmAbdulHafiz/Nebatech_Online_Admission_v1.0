@@ -51,7 +51,7 @@ if (!$profilePicture) {
     }
     .brand img {
       height: 40px;
-      width: 60px;
+      width: 70px;
       object-fit: cover;
     }
     .brand span {
