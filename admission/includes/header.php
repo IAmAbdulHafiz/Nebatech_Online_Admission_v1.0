@@ -52,7 +52,6 @@ if (!$profilePicture) {
     .brand img {
       height: 40px;
       width: 40px;
-      border-radius: 50%;
       object-fit: cover;
     }
     .brand span {
@@ -105,7 +104,7 @@ if (!$profilePicture) {
       <div class="user-menu dropdown">
         <a href="#" class="dropdown-toggle" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
           <img src="<?= htmlspecialchars($profilePicture) ?>" alt="Profile Picture">
-          <span><?= htmlspecialchars($applicant['first_name']) ?></span>
+          <span><?= htmlspecialchars($applicants['first_name']) ?></span>
         </a>
         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
           <li><a class="dropdown-item" href="profile.php">Profile</a></li>
