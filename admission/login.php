@@ -45,15 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <style>
-    body {
-      background: linear-gradient(135deg, #002060, #0056b3);
-      color: #fff;
-      height: 100vh;
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+
     .login-container {
       background: #fff;
       color: #333;
@@ -152,7 +144,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 </head>
 <?php include("includes/header_login_register.php"); ?>
 <body>
-  <div class="login-container">
+  <div class="container login-container">
     <h3>Login to Your Account</h3>
     <?php if (!empty($error)) : ?>
       <div class="alert alert-danger"><?php echo $error; ?></div>
