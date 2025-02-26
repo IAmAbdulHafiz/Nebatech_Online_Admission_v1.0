@@ -1,19 +1,14 @@
 <!-- includes/header.php -->
-<?php
-// Optionally, set $pageType in your login or signup pages.
-// For example, on the login page: $pageType = 'login';
-// and on the signup page: $pageType = 'signup';
-?>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nebatech Admissions</title>
   <!-- Use absolute paths so the stylesheet loads on every page -->
-  <link rel="stylesheet" href="/assets/css/stylesheet.css">
+  <link rel="stylesheet" href="../assets/css/stylesheet.css">
   <!-- Font Awesome for the back arrow icon -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<header style="background: #fff; padding: 10px 20px; border-bottom: 1px solid #ddd;">
+<header style="background: #002060; padding: 10px 20px; border-bottom: 1px solid #ddd;">
   <div style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between;">
     <div style="display: flex; align-items: center;">
       <!-- Back Arrow (optional: if you prefer to allow users to go back) -->
@@ -27,12 +22,12 @@
     </div>
     <!-- Navigation / Support Links -->
     <div>
-      <a href="/contact.php" style="margin-right: 15px; text-decoration: none; color: #1a73e8;">Help</a>
+      <a href="../public/contact.php" style="margin-right: 15px; text-decoration: none; color: #1a73e8;">Help</a>
       <?php 
       // Conditionally mark the active link if $pageType is set
       if (isset($pageType) && $pageType === 'login') {
           echo '<span style="margin-right:15px; text-decoration: none; color: #1a73e8; font-weight:bold;">Login</span>';
-          echo '<a href="../include/signup.php" style="text-decoration: none; color: #1a73e8;">Sign Up</a>';
+          echo '<a href="../includeW/signup.php" style="text-decoration: none; color: #1a73e8;">Sign Up</a>';
       } elseif (isset($pageType) && $pageType === 'signup') {
           echo '<a href="../login.php" style="margin-right:15px; text-decoration: none; color: #1a73e8;">Login</a>';
           echo '<span style="text-decoration: none; color: #1a73e8; font-weight:bold;">Sign Up</span>';

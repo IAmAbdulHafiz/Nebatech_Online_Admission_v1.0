@@ -1,34 +1,44 @@
+<?php
+// Set the page type for the header
+$pageType = 'signup';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nebatech Admission Portal - Register</title>
+  <!-- Use absolute paths so assets load regardless of directory -->
+  <link rel="stylesheet" href="../assets/css/stylesheet.css">
   <style>
+    /* Global styles */
     * {
-
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
     body {
+      margin: 0;
+      padding-top: 120px; /* Adjust for fixed header and topbar */
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
       background: linear-gradient(135deg, #002060, #0056b3);
       color: #333;
-      height: 100vh;
       line-height: 1.6;
     }
     .container-signup {
       max-width: 600px;
-      margin: auto;
+      margin: 5rem auto;
       padding: 2rem;
       background-color: #fff;
       border-radius: 0.5rem;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
-    .header {
+    .header-text {
       text-align: center;
       margin-bottom: 2rem;
     }
-    .header h1 {
-      color: #1a73e8;
+    .header-text h1 {
+      color: #002060;
     }
     .form-group {
       display: flex;
@@ -63,7 +73,7 @@
       top: -0.5rem;
       left: 0.5rem;
       font-size: 0.75rem;
-      color: #1a73e8;
+      color: #002060;
     }
     button {
       background-color: #002060;
@@ -81,53 +91,60 @@
   </style>
 </head>
 <body>
+  <!-- Include the header (which is designed for login/signup pages) -->
   <?php include 'includes/header_login_register.php'; ?>
-  <div class="container-signup">
-    <div class="header">
-      <h1>Register</h1>
-      <p>Create your account to begin the application process</p>
+
+  <div class="main-content">
+    <div class="container-signup">
+      <div class="header-text">
+        <h1>Register</h1>
+        <p>Create your account to begin the application process</p>
+      </div>
+      <form action="validate_serial_pin.php" method="POST" onsubmit="return validateForm()">
+        <div class="form-group">
+          <div class="floating-label-group">
+            <input type="text" id="serialNumber" name="serial" placeholder=" " required>
+            <label for="serialNumber">Serial Number</label>
+          </div>
+          <div class="floating-label-group">
+            <input type="text" id="pin" name="pin" placeholder=" " required>
+            <label for="pin">PIN</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="floating-label-group">
+            <input type="text" id="firstName" name="firstName" placeholder=" " required>
+            <label for="firstName">First Name</label>
+          </div>
+          <div class="floating-label-group">
+            <input type="text" id="surname" name="surname" placeholder=" " required>
+            <label for="surname">Surname</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="floating-label-group">
+            <input type="email" id="email" name="email" placeholder=" " required>
+            <label for="email">Email Address</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="floating-label-group">
+            <input type="password" id="password" name="password" placeholder=" " required>
+            <label for="password">Password</label>
+          </div>
+          <div class="floating-label-group">
+            <input type="password" id="confirmPassword" name="confirm-password" placeholder=" " required>
+            <label for="confirmPassword">Confirm Password</label>
+          </div>
+        </div>
+        <button type="submit">Create Account</button>
+      </form>
     </div>
-    <form action="validate_serial_pin.php" method="POST">
-      <div class="form-group">
-        <div class="floating-label-group">
-          <input type="text" id="serialNumber" name="serial" placeholder=" " required>
-          <label for="serialNumber">Serial Number</label>
-        </div>
-        <div class="floating-label-group">
-          <input type="text" id="pin" name="pin" placeholder=" " required>
-          <label for="pin">PIN</label>
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="floating-label-group">
-          <input type="text" id="firstName" name="firstName" placeholder=" " required>
-          <label for="firstName">First Name</label>
-        </div>
-        <div class="floating-label-group">
-          <input type="text" id="surname" name="surname" placeholder=" " required>
-          <label for="surname">Surname</label>
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="floating-label-group">
-          <input type="email" id="email" name="email" placeholder=" " required>
-          <label for="email">Email Address</label>
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="floating-label-group">
-          <input type="password" id="password" name="password" placeholder=" " required>
-          <label for="password">Password</label>
-        </div>
-        <div class="floating-label-group">
-          <input type="password" id="confirmPassword" name="confirm-password" placeholder=" " required>
-          <label for="confirmPassword">Confirm Password</label>
-        </div>
-      </div>
-      <button type="submit">Create Account</button>
-    </form>
   </div>
+
+  <!-- Include the footer -->
   <?php include 'includes/footer.php'; ?>
+
   <script>
     function validateForm() {
       let isValid = true;
@@ -137,7 +154,7 @@
       const password = document.getElementById('password').value;
       const confirmPassword = document.getElementById('confirmPassword').value;
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
+  
       if (serialNumber.length !== 15) {
         alert('Serial Number must be 15 characters long');
         isValid = false;
@@ -158,7 +175,7 @@
         alert('Passwords do not match');
         isValid = false;
       }
-      return isValid;
+      return isValid; // Allow submission if true
     }
   </script>
 </body>
