@@ -1,4 +1,5 @@
 <?php
+session_start();
 if (!isset($_SESSION['applicant'])) {
     header("Location: login.php");
     exit();
@@ -8,8 +9,8 @@ $applicant = $_SESSION['applicant'];
 // Include database connection
 include('../config/database.php');
 
-// Fetch the applicant's profile picture from the personal_information table
 $user_id = $applicant['id'];
+// Fetch the applicant's profile picture from personal_information using applicant_id
 $stmt = $conn->prepare("SELECT passport_photo FROM personal_information WHERE applicant_id = ?");
 $stmt->execute([$user_id]);
 $profilePicture = $stmt->fetchColumn();
@@ -52,6 +53,7 @@ if (!$profilePicture) {
     .brand img {
       height: 40px;
       width: 40px;
+      border-radius: 50%;
       object-fit: cover;
     }
     .brand span {
@@ -68,6 +70,7 @@ if (!$profilePicture) {
       text-decoration: none;
       display: flex;
       align-items: center;
+      cursor: pointer;
     }
     .user-menu img {
       height: 40px;
@@ -86,7 +89,7 @@ if (!$profilePicture) {
       left: auto;
     }
     body {
-      padding-top: 70px; /* Ensure content isn't hidden behind the fixed header */
+      padding-top: 70px; /* Prevent content from being hidden behind the fixed header */
     }
   </style>
 </head>
@@ -95,7 +98,7 @@ if (!$profilePicture) {
     <div class="container-fluid">
       <!-- Brand Section -->
       <div class="brand">
-        <a href="../admission/index.php" class="text-white text-decoration-none">
+        <a href="/admission/index.php" class="text-white text-decoration-none">
           <img src="/assets/images/logo.png" alt="Nebatech Logo">
           <span>Nebatech Admissions</span>
         </a>
