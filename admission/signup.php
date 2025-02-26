@@ -71,6 +71,13 @@ $pageType = 'signup';
       display: none;
       margin-top: 5px;
     }
+    .button-container 
+    {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
   </style>
   <script>
     // If a success message is present, redirect after 5 seconds.
@@ -155,7 +162,9 @@ $pageType = 'signup';
             </div>
           </div>
         </div>
+        <div class=".button-container mb-3">
         <button type="submit" class="btn btn-primary">Create Account</button>
+        </div>
       </form>
       <div class="signup-footer mt-3 text-center">
         <p>Already have an account? <a href="login.php">Login</a></p>
