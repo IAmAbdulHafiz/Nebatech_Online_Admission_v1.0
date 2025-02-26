@@ -1,5 +1,4 @@
 <?php
-session_start();
 if (!isset($_SESSION['applicant'])) {
     header("Location: login.php");
     exit();
@@ -17,7 +16,7 @@ $profilePicture = $stmt->fetchColumn();
 
 // If no profile picture is found, use a default placeholder
 if (!$profilePicture) {
-    $profilePicture = '/assets/images/profile-placeholder.png';
+    $profilePicture = '../assets/images/profile-placeholder.png';
 }
 ?>
 <!DOCTYPE html>
