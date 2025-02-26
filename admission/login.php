@@ -50,6 +50,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       color: #fff;
       height: 100vh;
       margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
     .login-container {
       background: #fff;
