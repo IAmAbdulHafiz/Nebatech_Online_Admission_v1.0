@@ -30,6 +30,7 @@
         .card{
             border-radius: 0.5rem;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 10px;
             padding-left: 4rem;
             padding-right: 4rem;
         }
@@ -67,7 +68,7 @@
             text-align: center; 
         }
         .admission_form { 
-            padding-top: 50px; 
+            padding-top: 7rem; 
             padding-bottom: 50px; 
         }
     </style>
