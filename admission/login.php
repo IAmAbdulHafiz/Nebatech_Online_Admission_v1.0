@@ -2,6 +2,7 @@
 session_start();
 include("../config/database.php");
 
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $identifier = $_POST['identifier'];
     $password = $_POST['password'];
@@ -34,6 +35,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $error = "No account found with that email or serial number.";
     }
 }
+
+// Set the page type for the header
+$pageType = 'signup';
 ?>
 
 <!DOCTYPE html>
