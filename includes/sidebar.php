@@ -26,7 +26,7 @@ $profilePicture = $stmt->fetchColumn();
     <nav class="vh-100 d-flex flex-column align-items-center">
         <!-- Profile Section -->
         <div class="text-center py-4">
-            <img src="<?= htmlspecialchars($profilePicture ?? '../assets/images/profile-placeholder.png') ?>" alt="Profile" class="rounded-circle mb-2" style="width: 80px; height: 80px; object-fit: cover;">
+            <img src="<?= htmlspecialchars($profilePicture ?? '../../assets/images/profile-placeholder.png') ?>" alt="Profile" class="rounded-circle mb-2" style="width: 80px; height: 80px; object-fit: cover;">
             <h5 class="mb-0"><?php echo isset($applicant['first_name']) ? $applicant['first_name'] : "Applicant"; ?></h5>
             <small class="text-white"><?php echo isset($applicant['email']) ? $applicant['email'] : ""; ?></small>
         </div>
