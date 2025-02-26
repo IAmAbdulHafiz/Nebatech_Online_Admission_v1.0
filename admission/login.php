@@ -48,8 +48,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     body {
       background: linear-gradient(135deg, #002060, #0056b3);
       color: #fff;
-      justify-content: center;
-      align-items: center;
       height: 100vh;
       margin: 0;
     }
