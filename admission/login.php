@@ -150,8 +150,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
   </style>
 </head>
+<?php include("includes/header_login_register.php"); ?>
 <body>
-  <?php include("includes/header_login_register.php"); ?>
   <div class="login-container">
     <h3>Login to Your Account</h3>
     <?php if (!empty($error)) : ?>
