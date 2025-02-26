@@ -1,5 +1,4 @@
 <?php
-// Set the page type for the header
 $pageType = 'signup';
 ?>
 <!DOCTYPE html>
@@ -27,19 +26,11 @@ $pageType = 'signup';
       margin-bottom: 20px;
       text-align: center;
     }
-    .btn-primary {
-      width: 100%;
-      background-color: #002060;
-      border-color: #002060;
-      border-radius: 8px;
-      font-size: 16px;
-      padding: 12px;
-      transition: 0.3s;
+    .alert-success {
+      margin-bottom: 20px;
+      text-align: center;
     }
-    .btn-primary:hover {
-      background-color: #FFA500;
-      border-color: #FFA500;
-    }
+    /* (Your existing styles for form, floating labels, etc.) */
     .floating-label-group {
       position: relative;
       margin-bottom: 1.5rem;
@@ -80,21 +71,34 @@ $pageType = 'signup';
       display: none;
       margin-top: 5px;
     }
-    body {
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-      background: linear-gradient(135deg, #002060, #0056b3);
-      color: #333;
-      line-height: 1.6;
-    }
   </style>
+  <script>
+    // If a success message is present, redirect after 5 seconds.
+    document.addEventListener('DOMContentLoaded', function() {
+      const params = new URLSearchParams(window.location.search);
+      const msg = params.get('msg');
+      if (msg) {
+        // Create and display a success alert at the top of the container
+        const container = document.querySelector('.signup-container');
+        const alertDiv = document.createElement('div');
+        alertDiv.className = 'alert alert-success';
+        alertDiv.textContent = msg + ' You will be redirected to the login page in 5 seconds...';
+        container.prepend(alertDiv);
+        
+        // Redirect after 5 seconds
+        setTimeout(function() {
+          window.location.href = "login.php";
+        }, 5000);
+      }
+    });
+  </script>
 </head>
 <body>
   <?php include 'includes/header_login_register.php'; ?>
 
   <div class="container">
     <div class="signup-container">
+      <?php if (!isset($_GET['msg'])): ?>
       <h3 class="text-center">Register</h3>
       <p class="text-center">Create your account to begin the application process</p>
       <form id="signupForm" action="validate_serial_pin.php" method="POST">
@@ -156,12 +160,14 @@ $pageType = 'signup';
       <div class="signup-footer mt-3 text-center">
         <p>Already have an account? <a href="login.php">Login</a></p>
       </div>
+      <?php endif; ?>
     </div>
   </div>
 
   <?php include 'includes/footer.php'; ?>
 
   <script>
+    // Real-time input validation for immediate feedback
     document.addEventListener('DOMContentLoaded', function() {
       const serialInput = document.getElementById('serialNumber');
       const pinInput = document.getElementById('pin');
@@ -169,19 +175,21 @@ $pageType = 'signup';
       const passwordInput = document.getElementById('password');
       const confirmPasswordInput = document.getElementById('confirmPassword');
 
-      serialInput.addEventListener('input', function() {
+      serialInput.addEventListener('blur', function() {
         if (this.value.length !== 15) {
           showError('serialNumberError', 'Serial Number must be 15 characters long');
         } else {
           hideError('serialNumberError');
+          checkSerialPin();
         }
       });
 
-      pinInput.addEventListener('input', function() {
+      pinInput.addEventListener('blur', function() {
         if (this.value.length !== 6) {
           showError('pinError', 'PIN must be 6 characters long');
         } else {
           hideError('pinError');
+          checkSerialPin();
         }
       });
 
@@ -211,6 +219,33 @@ $pageType = 'signup';
       });
     });
 
+    // Function to perform an AJAX check if serial and pin already exist
+    async function checkSerialPin() {
+      const serial = document.getElementById('serialNumber').value;
+      const pin = document.getElementById('pin').value;
+      if (serial.length === 15 && pin.length === 6) {
+        try {
+          const response = await fetch('check_serial_pin.php?serial=' + encodeURIComponent(serial) + '&pin=' + encodeURIComponent(pin));
+          const data = await response.json();
+          if (!data.exists) {
+            showError('serialNumberError', 'The serial number and PIN combination is invalid.');
+            return false;
+          } else if (data.used) {
+            showError('serialNumberError', 'This serial number and PIN have already been used.');
+            return false;
+          } else {
+            hideError('serialNumberError');
+            hideError('pinError');
+            return true;
+          }
+        } catch (error) {
+          console.error('Error checking serial and PIN:', error);
+          return false;
+        }
+      }
+      return false;
+    }
+
     function showError(elementId, message) {
       const errorElement = document.getElementById(elementId);
       errorElement.textContent = message;
@@ -223,13 +258,18 @@ $pageType = 'signup';
       errorElement.style.display = 'none';
     }
 
-    document.getElementById('signupForm').addEventListener('submit', function(e) {
+    // Final form submission handler that checks all validations (including AJAX check)
+    document.getElementById('signupForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
       let valid = true;
-      if (document.getElementById('serialNumber').value.length !== 15) {
+      
+      const serialValue = document.getElementById('serialNumber').value;
+      const pinValue = document.getElementById('pin').value;
+      if (serialValue.length !== 15) {
         showError('serialNumberError', 'Serial Number must be 15 characters long');
         valid = false;
       }
-      if (document.getElementById('pin').value.length !== 6) {
+      if (pinValue.length !== 6) {
         showError('pinError', 'PIN must be 6 characters long');
         valid = false;
       }
@@ -246,8 +286,15 @@ $pageType = 'signup';
         showError('confirmPasswordError', 'Passwords do not match');
         valid = false;
       }
-      if (!valid) {
-        e.preventDefault();
+      
+      // Check via AJAX if serial and pin exist and are available
+      const ajaxCheck = await checkSerialPin();
+      if (!ajaxCheck) {
+        valid = false;
+      }
+
+      if (valid) {
+        this.submit();
       }
     });
   </script>
