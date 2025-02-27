@@ -10,7 +10,7 @@
     <nav>
       <ul class="nav flex-column">
         <li class="nav-item mb-2">
-          <a href="dashboard.php" class="nav-link text-white p-2 rounded <?php echo basename($_SERVER['PHP_SELF']) == 'dashboard.php' ? 'active' : ''; ?>">
+          <a href="dashboard.php" class="nav-link p-2 rounded <?php echo basename($_SERVER['PHP_SELF']) == 'dashboard.php' ? 'active' : ''; ?>">
             <i class="fas fa-home me-2"></i> Dashboard
           </a>
         </li>
@@ -30,7 +30,7 @@
           </a>
         </li>
         <li class="nav-item mb-2">
-          <a href="settings.php" class="nav-link text-white p-2 rounded <?php echo basename($_SERVER['PHP_SELF']) == 'settings.php' ? 'active' : ''; ?>">
+          <a href="settings.php" class="nav-link p-2 rounded <?php echo basename($_SERVER['PHP_SELF']) == 'settings.php' ? 'active' : ''; ?>">
             <i class="fas fa-cog me-2"></i> Settings
           </a>
         </li>
