@@ -51,6 +51,7 @@ function getField($field, $default = 'Not provided') {
     .card {
       margin-bottom: 50px;
     }
+    /* Remove hover effects on cards */
     .card:hover {
       box-shadow: none !important;
       transform: none !important;
