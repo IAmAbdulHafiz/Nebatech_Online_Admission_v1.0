@@ -122,6 +122,11 @@ if (!isset($_SESSION['application']['user_id'])) {
       font-weight: bold;
       line-height: 30px;
     }
+    .error-message {
+      color: red;
+      font-size: 0.9rem;
+      margin-top: 5px;
+    }
   </style>
 </head>
 <body>
@@ -341,13 +346,29 @@ if (!isset($_SESSION['application']['user_id'])) {
             $(".progress-bar").text("Step " + step + " of " + totalSteps);
         }
 
+        function validateStep(step) {
+            var isValid = true;
+            $(".step-" + step + " [required]").each(function() {
+                if (!this.checkValidity()) {
+                    isValid = false;
+                    $(this).next(".error-message").remove();
+                    $(this).after('<div class="error-message">This field is required.</div>');
+                } else {
+                    $(this).next(".error-message").remove();
+                }
+            });
+            return isValid;
+        }
+
         $(".next-step").click(function () {
             console.log("Next clicked. Current step: " + currentStep);
-            if (currentStep < totalSteps) {
-                currentStep++;
-                showStep(currentStep);
-            } else {
-                $("#applicationForm").submit();
+            if (validateStep(currentStep)) {
+                if (currentStep < totalSteps) {
+                    currentStep++;
+                    showStep(currentStep);
+                } else {
+                    $("#applicationForm").submit();
+                }
             }
         });
 
@@ -360,9 +381,8 @@ if (!isset($_SESSION['application']['user_id'])) {
         });
 
         $("#applicationForm").submit(function (e) {
-            if (!$(this)[0].checkValidity()) {
+            if (!validateStep(currentStep)) {
                 e.preventDefault();
-                alert("Please fill out all required fields before submitting.");
             }
         });
 
@@ -392,8 +412,11 @@ if (!isset($_SESSION['application']['user_id'])) {
             var email = $("#email").val();
             var confirmEmail = $(this).val();
             if(email !== confirmEmail) {
-                alert("Email and Confirm Email do not match.");
+                $(this).next(".error-message").remove();
+                $(this).after('<div class="error-message">Email and Confirm Email do not match.</div>');
                 $(this).focus();
+            } else {
+                $(this).next(".error-message").remove();
             }
         });
     });
