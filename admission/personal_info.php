@@ -133,7 +133,7 @@ if (!isset($_SESSION['application']['user_id'])) {
           </div>
         </div>
         <p class="text-muted text-center">Please provide accurate information. Fields marked with * are required.</p>
-
+        
         <!-- Device Ownership Section -->
         <div class="device-section">
           <label class="form-label">Do you have a laptop, desktop or smartphone? <small>(Tick all that apply)</small></label>
@@ -311,81 +311,85 @@ if (!isset($_SESSION['application']['user_id'])) {
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- jQuery and Bootstrap JS -->
-    <script src="../assets/js/jquery.min.js"></script>
-    <script src="../assets/js/bootstrap.bundle.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            var currentStep = 1;
-            var totalSteps = 3; // Adjust total steps as needed
+  <!-- jQuery and Bootstrap JS -->
+  <script src="../assets/js/jquery.min.js"></script>
+  <script src="../assets/js/bootstrap.bundle.min.js"></script>
+  <script>
+    $(document).ready(function(){
+        var currentStep = 1;
+        var totalSteps = 3; // Adjust total steps as needed
 
-            function showStep(step) {
-                $(".step").addClass("d-none");
-                $(".step-" + step).removeClass("d-none");
+        function showStep(step) {
+            console.log("Showing step " + step);
+            $(".step").addClass("d-none");
+            $(".step-" + step).removeClass("d-none");
 
-                // Update progress bar if present
-                var progress = (step / totalSteps) * 100;
-                $(".progress-bar").css("width", progress + "%");
-                $(".progress-bar").attr("aria-valuenow", progress);
-                $(".progress-bar").text("Step " + step + " of " + totalSteps);
+            // Update progress bar if present
+            var progress = (step / totalSteps) * 100;
+            $(".progress-bar").css("width", progress + "%");
+            $(".progress-bar").attr("aria-valuenow", progress);
+            $(".progress-bar").text("Step " + step + " of " + totalSteps);
+        }
+
+        $(".next-step").click(function () {
+            console.log("Next clicked. Current step: " + currentStep);
+            if (currentStep < totalSteps) {
+                currentStep++;
+                showStep(currentStep);
+            } else {
+                $("#applicationForm").submit();
             }
-
-            $(".next-step").click(function () {
-                if (currentStep < totalSteps) {
-                    currentStep++;
-                    showStep(currentStep);
-                } else {
-                    $("#applicationForm").submit();
-                }
-            });
-
-            $(".prev-step").click(function () {
-                if (currentStep > 1) {
-                    currentStep--;
-                    showStep(currentStep);
-                }
-            });
-
-            $("#applicationForm").submit(function (e) {
-                if (!$(this)[0].checkValidity()) {
-                    e.preventDefault();
-                    alert("Please fill out all required fields before submitting.");
-                }
-            });
-
-            // Show the first step initially
-            showStep(currentStep);
-
-            // Preview passport photo
-            $("#passport_photo").change(function() {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    $("#passport_photo_preview").attr("src", e.target.result).removeClass("d-none");
-                }
-                reader.readAsDataURL(this.files[0]);
-            });
-
-            // Preview ID document
-            $("#id_document").change(function() {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    $("#id_document_preview").attr("src", e.target.result).removeClass("d-none");
-                }
-                reader.readAsDataURL(this.files[0]);
-            });
-
-            // Validate that Confirm Email matches Email
-            $("#confirm_email").on("blur", function() {
-                var email = $("#email").val();
-                var confirmEmail = $(this).val();
-                if(email !== confirmEmail) {
-                    alert("Email and Confirm Email do not match.");
-                    $(this).focus();
-                }
-            });
         });
-    </script>
-    <?php include("../includes/footer.php"); ?>
+
+        $(".prev-step").click(function () {
+            console.log("Previous clicked. Current step: " + currentStep);
+            if (currentStep > 1) {
+                currentStep--;
+                showStep(currentStep);
+            }
+        });
+
+        $("#applicationForm").submit(function (e) {
+            if (!$(this)[0].checkValidity()) {
+                e.preventDefault();
+                alert("Please fill out all required fields before submitting.");
+            }
+        });
+
+        // Show the first step initially
+        showStep(currentStep);
+
+        // Preview passport photo
+        $("#passport_photo").change(function() {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $("#passport_photo_preview").attr("src", e.target.result).removeClass("d-none");
+            }
+            reader.readAsDataURL(this.files[0]);
+        });
+
+        // Preview ID document
+        $("#id_document").change(function() {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $("#id_document_preview").attr("src", e.target.result).removeClass("d-none");
+            }
+            reader.readAsDataURL(this.files[0]);
+        });
+
+        // Validate that Confirm Email matches Email
+        $("#confirm_email").on("blur", function() {
+            var email = $("#email").val();
+            var confirmEmail = $(this).val();
+            if(email !== confirmEmail) {
+                alert("Email and Confirm Email do not match.");
+                $(this).focus();
+            }
+        });
+    });
+  </script>
+  <?php include("../includes/footer.php"); ?>
 </body>
 </html>
