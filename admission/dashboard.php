@@ -1,13 +1,16 @@
 <?php 
 session_start();
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 if (!isset($_SESSION['applicant'])) {
     header("Location: login.php"); // Redirect to login if not authenticated
     exit();
 }
 
 $applicant = $_SESSION['applicant'];
-
-// Include database connection
 include('../config/database.php');
 
 // Retrieve application status from the applicant record if available; default otherwise.
@@ -32,16 +35,17 @@ $unreadCount = count($notifications);
       background: #f8f9fa;
       min-height: 100vh;
     }
-    /* Remove margin so main content overlaps sidebar */
+    /* Main content layout taking the sidebar into account */
     .main-content {
-      margin-left: 0;
+      margin-left: 250px;
       padding: 20px;
       position: relative;
-      z-index: 105; /* Higher than sidebar */
+      z-index: 1;  /* Ensure main content is behind the sidebar when sidebar's z-index is higher */
     }
     @media (max-width: 768px) {
       .main-content {
-        margin-left: 0;
+        /* We keep the margin-left if you wish, but the sidebar will overlay on top of it */
+        margin-left: 250px;
       }
     }
     /* Modern progress bar */
