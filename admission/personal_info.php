@@ -28,26 +28,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['application']['personal_info'][$key] = htmlspecialchars($value);
         }
     }
-    
+
     // Define upload directory and handle file uploads
     $uploadDir = '../uploads/';
     if (!is_dir($uploadDir) && !mkdir($uploadDir, 0777, true)) {
         die('Failed to create upload directory.');
     }
-    
+
     $passportPhotoResult = handleFileUpload($_FILES['passport_photo'], $uploadDir);
     $idDocumentResult = handleFileUpload($_FILES['id_document'], $uploadDir);
-    
+
     if (isset($passportPhotoResult['error'])) {
         die("Passport photo error: " . $passportPhotoResult['error']);
     }
     if (isset($idDocumentResult['error'])) {
         die("ID document error: " . $idDocumentResult['error']);
     }
-    
+
     $_SESSION['application']['personal_info']['passport_photo'] = $passportPhotoResult['path'];
     $_SESSION['application']['personal_info']['id_document'] = $idDocumentResult['path'];
-    
+
     header('Location: education.php'); // Redirect to Education page
     exit();
 }
@@ -72,11 +72,11 @@ if (!isset($_SESSION['application']['user_id'])) {
       background-color: #f8f9fa;
       min-height: 100vh;
     }
-    /* Main content layout: on desktop, margin-left is 250px; on mobile, it's 0 so that sidebar overlaps */
+    /* Main content with desktop left margin; on mobile, sidebar will overlap */
     .content {
       margin-left: 250px;
       padding: 20px;
-      height: calc(100vh - 140px);
+      height: calc(100vh - 140px); /* Full height minus header and footer */
       overflow-y: auto;
       position: relative;
       z-index: 1;
@@ -101,13 +101,12 @@ if (!isset($_SESSION['application']['user_id'])) {
       color: #6c757d;
       margin-top: 5px;
     }
-    /* Progress bar style (if used) */
+    /* Progress bar style */
     .progress {
       height: 30px;
       background-color: #e9ecef;
       border-radius: 15px;
       overflow: hidden;
-      margin-bottom: 20px;
     }
     .progress-bar {
       font-size: 1rem;
@@ -123,13 +122,11 @@ if (!isset($_SESSION['application']['user_id'])) {
     <div class="content">
         <div class="container">
             <h2 class="text-center">Application Form - Personal Information</h2>
-            <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 12.5%;" aria-valuenow="12.5" aria-valuemin="0" aria-valuemax="100">
-                    Step 1 of 8
-                </div>
+            <div class="progress mb-4">
+                <div class="progress-bar" role="progressbar" style="width: 12.5%;" aria-valuenow="12.5" aria-valuemin="0" aria-valuemax="100">Step 1 of 8</div>
             </div>
             <p class="text-muted text-center">Please provide accurate information. Fields marked with * are required.</p>
-            
+
             <!-- Device Ownership Section -->
             <div class="device-section">
                 <label class="form-label">Do you have a laptop, desktop or smartphone? <small>(Tick all that apply)</small></label>
@@ -149,7 +146,7 @@ if (!isset($_SESSION['application']['user_id'])) {
                   Note: Owning a laptop, desktop, or smartphone is part of our eligibility criteria for our competence‑based training programs. Having at least one of these devices is highly recommended and may be required depending on the program selected.
                 </p>
             </div>
-            
+
             <!-- Multi-Step Form -->
             <div id="multi-step-form">
                 <form id="applicationForm" method="POST" enctype="multipart/form-data">
@@ -308,19 +305,18 @@ if (!isset($_SESSION['application']['user_id'])) {
         </div>
     </div>
 
-    <!-- Include jQuery and Bootstrap JS -->
     <script src="../assets/js/jquery.min.js"></script>
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
     <script>
         // Multi-step form logic
         var currentStep = 1;
-        var totalSteps = 3; // Adjust if more steps are added
+        var totalSteps = 3; // Adjust total steps as needed
 
         function showStep(step) {
             $(".step").addClass("d-none");
             $(".step-" + step).removeClass("d-none");
 
-            // (Optional) Update progress bar if you have one
+            // Update progress bar if present (not shown in this example)
             var progress = (step / totalSteps) * 100;
             $(".progress-bar").css("width", progress + "%");
             $(".progress-bar").attr("aria-valuenow", progress);
