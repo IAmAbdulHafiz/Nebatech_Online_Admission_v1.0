@@ -26,7 +26,7 @@ if (!$profilePicture) {
   <style>
     /* Dashboard Header Styles */
     .dashboard-header {
-      background-color: #002060;
+      background-color: #002060; /* Dark blue */
       color: #fff;
       position: fixed;
       top: 0;
@@ -40,6 +40,7 @@ if (!$profilePicture) {
       align-items: center;
       justify-content: space-between;
     }
+    /* Brand section */
     .brand {
       display: flex;
       align-items: center;
@@ -54,8 +55,12 @@ if (!$profilePicture) {
       font-weight: bold;
       margin-left: 10px;
     }
+    /* User menu - hidden on mobile */
     .user-menu {
       position: relative;
+    }
+    .d-none.d-md-block {
+      /* This class combination is provided by Bootstrap */
     }
     .user-menu .dropdown-toggle {
       color: #fff;
@@ -77,7 +82,7 @@ if (!$profilePicture) {
       left: auto;
     }
     body {
-      padding-top: 70px;
+      padding-top: 70px; /* Prevent content from being hidden behind the fixed header */
     }
     /* Modern Toggle Button */
     .toggle-btn {
@@ -106,8 +111,8 @@ if (!$profilePicture) {
           <span class="d-none d-md-inline">Nebatech Admissions</span>
         </a>
       </div>
-      <!-- User Dropdown Menu -->
-      <div class="user-menu dropdown">
+      <!-- User Dropdown Menu (hidden on mobile) -->
+      <div class="user-menu dropdown d-none d-md-block">
         <a href="#" class="dropdown-toggle" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
           <img src="<?= htmlspecialchars($profilePicture) ?>" alt="Profile Picture">
           <span><?= htmlspecialchars($applicant['first_name'] . ' ' . $applicant['surname']) ?></span>
@@ -119,9 +124,13 @@ if (!$profilePicture) {
           <li><a class="dropdown-item text-danger" href="logout.php">Logout</a></li>
         </ul>
       </div>
-      <!-- Sidebar Toggle Button (visible on mobile) -->
+      <!-- Sidebar Toggle Button for Mobile -->
       <button id="sidebarToggle" class="toggle-btn d-md-none">
         <i class="fas fa-bars"></i>
       </button>
     </div>
   </header>
+  <!-- Your remaining content goes here -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
