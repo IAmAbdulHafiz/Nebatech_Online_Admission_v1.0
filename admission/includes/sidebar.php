@@ -43,21 +43,4 @@
     </nav>
   </div>
 </aside>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const sidebar = document.getElementById('sidebar');
-    const toggleBtn = document.getElementById('sidebarToggle');
-
-    toggleBtn.addEventListener('click', function () {
-        const currentLeft = window.getComputedStyle(sidebar).left;
-        if (currentLeft === '0px') {
-            sidebar.style.left = '-250px';
-            toggleBtn.innerHTML = '<i class="fas fa-bars"></i>';
-        } else {
-            sidebar.style.left = '0px';
-            toggleBtn.innerHTML = '<i class="fas fa-times"></i>';
-        }
-    });
-});
-</script>
 
