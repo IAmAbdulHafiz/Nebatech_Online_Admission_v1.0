@@ -11,17 +11,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 // Example programme options with associated fees
 $programmes = [
-    'Introduction to Artificial Intelligence' => '400.00 for 4 weeks',
-    'AI for Beginners: Machine Learning' => '1200.00',
-    'Digital Literacy' => '1,500.00',
-    'Front-End Development' => '3,500.00',
-    'Back-End Development' => '4,500.00',
-    'Full-Stack Development' => '7,500.00',
-    'Database Management & Administration' => '4,000.00',
-    'Microsoft Office Suite Mastery' => '1,800.00',
-    'Video Editing & Production Technology' => '3,600.00',
-    'Graphic Design & Digital Arts' => '3,200.00',
-    'iPhone & Computer Hardware Technician' => '3,000.00',
+    'Introduction to Artificial Intelligence' => '400.00 for 3 weeks',
+    'AI for Beginners: Machine Learning' => '1200.00 for 5 weeks',
+    'Digital Literacy' => '1,500.00 for 4 weeks',
+    'Front-End Development' => '3,500.00 for 16 weeks',
+    'Back-End Development' => '4,500.00 for 20 weeks',
+    'Full-Stack Development' => '7,500.00 for 36 weeks',
+    'Database Management & Administration' => '4,000.00 for 16 weeks',
+    'Microsoft Office Suite Mastery' => '1,800.00 for 8 weeks',
+    'Video Editing & Production Technology' => '3,600.00 for 12 weeks',
+    'Graphic Design & Digital Arts' => '3,200.00 for 12 weeks',
+    'iPhone & Computer Hardware Technician' => '3,000.00 for 12 weeks',
 ];
 
 // Example session options
