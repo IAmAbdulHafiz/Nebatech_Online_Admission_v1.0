@@ -1,14 +1,19 @@
 <?php 
 session_start();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Save work experience data to session
+    // Save work experience data to session (even if empty)
     $workExperience = [];
-    foreach ($_POST['company'] as $index => $company) {
-        $workExperience[] = [
-            'company' => htmlspecialchars($company),
-            'role' => htmlspecialchars($_POST['role'][$index]),
-            'duration' => htmlspecialchars($_POST['duration'][$index])
-        ];
+    if (isset($_POST['company'])) {
+        foreach ($_POST['company'] as $index => $company) {
+            // Only add the row if at least one field is not empty (optional)
+            if (trim($company) !== '' || trim($_POST['role'][$index]) !== '' || trim($_POST['duration'][$index]) !== '') {
+                $workExperience[] = [
+                    'company' => htmlspecialchars($company),
+                    'role' => htmlspecialchars($_POST['role'][$index]),
+                    'duration' => htmlspecialchars($_POST['duration'][$index])
+                ];
+            }
+        }
     }
     $_SESSION['application']['work_experience'] = $workExperience;
     header('Location: review.php'); // Redirect to the review page
@@ -28,13 +33,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       height: 100%;
       margin: 0;
     }
-    /* Page wrapper for sticky footer and dashboard layout */
+    /* Page wrapper for consistent dashboard layout */
     .page-wrapper {
       display: flex;
       flex-direction: column;
       min-height: 100vh;
     }
-    /* Main content area with dashboard styling */
+    /* Main content area */
     .content {
       margin-left: 270px; /* Adjust for sidebar width */
       padding: 20px;
@@ -88,15 +93,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
               <div class="row g-3">
                 <div class="col-md-4">
                   <label for="company" class="form-label">Company</label>
-                  <input type="text" name="company[]" class="form-control" placeholder="e.g., ABC Corp" required>
+                  <input type="text" name="company[]" class="form-control" placeholder="e.g., ABC Corp">
                 </div>
                 <div class="col-md-4">
                   <label for="role" class="form-label">Role</label>
-                  <input type="text" name="role[]" class="form-control" placeholder="e.g., Software Engineer" required>
+                  <input type="text" name="role[]" class="form-control" placeholder="e.g., Software Engineer">
                 </div>
                 <div class="col-md-4">
                   <label for="duration" class="form-label">Duration</label>
-                  <input type="text" name="duration[]" class="form-control" placeholder="e.g., Jan 2020 - Dec 2021" required>
+                  <input type="text" name="duration[]" class="form-control" placeholder="e.g., Jan 2020 - Dec 2021">
                 </div>
                 <div class="col-md-4 remove-btn">
                   <button type="button" class="btn btn-danger btn-sm" onclick="removeWorkExperience(this)">Delete</button>
@@ -127,15 +132,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="row g-3">
           <div class="col-md-4">
             <label for="company" class="form-label">Company</label>
-            <input type="text" name="company[]" class="form-control" placeholder="e.g., ABC Corp" required>
+            <input type="text" name="company[]" class="form-control" placeholder="e.g., ABC Corp">
           </div>
           <div class="col-md-4">
             <label for="role" class="form-label">Role</label>
-            <input type="text" name="role[]" class="form-control" placeholder="e.g., Software Engineer" required>
+            <input type="text" name="role[]" class="form-control" placeholder="e.g., Software Engineer">
           </div>
           <div class="col-md-4">
             <label for="duration" class="form-label">Duration</label>
-            <input type="text" name="duration[]" class="form-control" placeholder="e.g., Jan 2020 - Dec 2021" required>
+            <input type="text" name="duration[]" class="form-control" placeholder="e.g., Jan 2020 - Dec 2021">
           </div>
           <div class="col-md-4 remove-btn">
             <button type="button" class="btn btn-danger btn-sm" onclick="removeWorkExperience(this)">Delete</button>
@@ -149,7 +154,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       card.remove();
     }
 
-    // Optional: validate form on submission
+    // Optional: Validate form on submission (HTML5 validation will allow empty work experience)
     $("#workExperienceForm").submit(function(e) {
       if (!this.checkValidity()) {
         e.preventDefault();
