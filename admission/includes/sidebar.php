@@ -43,7 +43,6 @@
     </nav>
   </div>
 </aside>
-
 <!-- Toggle Button for Mobile Sidebar -->
 <button id="sidebarToggle" class="btn btn-primary d-md-none" style="position: fixed; top: 10px; left: 10px; z-index: 1040;">
   <i class="fas fa-bars"></i>
@@ -60,3 +59,22 @@
     }
   }
 </style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      const sidebar = document.getElementById('sidebar');
+      const toggleBtn = document.getElementById('sidebarToggle');
+      
+      toggleBtn.addEventListener('click', function () {
+          const currentLeft = window.getComputedStyle(sidebar).left;
+          if (currentLeft === '0px') {
+              sidebar.style.left = '-250px';
+              toggleBtn.innerHTML = '<i class="fas fa-bars"></i>';
+          } else {
+              sidebar.style.left = '0px';
+              toggleBtn.innerHTML = '<i class="fas fa-times"></i>';
+          }
+      });
+  });
+</script>
+
