@@ -195,99 +195,100 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- jQuery and Bootstrap JS -->
-    <script src="../assets/js/jquery-3.7.1.min.js"></script>
-    <script src="../assets/js/bootstrap.bundle.min.js"></script>
-    <script>
-      $(document).ready(function(){
-          var currentStep = 1;
-          var totalSteps = 3; // Adjust total steps as needed
+  <!-- jQuery and Bootstrap JS -->
+  <script src="../assets/js/jquery-3.7.1.min.js"></script>
+  <script src="../assets/js/bootstrap.bundle.min.js"></script>
+  <script>
+    $(document).ready(function(){
+        var currentStep = 1;
+        var totalSteps = 3; // Adjust total steps as needed
 
-          function showStep(step) {
-              $(".wizard-step").addClass("d-none");
-              $(".step-" + step).removeClass("d-none");
+        function showStep(step) {
+            $(".wizard-step").addClass("d-none");
+            $(".step-" + step).removeClass("d-none");
 
-              // Update progress bar
-              var progress = (step / totalSteps) * 100;
-              $(".progress-bar").css("width", progress + "%");
-              $(".progress-bar").attr("aria-valuenow", progress);
-              $(".progress-bar").text("Step " + step + " of " + totalSteps);
-          }
+            // Update progress bar
+            var progress = (step / totalSteps) * 100;
+            $(".progress-bar").css("width", progress + "%");
+            $(".progress-bar").attr("aria-valuenow", progress);
+            $(".progress-bar").text("Step " + step + " of " + totalSteps);
+        }
 
-          $(".next-step").click(function () {
-              if (currentStep < totalSteps) {
-                  currentStep++;
-                  showStep(currentStep);
-              } else {
-                  $("#applicationForm").submit();
-              }
-          });
+        $(".next-step").click(function () {
+            if (currentStep < totalSteps) {
+                currentStep++;
+                showStep(currentStep);
+            } else {
+                $("#applicationForm").submit();
+            }
+        });
 
-          $(".prev-step").click(function () {
-              if (currentStep > 1) {
-                  currentStep--;
-                  showStep(currentStep);
-              }
-          });
+        $(".prev-step").click(function () {
+            if (currentStep > 1) {
+                currentStep--;
+                showStep(currentStep);
+            }
+        });
 
-          $("#applicationForm").submit(function (e) {
-              if (!$(this)[0].checkValidity()) {
-                  e.preventDefault();
-                  alert("Please fill out all required fields before submitting.");
-              }
-          });
+        $("#applicationForm").submit(function (e) {
+            if (!$(this)[0].checkValidity()) {
+                e.preventDefault();
+                alert("Please fill out all required fields before submitting.");
+            }
+        });
 
-          // Show the first step initially
-          showStep(currentStep);
+        // Show the first step initially
+        showStep(currentStep);
 
-          // Preview passport photo
-          $("#passport_photo").change(function() {
-              var reader = new FileReader();
-              reader.onload = function(e) {
-                  $("#passport_photo_preview").attr("src", e.target.result).removeClass("d-none");
-              }
-              reader.readAsDataURL(this.files[0]);
-          });
+        // Preview passport photo
+        $("#passport_photo").change(function() {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $("#passport_photo_preview").attr("src", e.target.result).removeClass("d-none");
+            }
+            reader.readAsDataURL(this.files[0]);
+        });
 
-          // Preview ID document
-          $("#id_document").change(function() {
-              var reader = new FileReader();
-              reader.onload = function(e) {
-                  $("#id_document_preview").attr("src", e.target.result).removeClass("d-none");
-              }
-              reader.readAsDataURL(this.files[0]);
-          });
+        // Preview ID document
+        $("#id_document").change(function() {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $("#id_document_preview").attr("src", e.target.result).removeClass("d-none");
+            }
+            reader.readAsDataURL(this.files[0]);
+        });
 
-          // Validate that Confirm Email matches Email (if applicable on other pages)
-          $("#confirm_email").on("blur", function() {
-              var email = $("#email").val();
-              var confirmEmail = $(this).val();
-              if(email !== confirmEmail) {
-                  alert("Email and Confirm Email do not match.");
-                  $(this).focus();
-              }
-          });
-      });
+        // Validate that Confirm Email matches Email (if applicable on other pages)
+        $("#confirm_email").on("blur", function() {
+            var email = $("#email").val();
+            var confirmEmail = $(this).val();
+            if(email !== confirmEmail) {
+                alert("Email and Confirm Email do not match.");
+                $(this).focus();
+            }
+        });
+    });
 
-      function addRow() {
-          var newRow = `<tr>
-              <td><input type="text" name="school[]" class="form-control" placeholder="School Name" required></td>
-              <td><input type="text" name="course[]" class="form-control" placeholder="Course"></td>
-              <td><input type="text" name="qualification[]" class="form-control" placeholder="Qualification (e.g. WASSCE, HND)" required></td>
-              <td>
-                  <input type="date" name="start_period[]" class="form-control mb-2" required>
-                  <input type="date" name="end_period[]" class="form-control" required>
-              </td>
-              <td><button type="button" class="btn btn-danger btn-sm" onclick="removeRow(this)">Remove</button></td>
-          </tr>`;
-          $("#educationTable tbody").append(newRow);
-      }
+    function addRow() {
+        var newRow = `<tr>
+            <td><input type="text" name="school[]" class="form-control" placeholder="School Name" required></td>
+            <td><input type="text" name="course[]" class="form-control" placeholder="Course"></td>
+            <td><input type="text" name="qualification[]" class="form-control" placeholder="Qualification (e.g. WASSCE, HND)" required></td>
+            <td>
+                <input type="date" name="start_period[]" class="form-control mb-2" required>
+                <input type="date" name="end_period[]" class="form-control" required>
+            </td>
+            <td><button type="button" class="btn btn-danger btn-sm" onclick="removeRow(this)">Remove</button></td>
+        </tr>`;
+        $("#educationTable tbody").append(newRow);
+    }
 
-      function removeRow(button) {
-          $(button).closest("tr").remove();
-      }
-    </script>
-    <?php include("../includes/footer.php"); ?>
+    function removeRow(button) {
+        $(button).closest("tr").remove();
+    }
+  </script>
+  <?php include("../includes/footer.php"); ?>
 </body>
 </html>
