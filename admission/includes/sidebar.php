@@ -43,6 +43,14 @@
     </nav>
   </div>
 </aside>
+<style>
+  .nav-link:hover{
+    background-color:  #002060;
+  }
+ /* .nav-link.active{
+    background-color:  #002060;
+  }*/
+</style>
 <!-- Toggle Button for Mobile Sidebar -->
 <button id="sidebarToggle" class="btn btn-primary d-md-none" style="position: fixed; top: 10px; left: 10px; z-index: 1040;">
   <i class="fas fa-bars"></i>
