@@ -20,11 +20,11 @@ function handleFileUpload($file, $uploadDir, $allowedExtensions = ['jpg', 'jpeg'
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // (Optional) Make sure at least one device is selected
+    // Ensure at least one device is selected
     if (empty($_POST['devices'])) {
         die("Please select at least one device.");
     }
-
+    
     // Save all personal info into session
     foreach ($_POST as $key => $value) {
         if (is_array($value)) {
@@ -33,26 +33,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['application']['personal_info'][$key] = htmlspecialchars($value);
         }
     }
-
+    
     // Define upload directory and handle file uploads
     $uploadDir = '../uploads/';
     if (!is_dir($uploadDir) && !mkdir($uploadDir, 0777, true)) {
         die('Failed to create upload directory.');
     }
-
+    
     $passportPhotoResult = handleFileUpload($_FILES['passport_photo'], $uploadDir);
     $idDocumentResult = handleFileUpload($_FILES['id_document'], $uploadDir);
-
+    
     if (isset($passportPhotoResult['error'])) {
         die("Passport photo error: " . $passportPhotoResult['error']);
     }
     if (isset($idDocumentResult['error'])) {
         die("ID document error: " . $idDocumentResult['error']);
     }
-
+    
     $_SESSION['application']['personal_info']['passport_photo'] = $passportPhotoResult['path'];
     $_SESSION['application']['personal_info']['id_document'] = $idDocumentResult['path'];
-
+    
     header('Location: education.php'); // Redirect to Education page
     exit();
 }
@@ -81,7 +81,7 @@ if (!isset($_SESSION['application']['user_id'])) {
       flex-direction: column;
       min-height: 100vh;
     }
-    /* Main content: desktop left margin; mobile: reset margin */
+    /* Main content: desktop left margin; mobile: margin reset */
     .content {
       margin-left: 250px; /* Sidebar width */
       padding: 20px;
@@ -139,29 +139,29 @@ if (!isset($_SESSION['application']['user_id'])) {
         </div>
         <p class="text-muted text-center">Please provide accurate information. Fields marked with * are required.</p>
         
-        <!-- Device Ownership Section (Outside the multi‑step form so it’s visible, but note: if you need to submit these values, move them inside the form) -->
-        <div class="device-section">
-          <label class="form-label">Do you have a laptop, desktop or smartphone? <small>(Tick all that apply) *</small></label>
-          <div class="form-check">
-            <input type="checkbox" id="deviceLaptop" name="devices[]" value="Laptop" class="form-check-input" required>
-            <label class="form-check-label" for="deviceLaptop">Laptop</label>
-          </div>
-          <div class="form-check">
-            <input type="checkbox" id="deviceDesktop" name="devices[]" value="Desktop" class="form-check-input" required>
-            <label class="form-check-label" for="deviceDesktop">Desktop</label>
-          </div>
-          <div class="form-check">
-            <input type="checkbox" id="deviceSmartphone" name="devices[]" value="Smartphone" class="form-check-input" required>
-            <label class="form-check-label" for="deviceSmartphone">Smartphone</label>
-          </div>
-          <p class="criteria-note">
-            Note: Owning a laptop, desktop, or smartphone is part of our eligibility criteria for our competence‑based training programs. Having at least one of these devices is highly recommended and may be required depending on the program selected.
-          </p>
-        </div>
+        <!-- Begin Form (all fields submitted together) -->
+        <form id="applicationForm" method="POST" enctype="multipart/form-data">
+            <!-- Device Ownership Section (now inside the form) -->
+            <div class="device-section">
+              <label class="form-label">Do you have a laptop, desktop or smartphone? <small>(Tick all that apply) *</small></label>
+              <div class="form-check">
+                <input type="checkbox" id="deviceLaptop" name="devices[]" value="Laptop" class="form-check-input" required>
+                <label class="form-check-label" for="deviceLaptop">Laptop</label>
+              </div>
+              <div class="form-check">
+                <input type="checkbox" id="deviceDesktop" name="devices[]" value="Desktop" class="form-check-input" required>
+                <label class="form-check-label" for="deviceDesktop">Desktop</label>
+              </div>
+              <div class="form-check">
+                <input type="checkbox" id="deviceSmartphone" name="devices[]" value="Smartphone" class="form-check-input" required>
+                <label class="form-check-label" for="deviceSmartphone">Smartphone</label>
+              </div>
+              <p class="criteria-note">
+                Note: Owning a laptop, desktop, or smartphone is part of our eligibility criteria for our competence‑based training programs. Having at least one of these devices is highly recommended and may be required depending on the program selected.
+              </p>
+            </div>
 
-        <!-- Multi-Step Form -->
-        <div id="multi-step-form">
-          <form id="applicationForm" method="POST" enctype="multipart/form-data">
+            <!-- Multi-Step Form Steps -->
             <!-- Step 1: Personal Details -->
             <div class="step step-1">
               <h3>Step 1: Personal Details</h3>
@@ -321,6 +321,7 @@ if (!isset($_SESSION['application']['user_id'])) {
   <!-- jQuery and Bootstrap JS -->
   <script src="../assets/js/jquery.min.js"></script>
   <script src="../assets/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJ+8y+QDv9rY0a7V8Q1mWf9B2zF58jYFZCXEg=" crossorigin="anonymous"></script>
   <script>
     $(document).ready(function(){
         var currentStep = 1;
