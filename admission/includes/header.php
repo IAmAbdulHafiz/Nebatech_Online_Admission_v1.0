@@ -120,7 +120,7 @@ if (!$profilePicture) {
         </ul>
       </div>
       <!-- Sidebar Toggle Button (visible on mobile) -->
-      <button id="sidebarToggle" class="btn btn-primary" style="position: fixed; top: 10px; left: 10px; z-index: 1040;">
+      <button id="sidebarToggle" class="btn btn-primary">
         <i class="fas fa-bars"></i>
       </button>
     </div>
