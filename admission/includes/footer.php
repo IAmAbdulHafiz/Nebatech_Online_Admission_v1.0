@@ -30,22 +30,23 @@
     </div>
 </footer>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const sidebar = document.getElementById('sidebar');
-        const toggleBtn = document.getElementById('sidebarToggle');
+  document.addEventListener('DOMContentLoaded', function() {
+      const sidebar = document.getElementById('sidebar');
+      const toggleBtn = document.getElementById('sidebarToggle');
 
-        toggleBtn.addEventListener('click', function () {
-            const currentLeft = window.getComputedStyle(sidebar).left;
-            if (currentLeft === '0px') {
-                sidebar.style.left = '-250px';
-                toggleBtn.innerHTML = '<i class="fas fa-bars"></i>';
-            } else {
-                sidebar.style.left = '0px';
-                toggleBtn.innerHTML = '<i class="fas fa-times"></i>';
-            }
-        });
-    });
+      toggleBtn.addEventListener('click', function () {
+          const currentLeft = window.getComputedStyle(sidebar).left;
+          if (currentLeft === '0px') {
+              sidebar.style.left = '-250px';
+              toggleBtn.innerHTML = '<i class="fas fa-bars"></i>';
+          } else {
+              sidebar.style.left = '0px';
+              toggleBtn.innerHTML = '<i class="fas fa-times"></i>';
+          }
+      });
+  });
 </script>
+
 <!-- Place this at the end of your dashboard page, after including header and sidebar -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Include Font Awesome for social media icons -->

@@ -1,4 +1,4 @@
-<aside id="sidebar" class="text-white position-fixed" style="width: 250px; min-height: 100vh; top: 70px; left: -250px; background-color: #002060; transition: left 0.3s ease;">
+<aside id="sidebar" class="text-white position-fixed top-0 shadow" style="width: 250px; min-height: 100vh; padding-top: 10vh; background-color: #002060; left: -250px;">
   <div class="p-4">
     <!-- Profile Section -->
     <div class="text-center mb-4">
@@ -44,3 +44,19 @@
   </div>
 </aside>
 
+<!-- Toggle Button for Mobile Sidebar -->
+<button id="sidebarToggle" class="btn btn-primary d-md-none" style="position: fixed; top: 10px; left: 10px; z-index: 1040;">
+  <i class="fas fa-bars"></i>
+</button>
+
+<!-- Custom Styles for Mobile (if needed) -->
+<style>
+  @media (max-width: 768px) {
+    #sidebar {
+      transition: left 0.3s ease-in-out;
+    }
+    #sidebar.show {
+      left: 0;
+    }
+  }
+</style>
