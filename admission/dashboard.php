@@ -190,6 +190,5 @@ $unreadCount = count($notifications);
       });
   });
 </script>
-
 </body>
 </html>
