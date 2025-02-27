@@ -154,22 +154,22 @@ if (!isset($_SESSION['application']['user_id'])) {
                 
             <!-- Device Ownership Section (now inside the form) -->
                 <div class="device-section">
-                <label class="form-label">Do you have a laptop, desktop or smartphone? <small>(Tick all that apply) *</small></label>
-                <div class="form-check">
-                    <input type="checkbox" id="deviceLaptop" name="devices[]" value="Laptop" class="form-check-input" required>
-                    <label class="form-check-label" for="deviceLaptop">Laptop</label>
-                </div>
-                <div class="form-check">
-                    <input type="checkbox" id="deviceDesktop" name="devices[]" value="Desktop" class="form-check-input" required>
-                    <label class="form-check-label" for="deviceDesktop">Desktop</label>
-                </div>
-                <div class="form-check">
-                    <input type="checkbox" id="deviceSmartphone" name="devices[]" value="Smartphone" class="form-check-input" required>
-                    <label class="form-check-label" for="deviceSmartphone">Smartphone</label>
-                </div>
-                <p class="criteria-note">
-                    Note: Owning a laptop, desktop, or smartphone is part of our eligibility criteria for our competence‑based training programs. Having at least one of these devices is highly recommended and may be required depending on the program selected.
-                </p>
+                    <label class="form-label">Do you have a laptop, desktop or smartphone? <small>(Tick all that apply) *</small></label>
+                    <div class="form-check">
+                        <input type="checkbox" id="deviceLaptop" name="devices[]" value="Laptop" class="form-check-input">
+                        <label class="form-check-label" for="deviceLaptop">Laptop</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" id="deviceDesktop" name="devices[]" value="Desktop" class="form-check-input">
+                        <label class="form-check-label" for="deviceDesktop">Desktop</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" id="deviceSmartphone" name="devices[]" value="Smartphone" class="form-check-input">
+                        <label class="form-check-label" for="deviceSmartphone">Smartphone</label>
+                    </div>
+                    <p class="criteria-note">
+                        Note: Owning a laptop, desktop, or smartphone is part of our eligibility criteria for our competence‑based training programs. Having at least one of these devices is highly recommended and may be required depending on the program selected.
+                    </p>
                 </div>
 
               <h3>Step 1: Personal Details</h3>
