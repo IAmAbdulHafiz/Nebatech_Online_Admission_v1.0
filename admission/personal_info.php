@@ -20,6 +20,11 @@ function handleFileUpload($file, $uploadDir, $allowedExtensions = ['jpg', 'jpeg'
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Ensure at least one device is selected
+    if (empty($_POST['devices'])) {
+        die("Please select at least one device.");
+    }
+
     // Save all personal info into session
     foreach ($_POST as $key => $value) {
         if (is_array($value)) {
@@ -136,17 +141,17 @@ if (!isset($_SESSION['application']['user_id'])) {
         
         <!-- Device Ownership Section -->
         <div class="device-section">
-          <label class="form-label">Do you have a laptop, desktop or smartphone? <small>(Tick all that apply)</small></label>
+          <label class="form-label">Do you have a laptop, desktop or smartphone? <small>(Tick all that apply) *</small></label>
           <div class="form-check">
-            <input type="checkbox" id="deviceLaptop" name="devices[]" value="Laptop" class="form-check-input">
+            <input type="checkbox" id="deviceLaptop" name="devices[]" value="Laptop" class="form-check-input" required>
             <label class="form-check-label" for="deviceLaptop">Laptop</label>
           </div>
           <div class="form-check">
-            <input type="checkbox" id="deviceDesktop" name="devices[]" value="Desktop" class="form-check-input">
+            <input type="checkbox" id="deviceDesktop" name="devices[]" value="Desktop" class="form-check-input" required>
             <label class="form-check-label" for="deviceDesktop">Desktop</label>
           </div>
           <div class="form-check">
-            <input type="checkbox" id="deviceSmartphone" name="devices[]" value="Smartphone" class="form-check-input">
+            <input type="checkbox" id="deviceSmartphone" name="devices[]" value="Smartphone" class="form-check-input" required>
             <label class="form-check-label" for="deviceSmartphone">Smartphone</label>
           </div>
           <p class="criteria-note">

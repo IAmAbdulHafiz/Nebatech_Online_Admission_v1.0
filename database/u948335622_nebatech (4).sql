@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Feb 25, 2025 at 07:19 AM
+-- Generation Time: Feb 27, 2025 at 05:00 PM
 -- Server version: 10.11.10-MariaDB
 -- PHP Version: 7.2.34
 
@@ -57,16 +57,22 @@ CREATE TABLE `applicants` (
   `email` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL,
   `is_used` tinyint(1) DEFAULT 0,
-  `application_status` enum('Not Started','In Progress','Pending','Approved','Rejected') DEFAULT 'Not Started'
+  `application_status` enum('Not Started','In Progress','Pending','Approved','Rejected') DEFAULT 'Not Started',
+  `reset_token` varchar(64) DEFAULT NULL,
+  `reset_token_expires` datetime DEFAULT NULL,
+  `user_id` int(11) NOT NULL,
+  `payment_status` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `applicants`
 --
 
-INSERT INTO `applicants` (`id`, `serial_number`, `pin`, `first_name`, `surname`, `email`, `password`, `is_used`, `application_status`) VALUES
-(5, 'N2541749C3D699B', '368006', '', '', 'abdulhafiz@nebatech.com', '$2y$10$oCGTJ4YOSptdJnPfM7aKY.NIPnLAnjT7RWjzNj3VkVm1g.YRJkF/u', 1, 'Not Started'),
-(6, 'N255470E1A525C3', '285286', 'Rahama', 'Karim', 'rahama@nebatech.com', '$2y$10$61A/JPXvz0THKRv4/GEXieCDFz19bmcstQr.QfE1HiHSTn9Lu8nsS', 1, 'Not Started');
+INSERT INTO `applicants` (`id`, `serial_number`, `pin`, `first_name`, `surname`, `email`, `password`, `is_used`, `application_status`, `reset_token`, `reset_token_expires`, `user_id`, `payment_status`) VALUES
+(5, 'N2541749C3D699B', '368006', 'Abdul-Hafiz', 'Adam', 'abdulhafiz@nebatech.com', '$2y$10$2XEXmiihKN.leYTryASbxOsdAvu.E396exhKX4AybqibTILi99jM6', 1, 'Not Started', 'a1bcf8665719e3efef3da83e5c65fc35', NULL, 0, ''),
+(6, 'N255470E1A525C3', '285286', 'Rahama', 'Karim', 'rahama@nebatech.com', '$2y$10$61A/JPXvz0THKRv4/GEXieCDFz19bmcstQr.QfE1HiHSTn9Lu8nsS', 1, 'Not Started', NULL, NULL, 0, ''),
+(7, 'N251FD4A1951126', '583650', 'Abdul-Hafiz', 'Yussif', 'info@nebatech.com', '$2y$10$Xqnwakf398CshQCrBhewaucP8E4zKLqXKgpw6Je48IfVIHvM.IXzW', 1, 'Not Started', NULL, NULL, 0, ''),
+(8, 'N2505ACD6AFBBA8', '620532', 'Mohammed Awal', 'Yussif', 'mawalyussif@nebatech.com', '$2y$10$sLYAbNGDeIbwMLqPfeYwVOIJhhE0112k3otMMs.5MWyohbkgAzDwi', 1, 'Not Started', NULL, NULL, 0, '');
 
 -- --------------------------------------------------------
 
@@ -240,7 +246,6 @@ INSERT INTO `payment_details` (`id`, `applicant_id`, `payment_option`, `phone_an
 
 CREATE TABLE `personal_information` (
   `id` int(11) NOT NULL,
-  `application_id` int(11) NOT NULL,
   `first_name` varchar(50) NOT NULL,
   `middle_name` varchar(50) DEFAULT NULL,
   `last_name` varchar(50) NOT NULL,
@@ -264,17 +269,18 @@ CREATE TABLE `personal_information` (
   `other_phone_number` varchar(20) DEFAULT NULL,
   `postal_address` text DEFAULT NULL,
   `passport_photo` varchar(255) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `applicant_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `personal_information`
 --
 
-INSERT INTO `personal_information` (`id`, `application_id`, `first_name`, `middle_name`, `last_name`, `date_of_birth`, `sex`, `place_of_birth`, `house_address`, `digital_address`, `city`, `region`, `country`, `nationality`, `identification_type`, `identification_number`, `identification_document`, `marital_status`, `number_of_children`, `religion`, `email`, `phone_number`, `other_phone_number`, `postal_address`, `passport_photo`, `created_at`) VALUES
-(1, 1, 'Abdul-Hafiz', 'WUNZOYA', 'ALHASSAN', '2025-01-02', 'Female', 'Kumbungu', 'Russia Bungalows, opposite Controller &amp;amp; Accountant General&amp;#039;s Department', 'Russia Bungalows, opposite Controller &amp;amp; Ac', 'Tamale, Ghana', 'Northern', 'Ghana', 'Ghanaian', 'Ghana Card', 'GHA-000000-0', '../uploads/file_6790f8396fc9a3.46765924.png', 'Married', 2, 'Islam', 'info@keengh.org', '0244472704', '0244472704', 'HNO DV 154 DATOYILI NR FATIHI COLLEGE', '../uploads/file_6790f8396fa9c7.69483050.jpg', '2025-01-22 15:01:15'),
-(2, 2, 'IKIMATU', 'Tipagya', 'ALHASSAN', '2025-01-17', 'Female', 'Kumbungu', 'Russia Bungalows, opposite Controller &amp;amp; Accountant General&amp;#039;s Department', 'Russia Bungalows, opposite Controller &amp;amp; Ac', 'Tamale, Ghana', 'Northern', 'Ghana', 'Ghanaian', 'Voter ID', 'GHA-000000-0', '../uploads/file_6791ec2dd86ae1.95199326.JPG', 'Married', 0, 'Islam', 'info@keengh.org', '0244472704', '0244472704', 'KAG576 Rake St. NT-0118-9613', '../uploads/file_6791ec2dcd2cd1.66670963.JPG', '2025-01-23 07:15:20'),
-(3, 7, 'Abdul-Hafiz', 'WUNZOYA', 'Yussif', '2025-01-09', 'Female', 'Tamale', 'EastEnd Liquidations, 3320 Williamsburg Rd', 'EastEnd Liquidations, 3320 Williamsburg Rd', 'Henrico', 'Northern', 'Ghana', 'Ghanaian', 'Ghana Card', 'GHA-0000000-0', '../uploads/file_6793ee6dd2c067.73402107.jpg', 'Married', 2, 'Islam', 'IDICICI@YAHOO.COM', '0208271749', '0208271749', 'EastEnd Liquidations, 3320 Williamsburg Rd', '../uploads/file_6793ee6dd29469.80088935.jpg', '2025-01-24 19:52:17');
+INSERT INTO `personal_information` (`id`, `first_name`, `middle_name`, `last_name`, `date_of_birth`, `sex`, `place_of_birth`, `house_address`, `digital_address`, `city`, `region`, `country`, `nationality`, `identification_type`, `identification_number`, `identification_document`, `marital_status`, `number_of_children`, `religion`, `email`, `phone_number`, `other_phone_number`, `postal_address`, `passport_photo`, `created_at`, `applicant_id`) VALUES
+(1, 'Abdul-Hafiz', 'WUNZOYA', 'ALHASSAN', '2025-01-02', 'Female', 'Kumbungu', 'Russia Bungalows, opposite Controller &amp;amp; Accountant General&amp;#039;s Department', 'Russia Bungalows, opposite Controller &amp;amp; Ac', 'Tamale, Ghana', 'Northern', 'Ghana', 'Ghanaian', 'Ghana Card', 'GHA-000000-0', '../uploads/file_6790f8396fc9a3.46765924.png', 'Married', 2, 'Islam', 'info@keengh.org', '0244472704', '0244472704', 'HNO DV 154 DATOYILI NR FATIHI COLLEGE', '../uploads/file_6790f8396fa9c7.69483050.jpg', '2025-01-22 15:01:15', NULL),
+(2, 'IKIMATU', 'Tipagya', 'ALHASSAN', '2025-01-17', 'Female', 'Kumbungu', 'Russia Bungalows, opposite Controller &amp;amp; Accountant General&amp;#039;s Department', 'Russia Bungalows, opposite Controller &amp;amp; Ac', 'Tamale, Ghana', 'Northern', 'Ghana', 'Ghanaian', 'Voter ID', 'GHA-000000-0', '../uploads/file_6791ec2dd86ae1.95199326.JPG', 'Married', 0, 'Islam', 'info@keengh.org', '0244472704', '0244472704', 'KAG576 Rake St. NT-0118-9613', '../uploads/file_6791ec2dcd2cd1.66670963.JPG', '2025-01-23 07:15:20', NULL),
+(3, 'Abdul-Hafiz', 'WUNZOYA', 'Yussif', '2025-01-09', 'Female', 'Tamale', 'EastEnd Liquidations, 3320 Williamsburg Rd', 'EastEnd Liquidations, 3320 Williamsburg Rd', 'Henrico', 'Northern', 'Ghana', 'Ghanaian', 'Ghana Card', 'GHA-0000000-0', '../uploads/file_6793ee6dd2c067.73402107.jpg', 'Married', 2, 'Islam', 'IDICICI@YAHOO.COM', '0208271749', '0208271749', 'EastEnd Liquidations, 3320 Williamsburg Rd', '../uploads/file_6793ee6dd29469.80088935.jpg', '2025-01-24 19:52:17', NULL);
 
 -- --------------------------------------------------------
 
@@ -408,7 +414,12 @@ CREATE TABLE `transactions` (
 INSERT INTO `transactions` (`id`, `customer_name`, `customer_email`, `customer_phone`, `amount`, `reference`, `status`, `created_at`, `serial_number`, `pin`, `payment_details`, `is_used`) VALUES
 (5, 'Abdul-Hafiz Yussif', 'abdulhafiz@nebatech.com', '233534351719', 0.31, 'NTSS_67bcf6bc96534', 'Completed', '2025-02-24 22:46:20', 'N2541749C3D699B', '368006', '{\"MobileMoneyNumber\":\"233534351719\",\"PaymentType\":\"mobilemoney\",\"Channel\":\"mtn-gh\"}', 1),
 (9, 'Abdul-Hafiz Yussif', 'info@nebatech.com', '233534351719', 0.31, 'NTSS_67bd601f96519', 'Completed', '2025-02-25 06:15:59', 'N255470E1A525C3', '285286', '{\"MobileMoneyNumber\":\"233534351719\",\"PaymentType\":\"mobilemoney\",\"Channel\":\"mtn-gh\"}', 1),
-(12, 'Abdul-Hafiz Yussif', 'info@nebatech.com', '233534351719', 0.31, 'NTSS_67bd63235f89f', 'Completed', '2025-02-25 06:28:51', 'N251FD4A1951126', '583650', '{\"MobileMoneyNumber\":\"233534351719\",\"PaymentType\":\"mobilemoney\",\"Channel\":\"mtn-gh\"}', 0);
+(12, 'Abdul-Hafiz Yussif', 'info@nebatech.com', '233534351719', 0.31, 'NTSS_67bd63235f89f', 'Completed', '2025-02-25 06:28:51', 'N251FD4A1951126', '583650', '{\"MobileMoneyNumber\":\"233534351719\",\"PaymentType\":\"mobilemoney\",\"Channel\":\"mtn-gh\"}', 1),
+(13, 'Abdul-Hafiz Yussif', 'abdulhafiz@nebatech.com', '0249241156', 0.30, 'NTSS_67be47e42ee60', 'Pending', '2025-02-25 22:44:52', NULL, NULL, NULL, 0),
+(14, 'Abdul-Hafiz Yussif', 'abdulhafiz@nebatech.com', '0249241156', 0.30, 'NTSS_67be4a3bdcea6', 'Pending', '2025-02-25 22:54:51', NULL, NULL, NULL, 0),
+(15, 'Abdul-Hafiz Yussif', 'abdulhafiz@nebatech.com', '0249241156', 0.30, 'NTSS_67be519006c9b', 'Pending', '2025-02-25 23:26:08', NULL, NULL, NULL, 0),
+(16, 'Abdul-Hafiz Yussif', 'abdulhafiz@nebatech.com', '0249241156', 0.30, 'NTSS_67be5774cef37', 'Pending', '2025-02-25 23:51:16', NULL, NULL, NULL, 0),
+(17, 'Abdul-Hafiz Yussif', 'abdulhafiz@nebatech.com', '0249241156', 0.30, 'NTSS_67bf42b5eee6e', 'Completed', '2025-02-26 16:35:01', 'N2505ACD6AFBBA8', '620532', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -497,8 +508,7 @@ ALTER TABLE `payment_details`
 -- Indexes for table `personal_information`
 --
 ALTER TABLE `personal_information`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `application_id` (`application_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `program_selections`
@@ -554,7 +564,7 @@ ALTER TABLE `work_experience`
 -- AUTO_INCREMENT for table `applicants`
 --
 ALTER TABLE `applicants`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `audit_logs`
@@ -620,7 +630,7 @@ ALTER TABLE `sponsor_information`
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `users`
