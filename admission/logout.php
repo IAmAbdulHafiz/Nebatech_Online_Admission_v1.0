@@ -1,5 +1,5 @@
 <?php
 session_start();
 session_destroy();
-header("Location: applicant/login.php");
+header("Location: admission/login.php");
 ?>

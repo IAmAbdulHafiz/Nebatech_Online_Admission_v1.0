@@ -1,4 +1,4 @@
-<aside id="sidebar" class="text-white position-fixed top-0 shadow" style="width: 250px; min-height: 100vh; padding-top: 10vh; background-color: #002060; transition: left 0.3s ease;">
+<aside id="sidebar" class="text-white position-fixed top-0 shadow" style="width: 250px; min-height: 100vh; padding-top: 10vh; background-color:rgb(2, 43, 124); transition: left 0.3s ease;">
   <div class="p-4">
     <!-- Profile Section -->
     <div class="text-center mb-4">
@@ -10,7 +10,7 @@
     <nav>
       <ul class="nav flex-column">
         <li class="nav-item mb-2">
-          <a href="applicant_dashboard.php" class="nav-link text-white p-2 rounded <?php echo basename($_SERVER['PHP_SELF']) == 'applicant_dashboard.php' ? 'active' : ''; ?>">
+          <a href="dashboard.php" class="nav-link text-white p-2 rounded <?php echo basename($_SERVER['PHP_SELF']) == 'applicant_dashboard.php' ? 'active' : ''; ?>">
             <i class="fas fa-home me-2"></i> Dashboard
           </a>
         </li>
