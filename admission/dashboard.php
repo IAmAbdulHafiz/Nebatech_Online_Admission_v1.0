@@ -45,7 +45,7 @@ $unreadCount = count($notifications);
     @media (max-width: 768px) {
       .main-content {
         /* We keep the margin-left if you wish, but the sidebar will overlay on top of it */
-        margin-left: 250px;
+        margin-left: 0px;
       }
     }
     /* Modern progress bar */
