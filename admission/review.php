@@ -1,13 +1,9 @@
 <?php 
 session_start();
-
-// Redirect if no application session data exists
 if (!isset($_SESSION['application'])) {
-    header('Location: applicant_dashboard.php'); // Redirect to the starting page if no session data
+    header('Location: applicant_dashboard.php'); // Redirect if no application session data exists
     exit();
 }
-
-// Retrieve the application data from session
 $applicationData = $_SESSION['application'];
 
 // Helper function to safely fetch session data
@@ -28,7 +24,7 @@ function getField($field, $default = 'Not provided') {
       height: 100%;
       margin: 0;
     }
-    /* Page wrapper for sticky footer and consistent dashboard layout */
+    /* Page wrapper for consistent dashboard layout */
     .page-wrapper {
       display: flex;
       flex-direction: column;
@@ -36,7 +32,7 @@ function getField($field, $default = 'Not provided') {
     }
     /* Main content area */
     .content {
-      margin-left: 270px; /* Sidebar width (as used in your code) */
+      margin-left: 270px; /* Sidebar width */
       padding: 20px;
       flex: 1;
       position: relative;
@@ -47,11 +43,10 @@ function getField($field, $default = 'Not provided') {
         margin-left: 0;
       }
     }
-    /* Card and image styling */
+    /* Card styling */
     .card {
       margin-bottom: 50px;
     }
-    /* Remove hover effects on cards */
     .card:hover {
       box-shadow: none !important;
       transform: none !important;
@@ -80,12 +75,6 @@ function getField($field, $default = 'Not provided') {
         var legalConsent = document.getElementById('legal_consent');
         if (!legalConsent.checked) {
             alert('You must agree to the privacy policy and terms of use before submitting.');
-            return false;
-        }
-        // Optional: check work experience if required
-        var workExperience = document.getElementById('work_experience');
-        if (workExperience && workExperience.value.trim() === '') {
-            alert('Please provide your work experience.');
             return false;
         }
         return true;
@@ -134,6 +123,21 @@ function getField($field, $default = 'Not provided') {
                   </ul>
                 </div>
               </div>
+            </div>
+          </section>
+
+          <!-- New Section: Device Ownership -->
+          <section>
+            <h4>Device Ownership</h4>
+            <div class="card shadow-sm p-3">
+              <?php if (!empty($applicationData['personal_info']['devices'])): ?>
+                <p><strong>Devices Owned:</strong> <?= implode(', ', array_map('htmlspecialchars', $applicationData['personal_info']['devices'])) ?></p>
+              <?php else: ?>
+                <p><strong>Devices Owned:</strong> Not provided</p>
+              <?php endif; ?>
+              <p class="criteria-note">
+                Note: Owning a laptop, desktop, or smartphone is part of our eligibility criteria for our competence‑based training programs. Having at least one of these devices is highly recommended and may be required depending on the program selected.
+              </p>
             </div>
           </section>
 
