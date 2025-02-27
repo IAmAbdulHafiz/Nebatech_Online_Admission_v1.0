@@ -1,4 +1,4 @@
-<aside id="sidebar" class="text-white position-fixed top-0 shadow" style="width: 250px; min-height: 100vh; padding-top: 10vh; background-color: #002060; left: -250px;">
+<aside id="sidebar" class="text-white position-fixed top-0 shadow" style="width: 250px; min-height: 100vh; padding-top: 10vh; background-color: #002060; transition: left 0.3s ease;">
   <div class="p-4">
     <!-- Profile Section -->
     <div class="text-center mb-4">
@@ -50,31 +50,40 @@
 
 <!-- Custom Styles for Mobile (if needed) -->
 <style>
-  @media (max-width: 768px) {
+  /* For mobile: hide the sidebar */
+  @media (max-width: 767px) {
     #sidebar {
-      transition: left 0.3s ease-in-out;
+      left: -250px;
     }
-    #sidebar.show {
+  }
+
+  /* For desktop: show the sidebar and hide toggle */
+  @media (min-width: 768px) {
+    #sidebar {
       left: 0;
+    }
+    #sidebarToggle {
+      display: none;
     }
   }
 </style>
-
 <script>
   document.addEventListener('DOMContentLoaded', function() {
       const sidebar = document.getElementById('sidebar');
       const toggleBtn = document.getElementById('sidebarToggle');
-      
-      toggleBtn.addEventListener('click', function () {
-          const currentLeft = window.getComputedStyle(sidebar).left;
-          if (currentLeft === '0px') {
-              sidebar.style.left = '-250px';
-              toggleBtn.innerHTML = '<i class="fas fa-bars"></i>';
-          } else {
-              sidebar.style.left = '0px';
-              toggleBtn.innerHTML = '<i class="fas fa-times"></i>';
-          }
-      });
+
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', function () {
+            const currentLeft = window.getComputedStyle(sidebar).left;
+            if (currentLeft === '0px') {
+                sidebar.style.left = '-250px';
+                toggleBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            } else {
+                sidebar.style.left = '0px';
+                toggleBtn.innerHTML = '<i class="fas fa-times"></i>';
+            }
+        });
+      }
   });
 </script>
 
