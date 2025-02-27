@@ -1,16 +1,13 @@
 <?php 
 session_start();
-
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 if (!isset($_SESSION['applicant'])) {
-    header("Location: login.php");
+    header("Location: login.php"); // Redirect to login if not authenticated
     exit();
 }
 
 $applicant = $_SESSION['applicant'];
+
+// Include database connection
 include('../config/database.php');
 
 // Retrieve application status from the applicant record if available; default otherwise.
@@ -35,10 +32,12 @@ $unreadCount = count($notifications);
       background: #f8f9fa;
       min-height: 100vh;
     }
-    /* Main content layout taking the sidebar into account */
+    /* Remove margin so main content overlaps sidebar */
     .main-content {
-      margin-left: 250px;
+      margin-left: 0;
       padding: 20px;
+      position: relative;
+      z-index: 105; /* Higher than sidebar */
     }
     @media (max-width: 768px) {
       .main-content {
@@ -71,8 +70,8 @@ $unreadCount = count($notifications);
   </style>
 </head>
 <body>
-    <?php include("includes/header.php"); ?>
-    <?php include("includes/sidebar.php"); ?>
+  <?php include("includes/header.php"); ?>
+  <?php include("includes/sidebar.php"); ?>
 
   <div class="main-content">
     <div class="container">
@@ -172,23 +171,21 @@ $unreadCount = count($notifications);
   <?php include("../includes/footer.php"); ?>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-</script>
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-      const sidebar = document.getElementById('sidebar');
-      const toggleBtn = document.getElementById('sidebarToggle');
+    document.addEventListener('DOMContentLoaded', function() {
+        const sidebar = document.getElementById('sidebar');
+        const toggleBtn = document.getElementById('sidebarToggle');
 
-      toggleBtn.addEventListener('click', function () {
-          const currentLeft = window.getComputedStyle(sidebar).left;
-          if (currentLeft === '0px') {
-              sidebar.style.left = '-250px';
-              toggleBtn.innerHTML = '<i class="fas fa-bars"></i>';
-          } else {
-              sidebar.style.left = '0px';
-              toggleBtn.innerHTML = '<i class="fas fa-times"></i>';
-          }
-      });
-  });
-</script>
+        toggleBtn.addEventListener('click', function () {
+            const currentLeft = window.getComputedStyle(sidebar).left;
+            if (currentLeft === '0px') {
+                sidebar.style.left = '-250px';
+                toggleBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            } else {
+                sidebar.style.left = '0px';
+                toggleBtn.innerHTML = '<i class="fas fa-times"></i>';
+            }
+        });
+    });
+  </script>
 </body>
 </html>
