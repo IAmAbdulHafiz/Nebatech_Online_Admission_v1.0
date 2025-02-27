@@ -11,7 +11,7 @@ $applicant = $_SESSION['applicant'];
 include('../config/database.php');
 
 // Fetch the applicant's personal information from the database
-$stmt = $conn->prepare("SELECT * FROM personal_information WHERE application_id = (SELECT id FROM applications WHERE user_id = ?)");
+$stmt = $conn->prepare("SELECT * FROM personal_information WHERE applicant_id = (SELECT id FROM applicants WHERE user_id = ?)");
 $stmt->execute([$applicant['id']]);
 $personalInfo = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
 
     // Update the personal information in the database
-    $stmt = $conn->prepare("UPDATE personal_information SET first_name = ?, middle_name = ?, last_name = ?, phone_number = ?, email = ? WHERE application_id = (SELECT id FROM applications WHERE user_id = ?)");
+    $stmt = $conn->prepare("UPDATE personal_information SET first_name = ?, middle_name = ?, last_name = ?, phone_number = ?, email = ? WHERE applicant_id = (SELECT id FROM applicants WHERE user_id = ?)");
     $stmt->execute([$first_name, $middle_name, $last_name, $phone_number, $email, $applicant['id']]);
 
     // Update session data
