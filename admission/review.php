@@ -309,7 +309,7 @@ function getField($field, $default = 'Not provided') {
       </div>
     </div>
     <?php include("../includes/footer.php"); ?>
-    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/jquery-3.7.1.min.js"></script>
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

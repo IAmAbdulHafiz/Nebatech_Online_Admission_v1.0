@@ -11,7 +11,7 @@ if (!isset($_SESSION['application_submitted'])) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Application Submitted</title>
-  <script src="../assets/js/jquery.min.js"></script>
+  <script src="../assets/js/jquery-3.7.1.min.js"></script>
   <script src="../assets/js/bootstrap.bundle.min.js"></script>
   <style>
     html, body {

@@ -197,7 +197,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 
     <!-- jQuery and Bootstrap JS -->
-    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/jquery-3.7.1.min.js"></script>
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
     <script>
       $(document).ready(function(){
