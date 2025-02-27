@@ -1,23 +1,4 @@
-<?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
-if (!isset($_SESSION['applicant'])) {
-    header("Location: login.php"); // Redirect if not authenticated
-    exit();
-}
-
-$applicant = $_SESSION['applicant'];
-include('../config/database.php');
-
-$user_id = $applicant['id'];
-$stmt = $conn->prepare("SELECT passport_photo FROM personal_information WHERE applicant_id = ?");
-$stmt->execute([$user_id]);
-$profilePicture = $stmt->fetchColumn();
-?>
-
-<aside id="sidebar" class="text-white position-fixed top-0 shadow" style="width: 250px; min-height: 100vh; padding-top: 10vh; background-color: #002060;">
+<aside id="sidebar" class="text-white position-fixed" style="width: 250px; min-height: 100vh; top: 70px; left: -250px; background-color: #002060; transition: left 0.3s ease;">
   <div class="p-4">
     <!-- Profile Section -->
     <div class="text-center mb-4">
@@ -62,60 +43,3 @@ $profilePicture = $stmt->fetchColumn();
     </nav>
   </div>
 </aside>
-
-<!-- Toggle Button for Mobile Sidebar -->
-<button id="sidebarToggle" class="btn btn-primary d-md-none" style="position: fixed; top: 10px; left: 10px; z-index: 1040;">
-  <i class="fas fa-bars"></i>
-</button>
-
-<!-- Font Awesome CDN for icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-<!-- Custom Styles for Sidebar -->
-<style>
-  /* Active link style */
-  .nav-link.active {
-      background-color: #FFA500;
-      color: white !important;
-      font-weight: bold;
-  }
-  .nav-link:hover {
-      background-color: #2234AB;
-      color: white;
-      text-decoration: none;
-  }
-  /* Mobile sidebar adjustments */
-  @media (max-width: 768px) {
-  #sidebar {
-    position: fixed;
-    top: 0;
-    left: -250px;
-    width: 250px;
-    height: 100%;
-    transition: left 0.3s ease-in-out;
-  }
-  #sidebar.show {
-    left: 0;
-  }
-}
-
-  @media (max-width: 576px) {
-    .nav-link {
-      font-size: 0.9rem;
-      padding: 0.75rem;
-    }
-    .rounded-circle {
-      width: 60px;
-      height: 60px;
-    }
-    h5 {
-      font-size: 1rem;
-    }
-  }
-</style>
-
-<script>
-  document.getElementById('sidebarToggle').addEventListener('click', function () {
-      document.getElementById('sidebar').classList.toggle('show');
-  });
-</script>

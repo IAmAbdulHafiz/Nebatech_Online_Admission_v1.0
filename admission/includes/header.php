@@ -4,17 +4,13 @@ if (!isset($_SESSION['applicant'])) {
     exit();
 }
 $applicant = $_SESSION['applicant'];
-
-// Include database connection
 include('../config/database.php');
 
 $user_id = $applicant['id'];
-// Fetch the applicant's profile picture from personal_information using applicant_id
 $stmt = $conn->prepare("SELECT passport_photo FROM personal_information WHERE applicant_id = ?");
 $stmt->execute([$user_id]);
 $profilePicture = $stmt->fetchColumn();
 
-// If no profile picture is found, use a default placeholder
 if (!$profilePicture) {
     $profilePicture = '../assets/images/profile-placeholder.png';
 }
@@ -30,7 +26,7 @@ if (!$profilePicture) {
   <style>
     /* Dashboard Header Styles */
     .dashboard-header {
-      background-color: #002060; /* Dark blue */
+      background-color: #002060;
       color: #fff;
       position: fixed;
       top: 0;
@@ -44,7 +40,6 @@ if (!$profilePicture) {
       align-items: center;
       justify-content: space-between;
     }
-    /* Brand section */
     .brand {
       display: flex;
       align-items: center;
@@ -59,15 +54,6 @@ if (!$profilePicture) {
       font-weight: bold;
       margin-left: 10px;
     }
-    /* Hide brand text on mobile using Bootstrap utilities */
-    /* Alternatively, you can use a media query:
-    @media (max-width: 768px) {
-      .brand span {
-        display: none;
-      }
-    }
-    */
-    /* User menu */
     .user-menu {
       position: relative;
     }
@@ -85,17 +71,28 @@ if (!$profilePicture) {
       object-fit: cover;
       margin-right: 8px;
     }
-    .user-menu span {
-      font-size: 1rem;
-      font-weight: 500;
-    }
     .dropdown-menu {
       min-width: 150px;
       right: 0;
       left: auto;
     }
     body {
-      padding-top: 70px; /* Prevent content from being hidden behind the fixed header */
+      padding-top: 70px;
+    }
+    /* Modern Toggle Button */
+    .toggle-btn {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.8rem;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .toggle-btn:hover {
+      color: #FFA500;
+    }
+    .toggle-btn.active i {
+      transform: rotate(90deg);
     }
   </style>
 </head>
@@ -106,7 +103,6 @@ if (!$profilePicture) {
       <div class="brand">
         <a href="/admission/index.php" class="text-white text-decoration-none">
           <img src="/assets/images/logo.png" alt="Nebatech Logo">
-          <!-- Hide text on mobile using Bootstrap classes -->
           <span class="d-none d-md-inline">Nebatech Admissions</span>
         </a>
       </div>
@@ -123,24 +119,9 @@ if (!$profilePicture) {
           <li><a class="dropdown-item text-danger" href="logout.php">Logout</a></li>
         </ul>
       </div>
-      <!-- Sidebar Toggle Button for Mobile -->
-      <button id="sidebarToggle" class="btn btn-light d-md-none">
+      <!-- Sidebar Toggle Button (visible on mobile) -->
+      <button id="sidebarToggle" class="toggle-btn d-md-none">
         <i class="fas fa-bars"></i>
       </button>
     </div>
   </header>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const toggleBtn = document.getElementById('sidebarToggle');
-        if (toggleBtn) {
-        toggleBtn.addEventListener('click', function () {
-            document.getElementById('sidebar').classList.toggle('show');
-        });
-        }
-    });
-  </script>
-
-</body>
-</html>
