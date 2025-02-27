@@ -20,7 +20,7 @@ function handleFileUpload($file, $uploadDir, $allowedExtensions = ['jpg', 'jpeg'
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Ensure at least one device is selected
+    // (Optional) Make sure at least one device is selected
     if (empty($_POST['devices'])) {
         die("Please select at least one device.");
     }
@@ -81,7 +81,7 @@ if (!isset($_SESSION['application']['user_id'])) {
       flex-direction: column;
       min-height: 100vh;
     }
-    /* Main content: desktop left margin; mobile: margin reset */
+    /* Main content: desktop left margin; mobile: reset margin */
     .content {
       margin-left: 250px; /* Sidebar width */
       padding: 20px;
@@ -94,7 +94,7 @@ if (!isset($_SESSION['application']['user_id'])) {
         margin-left: 0;
       }
     }
-    /* Style for the Device Ownership section */
+    /* Device Ownership Section */
     .device-section {
       margin-bottom: 20px;
       padding: 15px;
@@ -139,7 +139,7 @@ if (!isset($_SESSION['application']['user_id'])) {
         </div>
         <p class="text-muted text-center">Please provide accurate information. Fields marked with * are required.</p>
         
-        <!-- Device Ownership Section -->
+        <!-- Device Ownership Section (Outside the multi‑step form so it’s visible, but note: if you need to submit these values, move them inside the form) -->
         <div class="device-section">
           <label class="form-label">Do you have a laptop, desktop or smartphone? <small>(Tick all that apply) *</small></label>
           <div class="form-check">
