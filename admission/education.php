@@ -269,6 +269,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
               }
           });
       });
+
+      function addRow() {
+          var newRow = `<tr>
+              <td><input type="text" name="school[]" class="form-control" placeholder="School Name" required></td>
+              <td><input type="text" name="course[]" class="form-control" placeholder="Course"></td>
+              <td><input type="text" name="qualification[]" class="form-control" placeholder="Qualification (e.g. WASSCE, HND)" required></td>
+              <td>
+                  <input type="date" name="start_period[]" class="form-control mb-2" required>
+                  <input type="date" name="end_period[]" class="form-control" required>
+              </td>
+              <td><button type="button" class="btn btn-danger btn-sm" onclick="removeRow(this)">Remove</button></td>
+          </tr>`;
+          $("#educationTable tbody").append(newRow);
+      }
+
+      function removeRow(button) {
+          $(button).closest("tr").remove();
+      }
     </script>
     <?php include("../includes/footer.php"); ?>
 </body>
