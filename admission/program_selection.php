@@ -40,13 +40,13 @@ $campuses = ['Morning', 'Afternoon', 'Evening', 'Weekend', 'Online'];
       height: 100%;
       margin: 0;
     }
-    /* Page wrapper for sticky footer and dashboard structure */
+    /* Page wrapper for consistent dashboard structure */
     .page-wrapper {
       display: flex;
       flex-direction: column;
       min-height: 100vh;
     }
-    /* Main content area: has margin-left for sidebar on desktop */
+    /* Main content layout: desktop has 250px left margin, mobile resets */
     .content {
       margin-left: 250px;
       padding: 20px;
@@ -90,8 +90,8 @@ $campuses = ['Morning', 'Afternoon', 'Evening', 'Weekend', 'Online'];
 
         <form action="" method="POST">
           <div class="row">
-            <div class="col-md-6">
-              <!-- First Choice -->
+            <!-- First Choice and its Session -->
+            <div class="col-md-4">
               <div class="mb-3">
                 <label for="first_choice" class="form-label">First Choice *</label>
                 <select id="first_choice" name="first_choice" class="form-select" onchange="updateFees(this, 'fee1')" required>
@@ -102,9 +102,19 @@ $campuses = ['Morning', 'Afternoon', 'Evening', 'Weekend', 'Online'];
                 </select>
                 <small class="text-muted">Programme Fee: <span id="fee1"></span></small>
               </div>
+              <div class="mb-3">
+                <label for="session_first" class="form-label">Session for First Choice *</label>
+                <select id="session_first" name="session_first" class="form-select" required>
+                  <option value="" disabled selected>Please select...</option>
+                  <?php foreach ($campuses as $campus): ?>
+                    <option value="<?= $campus ?>"><?= $campus ?></option>
+                  <?php endforeach; ?>
+                </select>
+              </div>
             </div>
-            <div class="col-md-6">
-              <!-- Second Choice -->
+
+            <!-- Second Choice and its Session -->
+            <div class="col-md-4">
               <div class="mb-3">
                 <label for="second_choice" class="form-label">Second Choice</label>
                 <select id="second_choice" name="second_choice" class="form-select" onchange="updateFees(this, 'fee2')">
@@ -115,11 +125,19 @@ $campuses = ['Morning', 'Afternoon', 'Evening', 'Weekend', 'Online'];
                 </select>
                 <small class="text-muted">Programme Fee: <span id="fee2"></span></small>
               </div>
+              <div class="mb-3">
+                <label for="session_second" class="form-label">Session for Second Choice</label>
+                <select id="session_second" name="session_second" class="form-select">
+                  <option value="" disabled selected>Please select...</option>
+                  <?php foreach ($campuses as $campus): ?>
+                    <option value="<?= $campus ?>"><?= $campus ?></option>
+                  <?php endforeach; ?>
+                </select>
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <!-- Third Choice -->
+
+            <!-- Third Choice and its Session -->
+            <div class="col-md-4">
               <div class="mb-3">
                 <label for="third_choice" class="form-label">Third Choice</label>
                 <select id="third_choice" name="third_choice" class="form-select" onchange="updateFees(this, 'fee3')">
@@ -130,21 +148,18 @@ $campuses = ['Morning', 'Afternoon', 'Evening', 'Weekend', 'Online'];
                 </select>
                 <small class="text-muted">Programme Fee: <span id="fee3"></span></small>
               </div>
-            </div>
-            <div class="col-md-6">
-              <!-- Session / Campus Selection -->
               <div class="mb-3">
-                <label for="campus" class="form-label">Select Session (Required)</label>
-                <select id="campus" name="campus" class="form-select" required>
+                <label for="session_third" class="form-label">Session for Third Choice</label>
+                <select id="session_third" name="session_third" class="form-select">
                   <option value="" disabled selected>Please select...</option>
                   <?php foreach ($campuses as $campus): ?>
                     <option value="<?= $campus ?>"><?= $campus ?></option>
                   <?php endforeach; ?>
                 </select>
-                <small class="text-muted">Select the session you wish to enroll in. Different programmes may be pursued in separate sessions.</small>
               </div>
             </div>
           </div>
+
           <div class="d-flex justify-content-between">
             <button type="button" class="btn btn-secondary" onclick="window.history.back();">Previous</button>
             <button type="submit" class="btn btn-primary">Save & Continue</button>
@@ -152,6 +167,8 @@ $campuses = ['Morning', 'Afternoon', 'Evening', 'Weekend', 'Online'];
         </form>
       </div>
     </div>
+
+    <?php include("../includes/footer.php"); ?>
   </div>
 
   <script>
@@ -162,6 +179,5 @@ $campuses = ['Morning', 'Afternoon', 'Evening', 'Weekend', 'Online'];
   </script>
   <script src="../assets/js/jquery.min.js"></script>
   <script src="../assets/js/bootstrap.bundle.min.js"></script>
-  <?php include("../includes/footer.php"); ?>
 </body>
 </html>
