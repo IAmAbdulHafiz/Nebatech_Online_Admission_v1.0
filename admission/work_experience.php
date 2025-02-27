@@ -56,6 +56,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     .card {
       margin-bottom: 50px;
     }
+    /* Remove hover effects on cards */
+    .card:hover {
+      box-shadow: none !important;
+      transform: none !important;
+    }
     .remove-btn {
       margin-top: 30px;
     }
@@ -154,7 +159,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       card.remove();
     }
 
-    // Optional: Validate form on submission (HTML5 validation will allow empty work experience)
     $("#workExperienceForm").submit(function(e) {
       if (!this.checkValidity()) {
         e.preventDefault();
