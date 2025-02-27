@@ -40,7 +40,7 @@ $unreadCount = count($notifications);
       margin-left: 250px;
       padding: 20px;
       position: relative;
-      z-index: 1;  /* Ensure main content is behind the sidebar when sidebar's z-index is higher */
+      z-index: 2;  /* Ensure main content is behind the sidebar when sidebar's z-index is higher */
     }
     @media (max-width: 768px) {
       .main-content {
