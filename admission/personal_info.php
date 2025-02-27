@@ -319,9 +319,8 @@ if (!isset($_SESSION['application']['user_id'])) {
   </div>
 
   <!-- jQuery and Bootstrap JS -->
-  <script src="../assets/js/jquery.min.js"></script>
+  <script src="../assets/js/jquery-3.7.1.min.js"></script>
   <script src="../assets/js/bootstrap.bundle.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJ+8y+QDv9rY0a7V8Q1mWf9B2zF58jYFZCXEg=" crossorigin="anonymous"></script>
   <script>
     $(document).ready(function(){
         var currentStep = 1;
