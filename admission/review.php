@@ -1,9 +1,9 @@
-<?php
+<?php 
 session_start();
 
 // Redirect if no application session data exists
 if (!isset($_SESSION['application'])) {
-    header('Location: applicant_dashboard.php');
+    header('Location: applicant_dashboard.php'); // Redirect to the starting page if no session data
     exit();
 }
 
@@ -50,6 +50,10 @@ function getField($field, $default = 'Not provided') {
     /* Card and image styling */
     .card {
       margin-bottom: 50px;
+    }
+    .card:hover {
+      box-shadow: none !important;
+      transform: none !important;
     }
     .img-thumbnail {
       max-width: 200px;
