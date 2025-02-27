@@ -66,18 +66,21 @@ if (!isset($_SESSION['application']['user_id'])) {
   <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="../assets/css/style.css">
   <style>
-    body {
-      padding-top: 70px; /* Fixed header height */
-      padding-bottom: 70px; /* Fixed footer height */
-      background-color: #f8f9fa;
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+    /* Page wrapper for sticky footer */
+    .page-wrapper {
+      display: flex;
+      flex-direction: column;
       min-height: 100vh;
     }
-    /* Main content layout: on desktop, margin-left is 250px; on mobile, margin-left is 0 */
+    /* Main content: desktop left margin; mobile: margin reset */
     .content {
-      margin-left: 250px;
+      margin-left: 250px; /* Sidebar width */
       padding: 20px;
-      height: calc(100vh - 140px);
-      overflow-y: auto;
+      flex: 1;
       position: relative;
       z-index: 1;
     }
@@ -117,6 +120,7 @@ if (!isset($_SESSION['application']['user_id'])) {
   </style>
 </head>
 <body>
+  <div class="page-wrapper">
     <?php include("includes/header.php"); ?>
     <?php include("includes/sidebar.php"); ?>
 
@@ -308,76 +312,78 @@ if (!isset($_SESSION['application']['user_id'])) {
         </div>
     </div>
 
+    <!-- jQuery and Bootstrap JS -->
     <script src="../assets/js/jquery.min.js"></script>
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Multi-step form logic
-        var currentStep = 1;
-        var totalSteps = 3; // Adjust total steps as needed
+        $(document).ready(function(){
+            var currentStep = 1;
+            var totalSteps = 3; // Adjust if additional steps are added
 
-        function showStep(step) {
-            $(".step").addClass("d-none");
-            $(".step-" + step).removeClass("d-none");
+            function showStep(step) {
+                $(".step").addClass("d-none");
+                $(".step-" + step).removeClass("d-none");
 
-            // Update progress bar if present
-            var progress = (step / totalSteps) * 100;
-            $(".progress-bar").css("width", progress + "%");
-            $(".progress-bar").attr("aria-valuenow", progress);
-            $(".progress-bar").text("Step " + step + " of " + totalSteps);
-        }
-
-        $(".next-step").click(function () {
-            if (currentStep < totalSteps) {
-                currentStep++;
-                showStep(currentStep);
-            } else {
-                $("#applicationForm").submit();
+                // Update progress bar if present
+                var progress = (step / totalSteps) * 100;
+                $(".progress-bar").css("width", progress + "%");
+                $(".progress-bar").attr("aria-valuenow", progress);
+                $(".progress-bar").text("Step " + step + " of " + totalSteps);
             }
-        });
 
-        $(".prev-step").click(function () {
-            if (currentStep > 1) {
-                currentStep--;
-                showStep(currentStep);
-            }
-        });
+            $(".next-step").click(function () {
+                if (currentStep < totalSteps) {
+                    currentStep++;
+                    showStep(currentStep);
+                } else {
+                    $("#applicationForm").submit();
+                }
+            });
 
-        $("#applicationForm").submit(function (e) {
-            if (!$(this)[0].checkValidity()) {
-                e.preventDefault();
-                alert("Please fill out all required fields before submitting.");
-            }
-        });
+            $(".prev-step").click(function () {
+                if (currentStep > 1) {
+                    currentStep--;
+                    showStep(currentStep);
+                }
+            });
 
-        // Show the first step initially
-        showStep(currentStep);
+            $("#applicationForm").submit(function (e) {
+                if (!$(this)[0].checkValidity()) {
+                    e.preventDefault();
+                    alert("Please fill out all required fields before submitting.");
+                }
+            });
 
-        // Preview passport photo
-        $("#passport_photo").change(function() {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                $("#passport_photo_preview").attr("src", e.target.result).removeClass("d-none");
-            }
-            reader.readAsDataURL(this.files[0]);
-        });
+            // Show the first step initially
+            showStep(currentStep);
 
-        // Preview ID document
-        $("#id_document").change(function() {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                $("#id_document_preview").attr("src", e.target.result).removeClass("d-none");
-            }
-            reader.readAsDataURL(this.files[0]);
-        });
+            // Preview passport photo
+            $("#passport_photo").change(function() {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $("#passport_photo_preview").attr("src", e.target.result).removeClass("d-none");
+                }
+                reader.readAsDataURL(this.files[0]);
+            });
 
-        // Validate Confirm Email equals Email (client-side)
-        $("#confirm_email").on("blur", function() {
-            var email = $("#email").val();
-            var confirmEmail = $(this).val();
-            if(email !== confirmEmail) {
-                alert("Email and Confirm Email do not match.");
-                $(this).focus();
-            }
+            // Preview ID document
+            $("#id_document").change(function() {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $("#id_document_preview").attr("src", e.target.result).removeClass("d-none");
+                }
+                reader.readAsDataURL(this.files[0]);
+            });
+
+            // Validate that Confirm Email matches Email
+            $("#confirm_email").on("blur", function() {
+                var email = $("#email").val();
+                var confirmEmail = $(this).val();
+                if(email !== confirmEmail) {
+                    alert("Email and Confirm Email do not match.");
+                    $(this).focus();
+                }
+            });
         });
     </script>
     <?php include("../includes/footer.php"); ?>
