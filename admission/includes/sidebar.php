@@ -44,6 +44,9 @@
   </div>
 </aside>
 <style>
+    #sidebar {
+    z-index: 110;
+  }
   .nav-link:hover{
     background-color:  #002060;
   }
