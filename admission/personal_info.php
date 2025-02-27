@@ -1,7 +1,7 @@
-<?php
+<?php 
 session_start();
 
-// Function to handle file uploads
+// Function to handle file uploads (unchanged)
 function handleFileUpload($file, $uploadDir, $allowedExtensions = ['jpg', 'jpeg', 'png']) {
     if ($file['error'] === UPLOAD_ERR_OK) {
         $fileExtension = pathinfo($file['name'], PATHINFO_EXTENSION);
@@ -10,7 +10,6 @@ function handleFileUpload($file, $uploadDir, $allowedExtensions = ['jpg', 'jpeg'
         }
         $uniqueName = uniqid('file_', true) . '.' . $fileExtension;
         $filePath = $uploadDir . $uniqueName;
-
         if (move_uploaded_file($file['tmp_name'], $filePath)) {
             return ['path' => $filePath];
         } else {
@@ -21,18 +20,21 @@ function handleFileUpload($file, $uploadDir, $allowedExtensions = ['jpg', 'jpeg'
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Sanitize POST data
+    // Save all personal info into session
     foreach ($_POST as $key => $value) {
-        $_SESSION['application']['personal_info'][$key] = htmlspecialchars($value);
+        if (is_array($value)) {
+            $_SESSION['application']['personal_info'][$key] = array_map('htmlspecialchars', $value);
+        } else {
+            $_SESSION['application']['personal_info'][$key] = htmlspecialchars($value);
+        }
     }
 
-    // Define upload directory
+    // Define upload directory and handle file uploads
     $uploadDir = '../uploads/';
     if (!is_dir($uploadDir) && !mkdir($uploadDir, 0777, true)) {
         die('Failed to create upload directory.');
     }
 
-    // Handle file uploads
     $passportPhotoResult = handleFileUpload($_FILES['passport_photo'], $uploadDir);
     $idDocumentResult = handleFileUpload($_FILES['id_document'], $uploadDir);
 
@@ -55,63 +57,97 @@ if (!isset($_SESSION['application']['user_id'])) {
     $_SESSION['application']['user_id'] = $_SESSION['user_id'];
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NTSS - Application Form - Personal Information</title>
-    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <style>
-        body {
-            padding-top: 70px; /* Height of the fixed header */
-            padding-bottom: 70px; /* Height of the fixed footer */
-        }
-        .sidebar {
-            width: 250px;
-            position: fixed;
-            top: 70px; /* Height of the fixed header */
-            bottom: 70px; /* Height of the fixed footer */
-            left: 0;
-            background-color: #FFA500;
-            padding-top: 20px;
-            overflow-y: auto;
-        }
-        .content {
-            margin-left: 250px; /* Width of the sidebar */
-            padding: 20px;
-            height: calc(100vh - 140px); /* Full height minus header and footer */
-            overflow-y: auto;
-        }
-        /* Responsive layout for mobile screens */
-        @media (max-width: 768px) {
-            .sidebar {
-                width: 200px;
-                top: 60px;
-            }
-            .content {
-                margin-left: 200px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NTSS - Application Form - Personal Information</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    body {
+      padding-top: 70px; /* Fixed header height */
+      padding-bottom: 70px; /* Fixed footer height */
+      background-color: #f8f9fa;
+      min-height: 100vh;
+    }
+    .content {
+      margin-left: 250px; /* Sidebar width */
+      padding: 20px;
+      height: calc(100vh - 140px); /* Height minus header and footer */
+      overflow-y: auto;
+      position: relative;
+      z-index: 1;
+    }
+    @media (max-width: 768px) {
+      .content {
+        margin-left: 0;
+      }
+    }
+    /* Style for the device ownership section */
+    .device-section {
+      margin-bottom: 20px;
+      padding: 15px;
+      background-color: #e9ecef;
+      border-radius: 5px;
+    }
+    .device-section .form-label {
+      font-weight: 500;
+    }
+    .device-section .criteria-note {
+      font-size: 0.9rem;
+      color: #6c757d;
+      margin-top: 5px;
+    }
+    /* Progress bar style (if used) */
+    .progress {
+      height: 30px;
+      background-color: #e9ecef;
+      border-radius: 15px;
+      overflow: hidden;
+    }
+    .progress-bar {
+      font-size: 1rem;
+      font-weight: bold;
+      line-height: 30px;
+    }
+  </style>
 </head>
 <body>
-    <!-- Include Header -->
     <?php include("includes/header.php"); ?>
     <?php include("includes/sidebar.php"); ?>
 
     <div class="content">
-        <h2 class="text-center">Application Form - Personal Information</h2>
-        <div class="progress mb-4">
-            <div class="progress-bar" role="progressbar" style="width: 12.5%;" aria-valuenow="12.5" aria-valuemin="0" aria-valuemax="100">Step 1 of 8</div>
-        </div>
-        <p class="text-muted text-center">Please provide accurate information. Fields marked with * are required.</p>
+        <div class="container">
+            <h2 class="text-center">Application Form - Personal Information</h2>
+            <div class="progress mb-4">
+                <div class="progress-bar" role="progressbar" style="width: 12.5%;" aria-valuenow="12.5" aria-valuemin="0" aria-valuemax="100">Step 1 of 8</div>
+            </div>
+            <p class="text-muted text-center">Please provide accurate information. Fields marked with * are required.</p>
 
-        <!-- Multi-Step Form -->
-        <div id="multi-step-form">
-            <form id="applicationForm" method="POST" enctype="multipart/form-data">
+            <!-- Device Ownership Section -->
+            <div class="device-section">
+                <label class="form-label">Do you have a laptop, desktop or smartphone? <small>(Tick all that apply)</small></label>
+                <div class="form-check">
+                    <input type="checkbox" id="deviceLaptop" name="devices[]" value="Laptop" class="form-check-input">
+                    <label class="form-check-label" for="deviceLaptop">Laptop</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" id="deviceDesktop" name="devices[]" value="Desktop" class="form-check-input">
+                    <label class="form-check-label" for="deviceDesktop">Desktop</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" id="deviceSmartphone" name="devices[]" value="Smartphone" class="form-check-input">
+                    <label class="form-check-label" for="deviceSmartphone">Smartphone</label>
+                </div>
+                <p class="criteria-note">
+                  Note: Owning a laptop, desktop, or smartphone is part of our eligibility criteria for our competence‑based training programs. Having at least one of these devices is highly recommended and may be required depending on the program selected.
+                </p>
+            </div>
+
+            <!-- Multi-Step Form -->
+            <div id="multi-step-form">
                 <!-- Step 1: Personal Details -->
                 <div class="step step-1">
                     <h3>Step 1: Personal Details</h3>
@@ -190,11 +226,11 @@ if (!isset($_SESSION['application']['user_id'])) {
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="city" class="form-label">City *</label>
-                            <input type="text" id="city" name="city" class="form-control">
+                            <input type="text" id="city" name="city" class="form-control" required>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="region" class="form-label">Region *</label>
-                            <input type="text" id="region" name="region" class="form-control">
+                            <input type="text" id="region" name="region" class="form-control" required>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="country" class="form-label">Country *</label>
@@ -251,7 +287,7 @@ if (!isset($_SESSION['application']['user_id'])) {
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="id_document" class="form-label">Upload Identification Card Photo Front Only *</label>
-                            <input type="file" id="id_document" name="id_document" class="form-control" accept=".jpg, .png, jpeg" required>
+                            <input type="file" id="id_document" name="id_document" class="form-control" accept=".jpg, .png, .jpeg" required>
                         </div>
                         <div class="col-md-6 mb-3">
                             <img id="id_document_preview" src="#" alt="ID Document Preview" class="img-thumbnail mt-2 d-none" style="max-width: 150px;">
@@ -267,16 +303,16 @@ if (!isset($_SESSION['application']['user_id'])) {
     </div>
     <script src="../assets/js/jquery.min.js"></script>
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
+        // Multi-step form logic
         var currentStep = 1;
-        var totalSteps = 9; // Set total steps to 3 for this form
+        var totalSteps = 3; // Adjust total steps as needed
 
         function showStep(step) {
             $(".step").addClass("d-none");
             $(".step-" + step).removeClass("d-none");
 
-            // Update progress bar
+            // Update progress bar if you have one
             var progress = (step / totalSteps) * 100;
             $(".progress-bar").css("width", progress + "%");
             $(".progress-bar").attr("aria-valuenow", progress);
@@ -327,7 +363,6 @@ if (!isset($_SESSION['application']['user_id'])) {
             reader.readAsDataURL(this.files[0]);
         });
     </script>
-    <!-- Include Footer -->
     <?php include("../includes/footer.php"); ?>
 </body>
 </html>
