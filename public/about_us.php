@@ -19,7 +19,7 @@
   <style>
     /* Common Hero Section */
     .hero {
-      background: linear-gradient(rgba(0,32,96,0.9), rgba(0,32,96,0.9)), url('assets/images/bg1.jpg');
+      background: linear-gradient(rgba(0, 32, 96, 0.9), rgba(0, 32, 96, 0.9)), url('../assets/images/hero_bg1.JPG');
       background-size: cover;
       background-position: center;
       color: white;
