@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Apply for admission to Nebatech Training & Solutions School (NTSS). Purchase the application form online and receive your Serial Number and PIN via SMS and Email.">
+    <meta name="keywords" content="NTSS, Nebatech Training & Solutions School, Nebatech School, NTSS Admission, NTSS Application, NTSS Online Admission, NTSS Admission Form, NTSS Application Form, NTSS Online Admission Form, NTSS Admission Portal, NTSS Application Portal, NTSS Online Admission Portal">
     <title>NEBATECH - Online Admission Form</title>
     <link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
@@ -44,7 +46,7 @@
         }
         .form-control { 
             border-radius: 8px;
-            padding: auto; 
+            padding: 2rem; 
         }
         .btn-primary { 
             background: #002060; 
