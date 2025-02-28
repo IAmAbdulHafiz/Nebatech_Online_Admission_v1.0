@@ -185,25 +185,25 @@
                         <a class="nav-link" href="../index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../admission/programmes.php">Programmes</a>
+                        <a class="nav-link" href="../public/programmes.php">Programmes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../admission/services.php">Services</a>
+                        <a class="nav-link" href="../public/services.php">Services</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../admission/projects.php">Projects</a>
+                        <a class="nav-link" href="../public/projects.php">Projects</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../admission/blog.php">Events</a>
+                        <a class="nav-link" href="../public/blog.php">Events</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../admission/about_us.php">About Us</a>
+                        <a class="nav-link" href="../public/about_us.php">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../admission/contact.php">Contact</a>
+                        <a class="nav-link" href="../public/contact.php">Contact</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../admission/faq.php">FAQs</a>
+                        <a class="nav-link" href="../public/faq.php">FAQs</a>
                     </li>
                     <li class="nav-item admission-portal">
                         <a class="btn login-btn btn-sm ms-3" href="login.php">Login</a>
