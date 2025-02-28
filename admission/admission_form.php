@@ -46,7 +46,7 @@
         }
         .form-control { 
             border-radius: 8px;
-            padding: 2rem; 
+            padding: 1rem; 
         }
         .btn-primary { 
             background: #002060; 
