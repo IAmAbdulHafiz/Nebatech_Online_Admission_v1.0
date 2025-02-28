@@ -222,30 +222,6 @@ body {
     margin-bottom: 20px;
 }
 
-.welcome-section {
-    background: url('../images/bg1.jpg') no-repeat center center / cover;
-    height: 600px;
-    position: relative;
-}
-.welcome-section .overlay {
-    background: rgba(0, 0, 0, 0.4);
-    height: 100%;
-    width: 100%;
-    position: absolute;
-}
-.welcome-section .content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    color: #fff;
-}
-.welcome-text {
-    font-size: 4.5em;
-    font-weight: 700;
-    margin-bottom: 20px;
-}
 .card-section {
     padding: 50px 0;
 }
