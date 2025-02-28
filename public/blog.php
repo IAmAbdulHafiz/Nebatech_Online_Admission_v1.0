@@ -7,13 +7,13 @@
     <meta name="keywords" content="Blog, Technology Blog, Business Blog, Blog Posts, Blog Topics, Blog Articles, Blog Insights, Blog Read, Blog Information, Blog Technology, Blog Business, Blog Posts, Blog Topics, Blog Articles, Blog Insights, Blog Read, Blog Information, Blog Technology, Blog Business">
     <meta name="author" content="Nebatech Software Solution Ltd">
     <meta name="robots" content="noindex, nofollow">
-    <link rel="icon" href="assets/images/favicon.ico">
+    <link rel="icon" href="../assets/images/favicon.ico">
     <title>Updates & Events - Nebatech Software Solution Ltd</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 
     <style>
         /* Reset and base styles */
@@ -32,7 +32,7 @@
 
         /* Header styles */
         .hero {
-            background: linear-gradient(rgba(0, 32, 96, 0.9), rgba(0, 32, 96, 0.9)),url('assets/images/bg1.jpg');
+            background: linear-gradient(rgba(0, 32, 96, 0.9), rgba(0, 32, 96, 0.9)),url('../assets/images/hero_bg1.JPG');
             background-size: cover;
             background-position: center;
             color: white;
