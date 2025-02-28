@@ -99,7 +99,7 @@
             color: #002060; /* Dark blue text */
             border: none;
             font-weight: bold;
-            padding: 10px 15px;
+            padding: 10px 25px;
             border-radius: 0.5rem;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
@@ -108,6 +108,35 @@
             background-color:orange; /* Gold on hover */
             color: #002060; /* Dark blue text */
             text-decoration: none;
+        }
+
+        /* Hide contact-info and working-hours in mobile view */
+        @media (max-width: 768px) {
+            .contact-info,
+            .working-hours {
+                display: none;
+            }
+            .social-media {
+                justify-content: center;
+                width: 100%;
+            }
+            .navbar-collapse {
+                background-color: rgba(0, 32, 96, 0.95); /* Dark blue background for mobile menu */
+                border-radius: 10px;
+                padding-bottom: 2rem;
+            }
+            .navbar-nav {
+                text-align: center;
+            }
+            .navbar-nav .admission-portal {
+                width: 100%;
+                text-align: center;
+                margin-top: 10px;
+            }
+            .navbar-nav .admission-portal .login-btn {
+                margin: 0 auto;
+                display: inline-block;
+            }
         }
         /* header styling ends */
     </style>
@@ -143,12 +172,12 @@
     <div class="container container-padding" id="main-container">
         <nav class="navbar navbar-expand-lg navbar-dark">
             <!-- Logo -->
-            <a class="navbar-brand d-flex align-items-center" href="index.php">
+            <a class="navbar-brand d-flex align-items-center" href="../index.php">
                 <img src="../assets/images/logo.png" alt="Nebatech Logo" style="height: 50px;">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
@@ -156,25 +185,28 @@
                         <a class="nav-link" href="../index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../programmes.php">Programmes</a>
+                        <a class="nav-link" href="../admission/programmes.php">Programmes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../services.php">Services</a>
+                        <a class="nav-link" href="../admission/services.php">Services</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../projects.php">Projects</a>
+                        <a class="nav-link" href="../admission/projects.php">Projects</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../blog.php">Events</a>
+                        <a class="nav-link" href="../admission/blog.php">Events</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../faq.php">FAQ</a>
+                        <a class="nav-link" href="../admission/about_us.php">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../contact.php">Contact</a>
+                        <a class="nav-link" href="../admission/contact.php">Contact</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn login-btn btn-sm ms-3" href="../admission/login.php">Login</a>
+                        <a class="nav-link" href="../admission/faq.php">FAQs</a>
+                    </li>
+                    <li class="nav-item admission-portal">
+                        <a class="btn login-btn btn-sm ms-3" href="login.php">Login</a>
                     </li>
                 </ul>
             </div>
@@ -182,6 +214,8 @@
     </div>
 </header>
 
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 <script>
     // Hide topbar on scroll
     let lastScrollTop = 0;

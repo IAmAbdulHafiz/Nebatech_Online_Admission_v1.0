@@ -172,7 +172,7 @@
     <div class="container container-padding" id="main-container">
         <nav class="navbar navbar-expand-lg navbar-dark">
             <!-- Logo -->
-            <a class="navbar-brand d-flex align-items-center" href="index.php">
+            <a class="navbar-brand d-flex align-items-center" href="../index.php">
                 <img src="../assets/images/logo.png" alt="Nebatech Logo" style="height: 50px;">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -206,7 +206,7 @@
                         <a class="nav-link" href="faq.php">FAQs</a>
                     </li>
                     <li class="nav-item admission-portal">
-                        <a class="btn login-btn btn-sm ms-3" href="admission/admission_portal.php">Admission Portal</a>
+                        <a class="btn login-btn btn-sm ms-3" href="../admission/admission_portal.php">Admission Portal</a>
                     </li>
                 </ul>
             </div>
