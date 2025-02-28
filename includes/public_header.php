@@ -120,6 +120,9 @@
                 justify-content: center;
                 width: 100%;
             }
+            .navbar-collapse {
+                background-color: rgba(0, 32, 96, 0.95); /* Dark blue background for mobile menu */
+            }
         }
         /* header styling ends */
     </style>
@@ -227,5 +230,15 @@
                 link.classList.add("active");
             }
         });
+    });
+
+    // Ensure navbar-toggler hides the menu when clicked again
+    document.querySelector('.navbar-toggler').addEventListener('click', function () {
+        const navbarCollapse = document.querySelector('#navbarNav');
+        if (navbarCollapse.classList.contains('show')) {
+            navbarCollapse.classList.remove('show');
+        } else {
+            navbarCollapse.classList.add('show');
+        }
     });
 </script>
