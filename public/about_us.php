@@ -6,7 +6,7 @@
   <meta name="description" content="Learn about Nebatech Software Solution Ltd, our mission, vision, core values, our CEO's message, and meet our dedicated team of experts.">
   <meta name="keywords" content="About Nebatech, Nebatech Software Solution, About Us, Mission, Vision, Core Values, CEO, Team">
   <meta name="author" content="Nebatech Software Solution Ltd">
-  <link rel="icon" href="assets/images/favicon.ico">
+  <link rel="icon" href="../assets/images/favicon.ico">
   <title>About Us - Nebatech Software Solution Ltd</title>
   
   <!-- External Stylesheets -->
@@ -162,6 +162,18 @@
       font-size: 1rem;
       margin-bottom: 0;
     }
+    .social-icons {
+      margin-top: 10px;
+    }
+    .social-icons a {
+      color: #002060;
+      margin: 0 10px;
+      font-size: 1.2rem;
+      transition: color 0.3s;
+    }
+    .social-icons a:hover {
+      color: orange;
+    }
     @media (max-width: 768px) {
       .hero, .about-section, .mission-vision-section, .core-values-section, .ceo-section, .team-section {
         padding: 50px 1rem;
@@ -295,6 +307,11 @@
               <h5>Abdul-Hafiz Yussif</h5>
               <p>Software Engineer</p>
               <p>Expert in Front-End & Back-End Development</p>
+              <div class="social-icons">
+                <a href="https://www.facebook.com/abdulhafiz" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.linkedin.com/in/abdulhafiz" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/abdulhafiz" target="_blank"><i class="fab fa-instagram"></i></a>
+              </div>
             </div>
           </div>
         </div>
@@ -306,6 +323,11 @@
               <h5>Elsie Kufui Funkor</h5>
               <p>Project Manager</p>
               <p>Expert in project management.</p>
+              <div class="social-icons">
+                <a href="https://www.facebook.com/elsie" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.linkedin.com/in/elsie" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/elsie" target="_blank"><i class="fab fa-instagram"></i></a>
+              </div>
             </div>
           </div>
         </div>
@@ -317,6 +339,11 @@
               <h5>Abass Nabila Alhassan</h5>
               <p>Computer Technician</p>
               <p>Expert in repairing laptops and desktop computers.</p>
+              <div class="social-icons">
+                <a href="https://www.facebook.com/abass" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.linkedin.com/in/abass" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/abass" target="_blank"><i class="fab fa-instagram"></i></a>
+              </div>
             </div>
           </div>
         </div>
@@ -328,6 +355,11 @@
               <h5>Asana Issahaku</h5>
               <p>UI/UX & Graphic Designer</p>
               <p>Passionate about crafting intuitive digital experiences.</p>
+              <div class="social-icons">
+                <a href="https://www.facebook.com/asana" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.linkedin.com/in/asana" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/asana" target="_blank"><i class="fab fa-instagram"></i></a>
+              </div>
             </div>
           </div>
         </div>
@@ -339,6 +371,11 @@
               <h5>Mohammed Awal Yussif</h5>
               <p>iPhone Technician</p>
               <p>Specializes in iPhone repairs</p>
+              <div class="social-icons">
+                <a href="https://www.facebook.com/awal" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.linkedin.com/in/awal" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/awal" target="_blank"><i class="fab fa-instagram"></i></a>
+              </div>
             </div>
           </div>
         </div>
@@ -350,6 +387,11 @@
               <h5>Suhunum Khadijah</h5>
               <p>Front Desk Officer</p>
               <p>Specializes in customer care and support.</p>
+              <div class="social-icons">
+                <a href="https://www.facebook.com/khadijah" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.linkedin.com/in/khadijah" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/khadijah" target="_blank"><i class="fab fa-instagram"></i></a>
+              </div>
             </div>
           </div>
         </div>
