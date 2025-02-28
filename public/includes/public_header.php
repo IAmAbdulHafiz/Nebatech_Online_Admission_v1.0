@@ -173,7 +173,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark">
             <!-- Logo -->
             <a class="navbar-brand d-flex align-items-center" href="index.php">
-                <img src="assets/images/logo.png" alt="Nebatech Logo" style="height: 50px;">
+                <img src="../assets/images/logo.png" alt="Nebatech Logo" style="height: 50px;">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
