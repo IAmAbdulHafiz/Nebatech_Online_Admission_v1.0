@@ -1,5 +1,4 @@
 <head>
-<link rel="stylesheet" href="../assets/css/style.css">
     <style>
         /*header styling*/
         .custom-header {
@@ -133,6 +132,12 @@
                 width: 100%;
                 text-align: center;
                 margin-top: 10px;
+            }
+            .list-item {
+                margin-bottom: 1rem;
+                display: flex;
+                align-items: start;
+                gap: 0.5rem;
             }
             .navbar-nav .admission-portal .login-btn {
                 margin: 0 auto;
