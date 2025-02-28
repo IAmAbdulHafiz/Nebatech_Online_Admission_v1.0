@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEBATECH - Online Admission</title>
+    <title>NEBATECH - Online Admission Form</title>
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
@@ -31,8 +31,8 @@
             border-radius: 0.5rem;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             margin-top: 10px;
-            padding-left: 4rem;
-            padding-right: 4rem;
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
         }
         .card-body { 
 
