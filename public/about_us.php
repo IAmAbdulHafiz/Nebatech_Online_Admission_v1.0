@@ -125,6 +125,42 @@
     </div>
   </section>
   
+  <!-- Mission Section -->
+  <section class="about-section">
+    <div class="container">
+      <h2 class="text-center section-title">Our Mission</h2>
+      <p class="text-center about-content">
+        Our mission is to harness the power of technology to transform lives and businesses. We aim to deliver exceptional solutions that not only meet but exceed our clients' expectations.
+      </p>
+    </div>
+  </section>
+
+  <!-- Vision Section -->
+  <section class="about-section">
+    <div class="container">
+      <h2 class="text-center section-title">Our Vision</h2>
+      <p class="text-center about-content">
+        Our vision is to be a global leader in technology solutions, driving innovation and excellence in every project we undertake.
+      </p>
+    </div>
+  </section>
+
+  <!-- Core Values Section -->
+  <section class="about-section">
+    <div class="container">
+      <h2 class="text-center section-title">Our Core Values</h2>
+      <p class="text-center about-content">
+        <ul>
+          <li>Innovation: We continuously seek new and better ways to serve our clients.</li>
+          <li>Excellence: We strive for the highest standards in everything we do.</li>
+          <li>Integrity: We conduct our business with honesty and transparency.</li>
+          <li>Customer Focus: We prioritize our clients' needs and work to exceed their expectations.</li>
+          <li>Teamwork: We believe in the power of collaboration and working together to achieve common goals.</li>
+        </ul>
+      </p>
+    </div>
+  </section>
+  
   <!-- CEO Message Section -->
   <section class="ceo-section">
     <div class="container">
