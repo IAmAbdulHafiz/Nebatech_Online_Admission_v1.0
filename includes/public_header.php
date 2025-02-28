@@ -122,6 +122,20 @@
             }
             .navbar-collapse {
                 background-color: rgba(0, 32, 96, 0.95); /* Dark blue background for mobile menu */
+                border-radius: 10px;
+                padding-bottom: 2rem;
+            }
+            .navbar-nav {
+                text-align: center;
+            }
+            .navbar-nav .admission-portal {
+                width: 100%;
+                text-align: center;
+                margin-top: 10px;
+            }
+            .navbar-nav .admission-portal .login-btn {
+                margin: 0 auto;
+                display: inline-block;
             }
         }
         /* header styling ends */
@@ -161,9 +175,9 @@
             <a class="navbar-brand d-flex align-items-center" href="index.php">
                 <img src="assets/images/logo.png" alt="Nebatech Logo" style="height: 50px;">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
@@ -189,9 +203,9 @@
                         <a class="nav-link" href="public/contact.php">Contact</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="public/faq.php">FAQ</a>
+                        <a class="nav-link" href="public/faq.php">FAQs</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item admission-portal">
                         <a class="btn login-btn btn-sm ms-3" href="admission/admission_portal.php">Admission Portal</a>
                     </li>
                 </ul>
@@ -230,15 +244,5 @@
                 link.classList.add("active");
             }
         });
-    });
-
-    // Ensure navbar-toggler hides the menu when clicked again
-    document.querySelector('.navbar-toggler').addEventListener('click', function () {
-        const navbarCollapse = document.querySelector('#navbarNav');
-        if (navbarCollapse.classList.contains('show')) {
-            navbarCollapse.classList.remove('show');
-        } else {
-            navbarCollapse.classList.add('show');
-        }
     });
 </script>
