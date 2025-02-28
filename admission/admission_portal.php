@@ -139,12 +139,16 @@
         /* Responsive Adjustments */
         @media (max-width: 768px) {
             .welcome-section {
-                height: 70vh;
+                height: 90vh;
                 padding-top: 100px;
             }
             
             .card {
                 margin-bottom: 2rem;
+            }
+            .welcome-text {
+                height: auto;
+                font-size: 3em;
             }
         }
     </style>
