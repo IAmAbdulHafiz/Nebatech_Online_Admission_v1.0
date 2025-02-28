@@ -1,4 +1,5 @@
 <head>
+<link rel="stylesheet" href="../assets/css/style.css">
     <style>
         /*header styling*/
         .custom-header {
