@@ -110,7 +110,7 @@
     .ceo-img {
       width: 100%;
       max-width: 300px;
-      border-radius: 50%;
+      border-radius: 1rem;
       border: 5px solid #002060;
     }
     .ceo-message {
@@ -267,7 +267,7 @@
       <h2 class="text-center section-title">CEO Message</h2>
       <div class="row align-items-center">
         <div class="col-md-4 text-center">
-          <img src="assets/images/ceo.jpg" alt="CEO Picture" class="ceo-img mb-3">
+          <img src="../assets/images/ceo.jpeg" alt="CEO Picture" class="ceo-img mb-3">
         </div>
         <div class="col-md-8">
           <p class="ceo-message">
@@ -290,11 +290,11 @@
         <!-- Team Member 1 -->
         <div class="col-md-4 mb-4">
           <div class="card team-card">
-            <img src="assets/images/team1.jpg" alt="Team Member 1" class="team-img card-img-top">
+            <img src="../assets/images/abdulhafiz.jpeg" alt="Team Member 1" class="team-img card-img-top">
             <div class="team-info">
-              <h5>John Doe</h5>
-              <p>Lead Developer</p>
-              <p>Expert in building scalable web solutions.</p>
+              <h5>Abdul-Hafiz Yussif</h5>
+              <p>Software Engineer</p>
+              <p>Expert in Front-End & Back-End Development</p>
             </div>
           </div>
         </div>
@@ -303,9 +303,9 @@
           <div class="card team-card">
             <img src="assets/images/team2.jpg" alt="Team Member 2" class="team-img card-img-top">
             <div class="team-info">
-              <h5>Jane Smith</h5>
-              <p>UI/UX Designer</p>
-              <p>Passionate about crafting intuitive digital experiences.</p>
+              <h5>Elsie Kufui Funkor</h5>
+              <p>Project Manager</p>
+              <p>Expert in project management.</p>
             </div>
           </div>
         </div>
@@ -314,9 +314,9 @@
           <div class="card team-card">
             <img src="assets/images/team3.jpg" alt="Team Member 3" class="team-img card-img-top">
             <div class="team-info">
-              <h5>Michael Brown</h5>
-              <p>Backend Engineer</p>
-              <p>Specializes in robust server-side development.</p>
+              <h5>Abass Nabila Alhassan</h5>
+              <p>Computer Technician</p>
+              <p>Expert in repairing laptops and desktop computers.</p>
             </div>
           </div>
         </div>
@@ -325,9 +325,9 @@
           <div class="card team-card">
             <img src="assets/images/team4.jpg" alt="Team Member 4" class="team-img card-img-top">
             <div class="team-info">
-              <h5>Emily White</h5>
-              <p>Project Manager</p>
-              <p>Keeps our projects on time and within budget.</p>
+              <h5>Asana Issahaku</h5>
+              <p>UI/UX & Graphic Designer</p>
+              <p>Passionate about crafting intuitive digital experiences.</p>
             </div>
           </div>
         </div>
@@ -336,9 +336,9 @@
           <div class="card team-card">
             <img src="assets/images/team5.jpg" alt="Team Member 5" class="team-img card-img-top">
             <div class="team-info">
-              <h5>Robert Lee</h5>
-              <p>Quality Assurance</p>
-              <p>Ensures every project meets the highest standards.</p>
+              <h5>Mohammed Awal Yussif</h5>
+              <p>iPhone Technician</p>
+              <p>Specializes in iPhone repairs</p>
             </div>
           </div>
         </div>
@@ -347,9 +347,9 @@
           <div class="card team-card">
             <img src="assets/images/team6.jpg" alt="Team Member 6" class="team-img card-img-top">
             <div class="team-info">
-              <h5>Sophia Green</h5>
-              <p>Digital Marketing</p>
-              <p>Leads our online presence and growth strategies.</p>
+              <h5>Suhunum Khadijah</h5>
+              <p>Front Desk Officer</p>
+              <p>Specializes in customer care and support.</p>
             </div>
           </div>
         </div>
