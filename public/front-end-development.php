@@ -1,129 +1,205 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Learn the essential skills to become a professional front-end developer. This course covers web development technologies like HTML, CSS, and JavaScript.">
-    <meta name="keywords" content="Front-End Development, Web Development, HTML, CSS, JavaScript, Responsive Design, Front-End Frameworks">
-    <meta name="author" content="Nebatech Software Solution Ltd">
-    <meta name="robots" content="index, follow">
-    <link rel="icon" href="assets/images/favicon.ico">
-    <title>Front-End Development - Nebatech Software Solution Ltd</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <style>
-        .course-section {
-            padding: 100px 0;
-        }
-        .course-header {
-            text-align: center;
-            color: #002060;
-        }
-        .course-content {
-            margin-top: 20px;
-            margin-left: 1rem;
-            margin-right: 1rem;
-        }
-        .course-content ul {
-            list-style-type: square;
-            margin-left: 20px;
-        }
-        .section-title {
-            color: orange;
-        }
-        .card{
-            margin-left: 1rem;
-            margin-right: 1rem;
-        }
-        .lead{
-            margin-left: 1rem;
-            margin-right: 1rem;
-        }
-        @media (max-width: 768px) {
-            .course-section {
-                padding: 100px 0;
-            }
-            .course-content {
-                margin-left: 0.5rem;
-                margin-right: 0.5rem;
-            }
-            .card {
-                margin-left: 0.5rem;
-                margin-right: 0.5rem;
-            }
-            .lead {
-                margin-left: 0.5rem;
-                margin-right: 0.5rem;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn the essential skills to become a professional front-end developer. This course covers web development technologies like HTML, CSS, and JavaScript.">
+  <meta name="keywords" content="Front-End Development, Web Development, HTML, CSS, JavaScript, Responsive Design, Front-End Frameworks">
+  <meta name="author" content="Nebatech Software Solution Ltd">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" href="../assets/images/favicon.ico">
+  <title>Front-End Development - Nebatech Software Solution Ltd</title>
+  
+  <!-- External Stylesheets -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  
+  <style>
+    /* Reset & Base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f4f6f9;
+      color: #333;
+      line-height: 1.6;
+    }
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(0, 32, 96, 0.9), rgba(0, 32, 96, 0.9)), url('../assets/images/hero_bg1.JPG');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 9rem 0;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      font-size: 1.3rem;
+      max-width: 800px;
+      margin: 0 auto;
+      opacity: 0.9;
+    }
+    /* Course Section */
+    .course-section {
+      padding: 20px 0;
+    }
+    .course-header {
+      text-align: center;
+      color: #002060;
+      margin-bottom: 40px;
+      font-weight: 600;
+    }
+    .course-content {
+      margin: 20px 1rem;
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #555;
+    }
+    .course-content ul {
+      list-style: disc inside;
+      margin: 1rem 0;
+    }
+    .section-title {
+      color: orange;
+      margin-top: 20px;
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+    /* Modern Card Style for Fee & Duration */
+    .quote-card {
+      border: none;
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      margin: 1rem;
+    }
+    .quote-card:hover {
+      transform: translateY(-5px);
+    }
+    .quote-card .card-header {
+      background: #002060;
+      color: white;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      font-size: 1.2rem;
+      text-align: center;
+      padding: 1rem;
+    }
+    .quote-card .card-body {
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .quote-card .card-body p {
+      margin: 0.5rem 0;
+      font-size: 1rem;
+    }
+    .quote-card .btn {
+      margin-top: 1rem;
+      font-size: 1rem;
+      border-radius: 5px;
+    }
+    /* Button Styling */
+    .btn-primary {
+      background-color: #002060;
+      border-color: #002060;
+      color: white;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+    .btn-primary:hover {
+      background-color: orange;
+      border-color: orange;
+      color: white;
+    }
+    /* Responsive Styling */
+    @media (max-width: 768px) {
+      .course-section {
+        padding: 50px 0;
+      }
+      .course-content {
+        margin: 10px 0.5rem;
+      }
+      .quote-card {
+        margin: 0.5rem;
+      }
+    }
+  </style>
 </head>
 <body>
-
-    <?php include("includes/public_header.php"); ?>
-
-    <!-- Course Section -->
-    <div class="container course-section mt-5">
-        <h2 class="course-header">Front-End Development</h2>
-        <p class="text-center lead">Learn the essential skills to become a professional front-end developer. This course covers web development technologies like HTML, CSS, and JavaScript.</p>
-
-        <div class="row">
-            <!-- Course Overview -->
-            <div class="col-md-8">
-                <div class="course-content">
-                    <h4 class="section-title">Course Overview</h4>
-                    <p>In this course, you will learn the foundational skills needed to create modern websites and web applications. You will become familiar with the core technologies used by web developers: **HTML**, **CSS**, and **JavaScript**.</p>
-
-                    <h5>Key Topics Covered:</h5>
-                    <ul>
-                        <li>Introduction to Web Development</li>
-                        <li>HTML: Building Web Pages Structure</li>
-                        <li>CSS: Styling Web Pages (Layouts, Colors, Fonts, etc.)</li>
-                        <li>JavaScript: Making Websites Interactive</li>
-                        <li>Responsive Design: Mobile-Friendly Websites</li>
-                        <li>Introduction to Front-End Frameworks (e.g., Bootstrap, React, Angular)</li>
-                    </ul>
-
-                    <h5>Learning Outcomes:</h5>
-                    <ul>
-                        <li>Understand the basics of HTML, CSS, and JavaScript</li>
-                        <li>Learn how to structure and style websites</li>
-                        <li>Gain hands-on experience with responsive design and mobile-first development</li>
-                        <li>Implement interactive elements using JavaScript</li>
-                        <li>Start building dynamic and professional web pages</li>
-                    </ul>
-
-                    <h5>Course Duration:</h5>
-                    <p>The course is divided into 4 weeks, with weekly modules focusing on different aspects of front-end development. Each week includes video tutorials, coding exercises, and quizzes to ensure you are grasping the concepts.</p>
-
-                    <h5>Prerequisites:</h5>
-                    <p>This course is designed for beginners. No prior coding experience is necessary, though a basic understanding of computers and internet navigation is helpful. By the end of the course, you will be able to build your own websites from scratch.</p>
-                </div>
-            </div>
-
-            <!-- Enroll Now Section -->
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-header text-center">
-                        <h5>Enroll Now</h5>
-                    </div>
-                    <div class="card-body text-center">
-                        <p>Ready to start your front-end development journey?</p>
-                        <!-- Link to Admission Portal -->
-                        <a href="admission/admission.php" class="btn btn-primary">Visit Our Admission Portal</a>
-                    </div>
-                </div>
-            </div>
+  <?php include("includes/public_header.php"); ?>
+  
+  <!-- Hero Section -->
+  <header class="hero">
+    <h1>Front-End Development</h1>
+    <p>Learn the essential skills to become a professional front-end developer. Master HTML, CSS, and JavaScript to create modern, responsive websites.</p>
+  </header>
+  
+  <!-- Course Section -->
+  <div class="container course-section mt-5">
+    <div class="row">
+      <!-- Course Overview -->
+      <div class="col-md-8">
+        <div class="course-content">
+          <h4 class="section-title">Course Overview</h4>
+          <p>In this course, you will learn the foundational skills needed to create modern websites and web applications. You will become familiar with core web technologies, including HTML, CSS, and JavaScript, and gain insights into responsive design techniques.</p>
+          
+          <h5>Key Topics Covered:</h5>
+          <ul>
+            <li>Introduction to Web Development</li>
+            <li>HTML: Building Web Page Structure</li>
+            <li>CSS: Styling Web Pages (Layouts, Colors, Fonts)</li>
+            <li>JavaScript: Making Websites Interactive</li>
+            <li>Responsive Design: Mobile-Friendly Websites</li>
+            <li>Introduction to Front-End Frameworks (e.g., Bootstrap, React)</li>
+          </ul>
+          
+          <h5>Learning Outcomes:</h5>
+          <ul>
+            <li>Understand the basics of HTML, CSS, and JavaScript</li>
+            <li>Learn how to structure and style websites effectively</li>
+            <li>Develop responsive, mobile-friendly web pages</li>
+            <li>Implement interactive elements using JavaScript</li>
+            <li>Begin building professional web applications</li>
+          </ul>
+          
+          <h5>Course Duration:</h5>
+          <p>This course is structured over 16 weeks with dedicated modules for each core technology, supplemented by hands-on projects and assessments.</p>
+          
+          <h5>Prerequisites:</h5>
+          <p>This course is designed for beginners. No prior coding experience is required; a basic familiarity with computers and internet navigation is sufficient.</p>
         </div>
+      </div>
+      
+      <!-- Program Fee & Duration Card -->
+      <div class="col-md-4">
+        <div class="card quote-card">
+          <div class="card-header">
+            Program Details
+          </div>
+          <div class="card-body">
+            <p><strong>Fee:</strong> GHS 3500.00</p>
+            <p><strong>Duration:</strong> 16 Weeks</p>
+            <a href="../admission/admission_portal.php" class="btn btn-primary btn-block">Enroll Now</a>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <?php include("includes/footer.php"); ?>
-
-    <!-- Optional JavaScript -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+  </div>
+  
+  <?php include("includes/footer.php"); ?>
+  
+  <!-- Optional JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
