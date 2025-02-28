@@ -109,6 +109,18 @@
             color: #002060; /* Dark blue text */
             text-decoration: none;
         }
+
+        /* Hide contact-info and working-hours in mobile view */
+        @media (max-width: 768px) {
+            .contact-info,
+            .working-hours {
+                display: none;
+            }
+            .social-media {
+                justify-content: center;
+                width: 100%;
+            }
+        }
         /* header styling ends */
     </style>
 </head>
@@ -168,10 +180,13 @@
                         <a class="nav-link" href="public/blog.php">Events</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="public/faq.php">FAQ</a>
+                        <a class="nav-link" href="public/about_us.php">About Us</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="public/contact.php">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="public/faq.php">FAQ</a>
                     </li>
                     <li class="nav-item">
                         <a class="btn login-btn btn-sm ms-3" href="admission/admission_portal.php">Admission Portal</a>
@@ -182,6 +197,8 @@
     </div>
 </header>
 
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 <script>
     // Hide topbar on scroll
     let lastScrollTop = 0;
