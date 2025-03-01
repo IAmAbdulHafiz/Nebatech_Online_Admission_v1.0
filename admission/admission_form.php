@@ -20,9 +20,9 @@
 
     /* This container will fill the remaining space between header and footer */
     .split-screen-container {
-      /* If you want it to fill the viewport minus header & footer:
-         min-height: calc(100vh - 120px);
-         (Adjust 120px to match your header/footer total height) */
+      /* If you want it to fill the viewport minus header & footer:*/
+      min-height: calc(100vh - 100px);
+         /*(Adjust 120px to match your header/footer total height) */
       background: #fff;
     }
 
