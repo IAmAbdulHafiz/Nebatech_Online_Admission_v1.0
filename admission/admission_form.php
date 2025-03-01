@@ -95,6 +95,7 @@
       }
       .right-column {
         padding: 1rem;
+        height: auto;
       }
     }
   </style>
