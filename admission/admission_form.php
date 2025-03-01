@@ -23,7 +23,7 @@
     .split-screen-container {
       background: #fff;
       padding-bottom: 2rem;
-      padding-top: 6rem;
+      padding-top: 5.9rem;
     }
     /* Left Column: Carousel with dark overlay */
     .left-column {
@@ -43,14 +43,14 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 0rem;
+      padding-top: 2rem;
     }
     .form-container {
       background: #fff;
       max-width: 600px;
       width: 100%;
       height: 100vh;
-      padding: 2rem 2rem;
+      padding: 1rem 2rem;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       border-radius: 10px;
       padding-bottom: 1rem;
