@@ -22,6 +22,7 @@
     /* Split-screen container: fill viewport minus header/footer */
     .split-screen-container {
       min-height: calc(100vh - 100px); /* Adjust as needed */
+      padding-top: 10rem;
       background: #fff;
     }
     /* Left Column: Carousel with dark overlay */
@@ -123,8 +124,8 @@
         <div class="form-container">
           <h2>NTSS Admission Form</h2>
           <div class="alert alert-info">
-            The fee for the form is <strong>GH₵100</strong> <br>Fill the form below to make peyment of form.
-            <br><strong>Note:</strong> After payment, you will receive your Serial Number and PIN via SMS and Email.
+            The fee for the form is <strong>GH₵100</strong> <br>Fill the form below to make peyment of the form.
+            <br><strong>Note:</strong> After payment, you will receive your Serial Number and PIN via SMS and Email to proceed with registration.
           </div>
           <!-- Success/Error Messages -->
           <?php if (!empty($_SESSION['success_message'])) : ?>
