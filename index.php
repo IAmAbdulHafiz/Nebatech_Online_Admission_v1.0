@@ -1031,7 +1031,8 @@
     })();
   </script>
   <!--End of Tawk.to Script-->
+  
   <!-- Footer will be included here -->
-  <?php include 'includes/footer.php'; ?>
+  <?php include 'includes/footer_public.php'; ?>
 </body>
 </html>
