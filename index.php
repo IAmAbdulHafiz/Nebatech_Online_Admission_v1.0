@@ -136,11 +136,11 @@
       </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials-section py-5 bg-light" data-aos="fade-up">
+    <!-- Desktop Testimonials Carousel (3 per slide) -->
+    <section class="testimonials-section py-5 bg-light d-none d-md-block" data-aos="fade-up">
         <div class="container">
             <h2 class="text-center mb-5" style="color: var(--primary-color);">Testimonials</h2>
-            <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div id="testimonialCarouselDesktop" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <!-- Slide 1 -->
                 <div class="carousel-item active">
@@ -279,18 +279,165 @@
                 </div>
                 </div>
             </div>
-            <!-- Carousel Controls -->
-            <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+            <!-- Desktop Carousel Controls -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarouselDesktop" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon"></span>
                 <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+            <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarouselDesktop" data-bs-slide="next">
                 <span class="carousel-control-next-icon"></span>
                 <span class="visually-hidden">Next</span>
             </button>
             </div>
         </div>
     </section>
+
+    <!-- Mobile Testimonials Carousel (1 per slide) -->
+    <section class="testimonials-section py-5 bg-light d-block d-md-none" data-aos="fade-up">
+        <div class="container">
+            <h2 class="text-center mb-5" style="color: var(--primary-color);">Testimonials</h2>
+            <div id="testimonialCarouselMobile" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <!-- Testimonial 1 -->
+                <div class="carousel-item active">
+                <div class="card h-100 shadow-sm mx-auto" style="max-width: 500px;">
+                    <div class="card-body">
+                    <!-- Star Rating -->
+                    <div class="mb-3">
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                    </div>
+                    <p class="card-text fst-italic">"Nebatech transformed our digital strategy and improved our online presence immensely."</p>
+                    </div>
+                    <div class="card-footer bg-white">
+                    <h6 class="mb-0" style="color: #002060;">John Doe</h6>
+                    <small class="text-muted d-block">CEO, TechCorp</small>
+                    <small class="text-muted">August 15, 2023</small>
+                    </div>
+                </div>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="carousel-item">
+                <div class="card h-100 shadow-sm mx-auto" style="max-width: 500px;">
+                    <div class="card-body">
+                    <!-- Star Rating -->
+                    <div class="mb-3">
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                    </div>
+                    <p class="card-text fst-italic">"Their innovative solutions boosted our business growth and efficiency."</p>
+                    </div>
+                    <div class="card-footer bg-white">
+                    <h6 class="mb-0" style="color: #002060;">Jane Smith</h6>
+                    <small class="text-muted d-block">Marketing Director, Creative Co.</small>
+                    <small class="text-muted">July 10, 2023</small>
+                    </div>
+                </div>
+                </div>
+                <!-- Testimonial 3 -->
+                <div class="carousel-item">
+                <div class="card h-100 shadow-sm mx-auto" style="max-width: 500px;">
+                    <div class="card-body">
+                    <!-- Star Rating -->
+                    <div class="mb-3">
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                    </div>
+                    <p class="card-text fst-italic">"Excellent service and reliable support throughout our project."</p>
+                    </div>
+                    <div class="card-footer bg-white">
+                    <h6 class="mb-0" style="color: #002060;">Michael Brown</h6>
+                    <small class="text-muted d-block">Project Manager, Solutions Inc.</small>
+                    <small class="text-muted">June 05, 2023</small>
+                    </div>
+                </div>
+                </div>
+                <!-- Testimonial 4 -->
+                <div class="carousel-item">
+                <div class="card h-100 shadow-sm mx-auto" style="max-width: 500px;">
+                    <div class="card-body">
+                    <!-- Star Rating -->
+                    <div class="mb-3">
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                    </div>
+                    <p class="card-text fst-italic">"A game-changer in software development and IT consultancy."</p>
+                    </div>
+                    <div class="card-footer bg-white">
+                    <h6 class="mb-0" style="color: #002060;">Sarah Johnson</h6>
+                    <small class="text-muted d-block">Founder, Startup Hub</small>
+                    <small class="text-muted">May 20, 2023</small>
+                    </div>
+                </div>
+                </div>
+                <!-- Testimonial 5 -->
+                <div class="carousel-item">
+                <div class="card h-100 shadow-sm mx-auto" style="max-width: 500px;">
+                    <div class="card-body">
+                    <!-- Star Rating -->
+                    <div class="mb-3">
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                    </div>
+                    <p class="card-text fst-italic">"Their team is professional and always delivers on time."</p>
+                    </div>
+                    <div class="card-footer bg-white">
+                    <h6 class="mb-0" style="color: #002060;">David Lee</h6>
+                    <small class="text-muted d-block">Operations Manager, Enterprise Global</small>
+                    <small class="text-muted">April 12, 2023</small>
+                    </div>
+                </div>
+                </div>
+                <!-- Testimonial 6 -->
+                <div class="carousel-item">
+                <div class="card h-100 shadow-sm mx-auto" style="max-width: 500px;">
+                    <div class="card-body">
+                    <!-- Star Rating -->
+                    <div class="mb-3">
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                    </div>
+                    <p class="card-text fst-italic">"Impressive expertise and a customer-centric approach. Highly recommended!"</p>
+                    </div>
+                    <div class="card-footer bg-white">
+                    <h6 class="mb-0" style="color: #002060;">Emily Davis</h6>
+                    <small class="text-muted d-block">CIO, NextGen Systems</small>
+                    <small class="text-muted">March 08, 2023</small>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <!-- Mobile Carousel Controls -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarouselMobile" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarouselMobile" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+            </div>
+        </div>
+    </section>
+
   </main>
 
   <!-- Scripts -->
