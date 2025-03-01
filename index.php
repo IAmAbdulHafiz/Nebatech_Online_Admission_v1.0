@@ -956,7 +956,7 @@
                     "Their visionary approach has truly propelled our business forward, inspiring us to achieve new heights."
                     </p>
                 </div>
-                <div class="card-footer bg-white text-center">
+                <div class="card-footer bg-white">
                     <h6 class="mb-0" style="color: #002060;">Waltrude Kurugu</h6>
                     <small class="text-muted d-block">
                     Founder & CEO - Truandrew Natural Market
