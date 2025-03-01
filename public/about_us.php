@@ -145,8 +145,10 @@
     }
     .team-img {
       width: 100%;
-      height: 300px;
+      height: 600px;
       object-fit: cover;
+      padding-top: 0px;
+      
     }
     .team-info {
       padding: 20px;
@@ -288,6 +290,7 @@
           <div class="ceo-details">
             <h4>Abdul-Hafiz Yussif</h4>
             <p>Founder & CEO</p>
+            <p>Software Engineer</p>
           </div>
         </div>
       </div>
@@ -318,7 +321,7 @@
         <!-- Team Member 2 -->
         <div class="col-md-4 mb-4">
           <div class="card team-card">
-            <img src="assets/images/team2.jpg" alt="Team Member 2" class="team-img card-img-top">
+            <img src="assets/images/team2.jpg" alt="Elsie Kufui Funkor" class="team-img card-img-top">
             <div class="team-info">
               <h5>Elsie Kufui Funkor</h5>
               <p>Project Manager</p>
@@ -334,7 +337,7 @@
         <!-- Team Member 3 -->
         <div class="col-md-4 mb-4">
           <div class="card team-card">
-            <img src="assets/images/team3.jpg" alt="Team Member 3" class="team-img card-img-top">
+            <img src="../assets/images/abass.jpeg" alt="Abass Nabila Alhassan" class="team-img card-img-top">
             <div class="team-info">
               <h5>Abass Nabila Alhassan</h5>
               <p>Computer Technician</p>
@@ -350,7 +353,7 @@
         <!-- Team Member 4 -->
         <div class="col-md-4 mb-4">
           <div class="card team-card">
-            <img src="assets/images/team4.jpg" alt="Team Member 4" class="team-img card-img-top">
+            <img src="../assets/images/asana.jpeg" alt="Asana Issahaku" class="team-img card-img-top">
             <div class="team-info">
               <h5>Asana Issahaku</h5>
               <p>UI/UX & Graphic Designer</p>
@@ -366,7 +369,7 @@
         <!-- Team Member 5 -->
         <div class="col-md-4 mb-4">
           <div class="card team-card">
-            <img src="assets/images/team5.jpg" alt="Team Member 5" class="team-img card-img-top">
+            <img src="../assets/images/awal.jpeg" alt="Mohammed Awal Yussif" class="team-img card-img-top">
             <div class="team-info">
               <h5>Mohammed Awal Yussif</h5>
               <p>iPhone Technician</p>
@@ -382,7 +385,7 @@
         <!-- Team Member 6 -->
         <div class="col-md-4 mb-4">
           <div class="card team-card">
-            <img src="assets/images/team6.jpg" alt="Team Member 6" class="team-img card-img-top">
+            <img src="../assets/images/khadijah.jpeg" alt="khadijah" class="team-img card-img-top">
             <div class="team-info">
               <h5>Suhunum Khadijah</h5>
               <p>Front Desk Officer</p>

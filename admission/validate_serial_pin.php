@@ -5,13 +5,13 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $serial = trim($_POST['serial']);
-    $pin = trim($_POST['pin']);
-    $email = trim($_POST['email']);
-    $password = $_POST['password'];
+    $serial = htmlspecialchars($_POST['serial']);
+    $pin = htmlspecialchars($_POST['pin']);
+    $email = htmlspecialchars($_POST['email']);
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $confirmPassword = $_POST['confirm-password'];
-    $firstName = trim($_POST['firstName']);
-    $surname = trim($_POST['surname']);
+    $firstName = htmlspecialchars($_POST['firstName']);
+    $surname = htmlspecialchars($_POST['surname']);
 
     // Validate serial number and PIN using the transactions table,
     // ensuring the transaction is completed and unused.
@@ -50,16 +50,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit();
     }
 
-    // Hash the password
-    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
     // Insert user details into the applicants table,
     // including first name and surname, and marking the serial as used.
     $insertQuery = "INSERT INTO applicants (email, password, serial_number, pin, first_name, surname, is_used) 
                     VALUES (:email, :password, :serial, :pin, :first_name, :surname, 1)";
     $insertStmt = $conn->prepare($insertQuery);
     $insertStmt->bindParam(':email', $email);
-    $insertStmt->bindParam(':password', $hashedPassword);
+    $insertStmt->bindParam(':password', $password);
     $insertStmt->bindParam(':serial', $serial);
     $insertStmt->bindParam(':pin', $pin);
     $insertStmt->bindParam(':first_name', $firstName);
@@ -76,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $updateStmt->execute();
 
     // Redirect to login after successful registration
-    header("Location: login.php?msg=Registration+successful");
+    header("Location: signup.php?msg=Account+created+successfully!");
     exit();
 }
 ?>
