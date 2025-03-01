@@ -32,7 +32,6 @@
         .card{
             border-radius: 0.5rem;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-top: 10px;
             padding-left: 0.5rem;
             padding-right: 0.5rem;
         }
@@ -73,7 +72,7 @@
             padding-bottom: 50px; 
         }
         .accommodation-notice { 
-            font-size: 14px;
+            font-size: 16px;
             padding-top: 7rem; 
             padding-bottom: 1rem; 
         }
