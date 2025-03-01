@@ -23,6 +23,7 @@
     .split-screen-container {
       background: #fff;
       padding-bottom: 3rem;
+      padding-top: 3rem;
     }
     /* Left Column: Carousel with dark overlay */
     .left-column {
