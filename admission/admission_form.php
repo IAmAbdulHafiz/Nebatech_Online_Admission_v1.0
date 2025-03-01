@@ -122,16 +122,6 @@
       <!-- Right Side: Form -->
       <div class="col-md-6 right-column">
         <div class="form-container">
-          <!-- Accommodation Notice -->
-          <div class="alert alert-info">
-            <strong>Important Notice:</strong> Nebatech is solely a training hub and does not provide accommodation or boarding facilities for learners coming from far away. Please make your own lodging arrangements.
-          </div>
-          
-          <h2>NTSS Admission Form</h2>
-          <p>Application Fee: <b>GH₵100</b></p>
-          <p>Fill the form below to purchase the application form online</p>
-          <p><b>Note:</b> After payment, you will receive your Serial Number and PIN via SMS and Email.</p>
-          
           <!-- Success/Error Messages -->
           <?php if (!empty($_SESSION['success_message'])) : ?>
             <div class="alert alert-success">
