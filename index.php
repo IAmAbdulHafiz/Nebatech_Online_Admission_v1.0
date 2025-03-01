@@ -58,10 +58,12 @@
       display: block !important;
     }
     .carousel-control-prev{
-        left: -5;
+        left: -5px;
+        font-size: 1rem
     }
     .carousel-control-next{
-        right: -5;
+        right: -5px;
+        font-size: 1rem
     }
   }
 </style>
