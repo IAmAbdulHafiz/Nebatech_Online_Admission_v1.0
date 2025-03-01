@@ -57,7 +57,12 @@
     .d-block.d-md-none {
       display: block !important;
     }
-    
+    .carousel-control-prev{
+        left: -5;
+    }
+    .carousel-control-next{
+        right: -5;
+    }
   }
 </style>
 
