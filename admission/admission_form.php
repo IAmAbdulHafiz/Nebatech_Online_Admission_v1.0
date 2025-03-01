@@ -26,14 +26,14 @@
     }
     /* Left Column: Carousel with dark overlay */
     .left-column {
-        background: #fff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+      background-color: #002060;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .left-column .carousel-item img {
       width: 100%;
-      height: 100%;
+      height: 100vh;
       object-fit: cover;
       filter: brightness(85%);
     }
@@ -46,7 +46,9 @@
     }
     .form-container {
       background: #fff;
+      max-width: 600px;
       width: 100%;
+      height: 100vh;
       padding: 2rem;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       border-radius: 10px;
