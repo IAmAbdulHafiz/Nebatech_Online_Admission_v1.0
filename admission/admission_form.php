@@ -49,7 +49,7 @@
       max-width: 600px;
       width: 100%;
       height: 100vh;
-      padding: 3rem 2rem;
+      padding: 6rem 2rem;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       border-radius: 10px;
     }
@@ -150,7 +150,6 @@
               <input type="email" name="customer_email" class="form-control" placeholder="Enter email" required>
             </div>
             <div class="mb-3">
-              <label><i class="fas fa-phone"></i> Phone Number (For Serial & PIN):</label>
               <input type="text" name="customer_phone" class="form-control" placeholder="Phone number to receive Serial & PIN)" required>
             </div>
             <div class="mb-3">
