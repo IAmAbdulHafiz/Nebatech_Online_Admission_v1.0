@@ -44,6 +44,7 @@
       align-items: center;
       justify-content: center;
       padding: 2rem;
+      width: 100%;
     }
     .form-container {
       background: #fff;
@@ -124,7 +125,7 @@
         <div class="form-container">
           <h2>NTSS Admission Form</h2>
           <div class="alert alert-info">
-            The fee for the form is <strong>GH₵100</strong> Fill the form below to purchase the application form online
+            The fee for the form is <strong>GH₵100</strong> <br>Fill the form below to make peyment of form.
             <br><strong>Note:</strong> After payment, you will receive your Serial Number and PIN via SMS and Email.
           </div>
           <!-- Success/Error Messages -->
