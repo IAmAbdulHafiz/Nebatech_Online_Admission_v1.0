@@ -54,7 +54,6 @@
       border-radius: 10px;
       padding-bottom: 1rem;
     }
-
     .form-container h2 {
       color: #002060;
       margin-bottom: 1rem;
@@ -64,9 +63,12 @@
       font-size: 0.95rem;
       text-align: center;
     }
-    .form-control {
-      border-radius: 8px;
+    /* Adjust Bootstrap floating labels if needed */
+    .form-floating > .form-control,
+    .form-floating > label {
+      height: 3.5rem;
       padding: 1rem;
+      border-radius: 8px;
     }
     .btn-primary { 
       background: #002060; 
@@ -126,7 +128,8 @@
         <div class="form-container">
           <h2>NTSS Admission Form</h2>
           <div class="alert alert-info">
-            The fee for the form is <strong>GH₵100</strong> <br>Fill the form below to make peyment of the form.
+            The fee for the form is <strong>GH₵100</strong> <br>
+            Fill the form below to make payment of the form.
             <br><strong>Note:</strong> After payment, you will receive your Serial Number and PIN via SMS and Email to proceed with registration.
           </div>
           <!-- Success/Error Messages -->
@@ -144,17 +147,23 @@
           
           <!-- Form -->
           <form method="POST" action="api/hubtel_payment.php">
-            <div class="mb-3">
-              <input type="text" name="customer_name" class="form-control" placeholder="Enter full name" required>
+            <div class="form-floating mb-3">
+              <input type="text" name="customer_name" class="form-control" id="customer_name" placeholder="Full Name" required>
+              <label for="customer_name">Full Name</label>
             </div>
-            <div class="mb-3">
-              <input type="email" name="customer_email" class="form-control" placeholder="Enter email" required>
+            
+            <div class="form-floating mb-3">
+              <input type="email" name="customer_email" class="form-control" id="customer_email" placeholder="Email" required>
+              <label for="customer_email">Email</label>
             </div>
-            <div class="mb-3">
-              <input type="text" name="customer_phone" class="form-control" placeholder="Phone number to receive Serial & PIN)" required>
+            
+            <div class="form-floating mb-3">
+              <input type="text" name="customer_phone" class="form-control" id="customer_phone" placeholder="Phone Number" required>
+              <label for="customer_phone">Phone Number (For Serial & PIN)</label>
             </div>
-            <div class="mb-3">
-              <button type="submit" class="btn btn-primary w-100">
+            
+            <div class="mb-3 text-center">
+              <button type="submit" class="btn btn-primary d-block mx-auto">
                 <i class="fas fa-money-check-alt"></i> Pay with Hubtel
               </button>
             </div>
