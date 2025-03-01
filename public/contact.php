@@ -123,9 +123,8 @@
                 <i class="fas fa-phone-alt fa-2x me-3" style="color: #002060;"></i>
                 <div>
                   <h5>Phone Numbers</h5>
-                  <p><a href="tel:0247636080">024 763 6080</a></p>
-                  <p><a href="tel:0206789600">020 678 9600</a></p>
-                  <p><a href="tel:0249241156">024 924 1156</a></p>
+                  <p><a href="tel:0247636080" style="text-decoration: none; color: #002060; margin-right: 5px;">024 763 6080</a>
+                     <a href="tel:0206789600" style="text-decoration: none; color: #002060;">/ 020 678 9600</a>
                 </div>
               </div>
             </div>
@@ -134,7 +133,7 @@
                 <i class="fas fa-envelope fa-2x me-3" style="color: #002060;"></i>
                 <div>
                   <h5>Email</h5>
-                  <p><a href="mailto:info@nebatech.com">info@nebatech.com</a></p>
+                  <p><a href="mailto:info@nebatech.com" style="text-decoration: none; color: #002060;">info@nebatech.com</a></p>
                 </div>
               </div>
             </div>
@@ -143,15 +142,15 @@
                 <i class="fas fa-map-marker-alt fa-2x me-3" style="color: #002060;"></i>
                 <div>
                   <h5>Location</h5>
-                  <p>Choggu Yapalsi, Tamale,<br>Northern Ghana</p>
+                  <p style="text-decoration: none; color: #002060;">Choggu Yapalsi, Tamale, Northern Ghana</p>
                 </div>
               </div>
             </div>
             <div class="social-links">
-              <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-              <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-              <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-              <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+              <a href="https://web.facebook.com/nebatechsoftware" target="_blank" class="social-link"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://twitter.com/nebatechSS" target="_blank" class="social-link"><i class="fab fa-twitter"></i></a>
+              <a href="https://www.linkedin.com/company/nebatech/" target="_blank" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+              <a href="https://www.instagram.com/nebatechsoftwaresolution/" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
             </div>
           </div>
         </div>
