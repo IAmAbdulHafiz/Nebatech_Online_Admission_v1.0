@@ -97,6 +97,8 @@
         padding: 1rem;
         height: auto;
       }
+        .form-container {
+            height: auto;
     }
   </style>
 </head>
