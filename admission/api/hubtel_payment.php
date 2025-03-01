@@ -8,6 +8,13 @@ $apiUsername = getenv('HUBTEL_API_USERNAME');
 $apiPassword = getenv('HUBTEL_API_PASSWORD');
 $merchantAccountNumber = getenv('HUBTEL_MERCHANT_ACCOUNT_NUMBER');
 
+// Validate environment variables
+if (!$apiUsername || !$apiPassword || !$merchantAccountNumber) {
+    $_SESSION['error_message'] = "Missing environment variables.";
+    header("Location: ../admission_form.php");
+    exit();
+}
+
 // Define URLs – note: the return URL is set to this file for processing confirmation
 $callbackUrl = "https://admissions.nebatech.com/admission/api/hubtel_callback.php";
 $returnUrl = "https://admissions.nebatech.com/admission/api/hubtel_payment.php";
@@ -15,11 +22,17 @@ $cancellationUrl = "https://admissions.nebatech.com/admission/admission_form.php
 
 // --- Payment Initiation ---
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $customerName  = trim($_POST['customer_name']);
-    $customerEmail = trim($_POST['customer_email']);
-    $customerPhone = trim($_POST['customer_phone']);
+    $customerName  = htmlspecialchars(trim($_POST['customer_name']), ENT_QUOTES, 'UTF-8');
+    $customerEmail = filter_var(trim($_POST['customer_email']), FILTER_VALIDATE_EMAIL);
+    $customerPhone = htmlspecialchars(trim($_POST['customer_phone']), ENT_QUOTES, 'UTF-8');
     $amount = 0.30; // GH₵100.00
     $clientReference = uniqid('NTSS_');
+
+    if (!$customerEmail) {
+        $_SESSION['error_message'] = "Invalid email address.";
+        header("Location: ../admission_form.php");
+        exit();
+    }
 
     // Insert a pending transaction record
     try {

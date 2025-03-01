@@ -10,12 +10,17 @@ $timestamp = date('Y-m-d H:i:s');
 file_put_contents($logFile, "[$timestamp] Received data: " . print_r($data, true) . "\n", FILE_APPEND);
 
 if ($data && isset($data['ResponseCode']) && isset($data['Data']['ClientReference'])) {
-    $responseCode = $data['ResponseCode'];
-    $status = isset($data['Status']) ? $data['Status'] : 'Unknown';
-    $clientReference = $data['Data']['ClientReference'];
-    $amount = $data['Data']['Amount'];
-    $customerPhoneNumber = $data['Data']['CustomerPhoneNumber'];
+    $responseCode = htmlspecialchars($data['ResponseCode'], ENT_QUOTES, 'UTF-8');
+    $status = isset($data['Status']) ? htmlspecialchars($data['Status'], ENT_QUOTES, 'UTF-8') : 'Unknown';
+    $clientReference = htmlspecialchars($data['Data']['ClientReference'], ENT_QUOTES, 'UTF-8');
+    $amount = filter_var($data['Data']['Amount'], FILTER_VALIDATE_FLOAT);
+    $customerPhoneNumber = htmlspecialchars($data['Data']['CustomerPhoneNumber'], ENT_QUOTES, 'UTF-8');
     $paymentDetails = isset($data['Data']['PaymentDetails']) ? $data['Data']['PaymentDetails'] : [];
+
+    if ($amount === false) {
+        file_put_contents($logFile, "[$timestamp] Invalid amount for reference $clientReference\n", FILE_APPEND);
+        exit();
+    }
 
     $finalStatus = ($status === "Success") ? "Completed" : (($status === "Cancelled") ? "Cancelled" : "Pending");
 

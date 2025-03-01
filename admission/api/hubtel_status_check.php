@@ -9,6 +9,12 @@ $posSalesId = getenv('HUBTEL_MERCHANT_ACCOUNT_NUMBER');
 $logFile = 'status_check_log.txt';
 $timestamp = date('Y-m-d H:i:s');
 
+// Validate environment variables
+if (!$apiUsername || !$apiPassword || !$posSalesId) {
+    file_put_contents($logFile, "[$timestamp] Missing environment variables\n", FILE_APPEND);
+    exit();
+}
+
 // Fetch transactions with status 'Pending'
 $query = "SELECT reference FROM transactions WHERE status = 'Pending'";
 $stmt = $conn->prepare($query);
@@ -16,7 +22,7 @@ $stmt->execute();
 $pendingPayments = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 foreach ($pendingPayments as $payment) {
-    $clientReference = $payment['reference'];
+    $clientReference = htmlspecialchars($payment['reference'], ENT_QUOTES, 'UTF-8');
     $apiUrl = "https://api-txnstatus.hubtel.com/transactions/$posSalesId/status?clientReference=$clientReference";
 
     $ch = curl_init($apiUrl);
