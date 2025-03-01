@@ -49,7 +49,7 @@
       max-width: 600px;
       width: 100%;
       height: 100vh;
-      padding: 2rem;
+      padding: 3rem 2rem;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       border-radius: 10px;
     }
@@ -144,16 +144,14 @@
           <!-- Form -->
           <form method="POST" action="api/hubtel_payment.php">
             <div class="mb-3">
-              <label><i class="fas fa-user"></i> Full Name:</label>
               <input type="text" name="customer_name" class="form-control" placeholder="Enter full name" required>
             </div>
             <div class="mb-3">
-              <label><i class="fas fa-envelope"></i> Email:</label>
               <input type="email" name="customer_email" class="form-control" placeholder="Enter email" required>
             </div>
             <div class="mb-3">
               <label><i class="fas fa-phone"></i> Phone Number (For Serial & PIN):</label>
-              <input type="text" name="customer_phone" class="form-control" placeholder="Enter phone number" required>
+              <input type="text" name="customer_phone" class="form-control" placeholder="Phone number to receive Serial & PIN)" required>
             </div>
             <div class="mb-3">
               <button type="submit" class="btn btn-primary w-100">
