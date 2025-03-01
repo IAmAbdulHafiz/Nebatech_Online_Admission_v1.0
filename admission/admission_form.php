@@ -99,19 +99,20 @@
 
     <!-- Main Content -->
     <div class="container admission_form mt-4">
-        <div class="row align-items-center">
+        <!-- Use no-gutters to remove the space between columns -->
+        <div class="row no-gutters align-items-center">
             <!-- Left Side: Fading Slideshow -->
-            <div class="col-md-6 mb-3 py-4">
+            <div class="col-md-6">
                 <div id="welcomeCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="../assets/images/welcome1.JPG" alt="Welcome to NTSS" class="d-block w-20">
+                            <img src="../assets/images/welcome1.JPG" alt="Welcome to NTSS" class="d-block w-100">
                         </div>
                         <div class="carousel-item">
-                            <img src="../assets/images/welcome2.JPG" alt="Learning Environment" class="d-block w-20">
+                            <img src="../assets/images/welcome2.JPG" alt="Learning Environment" class="d-block w-100">
                         </div>
                         <div class="carousel-item">
-                            <img src="../assets/images/welcome3.JPG" alt="Our Community" class="d-block w-20">
+                            <img src="../assets/images/welcome3.JPG" alt="Our Community" class="d-block w-100">
                         </div>
                     </div>
                 </div>
