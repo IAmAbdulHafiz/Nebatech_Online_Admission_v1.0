@@ -117,7 +117,7 @@
                         <p class="text-center">Application Fee: <b>GH₵100</b></p>
                         <p class="text-center">Fill the form below to purchase the application form online</p>
                         <p class="text-center"><b>Note:</b> After payment, you will receive your Serial Number and PIN via SMS and Email.</p>
-                        <hr>
+                        
                         <?php if (!empty($_SESSION['success_message'])) : ?>
                             <div class="alert alert-success">
                                 <?php echo $_SESSION['success_message']; unset($_SESSION['success_message']); ?>

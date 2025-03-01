@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $customerName  = trim($_POST['customer_name']);
     $customerEmail = trim($_POST['customer_email']);
     $customerPhone = trim($_POST['customer_phone']);
-    $amount = 0.30; // For testing; change to the actual amount in production.
+    $amount = 0.30; // GH₵100.00
     $clientReference = uniqid('NTSS_');
 
     // Insert a pending transaction record
