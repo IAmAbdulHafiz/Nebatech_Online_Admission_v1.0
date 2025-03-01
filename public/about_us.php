@@ -216,7 +216,8 @@
             <i class="fas fa-bullseye icon"></i>
             <h3>Our Mission</h3>
             <p>
-              To empower businesses with cutting-edge technology solutions that streamline operations, foster growth, and drive success.
+              To provide innovative and transformative technological solutions and training to individuals and 
+              organizations that streamline operations, foster growth, and drive success.
             </p>
           </div>
         </div>
@@ -225,7 +226,7 @@
             <i class="fas fa-eye icon"></i>
             <h3>Our Vision</h3>
             <p>
-              To be the premier provider of innovative IT solutions in Ghana and beyond, setting benchmarks for excellence in technology.
+              To become the leading hub of innovation and technical excellence in Africa and beyond.
             </p>
           </div>
         </div>
@@ -284,7 +285,16 @@
         </div>
         <div class="col-md-8">
           <p class="ceo-message">
-            "At Nebatech, we are driven by a passion for technology and innovation. Our goal is to transform the way businesses operate by delivering exceptional IT solutions that create lasting value. We are committed to excellence, continuous improvement, and the success of our clients."
+            <strong> Innovate. Transform. Succeed.</strong>
+            <br>
+            "<strong>At Nebatech Software Solution Ltd.</strong>, we believe technology has the power to redefine possibilities. 
+            Our mission is to provide <strong>innovative and transformative technological solutions and training</strong> that streamline 
+            operations, foster growth, and drive success for individuals and organizations.
+            <br>
+            Whether you're looking to develop a cutting-edge web or mobile application, enhance and optimize your IT infrastructure, or 
+            gain hands-on training in emerging technologies, Nebatech is your trusted partner.
+            <br>
+            Let’s shape the future together—one innovation at a time."
           </p>
           <div class="ceo-details">
             <h4>Abdul-Hafiz Yussif</h4>
