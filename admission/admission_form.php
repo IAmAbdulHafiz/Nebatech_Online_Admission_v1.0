@@ -49,9 +49,10 @@
       max-width: 600px;
       width: 100%;
       height: 100vh;
-      padding: 6rem 2rem;
+      padding: 7.5rem 2rem;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       border-radius: 10px;
+      padding-bottom: 1rem;
     }
 
     .form-container h2 {
