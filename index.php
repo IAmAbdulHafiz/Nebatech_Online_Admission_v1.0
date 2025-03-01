@@ -166,7 +166,10 @@
                         <small class="text-muted d-block">
                             Managing Director at Keen International Academy
                         </small>
-                        <small class="text-muted d-block">Country: Ghana</small>
+                        <small class="text-muted d-block">
+                            <!-- Ghana Flag -->
+                            <img src="../../assets/images/flags/ghana.png" alt="Ghana" style="width:20px; margin-right:5px;">Country: Ghana
+                        </small>
                         <small class="text-muted">January 15, 2023</small>
                         </div>
                     </div>
@@ -191,7 +194,10 @@
                         <small class="text-muted d-block">
                             CEO at DM Sky Construction
                         </small>
-                        <small class="text-muted d-block">Country: Ghana</small>
+                        <small class="text-muted d-block">
+                            <!-- Ghana Flag -->
+                            <img src="../../assets/images/flags/ghana.png" alt="Ghana" style="width:20px; margin-right:5px;">Country: Ghana
+                        </small>
                         <small class="text-muted">February 10, 2023</small>
                         </div>
                     </div>
@@ -216,7 +222,10 @@
                         <small class="text-muted d-block">
                             Owner at EastEnd Liquidation
                         </small>
-                        <small class="text-muted d-block">Country: USA</small>
+                        <small class="text-muted d-block">
+                            <!-- USA Flag -->
+                            <img src="../../assets/images/flags/usa.png" alt="USA" style="width:20px; margin-right:5px;">Country: USA
+                        </small>
                         <small class="text-muted">March 05, 2023</small>
                         </div>
                     </div>
@@ -246,7 +255,10 @@
                         <small class="text-muted d-block">
                             CEO, MakeUp Arties at Nag Glitterglaze
                         </small>
-                        <small class="text-muted d-block">Country: USA</small>
+                        <small class="text-muted d-block">
+                            <!-- USA Flag -->
+                            <img src="../assets/images/flags/usa.png" alt="USA" style="width:20px; margin-right:5px;">Country: USA
+                        </small>
                         <small class="text-muted">April 20, 2023</small>
                         </div>
                     </div>
@@ -271,7 +283,10 @@
                         <small class="text-muted d-block">
                             Owner at Big K's Lawns
                         </small>
-                        <small class="text-muted d-block">Country: USA</small>
+                        <small class="text-muted d-block">
+                            <!-- USA Flag -->
+                            <img src="../assets/images/flags/usa.png" alt="USA" style="width:20px; margin-right:5px;">Country: USA
+                        </small>
                         <small class="text-muted">May 18, 2023</small>
                         </div>
                     </div>
@@ -296,7 +311,10 @@
                         <small class="text-muted d-block">
                             CEO at Northern Light International
                         </small>
-                        <small class="text-muted d-block">Country: Ghana</small>
+                        <small class="text-muted d-block">
+                            <!-- Ghana Flag -->
+                            <img src="../assets/images/flags/ghana.png" alt="Ghana" style="width:20px; margin-right:5px;">Country: Ghana
+                        </small>
                         <small class="text-muted">June 25, 2023</small>
                         </div>
                     </div>
@@ -326,7 +344,10 @@
                         <small class="text-muted d-block">
                             Owner at Etoile Royale Education Center
                         </small>
-                        <small class="text-muted d-block">Country: Ghana</small>
+                        <small class="text-muted d-block">
+                            <!-- Ghana Flag -->
+                            <img src="../assets/images/flags/ghana.png" alt="Ghana" style="width:20px; margin-right:5px;">Country: Ghana
+                        </small>
                         <small class="text-muted">July 15, 2023</small>
                         </div>
                     </div>
@@ -351,7 +372,10 @@
                         <small class="text-muted d-block">
                             CEO at Global Cold Store
                         </small>
-                        <small class="text-muted d-block">Country: Ghana</small>
+                        <small class="text-muted d-block">
+                            <!-- Ghana Flag -->
+                            <img src="../assets/images/flags/ghana.png" alt="Ghana" style="width:20px; margin-right:5px;">Country: Ghana
+                        </small>
                         <small class="text-muted">August 10, 2023</small>
                         </div>
                     </div>
@@ -376,7 +400,10 @@
                         <small class="text-muted d-block">
                             Managing Director at NG Laboratory Care
                         </small>
-                        <small class="text-muted d-block">Country: Ghana</small>
+                        <small class="text-muted d-block">
+                            <!-- Ghana Flag -->
+                            <img src="../assets/images/flags/ghana.png" alt="Ghana" style="width:20px; margin-right:5px;">Country: Ghana
+                        </small>
                         <small class="text-muted">September 05, 2023</small>
                         </div>
                     </div>
@@ -406,7 +433,10 @@
                         <small class="text-muted d-block">
                             CEO at Zulfawu International School
                         </small>
-                        <small class="text-muted d-block">Country: Ghana</small>
+                        <small class="text-muted d-block">
+                            <!-- Ghana Flag -->
+                            <img src="../assets/images/flags/ghana.png" alt="Ghana" style="width:20px; margin-right:5px;">Country: Ghana
+                        </small>
                         <small class="text-muted">October 20, 2023</small>
                         </div>
                     </div>
@@ -431,7 +461,10 @@
                         <small class="text-muted d-block">
                             CEO at Daim World Collection
                         </small>
-                        <small class="text-muted d-block">Country: Ghana</small>
+                        <small class="text-muted d-block">
+                            <!-- Ghana Flag -->
+                            <img src="../assets/images/flags/ghana.png" alt="Ghana" style="width:20px; margin-right:5px;">Country: Ghana
+                        </small>
                         <small class="text-muted">November 10, 2023</small>
                         </div>
                     </div>
@@ -456,7 +489,10 @@
                         <small class="text-muted d-block">
                             CEO at Kabita Memorial School Complex
                         </small>
-                        <small class="text-muted d-block">Country: Tamale</small>
+                        <small class="text-muted d-block">
+                            <!-- Tamale (Ghana) Flag -->
+                            <img src="../assets/images/flags/ghana.png" alt="Ghana" style="width:20px; margin-right:5px;">Country: Tamale
+                        </small>
                         <small class="text-muted">December 05, 2023</small>
                         </div>
                     </div>
@@ -486,7 +522,10 @@
                         <small class="text-muted d-block">
                             Founder & CEO at Truandrew Ventures
                         </small>
-                        <small class="text-muted d-block">Country: Tamale</small>
+                        <small class="text-muted d-block">
+                            <!-- Tamale (Ghana) Flag -->
+                            <img src="../assets/images/flags/ghana.png" alt="Ghana" style="width:20px; margin-right:5px;">Country: Tamale
+                        </small>
                         <small class="text-muted">January 10, 2024</small>
                         </div>
                     </div>
@@ -505,7 +544,8 @@
             </button>
             </div>
         </div>
-    </section>
+        </section>
+
 
     <!-- Mobile Testimonials Carousel (1 per slide) -->
     <section class="testimonials-section py-5 bg-light d-block d-md-none" data-aos="fade-up">
@@ -530,8 +570,12 @@
                     </div>
                     <div class="card-footer bg-white">
                     <h6 class="mb-0" style="color: #002060;">Alhaj Dr. Tanko Mohammed</h6>
-                    <small class="text-muted d-block">Managing Director at Keen International Academy</small>
-                    <small class="text-muted d-block">Country: Ghana</small>
+                    <small class="text-muted d-block">
+                        Managing Director at Keen International Academy
+                    </small>
+                    <small class="text-muted d-block">
+                        <img src="../assets/images/flags/ghana.png" alt="Ghana" style="width:20px; margin-right:5px;">Country: Ghana
+                    </small>
                     <small class="text-muted">January 15, 2023</small>
                     </div>
                 </div>
@@ -553,8 +597,12 @@
                     </div>
                     <div class="card-footer bg-white">
                     <h6 class="mb-0" style="color: #002060;">Hamdu</h6>
-                    <small class="text-muted d-block">CEO at DM Sky Construction</small>
-                    <small class="text-muted d-block">Country: Ghana</small>
+                    <small class="text-muted d-block">
+                        CEO at DM Sky Construction
+                    </small>
+                    <small class="text-muted d-block">
+                        <img src="../assets/images/flags/ghana.png" alt="Ghana" style="width:20px; margin-right:5px;">Country: Ghana
+                    </small>
                     <small class="text-muted">February 10, 2023</small>
                     </div>
                 </div>
@@ -576,8 +624,12 @@
                     </div>
                     <div class="card-footer bg-white">
                     <h6 class="mb-0" style="color: #002060;">Idris Issah</h6>
-                    <small class="text-muted d-block">Owner at EastEnd Liquidation</small>
-                    <small class="text-muted d-block">Country: USA</small>
+                    <small class="text-muted d-block">
+                        Owner at EastEnd Liquidation
+                    </small>
+                    <small class="text-muted d-block">
+                        <img src="../assets/images/flags/usa.png" alt="USA" style="width:20px; margin-right:5px;">Country: USA
+                    </small>
                     <small class="text-muted">March 05, 2023</small>
                     </div>
                 </div>
@@ -599,8 +651,12 @@
                     </div>
                     <div class="card-footer bg-white">
                     <h6 class="mb-0" style="color: #002060;">Gladys</h6>
-                    <small class="text-muted d-block">CEO, MakeUp Arties at Nag Glitterglaze</small>
-                    <small class="text-muted d-block">Country: USA</small>
+                    <small class="text-muted d-block">
+                        CEO, MakeUp Arties at Nag Glitterglaze
+                    </small>
+                    <small class="text-muted d-block">
+                        <img src="../assets/images/flags/usa.png" alt="USA" style="width:20px; margin-right:5px;">Country: USA
+                    </small>
                     <small class="text-muted">April 20, 2023</small>
                     </div>
                 </div>
@@ -622,8 +678,12 @@
                     </div>
                     <div class="card-footer bg-white">
                     <h6 class="mb-0" style="color: #002060;">Mitchell Kowalski</h6>
-                    <small class="text-muted d-block">Owner at Big K's Lawns</small>
-                    <small class="text-muted d-block">Country: USA</small>
+                    <small class="text-muted d-block">
+                        Owner at Big K's Lawns
+                    </small>
+                    <small class="text-muted d-block">
+                        <img src="../assets/images/flags/usa.png" alt="USA" style="width:20px; margin-right:5px;">Country: USA
+                    </small>
                     <small class="text-muted">May 18, 2023</small>
                     </div>
                 </div>
@@ -645,8 +705,12 @@
                     </div>
                     <div class="card-footer bg-white">
                     <h6 class="mb-0" style="color: #002060;">Alhaji Issah Yakubu</h6>
-                    <small class="text-muted d-block">CEO at Northern Light International</small>
-                    <small class="text-muted d-block">Country: Ghana</small>
+                    <small class="text-muted d-block">
+                        CEO at Northern Light International
+                    </small>
+                    <small class="text-muted d-block">
+                        <img src="../assets/images/flags/ghana.png" alt="Ghana" style="width:20px; margin-right:5px;">Country: Ghana
+                    </small>
                     <small class="text-muted">June 25, 2023</small>
                     </div>
                 </div>
@@ -668,8 +732,12 @@
                     </div>
                     <div class="card-footer bg-white">
                     <h6 class="mb-0" style="color: #002060;">Flourence</h6>
-                    <small class="text-muted d-block">Owner at Etoile Royale Education Center</small>
-                    <small class="text-muted d-block">Country: Ghana</small>
+                    <small class="text-muted d-block">
+                        Owner at Etoile Royale Education Center
+                    </small>
+                    <small class="text-muted d-block">
+                        <img src="../assets/images/flags/ghana.png" alt="Ghana" style="width:20px; margin-right:5px;">Country: Ghana
+                    </small>
                     <small class="text-muted">July 15, 2023</small>
                     </div>
                 </div>
@@ -691,8 +759,12 @@
                     </div>
                     <div class="card-footer bg-white">
                     <h6 class="mb-0" style="color: #002060;">Rafic Fuseini</h6>
-                    <small class="text-muted d-block">CEO at Global Cold Store</small>
-                    <small class="text-muted d-block">Country: Ghana</small>
+                    <small class="text-muted d-block">
+                        CEO at Global Cold Store
+                    </small>
+                    <small class="text-muted d-block">
+                        <img src="../assets/images/flags/ghana.png" alt="Ghana" style="width:20px; margin-right:5px;">Country: Ghana
+                    </small>
                     <small class="text-muted">August 10, 2023</small>
                     </div>
                 </div>
@@ -714,8 +786,12 @@
                     </div>
                     <div class="card-footer bg-white">
                     <h6 class="mb-0" style="color: #002060;">Catelina</h6>
-                    <small class="text-muted d-block">Managing Director at NG Laboratory Care</small>
-                    <small class="text-muted d-block">Country: Ghana</small>
+                    <small class="text-muted d-block">
+                        Managing Director at NG Laboratory Care
+                    </small>
+                    <small class="text-muted d-block">
+                        <img src="../assets/images/flags/ghana.png" alt="Ghana" style="width:20px; margin-right:5px;">Country: Ghana
+                    </small>
                     <small class="text-muted">September 05, 2023</small>
                     </div>
                 </div>
@@ -737,8 +813,12 @@
                     </div>
                     <div class="card-footer bg-white">
                     <h6 class="mb-0" style="color: #002060;">Hajia Zulfawu</h6>
-                    <small class="text-muted d-block">CEO at Zulfawu International School</small>
-                    <small class="text-muted d-block">Country: Ghana</small>
+                    <small class="text-muted d-block">
+                        CEO at Zulfawu International School
+                    </small>
+                    <small class="text-muted d-block">
+                        <img src="../assets/images/flags/ghana.png" alt="Ghana" style="width:20px; margin-right:5px;">Country: Ghana
+                    </small>
                     <small class="text-muted">October 20, 2023</small>
                     </div>
                 </div>
@@ -760,8 +840,12 @@
                     </div>
                     <div class="card-footer bg-white">
                     <h6 class="mb-0" style="color: #002060;">Hajia Dady</h6>
-                    <small class="text-muted d-block">CEO at Daim World Collection</small>
-                    <small class="text-muted d-block">Country: Ghana</small>
+                    <small class="text-muted d-block">
+                        CEO at Daim World Collection
+                    </small>
+                    <small class="text-muted d-block">
+                        <img src="../assets/images/flags/ghana.png" alt="Ghana" style="width:20px; margin-right:5px;">Country: Ghana
+                    </small>
                     <small class="text-muted">November 10, 2023</small>
                     </div>
                 </div>
@@ -783,8 +867,12 @@
                     </div>
                     <div class="card-footer bg-white">
                     <h6 class="mb-0" style="color: #002060;">Hajia Fati</h6>
-                    <small class="text-muted d-block">CEO at Kabita Memorial School Complex</small>
-                    <small class="text-muted d-block">Country: Tamale</small>
+                    <small class="text-muted d-block">
+                        CEO at Kabita Memorial School Complex
+                    </small>
+                    <small class="text-muted d-block">
+                        <img src="../assets/images/flags/ghana.png" alt="Ghana" style="width:20px; margin-right:5px;">Country: Tamale
+                    </small>
                     <small class="text-muted">December 05, 2023</small>
                     </div>
                 </div>
@@ -806,8 +894,12 @@
                     </div>
                     <div class="card-footer bg-white text-center">
                     <h6 class="mb-0" style="color: #002060;">Madam Sara</h6>
-                    <small class="text-muted d-block">Founder & CEO at Truandrew Ventures</small>
-                    <small class="text-muted d-block">Country: Tamale</small>
+                    <small class="text-muted d-block">
+                        Founder & CEO at Truandrew Ventures
+                    </small>
+                    <small class="text-muted d-block">
+                        <img src="../assets/images/flags/ghana.png" alt="Ghana" style="width:20px; margin-right:5px;">Country: Tamale
+                    </small>
                     <small class="text-muted">January 10, 2024</small>
                     </div>
                 </div>
@@ -824,7 +916,8 @@
             </button>
             </div>
         </div>
-    </section>
+        </section>
+
 
 
   </main>
