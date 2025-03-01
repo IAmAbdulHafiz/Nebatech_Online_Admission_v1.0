@@ -130,7 +130,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_SESSION['pending_payment']))
         ]);
     } catch (Exception $e) {
         $_SESSION['error_message'] = "Database update error: " . $e->getMessage();
-        header("Location: ../payment_form.php");
+        header("Location: ../admission_form.php");
         exit();
     }
 
@@ -141,7 +141,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_SESSION['pending_payment']))
     if ($row) {
         $customerPhone = $row['customer_phone'];
         $customerEmail = $row['customer_email'];
-        sendSMS($customerPhone, "Your Admission Serial: $serialNumber and PIN: $pin. Use these to register at https://nebatech.com/admission/signup.php. For assistance, call 0247636080.");
+        sendSMS($customerPhone, "Your Admission Serial No.: $serialNumber and PIN: $pin. Use these to register at https://nebatech.com/admission/signup.php. For assistance, call 0247636080.");
 
         sendEmail(
             $customerEmail, 

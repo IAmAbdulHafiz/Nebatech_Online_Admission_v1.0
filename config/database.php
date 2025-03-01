@@ -1,14 +1,20 @@
-<?php
-// Database configuration
-$host = "localhost";
-$db_name = "u948335622_nebatech";
-$username = "u948335622_nebatech";
-$password = "imAbdulHafiz@122996";
+<?php 
+require_once __DIR__ . '/vendor/autoload.php'; // Load Composer dependencies
+
+// Load environment variables from .env file
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+// Database configuration using environment variables
+$host = $_ENV['DB_HOST'];
+$db_name = $_ENV['DB_NAME'];
+$username = $_ENV['DB_USER'];
+$password = $_ENV['DB_PASS'];
 
 try {
     $conn = new PDO("mysql:host=$host;dbname=$db_name", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $exception) {
-    echo "Connection error: " . $exception->getMessage();
+    die("Connection error: " . $exception->getMessage());
 }
 ?>
