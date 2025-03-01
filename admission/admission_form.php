@@ -45,11 +45,11 @@
       padding: 0rem;
     }
     .form-container {
-    background: transparent; /* removed solid background */
-    max-width: none;         /* allow full width */
-    width: 100%;             /* ensure full width */
-    padding: 2rem;
-    /* removed box-shadow and border-radius */
+      background: #fff;
+      width: 100%;
+      padding: 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border-radius: 10px;
     }
 
     .form-container h2 {
