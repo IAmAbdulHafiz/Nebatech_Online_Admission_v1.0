@@ -145,9 +145,8 @@
     }
     .team-img {
       width: 100%;
-      height: 600px;
+      height: 350px;
       object-fit: cover;
-      padding-top: 0px;
       
     }
     .team-info {
