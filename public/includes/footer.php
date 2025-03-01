@@ -23,8 +23,8 @@
                     &copy; 2019-<?php echo date('Y'); ?> Nebatech Software Solution Ltd. All Rights Reserved.
                 </p>
                 <p class="mb-0">
-                    <a href="privacy.php" style="color: white; text-decoration: underline; margin-right: 10px;">Privacy Policy</a> | 
-                    <a href="terms.php" style="color: white; text-decoration: underline; margin-left: 10px;">Terms & Conditions</a>
+                    <a href="public/privacy.php" style="color: white; text-decoration: none; margin-right: 10px;">Privacy Policy</a> | 
+                    <a href="public/terms.php" style="color: white; text-decoration: none; margin-left: 10px;">Terms & Conditions</a>
                 </p>
             </div>
 
