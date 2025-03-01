@@ -69,10 +69,11 @@
             text-align: center; 
         }
         .admission_form { 
-            padding-top: 7rem; 
+            padding-top: 4rem; 
             padding-bottom: 50px; 
         }
         .accommodation-notice { 
+            font-size: 14px;
             padding-top: 7rem; 
             padding-bottom: 1rem; 
         }
