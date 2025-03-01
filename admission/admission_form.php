@@ -22,7 +22,6 @@
     /* Split-screen container: fill viewport minus header/footer */
     .split-screen-container {
       min-height: calc(100vh - 100px); /* Adjust as needed */
-      padding-top: 10rem;
       background: #fff;
     }
     /* Left Column: Carousel with dark overlay */
@@ -46,13 +45,13 @@
       padding: 0rem;
     }
     .form-container {
-      background: #fff;
-      max-width: 400px;
-      width: 100%;
-      padding: 2rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      border-radius: 10px;
+    background: transparent; /* removed solid background */
+    max-width: none;         /* allow full width */
+    width: 100%;             /* ensure full width */
+    padding: 2rem;
+    /* removed box-shadow and border-radius */
     }
+
     .form-container h2 {
       color: #002060;
       margin-bottom: 1rem;
