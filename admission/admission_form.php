@@ -122,6 +122,11 @@
       <!-- Right Side: Form -->
       <div class="col-md-6 right-column">
         <div class="form-container">
+          <h2>NTSS Admission Form</h2>
+          <div class="alert alert-info">
+            The fee for the form is <strong>GH₵100</strong> Fill the form below to purchase the application form online
+            <br><strong>Note:</strong> After payment, you will receive your Serial Number and PIN via SMS and Email.
+          </div>
           <!-- Success/Error Messages -->
           <?php if (!empty($_SESSION['success_message'])) : ?>
             <div class="alert alert-success">
