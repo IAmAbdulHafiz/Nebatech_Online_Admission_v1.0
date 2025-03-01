@@ -142,7 +142,7 @@
             <h2 class="text-center mb-5" style="color: var(--primary-color);">Testimonials</h2>
             <div id="testimonialCarouselDesktop" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
-                <!-- Slide 1 -->
+                <!-- Slide 1: Testimonials 1-3 -->
                 <div class="carousel-item active">
                 <div class="row">
                     <!-- Testimonial 1 -->
@@ -157,12 +157,17 @@
                             <i class="fas fa-star" style="color: #FFA500;"></i>
                             <i class="fas fa-star" style="color: #FFA500;"></i>
                         </div>
-                        <p class="card-text fst-italic">"Nebatech transformed our digital strategy and improved our online presence immensely."</p>
+                        <p class="card-text fst-italic">
+                            "Nebatech's innovative approach has revolutionized our learning experience."
+                        </p>
                         </div>
                         <div class="card-footer bg-white">
-                        <h6 class="mb-0" style="color: #002060;">John Doe</h6>
-                        <small class="text-muted d-block">CEO, TechCorp</small>
-                        <small class="text-muted">August 15, 2023</small>
+                        <h6 class="mb-0" style="color: #002060;">Alhaj Dr. Tanko Mohammed</h6>
+                        <small class="text-muted d-block">
+                            Managing Director at Keen International Academy
+                        </small>
+                        <small class="text-muted d-block">Country: Ghana</small>
+                        <small class="text-muted">January 15, 2023</small>
                         </div>
                     </div>
                     </div>
@@ -170,7 +175,6 @@
                     <div class="col-md-4 mb-4">
                     <div class="card h-100 shadow-sm">
                         <div class="card-body">
-                        <!-- Star Rating -->
                         <div class="mb-3">
                             <i class="fas fa-star" style="color: #FFA500;"></i>
                             <i class="fas fa-star" style="color: #FFA500;"></i>
@@ -178,12 +182,17 @@
                             <i class="fas fa-star" style="color: #FFA500;"></i>
                             <i class="fas fa-star" style="color: #FFA500;"></i>
                         </div>
-                        <p class="card-text fst-italic">"Their innovative solutions boosted our business growth and efficiency."</p>
+                        <p class="card-text fst-italic">
+                            "Their commitment to excellence has been a game-changer for our construction projects."
+                        </p>
                         </div>
                         <div class="card-footer bg-white">
-                        <h6 class="mb-0" style="color: #002060;">Jane Smith</h6>
-                        <small class="text-muted d-block">Marketing Director, Creative Co.</small>
-                        <small class="text-muted">July 10, 2023</small>
+                        <h6 class="mb-0" style="color: #002060;">Hamdu</h6>
+                        <small class="text-muted d-block">
+                            CEO at DM Sky Construction
+                        </small>
+                        <small class="text-muted d-block">Country: Ghana</small>
+                        <small class="text-muted">February 10, 2023</small>
                         </div>
                     </div>
                     </div>
@@ -191,7 +200,6 @@
                     <div class="col-md-4 mb-4">
                     <div class="card h-100 shadow-sm">
                         <div class="card-body">
-                        <!-- Star Rating -->
                         <div class="mb-3">
                             <i class="fas fa-star" style="color: #FFA500;"></i>
                             <i class="fas fa-star" style="color: #FFA500;"></i>
@@ -199,25 +207,29 @@
                             <i class="fas fa-star" style="color: #FFA500;"></i>
                             <i class="fas fa-star" style="color: #FFA500;"></i>
                         </div>
-                        <p class="card-text fst-italic">"Excellent service and reliable support throughout our project."</p>
+                        <p class="card-text fst-italic">
+                            "Professional and reliable – they helped us streamline our operations."
+                        </p>
                         </div>
                         <div class="card-footer bg-white">
-                        <h6 class="mb-0" style="color: #002060;">Michael Brown</h6>
-                        <small class="text-muted d-block">Project Manager, Solutions Inc.</small>
-                        <small class="text-muted">June 05, 2023</small>
+                        <h6 class="mb-0" style="color: #002060;">Idris Issah</h6>
+                        <small class="text-muted d-block">
+                            Owner at EastEnd Liquidation
+                        </small>
+                        <small class="text-muted d-block">Country: USA</small>
+                        <small class="text-muted">March 05, 2023</small>
                         </div>
                     </div>
                     </div>
                 </div>
                 </div>
-                <!-- Slide 2 -->
+                <!-- Slide 2: Testimonials 4-6 -->
                 <div class="carousel-item">
                 <div class="row">
                     <!-- Testimonial 4 -->
                     <div class="col-md-4 mb-4">
                     <div class="card h-100 shadow-sm">
                         <div class="card-body">
-                        <!-- Star Rating -->
                         <div class="mb-3">
                             <i class="fas fa-star" style="color: #FFA500;"></i>
                             <i class="fas fa-star" style="color: #FFA500;"></i>
@@ -225,12 +237,17 @@
                             <i class="fas fa-star" style="color: #FFA500;"></i>
                             <i class="fas fa-star" style="color: #FFA500;"></i>
                         </div>
-                        <p class="card-text fst-italic">"A game-changer in software development and IT consultancy."</p>
+                        <p class="card-text fst-italic">
+                            "The creative solutions provided have enhanced our brand image significantly."
+                        </p>
                         </div>
                         <div class="card-footer bg-white">
-                        <h6 class="mb-0" style="color: #002060;">Sarah Johnson</h6>
-                        <small class="text-muted d-block">Founder, Startup Hub</small>
-                        <small class="text-muted">May 20, 2023</small>
+                        <h6 class="mb-0" style="color: #002060;">Gladys</h6>
+                        <small class="text-muted d-block">
+                            CEO, MakeUp Arties at Nag Glitterglaze
+                        </small>
+                        <small class="text-muted d-block">Country: USA</small>
+                        <small class="text-muted">April 20, 2023</small>
                         </div>
                     </div>
                     </div>
@@ -238,7 +255,6 @@
                     <div class="col-md-4 mb-4">
                     <div class="card h-100 shadow-sm">
                         <div class="card-body">
-                        <!-- Star Rating -->
                         <div class="mb-3">
                             <i class="fas fa-star" style="color: #FFA500;"></i>
                             <i class="fas fa-star" style="color: #FFA500;"></i>
@@ -246,12 +262,17 @@
                             <i class="fas fa-star" style="color: #FFA500;"></i>
                             <i class="fas fa-star" style="color: #FFA500;"></i>
                         </div>
-                        <p class="card-text fst-italic">"Their team is professional and always delivers on time."</p>
+                        <p class="card-text fst-italic">
+                            "Their expert services have given our business a competitive edge."
+                        </p>
                         </div>
                         <div class="card-footer bg-white">
-                        <h6 class="mb-0" style="color: #002060;">David Lee</h6>
-                        <small class="text-muted d-block">Operations Manager, Enterprise Global</small>
-                        <small class="text-muted">April 12, 2023</small>
+                        <h6 class="mb-0" style="color: #002060;">Mitchell Kowalski</h6>
+                        <small class="text-muted d-block">
+                            Owner at Big K's Lawns
+                        </small>
+                        <small class="text-muted d-block">Country: USA</small>
+                        <small class="text-muted">May 18, 2023</small>
                         </div>
                     </div>
                     </div>
@@ -259,7 +280,6 @@
                     <div class="col-md-4 mb-4">
                     <div class="card h-100 shadow-sm">
                         <div class="card-body">
-                        <!-- Star Rating -->
                         <div class="mb-3">
                             <i class="fas fa-star" style="color: #FFA500;"></i>
                             <i class="fas fa-star" style="color: #FFA500;"></i>
@@ -267,12 +287,207 @@
                             <i class="fas fa-star" style="color: #FFA500;"></i>
                             <i class="fas fa-star" style="color: #FFA500;"></i>
                         </div>
-                        <p class="card-text fst-italic">"Impressive expertise and a customer-centric approach. Highly recommended!"</p>
+                        <p class="card-text fst-italic">
+                            "Outstanding service and top-notch support every step of the way."
+                        </p>
                         </div>
                         <div class="card-footer bg-white">
-                        <h6 class="mb-0" style="color: #002060;">Emily Davis</h6>
-                        <small class="text-muted d-block">CIO, NextGen Systems</small>
-                        <small class="text-muted">March 08, 2023</small>
+                        <h6 class="mb-0" style="color: #002060;">Alhaji Issah Yakubu</h6>
+                        <small class="text-muted d-block">
+                            CEO at Northern Light International
+                        </small>
+                        <small class="text-muted d-block">Country: Ghana</small>
+                        <small class="text-muted">June 25, 2023</small>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                <!-- Slide 3: Testimonials 7-9 -->
+                <div class="carousel-item">
+                <div class="row">
+                    <!-- Testimonial 7 -->
+                    <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                        <div class="mb-3">
+                            <i class="fas fa-star" style="color: #FFA500;"></i>
+                            <i class="fas fa-star" style="color: #FFA500;"></i>
+                            <i class="fas fa-star" style="color: #FFA500;"></i>
+                            <i class="fas fa-star" style="color: #FFA500;"></i>
+                            <i class="fas fa-star" style="color: #FFA500;"></i>
+                        </div>
+                        <p class="card-text fst-italic">
+                            "Their dedication to quality has transformed our educational outreach."
+                        </p>
+                        </div>
+                        <div class="card-footer bg-white">
+                        <h6 class="mb-0" style="color: #002060;">Flourence</h6>
+                        <small class="text-muted d-block">
+                            Owner at Etoile Royale Education Center
+                        </small>
+                        <small class="text-muted d-block">Country: Ghana</small>
+                        <small class="text-muted">July 15, 2023</small>
+                        </div>
+                    </div>
+                    </div>
+                    <!-- Testimonial 8 -->
+                    <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                        <div class="mb-3">
+                            <i class="fas fa-star" style="color: #FFA500;"></i>
+                            <i class="fas fa-star" style="color: #FFA500;"></i>
+                            <i class="fas fa-star" style="color: #FFA500;"></i>
+                            <i class="fas fa-star" style="color: #FFA500;"></i>
+                            <i class="fas fa-star" style="color: #FFA500;"></i>
+                        </div>
+                        <p class="card-text fst-italic">
+                            "Efficiency and reliability are the hallmarks of their service."
+                        </p>
+                        </div>
+                        <div class="card-footer bg-white">
+                        <h6 class="mb-0" style="color: #002060;">Rafic Fuseini</h6>
+                        <small class="text-muted d-block">
+                            CEO at Global Cold Store
+                        </small>
+                        <small class="text-muted d-block">Country: Ghana</small>
+                        <small class="text-muted">August 10, 2023</small>
+                        </div>
+                    </div>
+                    </div>
+                    <!-- Testimonial 9 -->
+                    <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                        <div class="mb-3">
+                            <i class="fas fa-star" style="color: #FFA500;"></i>
+                            <i class="fas fa-star" style="color: #FFA500;"></i>
+                            <i class="fas fa-star" style="color: #FFA500;"></i>
+                            <i class="fas fa-star" style="color: #FFA500;"></i>
+                            <i class="fas fa-star" style="color: #FFA500;"></i>
+                        </div>
+                        <p class="card-text fst-italic">
+                            "Their innovative solutions have greatly improved our lab operations."
+                        </p>
+                        </div>
+                        <div class="card-footer bg-white">
+                        <h6 class="mb-0" style="color: #002060;">Catelina</h6>
+                        <small class="text-muted d-block">
+                            Managing Director at NG Laboratory Care
+                        </small>
+                        <small class="text-muted d-block">Country: Ghana</small>
+                        <small class="text-muted">September 05, 2023</small>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                <!-- Slide 4: Testimonials 10-12 -->
+                <div class="carousel-item">
+                <div class="row">
+                    <!-- Testimonial 10 -->
+                    <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                        <div class="mb-3">
+                            <i class="fas fa-star" style="color: #FFA500;"></i>
+                            <i class="fas fa-star" style="color: #FFA500;"></i>
+                            <i class="fas fa-star" style="color: #FFA500;"></i>
+                            <i class="fas fa-star" style="color: #FFA500;"></i>
+                            <i class="fas fa-star" style="color: #FFA500;"></i>
+                        </div>
+                        <p class="card-text fst-italic">
+                            "Nebatech's expertise has empowered our educational vision."
+                        </p>
+                        </div>
+                        <div class="card-footer bg-white">
+                        <h6 class="mb-0" style="color: #002060;">Hajia Zulfawu</h6>
+                        <small class="text-muted d-block">
+                            CEO at Zulfawu International School
+                        </small>
+                        <small class="text-muted d-block">Country: Ghana</small>
+                        <small class="text-muted">October 20, 2023</small>
+                        </div>
+                    </div>
+                    </div>
+                    <!-- Testimonial 11 -->
+                    <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                        <div class="mb-3">
+                            <i class="fas fa-star" style="color: #FFA500;"></i>
+                            <i class="fas fa-star" style="color: #FFA500;"></i>
+                            <i class="fas fa-star" style="color: #FFA500;"></i>
+                            <i class="fas fa-star" style="color: #FFA500;"></i>
+                            <i class="fas fa-star" style="color: #FFA500;"></i>
+                        </div>
+                        <p class="card-text fst-italic">
+                            "Their commitment to customer satisfaction is unmatched."
+                        </p>
+                        </div>
+                        <div class="card-footer bg-white">
+                        <h6 class="mb-0" style="color: #002060;">Hajia Dady</h6>
+                        <small class="text-muted d-block">
+                            CEO at Daim World Collection
+                        </small>
+                        <small class="text-muted d-block">Country: Ghana</small>
+                        <small class="text-muted">November 10, 2023</small>
+                        </div>
+                    </div>
+                    </div>
+                    <!-- Testimonial 12 -->
+                    <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                        <div class="mb-3">
+                            <i class="fas fa-star" style="color: #FFA500;"></i>
+                            <i class="fas fa-star" style="color: #FFA500;"></i>
+                            <i class="fas fa-star" style="color: #FFA500;"></i>
+                            <i class="fas fa-star" style="color: #FFA500;"></i>
+                            <i class="fas fa-star" style="color: #FFA500;"></i>
+                        </div>
+                        <p class="card-text fst-italic">
+                            "Incredible service and a genuine dedication to quality."
+                        </p>
+                        </div>
+                        <div class="card-footer bg-white">
+                        <h6 class="mb-0" style="color: #002060;">Hajia Fati</h6>
+                        <small class="text-muted d-block">
+                            CEO at Kabita Memorial School Complex
+                        </small>
+                        <small class="text-muted d-block">Country: Tamale</small>
+                        <small class="text-muted">December 05, 2023</small>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                <!-- Slide 5: Testimonial 13 -->
+                <div class="carousel-item">
+                <div class="row justify-content-center">
+                    <!-- Testimonial 13 -->
+                    <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm mx-auto">
+                        <div class="card-body">
+                        <div class="mb-3">
+                            <i class="fas fa-star" style="color: #FFA500;"></i>
+                            <i class="fas fa-star" style="color: #FFA500;"></i>
+                            <i class="fas fa-star" style="color: #FFA500;"></i>
+                            <i class="fas fa-star" style="color: #FFA500;"></i>
+                            <i class="fas fa-star" style="color: #FFA500;"></i>
+                        </div>
+                        <p class="card-text fst-italic">
+                            "Their visionary approach has propelled our business forward."
+                        </p>
+                        </div>
+                        <div class="card-footer bg-white text-center">
+                        <h6 class="mb-0" style="color: #002060;">Madam Sara</h6>
+                        <small class="text-muted d-block">
+                            Founder & CEO at Truandrew Ventures
+                        </small>
+                        <small class="text-muted d-block">Country: Tamale</small>
+                        <small class="text-muted">January 10, 2024</small>
                         </div>
                     </div>
                     </div>
@@ -302,7 +517,6 @@
                 <div class="carousel-item active">
                 <div class="card h-100 shadow-sm mx-auto" style="max-width: 500px;">
                     <div class="card-body">
-                    <!-- Star Rating -->
                     <div class="mb-3">
                         <i class="fas fa-star" style="color: #FFA500;"></i>
                         <i class="fas fa-star" style="color: #FFA500;"></i>
@@ -310,12 +524,15 @@
                         <i class="fas fa-star" style="color: #FFA500;"></i>
                         <i class="fas fa-star" style="color: #FFA500;"></i>
                     </div>
-                    <p class="card-text fst-italic">"Nebatech transformed our digital strategy and improved our online presence immensely."</p>
+                    <p class="card-text fst-italic">
+                        "Nebatech's innovative approach has revolutionized our learning experience."
+                    </p>
                     </div>
                     <div class="card-footer bg-white">
-                    <h6 class="mb-0" style="color: #002060;">John Doe</h6>
-                    <small class="text-muted d-block">CEO, TechCorp</small>
-                    <small class="text-muted">August 15, 2023</small>
+                    <h6 class="mb-0" style="color: #002060;">Alhaj Dr. Tanko Mohammed</h6>
+                    <small class="text-muted d-block">Managing Director at Keen International Academy</small>
+                    <small class="text-muted d-block">Country: Ghana</small>
+                    <small class="text-muted">January 15, 2023</small>
                     </div>
                 </div>
                 </div>
@@ -323,7 +540,6 @@
                 <div class="carousel-item">
                 <div class="card h-100 shadow-sm mx-auto" style="max-width: 500px;">
                     <div class="card-body">
-                    <!-- Star Rating -->
                     <div class="mb-3">
                         <i class="fas fa-star" style="color: #FFA500;"></i>
                         <i class="fas fa-star" style="color: #FFA500;"></i>
@@ -331,12 +547,15 @@
                         <i class="fas fa-star" style="color: #FFA500;"></i>
                         <i class="fas fa-star" style="color: #FFA500;"></i>
                     </div>
-                    <p class="card-text fst-italic">"Their innovative solutions boosted our business growth and efficiency."</p>
+                    <p class="card-text fst-italic">
+                        "Their commitment to excellence has been a game-changer for our construction projects."
+                    </p>
                     </div>
                     <div class="card-footer bg-white">
-                    <h6 class="mb-0" style="color: #002060;">Jane Smith</h6>
-                    <small class="text-muted d-block">Marketing Director, Creative Co.</small>
-                    <small class="text-muted">July 10, 2023</small>
+                    <h6 class="mb-0" style="color: #002060;">Hamdu</h6>
+                    <small class="text-muted d-block">CEO at DM Sky Construction</small>
+                    <small class="text-muted d-block">Country: Ghana</small>
+                    <small class="text-muted">February 10, 2023</small>
                     </div>
                 </div>
                 </div>
@@ -344,7 +563,6 @@
                 <div class="carousel-item">
                 <div class="card h-100 shadow-sm mx-auto" style="max-width: 500px;">
                     <div class="card-body">
-                    <!-- Star Rating -->
                     <div class="mb-3">
                         <i class="fas fa-star" style="color: #FFA500;"></i>
                         <i class="fas fa-star" style="color: #FFA500;"></i>
@@ -352,12 +570,15 @@
                         <i class="fas fa-star" style="color: #FFA500;"></i>
                         <i class="fas fa-star" style="color: #FFA500;"></i>
                     </div>
-                    <p class="card-text fst-italic">"Excellent service and reliable support throughout our project."</p>
+                    <p class="card-text fst-italic">
+                        "Professional and reliable – they helped us streamline our operations."
+                    </p>
                     </div>
                     <div class="card-footer bg-white">
-                    <h6 class="mb-0" style="color: #002060;">Michael Brown</h6>
-                    <small class="text-muted d-block">Project Manager, Solutions Inc.</small>
-                    <small class="text-muted">June 05, 2023</small>
+                    <h6 class="mb-0" style="color: #002060;">Idris Issah</h6>
+                    <small class="text-muted d-block">Owner at EastEnd Liquidation</small>
+                    <small class="text-muted d-block">Country: USA</small>
+                    <small class="text-muted">March 05, 2023</small>
                     </div>
                 </div>
                 </div>
@@ -365,7 +586,6 @@
                 <div class="carousel-item">
                 <div class="card h-100 shadow-sm mx-auto" style="max-width: 500px;">
                     <div class="card-body">
-                    <!-- Star Rating -->
                     <div class="mb-3">
                         <i class="fas fa-star" style="color: #FFA500;"></i>
                         <i class="fas fa-star" style="color: #FFA500;"></i>
@@ -373,12 +593,15 @@
                         <i class="fas fa-star" style="color: #FFA500;"></i>
                         <i class="fas fa-star" style="color: #FFA500;"></i>
                     </div>
-                    <p class="card-text fst-italic">"A game-changer in software development and IT consultancy."</p>
+                    <p class="card-text fst-italic">
+                        "The creative solutions provided have enhanced our brand image significantly."
+                    </p>
                     </div>
                     <div class="card-footer bg-white">
-                    <h6 class="mb-0" style="color: #002060;">Sarah Johnson</h6>
-                    <small class="text-muted d-block">Founder, Startup Hub</small>
-                    <small class="text-muted">May 20, 2023</small>
+                    <h6 class="mb-0" style="color: #002060;">Gladys</h6>
+                    <small class="text-muted d-block">CEO, MakeUp Arties at Nag Glitterglaze</small>
+                    <small class="text-muted d-block">Country: USA</small>
+                    <small class="text-muted">April 20, 2023</small>
                     </div>
                 </div>
                 </div>
@@ -386,7 +609,6 @@
                 <div class="carousel-item">
                 <div class="card h-100 shadow-sm mx-auto" style="max-width: 500px;">
                     <div class="card-body">
-                    <!-- Star Rating -->
                     <div class="mb-3">
                         <i class="fas fa-star" style="color: #FFA500;"></i>
                         <i class="fas fa-star" style="color: #FFA500;"></i>
@@ -394,12 +616,15 @@
                         <i class="fas fa-star" style="color: #FFA500;"></i>
                         <i class="fas fa-star" style="color: #FFA500;"></i>
                     </div>
-                    <p class="card-text fst-italic">"Their team is professional and always delivers on time."</p>
+                    <p class="card-text fst-italic">
+                        "Their expert services have given our business a competitive edge."
+                    </p>
                     </div>
                     <div class="card-footer bg-white">
-                    <h6 class="mb-0" style="color: #002060;">David Lee</h6>
-                    <small class="text-muted d-block">Operations Manager, Enterprise Global</small>
-                    <small class="text-muted">April 12, 2023</small>
+                    <h6 class="mb-0" style="color: #002060;">Mitchell Kowalski</h6>
+                    <small class="text-muted d-block">Owner at Big K's Lawns</small>
+                    <small class="text-muted d-block">Country: USA</small>
+                    <small class="text-muted">May 18, 2023</small>
                     </div>
                 </div>
                 </div>
@@ -407,7 +632,6 @@
                 <div class="carousel-item">
                 <div class="card h-100 shadow-sm mx-auto" style="max-width: 500px;">
                     <div class="card-body">
-                    <!-- Star Rating -->
                     <div class="mb-3">
                         <i class="fas fa-star" style="color: #FFA500;"></i>
                         <i class="fas fa-star" style="color: #FFA500;"></i>
@@ -415,12 +639,176 @@
                         <i class="fas fa-star" style="color: #FFA500;"></i>
                         <i class="fas fa-star" style="color: #FFA500;"></i>
                     </div>
-                    <p class="card-text fst-italic">"Impressive expertise and a customer-centric approach. Highly recommended!"</p>
+                    <p class="card-text fst-italic">
+                        "Outstanding service and top-notch support every step of the way."
+                    </p>
                     </div>
                     <div class="card-footer bg-white">
-                    <h6 class="mb-0" style="color: #002060;">Emily Davis</h6>
-                    <small class="text-muted d-block">CIO, NextGen Systems</small>
-                    <small class="text-muted">March 08, 2023</small>
+                    <h6 class="mb-0" style="color: #002060;">Alhaji Issah Yakubu</h6>
+                    <small class="text-muted d-block">CEO at Northern Light International</small>
+                    <small class="text-muted d-block">Country: Ghana</small>
+                    <small class="text-muted">June 25, 2023</small>
+                    </div>
+                </div>
+                </div>
+                <!-- Testimonial 7 -->
+                <div class="carousel-item">
+                <div class="card h-100 shadow-sm mx-auto" style="max-width: 500px;">
+                    <div class="card-body">
+                    <div class="mb-3">
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                    </div>
+                    <p class="card-text fst-italic">
+                        "Their dedication to quality has transformed our educational outreach."
+                    </p>
+                    </div>
+                    <div class="card-footer bg-white">
+                    <h6 class="mb-0" style="color: #002060;">Flourence</h6>
+                    <small class="text-muted d-block">Owner at Etoile Royale Education Center</small>
+                    <small class="text-muted d-block">Country: Ghana</small>
+                    <small class="text-muted">July 15, 2023</small>
+                    </div>
+                </div>
+                </div>
+                <!-- Testimonial 8 -->
+                <div class="carousel-item">
+                <div class="card h-100 shadow-sm mx-auto" style="max-width: 500px;">
+                    <div class="card-body">
+                    <div class="mb-3">
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                    </div>
+                    <p class="card-text fst-italic">
+                        "Efficiency and reliability are the hallmarks of their service."
+                    </p>
+                    </div>
+                    <div class="card-footer bg-white">
+                    <h6 class="mb-0" style="color: #002060;">Rafic Fuseini</h6>
+                    <small class="text-muted d-block">CEO at Global Cold Store</small>
+                    <small class="text-muted d-block">Country: Ghana</small>
+                    <small class="text-muted">August 10, 2023</small>
+                    </div>
+                </div>
+                </div>
+                <!-- Testimonial 9 -->
+                <div class="carousel-item">
+                <div class="card h-100 shadow-sm mx-auto" style="max-width: 500px;">
+                    <div class="card-body">
+                    <div class="mb-3">
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                    </div>
+                    <p class="card-text fst-italic">
+                        "Their innovative solutions have greatly improved our lab operations."
+                    </p>
+                    </div>
+                    <div class="card-footer bg-white">
+                    <h6 class="mb-0" style="color: #002060;">Catelina</h6>
+                    <small class="text-muted d-block">Managing Director at NG Laboratory Care</small>
+                    <small class="text-muted d-block">Country: Ghana</small>
+                    <small class="text-muted">September 05, 2023</small>
+                    </div>
+                </div>
+                </div>
+                <!-- Testimonial 10 -->
+                <div class="carousel-item">
+                <div class="card h-100 shadow-sm mx-auto" style="max-width: 500px;">
+                    <div class="card-body">
+                    <div class="mb-3">
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                    </div>
+                    <p class="card-text fst-italic">
+                        "Nebatech's expertise has empowered our educational vision."
+                    </p>
+                    </div>
+                    <div class="card-footer bg-white">
+                    <h6 class="mb-0" style="color: #002060;">Hajia Zulfawu</h6>
+                    <small class="text-muted d-block">CEO at Zulfawu International School</small>
+                    <small class="text-muted d-block">Country: Ghana</small>
+                    <small class="text-muted">October 20, 2023</small>
+                    </div>
+                </div>
+                </div>
+                <!-- Testimonial 11 -->
+                <div class="carousel-item">
+                <div class="card h-100 shadow-sm mx-auto" style="max-width: 500px;">
+                    <div class="card-body">
+                    <div class="mb-3">
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                    </div>
+                    <p class="card-text fst-italic">
+                        "Their commitment to customer satisfaction is unmatched."
+                    </p>
+                    </div>
+                    <div class="card-footer bg-white">
+                    <h6 class="mb-0" style="color: #002060;">Hajia Dady</h6>
+                    <small class="text-muted d-block">CEO at Daim World Collection</small>
+                    <small class="text-muted d-block">Country: Ghana</small>
+                    <small class="text-muted">November 10, 2023</small>
+                    </div>
+                </div>
+                </div>
+                <!-- Testimonial 12 -->
+                <div class="carousel-item">
+                <div class="card h-100 shadow-sm mx-auto" style="max-width: 500px;">
+                    <div class="card-body">
+                    <div class="mb-3">
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                    </div>
+                    <p class="card-text fst-italic">
+                        "Incredible service and a genuine dedication to quality."
+                    </p>
+                    </div>
+                    <div class="card-footer bg-white">
+                    <h6 class="mb-0" style="color: #002060;">Hajia Fati</h6>
+                    <small class="text-muted d-block">CEO at Kabita Memorial School Complex</small>
+                    <small class="text-muted d-block">Country: Tamale</small>
+                    <small class="text-muted">December 05, 2023</small>
+                    </div>
+                </div>
+                </div>
+                <!-- Testimonial 13 -->
+                <div class="carousel-item">
+                <div class="card h-100 shadow-sm mx-auto" style="max-width: 500px;">
+                    <div class="card-body">
+                    <div class="mb-3">
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                        <i class="fas fa-star" style="color: #FFA500;"></i>
+                    </div>
+                    <p class="card-text fst-italic">
+                        "Their visionary approach has propelled our business forward."
+                    </p>
+                    </div>
+                    <div class="card-footer bg-white text-center">
+                    <h6 class="mb-0" style="color: #002060;">Madam Sara</h6>
+                    <small class="text-muted d-block">Founder & CEO at Truandrew Ventures</small>
+                    <small class="text-muted d-block">Country: Tamale</small>
+                    <small class="text-muted">January 10, 2024</small>
                     </div>
                 </div>
                 </div>
@@ -437,6 +825,7 @@
             </div>
         </div>
     </section>
+
 
   </main>
 
