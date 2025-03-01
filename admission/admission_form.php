@@ -73,7 +73,7 @@
             padding-bottom: 50px; 
         }
         .accommodation-notice { 
-            padding-top: 10rem; 
+            padding-top: 7rem; 
             padding-bottom: 1rem; 
         }
         @media (max-width: 768px) {
