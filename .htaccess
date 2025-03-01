@@ -2,3 +2,8 @@
     Order allow,deny
     Deny from all
 </Files>
+
+SetEnv DB_HOST localhost
+SetEnv DB_NAME u948335622_nebatech
+SetEnv DB_USER u948335622_nebatech
+SetEnv DB_PASS imAbdulHafiz@122996
