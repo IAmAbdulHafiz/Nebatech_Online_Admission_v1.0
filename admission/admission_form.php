@@ -74,6 +74,15 @@
             padding-top: 7rem; 
             padding-bottom: 50px; 
         }
+        @media (max-width: 768px) {
+        .carousel-item img {
+            height: 60vh; 
+        }
+        . img{
+            width: 100%;
+        }
+
+        }
     </style>
 </head>
 <body>
