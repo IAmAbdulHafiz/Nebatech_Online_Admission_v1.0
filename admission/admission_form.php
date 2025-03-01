@@ -86,6 +86,13 @@
     <!-- Include Header -->
     <?php include("includes/header_potal_login.php"); ?>
 
+    <!-- Accommodation Notice Section -->
+    <div class="container my-4">
+        <div class="alert alert-info text-center">
+            <strong>Important Notice:</strong> Please note that Nebatech is solely a training hub and does not provide accommodation or boarding facilities for learners coming from far away. We kindly advise that you make your own arrangements for lodging.
+        </div>
+    </div>
+
     <!-- Main Content -->
     <div class="container admission_form mt-4">
         <div class="row align-items-center">
@@ -114,11 +121,6 @@
                         <p class="text-center">Application Fee: <b>GH₵100</b></p>
                         <p class="text-center">Fill the form below to purchase the application form online</p>
                         <p class="text-center"><b>Note:</b> After payment, you will receive your Serial Number and PIN via SMS and Email.</p>
-
-                        <!-- Accommodation Notice -->
-                        <div class="alert alert-info">
-                            <strong>Important Notice:</strong> Please note that Nebatech is solely a training hub and does not provide accommodation or boarding facilities for learners coming from far away. We kindly advise that you make your own arrangements for lodging.
-                        </div>
                         
                         <?php if (!empty($_SESSION['success_message'])) : ?>
                             <div class="alert alert-success">
