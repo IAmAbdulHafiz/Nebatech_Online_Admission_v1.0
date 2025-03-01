@@ -147,7 +147,6 @@
       width: 100%;
       height: 350px;
       object-fit: cover;
-      
     }
     .team-info {
       padding: 20px;
@@ -196,6 +195,13 @@
     <h1>About Nebatech</h1>
     <p>Innovation, excellence, and a commitment to transforming technology into solutions that empower businesses.</p>
   </header>
+  
+  <!-- Accommodation Notice -->
+  <div class="container my-4">
+    <div class="alert alert-info text-center" role="alert">
+      <strong>Important Notice:</strong> Please note that Nebatech is solely a training hub and does not provide accommodation or boarding facilities for learners coming from far away. We kindly advise that you make your own arrangements for lodging.
+    </div>
+  </div>
   
   <!-- Our Story Section -->
   <section class="about-section">

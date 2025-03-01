@@ -112,6 +112,11 @@
     <div class="container programmes-section">
       <p class="text-center lead">We offer specialized training programs designed to help individuals develop skills in the following areas:</p>
       
+      <!-- Accommodation Notice -->
+      <div class="alert alert-info text-center" role="alert">
+        <strong>Important Notice:</strong> Please note that Nebatech is solely a training hub and does not provide accommodation or boarding facilities for learners coming from far away. We kindly advise that you make your own arrangements for lodging.
+      </div>
+      
       <!-- Programs List -->
       <div class="row mt-5">
         <!-- Program 1: Introduction to AI -->

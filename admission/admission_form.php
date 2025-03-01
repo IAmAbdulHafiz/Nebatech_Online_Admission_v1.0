@@ -37,12 +37,10 @@
             padding-right: 0.5rem;
         }
         .card-body { 
-
             min-height: 400px;
             padding: 1rem;
             width: 100%; 
             border-radius: 0.5rem;
-
         }
         .form-control { 
             border-radius: 8px;
@@ -75,13 +73,12 @@
             padding-bottom: 50px; 
         }
         @media (max-width: 768px) {
-        .carousel-item img {
-            height: 60vh; 
-        }
-        . img{
-            width: 100%;
-        }
-
+            .carousel-item img {
+                height: 60vh; 
+            }
+            .img{
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -112,11 +109,16 @@
             <!-- Admission Info and Payment Form -->
             <div class="col-md-6">
                 <div class="card shadow-lg">
-                    <div class="card-body .card-container  d-flex flex-column justify-content-between">
+                    <div class="card-body d-flex flex-column justify-content-between">
                         <h2 class="text-center" style="color: #002060;">NTSS Admission Form</h2>
                         <p class="text-center">Application Fee: <b>GH₵100</b></p>
                         <p class="text-center">Fill the form below to purchase the application form online</p>
                         <p class="text-center"><b>Note:</b> After payment, you will receive your Serial Number and PIN via SMS and Email.</p>
+
+                        <!-- Accommodation Notice -->
+                        <div class="alert alert-info">
+                            <strong>Important Notice:</strong> Please note that Nebatech is solely a training hub and does not provide accommodation or boarding facilities for learners coming from far away. We kindly advise that you make your own arrangements for lodging.
+                        </div>
                         
                         <?php if (!empty($_SESSION['success_message'])) : ?>
                             <div class="alert alert-success">

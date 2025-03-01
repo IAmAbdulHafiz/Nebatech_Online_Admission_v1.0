@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -69,6 +69,13 @@
             padding: 5rem 0;
             background-color: var(--light-bg);
         }
+        
+        /* Accommodation Notice Section */
+        .accommodation-notice {
+            padding: 2rem 0;
+            background-color: var(--light-bg);
+        }
+
         /* Cards */
         .card {
             border: none;
@@ -196,6 +203,22 @@
                             Warm regards,<br>
                             <strong>Abdul-Hafiz Yussif</strong><br>
                             Founder & CEO, Nebatech Software Solution Ltd.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Accommodation Notice Section -->
+    <section class="accommodation-notice">
+        <div class="container">
+            <h2 class="text-center mb-5" data-aos="fade-up">Important Notice</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-10" data-aos="fade-up" data-aos-delay="200">
+                    <div class="bg-white p-5 rounded-3 shadow-sm">
+                        <p class="lead">
+                            Please note that Nebatech is solely a training hub and does not provide accommodation or boarding facilities for learners coming from far away. We kindly advise that you make your own arrangements for lodging.
                         </p>
                     </div>
                 </div>
