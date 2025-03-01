@@ -22,8 +22,8 @@
     /* Split-screen container: fill viewport minus header/footer */
     .split-screen-container {
       background: #fff;
-      padding-bottom: 3rem;
-      padding-top: 3rem;
+      padding-bottom: 2rem;
+      padding-top: 6rem;
     }
     /* Left Column: Carousel with dark overlay */
     .left-column {
@@ -50,7 +50,7 @@
       max-width: 600px;
       width: 100%;
       height: 100vh;
-      padding: 7.5rem 2rem;
+      padding: 2rem 2rem;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       border-radius: 10px;
       padding-bottom: 1rem;
