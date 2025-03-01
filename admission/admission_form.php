@@ -21,8 +21,8 @@
     }
     /* Split-screen container: fill viewport minus header/footer */
     .split-screen-container {
-      min-height: calc(100vh - 100px); /* Adjust as needed */
       background: #fff;
+      padding-bottom: 3rem;
     }
     /* Left Column: Carousel with dark overlay */
     .left-column {
