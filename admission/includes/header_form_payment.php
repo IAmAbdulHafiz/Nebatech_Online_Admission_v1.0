@@ -7,7 +7,7 @@
         <i class="fas fa-arrow-left"></i>
       </a>
       <!-- Logo and Site Name -->
-      <a href="/admission/index.php" style="text-decoration: none;">
+      <a href="../index.php" style="text-decoration: none;">
         <img src="/assets/images/logo.png" alt="Nebatech Logo" style="height: 50px; vertical-align: middle;">
       </a>
     </div>
