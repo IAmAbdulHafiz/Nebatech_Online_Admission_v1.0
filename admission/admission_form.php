@@ -72,6 +72,11 @@
             padding-top: 7rem; 
             padding-bottom: 50px; 
         }
+        .accommodation-notice { 
+            margin-top: 5rem;
+            padding-top: 1rem; 
+            padding-bottom: 1rem; 
+        }
         @media (max-width: 768px) {
             .carousel-item img {
                 height: 60vh; 
@@ -87,7 +92,7 @@
     <?php include("includes/header_potal_login.php"); ?>
 
     <!-- Accommodation Notice Section -->
-    <div class="container my-4">
+    <div class="container accommodation-notice my-4">
         <div class="alert alert-info text-center">
             <strong>Important Notice:</strong> Please note that Nebatech is solely a training hub and does not provide accommodation or boarding facilities for learners coming from far away. We kindly advise that you make your own arrangements for lodging.
         </div>
