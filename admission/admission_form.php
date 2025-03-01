@@ -39,12 +39,10 @@
     }
     /* Right Column: Form card */
     .right-column {
-      background-color: #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 2rem;
-      width: 100%;
+      padding: 0rem;
     }
     .form-container {
       background: #fff;
