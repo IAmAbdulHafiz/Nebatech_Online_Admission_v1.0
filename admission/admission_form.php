@@ -6,58 +6,62 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>NEBATECH - Online Admission Form</title>
   <link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
+  
+  <!-- External Stylesheets -->
   <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-
+  
+  <link rel="stylesheet" href="../assets/css/style.css">
+  
   <style>
-    /* Optional: remove column spacing */
-    .row.no-gutters [class^="col-"], 
-    .row.no-gutters [class*=" col-"] {
+    /* Remove default column spacing */
+    .row.no-gutters > [class*="col-"] {
       padding-right: 0;
       padding-left: 0;
-      margin: 0;
     }
-
-    /* This container will fill the remaining space between header and footer */
+    /* Split-screen container: fill viewport minus header/footer */
     .split-screen-container {
-      /* If you want it to fill the viewport minus header & footer:*/
-      min-height: calc(100vh - 100px);
-         /*(Adjust 120px to match your header/footer total height) */
+      min-height: calc(100vh - 100px); /* Adjust as needed */
       background: #fff;
     }
-
-    /* Left column (carousel or static image) */
+    /* Left Column: Carousel with dark overlay */
     .left-column {
-      background-color: #002060; /* or remove if only showing images */
-      /* If you want it to fill entire container height: */
+      background-color: #002060;
       display: flex;
       align-items: center;
       justify-content: center;
     }
     .left-column .carousel-item img {
-      object-fit: cover;
       width: 100%;
-      height: 100%;
-      filter: brightness(90%);
+      height: 100vh;
+      object-fit: cover;
+      filter: brightness(85%);
     }
-
-    /* Right column (form) */
+    /* Right Column: Form card */
     .right-column {
       background-color: #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 2rem;
     }
-
-    /* Form container styling */
     .form-container {
+      background: #fff;
       max-width: 400px;
       width: 100%;
-      padding: 1rem;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      border-radius: 0.5rem;
+      padding: 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border-radius: 10px;
     }
-
+    .form-container h2 {
+      color: #002060;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .form-container p {
+      font-size: 0.95rem;
+      text-align: center;
+    }
     .form-control {
       border-radius: 8px;
       padding: 1rem;
@@ -67,21 +71,26 @@
       border: none; 
       border-radius: 8px; 
       font-size: 16px; 
-      padding: 12px; 
-      transition: 0.3s; 
+      padding: 12px;
+      transition: background 0.3s;
     }
     .btn-primary:hover { 
       background: #FFA500; 
     }
-
-    .alert { 
+    .alert {
       font-size: 14px; 
-      text-align: center; 
+      text-align: center;
     }
-
+    /* Responsive adjustments */
     @media (max-width: 768px) {
       .left-column .carousel-item img {
         height: auto;
+      }
+      .split-screen-container {
+        flex-direction: column;
+      }
+      .right-column {
+        padding: 1rem;
       }
     }
   </style>
@@ -89,11 +98,11 @@
 <body>
   <!-- HEADER -->
   <?php include("includes/header_potal_login.php"); ?>
-
+  
   <!-- Main Content: Split-Screen Layout -->
   <div class="container-fluid split-screen-container">
     <div class="row no-gutters">
-      <!-- Left Side: Carousel (or static image) -->
+      <!-- Left Side: Carousel -->
       <div class="col-md-6 left-column">
         <div id="welcomeCarousel" class="carousel slide carousel-fade w-100" data-bs-ride="carousel">
           <div class="carousel-inner">
@@ -109,33 +118,33 @@
           </div>
         </div>
       </div>
-
+      
       <!-- Right Side: Form -->
       <div class="col-md-6 right-column">
         <div class="form-container">
           <!-- Accommodation Notice -->
           <div class="alert alert-info">
-            <strong>Important Notice:</strong> Please note that Nebatech is solely a training hub and does not provide accommodation or boarding facilities for learners coming from far away. We kindly advise that you make your own arrangements for lodging.
+            <strong>Important Notice:</strong> Nebatech is solely a training hub and does not provide accommodation or boarding facilities for learners coming from far away. Please make your own lodging arrangements.
           </div>
-
-          <h2 class="text-center" style="color: #002060;">NTSS Admission Form</h2>
-          <p class="text-center">Application Fee: <b>GH₵100</b></p>
-          <p class="text-center">Fill the form below to purchase the application form online</p>
-          <p class="text-center"><b>Note:</b> After payment, you will receive your Serial Number and PIN via SMS and Email.</p>
-
+          
+          <h2>NTSS Admission Form</h2>
+          <p>Application Fee: <b>GH₵100</b></p>
+          <p>Fill the form below to purchase the application form online</p>
+          <p><b>Note:</b> After payment, you will receive your Serial Number and PIN via SMS and Email.</p>
+          
           <!-- Success/Error Messages -->
           <?php if (!empty($_SESSION['success_message'])) : ?>
             <div class="alert alert-success">
               <?php echo $_SESSION['success_message']; unset($_SESSION['success_message']); ?>
             </div>
           <?php endif; ?>
-
+          
           <?php if (!empty($_SESSION['error_message'])) : ?>
             <div class="alert alert-danger">
               <?php echo $_SESSION['error_message']; unset($_SESSION['error_message']); ?>
             </div>
           <?php endif; ?>
-
+          
           <!-- Form -->
           <form method="POST" action="api/hubtel_payment.php">
             <div class="mb-3">
@@ -156,7 +165,7 @@
               </button>
             </div>
           </form>
-
+          
           <hr>
           <p class="text-center">Already applied? <a href="login.php">Login to continue</a></p>
           <p class="text-center">Yet to start your application? <a href="signup.php">Signup</a></p>
@@ -164,10 +173,10 @@
       </div>
     </div>
   </div>
-
+  
   <!-- FOOTER -->
   <?php include("../includes/footer.php"); ?>
-
+  
   <!-- Scripts -->
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
