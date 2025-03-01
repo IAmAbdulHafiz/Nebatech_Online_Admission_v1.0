@@ -31,7 +31,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding-top: 0rem;
     }
     .left-column .carousel-item img {
       width: 100%;
@@ -44,7 +43,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding-top: 2rem;
     }
     .form-container {
       background: #fff;
