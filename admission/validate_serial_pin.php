@@ -5,16 +5,36 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $serial = htmlspecialchars($_POST['serial']);
-    $pin = htmlspecialchars($_POST['pin']);
-    $email = htmlspecialchars($_POST['email']);
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-    $confirmPassword = $_POST['confirm-password'];
-    $firstName = htmlspecialchars($_POST['firstName']);
-    $surname = htmlspecialchars($_POST['surname']);
+    // Validate required fields
+    if (!isset($_POST['serial'], $_POST['pin'], $_POST['email'], $_POST['password'], $_POST['confirm-password'], $_POST['firstName'], $_POST['surname'])) {
+        header("Location: signup.php?error=Missing+required+fields");
+        exit();
+    }
 
-    // Validate serial number and PIN using the transactions table,
-    // ensuring the transaction is completed and unused.
+    $serial = htmlspecialchars(trim($_POST['serial']));
+    $pin = htmlspecialchars(trim($_POST['pin']));
+    $email = trim($_POST['email']);
+    $password = $_POST['password'];
+    $confirmPassword = $_POST['confirm-password'];
+    $firstName = htmlspecialchars(trim($_POST['firstName']));
+    $surname = htmlspecialchars(trim($_POST['surname']));
+
+    // Validate email format
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        header("Location: signup.php?error=Invalid+email+format");
+        exit();
+    }
+
+    // Validate password match
+    if ($password !== $confirmPassword) {
+        header("Location: signup.php?error=Passwords+do+not+match");
+        exit();
+    }
+
+    // Hash password after validation
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+    // Validate serial number and PIN
     $query = "SELECT * FROM transactions 
               WHERE serial_number = :serial 
                 AND pin = :pin 
@@ -27,36 +47,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $transaction = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if (!$transaction) {
-        // No valid transaction record found
         header("Location: signup.php?error=Invalid+Serial+Number+or+PIN+or+already+used");
         exit();
     }
 
-    // Check if the serial number is already used in the applicants table
-    $checkSerialQuery = "SELECT * FROM applicants WHERE serial_number = :serial";
+    // Check if the serial number is already used in applicants table
+    $checkSerialQuery = "SELECT 1 FROM applicants WHERE serial_number = :serial";
     $checkSerialStmt = $conn->prepare($checkSerialQuery);
     $checkSerialStmt->bindParam(':serial', $serial);
     $checkSerialStmt->execute();
-    $serialUsed = $checkSerialStmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($serialUsed) {
+    if ($checkSerialStmt->fetch()) {
         header("Location: signup.php?error=Serial+Number+is+already+used");
         exit();
     }
 
-    // Check if the passwords match
-    if ($password !== $confirmPassword) {
-        header("Location: signup.php?error=Passwords+do+not+match");
-        exit();
-    }
-
-    // Insert user details into the applicants table,
-    // including first name and surname, and marking the serial as used.
+    // Insert user details into applicants table
     $insertQuery = "INSERT INTO applicants (email, password, serial_number, pin, first_name, surname, is_used) 
                     VALUES (:email, :password, :serial, :pin, :first_name, :surname, 1)";
     $insertStmt = $conn->prepare($insertQuery);
     $insertStmt->bindParam(':email', $email);
-    $insertStmt->bindParam(':password', $password);
+    $insertStmt->bindParam(':password', $hashedPassword);
     $insertStmt->bindParam(':serial', $serial);
     $insertStmt->bindParam(':pin', $pin);
     $insertStmt->bindParam(':first_name', $firstName);
@@ -64,9 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $insertStmt->execute();
 
     // Mark the serial number/PIN as used in the transactions table
-    $updateQuery = "UPDATE transactions 
-                    SET is_used = 1 
-                    WHERE serial_number = :serial AND pin = :pin";
+    $updateQuery = "UPDATE transactions SET is_used = 1 WHERE serial_number = :serial AND pin = :pin";
     $updateStmt = $conn->prepare($updateQuery);
     $updateStmt->bindParam(':serial', $serial);
     $updateStmt->bindParam(':pin', $pin);
