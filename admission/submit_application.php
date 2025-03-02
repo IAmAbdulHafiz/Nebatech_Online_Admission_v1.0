@@ -142,7 +142,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $applicant_id,
                     htmlspecialchars($experience['company']),
                     htmlspecialchars($experience['role']),
-                    htmlspecialchars($experience['duration'])
+                    htmlspecialchars($experience['start_date']),
+                    htmlspecialchars($experience['end_date'])
                 ]);
             }
         }
