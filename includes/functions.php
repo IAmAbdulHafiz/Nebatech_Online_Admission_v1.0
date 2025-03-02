@@ -4,6 +4,17 @@
 require_once '../vendor/autoload.php';
 use Twilio\Rest\Client;
 
+function addNotification($user_id, $message) {
+    var_dump($user_id); // Should output an integer, not an object
+    global $conn;
+    $query = "INSERT INTO notifications (user_id, message, status, created_at) VALUES (:user_id, :message, 'unread', NOW())";
+    $stmt = $conn->prepare($query);
+    $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+    $stmt->bindParam(':message', $message, PDO::PARAM_STR);
+    $stmt->execute();
+}
+
+
 if (!function_exists('addNotification')) {
     function addNotification($user_id, $message) {
         global $conn;
