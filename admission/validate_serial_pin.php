@@ -5,6 +5,30 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Debugging output
+    var_dump($_POST);
+    exit(); // Check if passwords are received correctly
+
+    if (!isset($_POST['password'], $_POST['confirm-password'])) {
+        die("Error: Password fields are missing.");
+    }
+
+    $password = trim($_POST['password']);
+    $confirmPassword = trim($_POST['confirm-password']);
+
+    // Debugging output before comparing passwords
+    var_dump($password, $confirmPassword);
+    exit(); // Check if they match exactly
+
+    if ($password !== $confirmPassword) {
+        header("Location: signup.php?error=Passwords+do+not+match");
+        exit();
+    }
+}
+?>
+<!--
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Validate required fields
     if (!isset($_POST['serial'], $_POST['pin'], $_POST['email'], $_POST['password'], $_POST['confirm-password'], $_POST['firstName'], $_POST['surname'])) {
         header("Location: signup.php?error=Missing+required+fields");
@@ -87,4 +111,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     header("Location: signup.php?msg=Account+created+successfully!");
     exit();
 }
-?>
+?>-->
