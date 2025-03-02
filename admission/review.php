@@ -135,9 +135,6 @@ function getField($field, $default = 'Not provided') {
               <?php else: ?>
                 <p><strong>Devices Owned:</strong> Not provided</p>
               <?php endif; ?>
-              <p class="criteria-note">
-                Note: Owning a laptop, desktop, or smartphone is part of our eligibility criteria for our competence‑based training programs. Having at least one of these devices is highly recommended and may be required depending on the program selected.
-              </p>
             </div>
           </section>
 

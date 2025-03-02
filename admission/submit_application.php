@@ -35,8 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Insert personal information (using applicant_id)
         $stmt = $conn->prepare("INSERT INTO personal_information 
-            (applicant_id, first_name, middle_name, last_name, date_of_birth, sex, place_of_birth, house_address, digital_address, city, region, country, nationality, identification_type, identification_number, identification_document, marital_status, number_of_children, religion, email, phone_number, other_phone_number, postal_address, passport_photo) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            (applicant_id, first_name, middle_name, last_name, date_of_birth, sex, place_of_birth, house_address, digital_address, city, region, country, nationality, identification_type, identification_number, identification_document, marital_status, number_of_children, religion, email, phone_number, other_phone_number, postal_address, passport_photo, devices_owned) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         $stmt->execute([
             $applicant_id,
             htmlspecialchars($applicationData['personal_info']['first_name']),
@@ -61,7 +61,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             htmlspecialchars($applicationData['personal_info']['phone_number']),
             htmlspecialchars($applicationData['personal_info']['other_phone_number']),
             htmlspecialchars($applicationData['personal_info']['postal_address']),
-            htmlspecialchars($applicationData['personal_info']['passport_photo'])
+            htmlspecialchars($applicationData['personal_info']['passport_photo']),
+            htmlspecialchars(implode(', ', $applicationData['personal_info']['devices'] ?? []))
         ]);
 
         // Insert educational background (using applicant_id)
@@ -81,26 +82,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         // Insert programme selection (using applicant_id)
-        $stmt = $conn->prepare("INSERT INTO program_selections (application_id, choice_number, program_name, program_fee) VALUES (?, 1, ?, ?)");
+        $stmt = $conn->prepare("INSERT INTO program_selections (application_id, choice_number, program_name, session) VALUES (?, 1, ?, ?)");
         $stmt->execute([
             $applicant_id,
             htmlspecialchars($applicationData['programme_selection']['first_choice']),
-            htmlspecialchars($applicationData['programme_selection']['first_choice_fee'] ?? 0)
+            htmlspecialchars($applicationData['programme_selection']['session_first'])
         ]);
         if (!empty($applicationData['programme_selection']['second_choice'])) {
-            $stmt = $conn->prepare("INSERT INTO program_selections (application_id, choice_number, program_name, program_fee) VALUES (?, 2, ?, ?)");
+            $stmt = $conn->prepare("INSERT INTO program_selections (application_id, choice_number, program_name, session) VALUES (?, 2, ?, ?)");
             $stmt->execute([
                 $applicant_id,
                 htmlspecialchars($applicationData['programme_selection']['second_choice']),
-                htmlspecialchars($applicationData['programme_selection']['second_choice_fee'] ?? 0)
+                htmlspecialchars($applicationData['programme_selection']['session_second'])
             ]);
         }
         if (!empty($applicationData['programme_selection']['third_choice'])) {
-            $stmt = $conn->prepare("INSERT INTO program_selections (application_id, choice_number, program_name, program_fee) VALUES (?, 3, ?, ?)");
+            $stmt = $conn->prepare("INSERT INTO program_selections (application_id, choice_number, program_name, session) VALUES (?, 3, ?, ?)");
             $stmt->execute([
                 $applicant_id,
                 htmlspecialchars($applicationData['programme_selection']['third_choice']),
-                htmlspecialchars($applicationData['programme_selection']['third_choice_fee'] ?? 0)
+                htmlspecialchars($applicationData['programme_selection']['session_third'])
             ]);
         }
 

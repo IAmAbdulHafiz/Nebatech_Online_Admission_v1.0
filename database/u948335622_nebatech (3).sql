@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Feb 27, 2025 at 05:00 PM
+-- Generation Time: Mar 02, 2025 at 07:36 AM
 -- Server version: 10.11.10-MariaDB
 -- PHP Version: 7.2.34
 
@@ -72,7 +72,9 @@ INSERT INTO `applicants` (`id`, `serial_number`, `pin`, `first_name`, `surname`,
 (5, 'N2541749C3D699B', '368006', 'Abdul-Hafiz', 'Adam', 'abdulhafiz@nebatech.com', '$2y$10$2XEXmiihKN.leYTryASbxOsdAvu.E396exhKX4AybqibTILi99jM6', 1, 'Not Started', 'a1bcf8665719e3efef3da83e5c65fc35', NULL, 0, ''),
 (6, 'N255470E1A525C3', '285286', 'Rahama', 'Karim', 'rahama@nebatech.com', '$2y$10$61A/JPXvz0THKRv4/GEXieCDFz19bmcstQr.QfE1HiHSTn9Lu8nsS', 1, 'Not Started', NULL, NULL, 0, ''),
 (7, 'N251FD4A1951126', '583650', 'Abdul-Hafiz', 'Yussif', 'info@nebatech.com', '$2y$10$Xqnwakf398CshQCrBhewaucP8E4zKLqXKgpw6Je48IfVIHvM.IXzW', 1, 'Not Started', NULL, NULL, 0, ''),
-(8, 'N2505ACD6AFBBA8', '620532', 'Mohammed Awal', 'Yussif', 'mawalyussif@nebatech.com', '$2y$10$sLYAbNGDeIbwMLqPfeYwVOIJhhE0112k3otMMs.5MWyohbkgAzDwi', 1, 'Not Started', NULL, NULL, 0, '');
+(8, 'N2505ACD6AFBBA8', '620532', 'Mohammed Awal', 'Yussif', 'mawalyussif@nebatech.com', '$2y$10$sLYAbNGDeIbwMLqPfeYwVOIJhhE0112k3otMMs.5MWyohbkgAzDwi', 1, 'Not Started', NULL, NULL, 0, ''),
+(10, 'N25785A1293349F', '499038', 'Moses  S', 'Konlan', 'konsmoses@gmail.com', '$2y$10$NvVGC7gTumuetEJR8XhtkO7ma.6TEMI32aA3pPsS..Oz0grSwhO.C', 1, 'Not Started', NULL, NULL, 0, ''),
+(11, 'N25517C0FE6A769', '330426', 'HARIATU', 'ABDUL HAMID', 'imabdulhafiz.yussif@gmail.com', '$2y$10$dw9618oOfgJWZ5qqI7Ti5uXZfJX2oj9Kbq.sCpLsMoWPNo9xPYjg2', 1, 'Not Started', NULL, NULL, 0, '');
 
 -- --------------------------------------------------------
 
@@ -149,15 +151,16 @@ CREATE TABLE `notifications` (
   `user_id` int(11) NOT NULL,
   `message` text NOT NULL,
   `is_read` tinyint(1) DEFAULT 0,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `status` varchar(50) NOT NULL DEFAULT 'unread'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `notifications`
 --
 
-INSERT INTO `notifications` (`id`, `user_id`, `message`, `is_read`, `created_at`) VALUES
-(1, 3, 'Your application has been submitted successfully.', 1, '2025-01-24 19:52:17');
+INSERT INTO `notifications` (`id`, `user_id`, `message`, `is_read`, `created_at`, `status`) VALUES
+(1, 3, 'Your application has been submitted successfully.', 1, '2025-01-24 19:52:17', 'unread');
 
 -- --------------------------------------------------------
 
@@ -419,7 +422,15 @@ INSERT INTO `transactions` (`id`, `customer_name`, `customer_email`, `customer_p
 (14, 'Abdul-Hafiz Yussif', 'abdulhafiz@nebatech.com', '0249241156', 0.30, 'NTSS_67be4a3bdcea6', 'Pending', '2025-02-25 22:54:51', NULL, NULL, NULL, 0),
 (15, 'Abdul-Hafiz Yussif', 'abdulhafiz@nebatech.com', '0249241156', 0.30, 'NTSS_67be519006c9b', 'Pending', '2025-02-25 23:26:08', NULL, NULL, NULL, 0),
 (16, 'Abdul-Hafiz Yussif', 'abdulhafiz@nebatech.com', '0249241156', 0.30, 'NTSS_67be5774cef37', 'Pending', '2025-02-25 23:51:16', NULL, NULL, NULL, 0),
-(17, 'Abdul-Hafiz Yussif', 'abdulhafiz@nebatech.com', '0249241156', 0.30, 'NTSS_67bf42b5eee6e', 'Completed', '2025-02-26 16:35:01', 'N2505ACD6AFBBA8', '620532', NULL, 1);
+(17, 'Abdul-Hafiz Yussif', 'abdulhafiz@nebatech.com', '0249241156', 0.30, 'NTSS_67bf42b5eee6e', 'Completed', '2025-02-26 16:35:01', 'N2505ACD6AFBBA8', '620532', NULL, 1),
+(18, 'Abdul-Hafiz Yussif', 'abdulhafiz@nebatech.com', '0249241156', 0.30, 'NTSS_67c16a73af42d', 'Completed', '2025-02-28 07:49:07', 'N25A17BC6E27DFA', '536062', NULL, 0),
+(19, 'Moses S Konlan', 'konsmoses@gmail.com', '0542361603', 0.30, 'NTSS_67c1919a6f13b', 'Completed', '2025-02-28 10:36:10', 'N25785A1293349F', '499038', NULL, 1),
+(20, 'Abdul-Hafiz Yussif', 'info@nebatech.com', '0249241156', 0.30, 'NTSS_67c28369ac4f4', 'Completed', '2025-03-01 03:47:53', 'N25517C0FE6A769', '330426', NULL, 1),
+(21, 'Abdul-Hafiz Yussif', 'imabdulhafiz.yussif@gmail.com', '0534351719', 0.30, 'NTSS_67c2a36a5e569', 'Completed', '2025-03-01 06:04:26', 'N25362ABDD8788F', '543775', NULL, 0),
+(22, 'Abdul-Hafiz Yussif', 'IDICICI@YAHOO.COM', '0249241156', 0.30, 'NTSS_67c2a42f1a417', 'Pending', '2025-03-01 06:07:43', NULL, NULL, NULL, 0),
+(23, 'JAFARU ABDUL-AZIZ', 'info@keengh.org', '0208271749', 0.30, 'NTSS_67c2a56e51872', 'Pending', '2025-03-01 06:13:02', NULL, NULL, NULL, 0),
+(24, 'JAFARU ABDUL-AZIZ', 'info@nebatech.com', '0249241156', 0.30, 'NTSS_67c2a59e6b14b', 'Completed', '2025-03-01 06:13:50', 'N255F9F4A14D047', '586478', NULL, 0),
+(25, 'Abdul-Hafiz Yussif', 'info@nebatech.com', '0249241156', 0.30, 'NTSS_67c2fe2e486d3', 'Pending', '2025-03-01 12:31:42', NULL, NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -564,7 +575,7 @@ ALTER TABLE `work_experience`
 -- AUTO_INCREMENT for table `applicants`
 --
 ALTER TABLE `applicants`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `audit_logs`
@@ -582,7 +593,7 @@ ALTER TABLE `legal_consent`
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `notification_logs`
@@ -600,7 +611,7 @@ ALTER TABLE `payment_details`
 -- AUTO_INCREMENT for table `personal_information`
 --
 ALTER TABLE `personal_information`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `program_selections`
@@ -630,7 +641,7 @@ ALTER TABLE `sponsor_information`
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `users`
