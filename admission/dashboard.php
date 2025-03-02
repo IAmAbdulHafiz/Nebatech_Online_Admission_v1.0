@@ -13,10 +13,13 @@ if (!isset($_SESSION['applicant'])) {
 $applicant = $_SESSION['applicant'];
 include('../config/database.php');
 
-// Retrieve application status from the database
-$stmt = $conn->prepare("SELECT application_status FROM applicants WHERE id = ?");
+// Re-fetch the applicant record from the database to get the updated application status.
+$stmt = $conn->prepare("SELECT * FROM applicants WHERE id = ?");
 $stmt->execute([$applicant['id']]);
-$applicationStatus = $stmt->fetchColumn();
+$latestApplicant = $stmt->fetch(PDO::FETCH_ASSOC);
+
+// Use the latest status if available; otherwise, default to the session value or 'Not Started'.
+$applicationStatus = isset($latestApplicant['application_status']) ? $latestApplicant['application_status'] : (isset($applicant['application_status']) ? $applicant['application_status'] : 'Not Started');
 
 // Fetch notifications for the applicant.
 $stmt = $conn->prepare("SELECT * FROM notifications WHERE user_id = ? AND is_read = 0 ORDER BY created_at DESC");
@@ -42,11 +45,10 @@ $unreadCount = count($notifications);
       margin-left: 250px;
       padding: 20px;
       position: relative;
-      z-index: 1;  /* Ensure main content is behind the sidebar when sidebar's z-index is higher */
+      z-index: 1;
     }
     @media (max-width: 768px) {
       .main-content {
-        /* We keep the margin-left if you wish, but the sidebar will overlay on top of it */
         margin-left: 0px;
       }
     }
