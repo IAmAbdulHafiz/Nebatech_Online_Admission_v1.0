@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 02, 2025 at 07:36 AM
+-- Generation Time: Mar 02, 2025 at 11:27 AM
 -- Server version: 10.11.10-MariaDB
 -- PHP Version: 7.2.34
 
@@ -74,7 +74,9 @@ INSERT INTO `applicants` (`id`, `serial_number`, `pin`, `first_name`, `surname`,
 (7, 'N251FD4A1951126', '583650', 'Abdul-Hafiz', 'Yussif', 'info@nebatech.com', '$2y$10$Xqnwakf398CshQCrBhewaucP8E4zKLqXKgpw6Je48IfVIHvM.IXzW', 1, 'Not Started', NULL, NULL, 0, ''),
 (8, 'N2505ACD6AFBBA8', '620532', 'Mohammed Awal', 'Yussif', 'mawalyussif@nebatech.com', '$2y$10$sLYAbNGDeIbwMLqPfeYwVOIJhhE0112k3otMMs.5MWyohbkgAzDwi', 1, 'Not Started', NULL, NULL, 0, ''),
 (10, 'N25785A1293349F', '499038', 'Moses  S', 'Konlan', 'konsmoses@gmail.com', '$2y$10$NvVGC7gTumuetEJR8XhtkO7ma.6TEMI32aA3pPsS..Oz0grSwhO.C', 1, 'Not Started', NULL, NULL, 0, ''),
-(11, 'N25517C0FE6A769', '330426', 'HARIATU', 'ABDUL HAMID', 'imabdulhafiz.yussif@gmail.com', '$2y$10$dw9618oOfgJWZ5qqI7Ti5uXZfJX2oj9Kbq.sCpLsMoWPNo9xPYjg2', 1, 'Not Started', NULL, NULL, 0, '');
+(11, 'N25517C0FE6A769', '330426', 'HARIATU', 'ABDUL HAMID', 'imabdulhafiz.yussif@gmail.com', '$2y$10$dw9618oOfgJWZ5qqI7Ti5uXZfJX2oj9Kbq.sCpLsMoWPNo9xPYjg2', 1, 'Not Started', NULL, NULL, 0, ''),
+(34, '', '', '', '', '', '', 0, 'Pending', NULL, NULL, 5, 'Unpaid'),
+(35, '', '', '', '', '', '', 0, 'Pending', NULL, NULL, 5, 'Unpaid');
 
 -- --------------------------------------------------------
 
@@ -115,7 +117,9 @@ CREATE TABLE `educational_background` (
 INSERT INTO `educational_background` (`id`, `application_id`, `school_name`, `course`, `qualification`, `start_year`, `end_year`, `certificate_path`, `created_at`) VALUES
 (0, 1, 'Catholic University', 'Computer Science', 'Bachelor Degree', '2025-01-01', '2025-01-17', '../uploads/certificates/Salifu_Certificate.jpg', '2025-01-22 15:01:15'),
 (0, 2, 'Catholic University', 'Computer Science', 'Bachelor Degree', '2024-12-31', '2025-01-22', '../uploads/certificates/welcome1.JPG', '2025-01-23 07:15:20'),
-(0, 7, 'Ghana Senior High School', 'Business', 'WASSCE', '2025-01-01', '2025-01-22', '../uploads/certificates/CamScanner 01-10-2025 14.13.pdf', '2025-01-24 19:52:17');
+(0, 7, 'Ghana Senior High School', 'Business', 'WASSCE', '2025-01-01', '2025-01-22', '../uploads/certificates/CamScanner 01-10-2025 14.13.pdf', '2025-01-24 19:52:17'),
+(0, 34, 'Ghana Senior High School', 'Computer Science', 'Bachelor Degree', '2025-02-26', '2025-03-03', '../uploads/certificates/Salifu_Certificate.jpg', '2025-03-02 08:16:09'),
+(0, 35, 'Tamale Senior School', 'Business', 'WASSCE', '2024-06-02', '2025-02-28', '../uploads/certificates/Salifu_Certificate.jpg', '2025-03-02 11:21:57');
 
 -- --------------------------------------------------------
 
@@ -138,7 +142,9 @@ CREATE TABLE `legal_consent` (
 INSERT INTO `legal_consent` (`id`, `application_id`, `privacy_policy_accepted`, `accurate_information_acknowledged`, `created_at`) VALUES
 (1, 1, 1, 1, '2025-01-22 15:01:15'),
 (2, 2, 1, 1, '2025-01-23 07:15:20'),
-(3, 7, 0, 0, '2025-01-24 19:52:17');
+(3, 7, 0, 0, '2025-01-24 19:52:17'),
+(4, 34, 1, 1, '2025-03-02 08:16:09'),
+(5, 35, 1, 1, '2025-03-02 11:21:57');
 
 -- --------------------------------------------------------
 
@@ -160,7 +166,9 @@ CREATE TABLE `notifications` (
 --
 
 INSERT INTO `notifications` (`id`, `user_id`, `message`, `is_read`, `created_at`, `status`) VALUES
-(1, 3, 'Your application has been submitted successfully.', 1, '2025-01-24 19:52:17', 'unread');
+(1, 3, 'Your application has been submitted successfully.', 1, '2025-01-24 19:52:17', 'unread'),
+(0, 5, 'Your application has been submitted successfully.', 1, '2025-03-02 08:16:09', 'unread'),
+(0, 5, 'Your application has been submitted successfully.', 0, '2025-03-02 11:21:57', 'unread');
 
 -- --------------------------------------------------------
 
@@ -201,7 +209,9 @@ CREATE TABLE `other_information` (
 INSERT INTO `other_information` (`id`, `application_id`, `source_of_information`, `has_medical_condition`, `medical_condition_description`, `has_criminal_record`, `criminal_record_description`, `created_at`) VALUES
 (0, 1, 'Friends or Family', 1, 'Hello world', 1, 'I love coding', '2025-01-22 15:01:15'),
 (0, 2, 'Advertisement', 1, 'none', 1, 'None', '2025-01-23 07:15:20'),
-(0, 7, 'Friends or Family', 1, 'None', 1, 'None', '2025-01-24 19:52:17');
+(0, 7, 'Friends or Family', 1, 'None', 1, 'None', '2025-01-24 19:52:17'),
+(0, 34, 'Friends or Family', 1, 'none', 1, 'none', '2025-03-02 08:16:09'),
+(0, 35, 'Advertisement', 0, '', 0, '', '2025-03-02 11:21:57');
 
 -- --------------------------------------------------------
 
@@ -273,17 +283,20 @@ CREATE TABLE `personal_information` (
   `postal_address` text DEFAULT NULL,
   `passport_photo` varchar(255) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `applicant_id` int(11) DEFAULT NULL
+  `applicant_id` int(11) DEFAULT NULL,
+  `devices_owned` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `personal_information`
 --
 
-INSERT INTO `personal_information` (`id`, `first_name`, `middle_name`, `last_name`, `date_of_birth`, `sex`, `place_of_birth`, `house_address`, `digital_address`, `city`, `region`, `country`, `nationality`, `identification_type`, `identification_number`, `identification_document`, `marital_status`, `number_of_children`, `religion`, `email`, `phone_number`, `other_phone_number`, `postal_address`, `passport_photo`, `created_at`, `applicant_id`) VALUES
-(1, 'Abdul-Hafiz', 'WUNZOYA', 'ALHASSAN', '2025-01-02', 'Female', 'Kumbungu', 'Russia Bungalows, opposite Controller &amp;amp; Accountant General&amp;#039;s Department', 'Russia Bungalows, opposite Controller &amp;amp; Ac', 'Tamale, Ghana', 'Northern', 'Ghana', 'Ghanaian', 'Ghana Card', 'GHA-000000-0', '../uploads/file_6790f8396fc9a3.46765924.png', 'Married', 2, 'Islam', 'info@keengh.org', '0244472704', '0244472704', 'HNO DV 154 DATOYILI NR FATIHI COLLEGE', '../uploads/file_6790f8396fa9c7.69483050.jpg', '2025-01-22 15:01:15', NULL),
-(2, 'IKIMATU', 'Tipagya', 'ALHASSAN', '2025-01-17', 'Female', 'Kumbungu', 'Russia Bungalows, opposite Controller &amp;amp; Accountant General&amp;#039;s Department', 'Russia Bungalows, opposite Controller &amp;amp; Ac', 'Tamale, Ghana', 'Northern', 'Ghana', 'Ghanaian', 'Voter ID', 'GHA-000000-0', '../uploads/file_6791ec2dd86ae1.95199326.JPG', 'Married', 0, 'Islam', 'info@keengh.org', '0244472704', '0244472704', 'KAG576 Rake St. NT-0118-9613', '../uploads/file_6791ec2dcd2cd1.66670963.JPG', '2025-01-23 07:15:20', NULL),
-(3, 'Abdul-Hafiz', 'WUNZOYA', 'Yussif', '2025-01-09', 'Female', 'Tamale', 'EastEnd Liquidations, 3320 Williamsburg Rd', 'EastEnd Liquidations, 3320 Williamsburg Rd', 'Henrico', 'Northern', 'Ghana', 'Ghanaian', 'Ghana Card', 'GHA-0000000-0', '../uploads/file_6793ee6dd2c067.73402107.jpg', 'Married', 2, 'Islam', 'IDICICI@YAHOO.COM', '0208271749', '0208271749', 'EastEnd Liquidations, 3320 Williamsburg Rd', '../uploads/file_6793ee6dd29469.80088935.jpg', '2025-01-24 19:52:17', NULL);
+INSERT INTO `personal_information` (`id`, `first_name`, `middle_name`, `last_name`, `date_of_birth`, `sex`, `place_of_birth`, `house_address`, `digital_address`, `city`, `region`, `country`, `nationality`, `identification_type`, `identification_number`, `identification_document`, `marital_status`, `number_of_children`, `religion`, `email`, `phone_number`, `other_phone_number`, `postal_address`, `passport_photo`, `created_at`, `applicant_id`, `devices_owned`) VALUES
+(1, 'Abdul-Hafiz', 'WUNZOYA', 'ALHASSAN', '2025-01-02', 'Female', 'Kumbungu', 'Russia Bungalows, opposite Controller &amp;amp; Accountant General&amp;#039;s Department', 'Russia Bungalows, opposite Controller &amp;amp; Ac', 'Tamale, Ghana', 'Northern', 'Ghana', 'Ghanaian', 'Ghana Card', 'GHA-000000-0', '../uploads/file_6790f8396fc9a3.46765924.png', 'Married', 2, 'Islam', 'info@keengh.org', '0244472704', '0244472704', 'HNO DV 154 DATOYILI NR FATIHI COLLEGE', '../uploads/file_6790f8396fa9c7.69483050.jpg', '2025-01-22 15:01:15', NULL, NULL),
+(2, 'IKIMATU', 'Tipagya', 'ALHASSAN', '2025-01-17', 'Female', 'Kumbungu', 'Russia Bungalows, opposite Controller &amp;amp; Accountant General&amp;#039;s Department', 'Russia Bungalows, opposite Controller &amp;amp; Ac', 'Tamale, Ghana', 'Northern', 'Ghana', 'Ghanaian', 'Voter ID', 'GHA-000000-0', '../uploads/file_6791ec2dd86ae1.95199326.JPG', 'Married', 0, 'Islam', 'info@keengh.org', '0244472704', '0244472704', 'KAG576 Rake St. NT-0118-9613', '../uploads/file_6791ec2dcd2cd1.66670963.JPG', '2025-01-23 07:15:20', NULL, NULL),
+(3, 'Abdul-Hafiz', 'WUNZOYA', 'Yussif', '2025-01-09', 'Female', 'Tamale', 'EastEnd Liquidations, 3320 Williamsburg Rd', 'EastEnd Liquidations, 3320 Williamsburg Rd', 'Henrico', 'Northern', 'Ghana', 'Ghanaian', 'Ghana Card', 'GHA-0000000-0', '../uploads/file_6793ee6dd2c067.73402107.jpg', 'Married', 2, 'Islam', 'IDICICI@YAHOO.COM', '0208271749', '0208271749', 'EastEnd Liquidations, 3320 Williamsburg Rd', '../uploads/file_6793ee6dd29469.80088935.jpg', '2025-01-24 19:52:17', NULL, NULL),
+(20, 'Abdul-Hafiz', '', 'Yussif', '2024-06-03', 'Male', 'Kumbungu', 'EastEnd Liquidations, 3320 Williamsburg Rd', 'EastEnd Liquidations, 3320 Williamsburg Rd', 'Henrico', 'Northern', 'Ghana', 'Ghanaian', 'Ghana Card', 'GHA-0000000-0', '', 'Single', 0, 'Islam', 'IDICICI@YAHOO.COM', '0206789600', '0206789600', 'K68 MBO LK, Dungu UDS', '../uploads/file_67c3f8ffc86135.78255422.jpg', '2025-03-02 08:16:09', 34, NULL),
+(21, 'Abdul-Hafiz', 'Malitity', 'Yussif', '2025-02-23', 'Male', 'Tamale', 'HNO DV 154 DATOYILI NR FATIHI COLLEGE', 'HNO DV 154 DATOYILI NR FATIHI COLLEGE', 'Tamale', 'Northern', 'Ghana', 'Ghanaian', 'Ghana Card', 'GHA-0000000-0', '', 'Single', 0, 'Islam', 'imabdulhafiz.yussif@gmail.com', '0206789600', '0249241156', 'HNO DV 154 DATOYILI NR FATIHI COLLEGE', '../uploads/file_67c422f0e9d6b9.16009110.jpg', '2025-03-02 11:21:57', 35, 'Smartphone');
 
 -- --------------------------------------------------------
 
@@ -296,23 +309,29 @@ CREATE TABLE `program_selections` (
   `application_id` int(11) NOT NULL,
   `choice_number` tinyint(4) NOT NULL,
   `program_name` varchar(100) NOT NULL,
-  `program_fee` decimal(10,2) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `session` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `program_selections`
 --
 
-INSERT INTO `program_selections` (`id`, `application_id`, `choice_number`, `program_name`, `program_fee`, `created_at`) VALUES
-(1, 1, 1, 'Introduction to Artificial Intelligence', 0.00, '2025-01-22 15:01:15'),
-(2, 1, 2, 'AI for Beginners: Machine Learning', 0.00, '2025-01-22 15:01:15'),
-(3, 1, 3, 'Database Management &amp;amp; Administration', 0.00, '2025-01-22 15:01:15'),
-(4, 2, 1, 'Introduction to Artificial Intelligence', 0.00, '2025-01-23 07:15:20'),
-(5, 2, 2, 'AI for Beginners: Machine Learning', 0.00, '2025-01-23 07:15:20'),
-(6, 7, 1, 'Introduction to Artificial Intelligence', 0.00, '2025-01-24 19:52:17'),
-(7, 7, 2, 'Database Management &amp;amp; Administration', 0.00, '2025-01-24 19:52:17'),
-(8, 7, 3, 'Database Management &amp;amp; Administration', 0.00, '2025-01-24 19:52:17');
+INSERT INTO `program_selections` (`id`, `application_id`, `choice_number`, `program_name`, `created_at`, `session`) VALUES
+(1, 1, 1, 'Introduction to Artificial Intelligence', '2025-01-22 15:01:15', ''),
+(2, 1, 2, 'AI for Beginners: Machine Learning', '2025-01-22 15:01:15', ''),
+(3, 1, 3, 'Database Management &amp;amp; Administration', '2025-01-22 15:01:15', ''),
+(4, 2, 1, 'Introduction to Artificial Intelligence', '2025-01-23 07:15:20', ''),
+(5, 2, 2, 'AI for Beginners: Machine Learning', '2025-01-23 07:15:20', ''),
+(6, 7, 1, 'Introduction to Artificial Intelligence', '2025-01-24 19:52:17', ''),
+(7, 7, 2, 'Database Management &amp;amp; Administration', '2025-01-24 19:52:17', ''),
+(8, 7, 3, 'Database Management &amp;amp; Administration', '2025-01-24 19:52:17', ''),
+(15, 34, 1, 'AI for Beginners: Machine Learning', '2025-03-02 08:16:09', ''),
+(16, 34, 2, 'Introduction to Artificial Intelligence', '2025-03-02 08:16:09', ''),
+(17, 34, 3, 'Introduction to Artificial Intelligence', '2025-03-02 08:16:09', ''),
+(18, 35, 1, 'iPhone &amp;amp; Computer Hardware Technician', '2025-03-02 11:21:57', 'Morning'),
+(19, 35, 2, 'Database Management &amp;amp; Administration', '2025-03-02 11:21:57', 'Afternoon'),
+(20, 35, 3, 'Database Management &amp;amp; Administration', '2025-03-02 11:21:57', 'Evening');
 
 -- --------------------------------------------------------
 
@@ -387,7 +406,9 @@ CREATE TABLE `sponsor_information` (
 INSERT INTO `sponsor_information` (`id`, `application_id`, `first_name`, `last_name`, `relationship`, `occupation`, `house_address`, `digital_address`, `city`, `region`, `phone_number`, `created_at`) VALUES
 (1, 1, 'Yussif', 'Abdulai', 'Brother', 'Imam', 'KAG576 Rake St. NT-0118-9613', 'KAG576 Rake St. NT-0118-9613', 'Tamale', 'Accra', '0206789600', '2025-01-22 15:01:15'),
 (2, 2, 'Yussif', 'Abdulai', 'Father', 'Imam', 'KAG576 Rake St. NT-0118-9613', 'KAG576 Rake St. NT-0118-9613', 'Tamale', 'Accra', '0206789600', '2025-01-23 07:15:20'),
-(3, 7, 'JAFARU', 'ABDUL-AZIZ', 'Father', 'Farmer', 'K68 MBO LK, Dungu UDS', 'K68 MBO LK, Dungu UDS', 'TAMALE', 'Northern', '0208271749', '2025-01-24 19:52:17');
+(3, 7, 'JAFARU', 'ABDUL-AZIZ', 'Father', 'Farmer', 'K68 MBO LK, Dungu UDS', 'K68 MBO LK, Dungu UDS', 'TAMALE', 'Northern', '0208271749', '2025-01-24 19:52:17'),
+(6, 34, 'Abdul-Hafiz', 'Yussif', 'Father', 'Imam', '100 from gab energy filling station, Kakpagyili Rd', '100 from gab energy filling station, Kakpagyili Rd', 'Tamale', 'Northern', '0249241156', '2025-03-02 08:16:09'),
+(7, 35, 'JAFARU', 'ABDUL-AZIZ', 'Brother', 'Farmer', 'K68 MBO LK, Dungu UDS', 'K68 MBO LK, Dungu UDS', 'TAMALE', 'Northern', '0208271749', '2025-03-02 11:21:57');
 
 -- --------------------------------------------------------
 
@@ -474,6 +495,14 @@ CREATE TABLE `work_experience` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
+-- Dumping data for table `work_experience`
+--
+
+INSERT INTO `work_experience` (`id`, `application_id`, `company_name`, `position`, `start_date`, `end_date`) VALUES
+(1, 34, 'Nebatech Software Solution Ltd', 'Software Engineering', '0000-00-00', '0000-00-00'),
+(2, 35, 'Nebatech Software Solution Ltd', 'Software Engineer', '0000-00-00', '0000-00-00');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -495,12 +524,6 @@ ALTER TABLE `audit_logs`
 ALTER TABLE `legal_consent`
   ADD PRIMARY KEY (`id`),
   ADD KEY `application_id` (`application_id`);
-
---
--- Indexes for table `notifications`
---
-ALTER TABLE `notifications`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `notification_logs`
@@ -575,7 +598,7 @@ ALTER TABLE `work_experience`
 -- AUTO_INCREMENT for table `applicants`
 --
 ALTER TABLE `applicants`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `audit_logs`
@@ -587,13 +610,7 @@ ALTER TABLE `audit_logs`
 -- AUTO_INCREMENT for table `legal_consent`
 --
 ALTER TABLE `legal_consent`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `notifications`
---
-ALTER TABLE `notifications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `notification_logs`
@@ -611,13 +628,13 @@ ALTER TABLE `payment_details`
 -- AUTO_INCREMENT for table `personal_information`
 --
 ALTER TABLE `personal_information`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `program_selections`
 --
 ALTER TABLE `program_selections`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `serial_pins`
@@ -635,7 +652,7 @@ ALTER TABLE `settings`
 -- AUTO_INCREMENT for table `sponsor_information`
 --
 ALTER TABLE `sponsor_information`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `transactions`
@@ -653,7 +670,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `work_experience`
 --
 ALTER TABLE `work_experience`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

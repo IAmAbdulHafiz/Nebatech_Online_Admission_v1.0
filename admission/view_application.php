@@ -11,7 +11,7 @@ if (!isset($_SESSION['application_submitted'])) {
 include('../config/database.php');
 
 // Retrieve the application data from the database
-$stmt = $conn->prepare("SELECT * FROM personal_information WHERE application_id = (SELECT id FROM applications WHERE user_id = ?)");
+$stmt = $conn->prepare("SELECT * FROM personal_information WHERE applicant_id = ?");
 $stmt->execute([$_SESSION['applicant']['id']]);
 $applicationData = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -260,7 +260,7 @@ function getField($field, $default = 'Not provided') {
                             <li class="list-group-item">
                                 <strong>Company:</strong> <?= getField($experience['company']) ?><br>
                                 <strong>Role:</strong> <?= getField($experience['role']) ?><br>
-                                <strong>Duration:</strong> <?= getField($experience['duration']) ?>
+                                <strong>Duration:</strong> <?= getField($experience['start_date']) ?> - <?= getField($experience['end_date']) ?>
                             </li>
                         <?php endforeach; ?>
                     <?php else: ?>
