@@ -1,257 +1,123 @@
+<?php
+// Include your external database configuration
+include('../config/database.php'); // This file should initialize the $conn variable
+
+// Process form submission
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Sanitize and retrieve form data
+    $serial       = trim($_POST['serial_number']);
+    $pin          = trim($_POST['pin']);
+    $first_name   = trim($_POST['first_name']);
+    $surname      = trim($_POST['surname']);
+    $email        = trim($_POST['email']);
+    $password     = $_POST['password'];
+    $confirm_pass = $_POST['confirm_password'];
+
+    // Validate required fields
+    if (empty($serial) || empty($pin) || empty($first_name) || empty($surname) || empty($email) || empty($password) || empty($confirm_pass)) {
+        echo "All fields are required.";
+        exit;
+    }
+
+    // Check if passwords match
+    if ($password !== $confirm_pass) {
+        echo "Passwords do not match.";
+        exit;
+    }
+
+    // Validate Serial Number and PIN from the transactions table
+    $stmt = $conn->prepare("SELECT id, status, is_used FROM transactions WHERE serial_number = ? AND pin = ?");
+    $stmt->bind_param("ss", $serial, $pin);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    // If no record found, invalid credentials
+    if ($result->num_rows === 0) {
+        echo "Invalid Serial Number or PIN.";
+        exit;
+    }
+
+    $transaction = $result->fetch_assoc();
+
+    // Check if the transaction is completed and not already used
+    if ($transaction['status'] !== 'Completed') {
+        echo "The transaction is not completed.";
+        exit;
+    }
+    if ($transaction['is_used']) {
+        echo "This Serial Number and PIN have already been used.";
+        exit;
+    }
+
+    // Optional: Check if this serial number and PIN have already been registered in applicants table
+    $stmt_check = $conn->prepare("SELECT id FROM applicants WHERE serial_number = ? AND pin = ?");
+    $stmt_check->bind_param("ss", $serial, $pin);
+    $stmt_check->execute();
+    $result_check = $stmt_check->get_result();
+    if ($result_check->num_rows > 0) {
+        echo "This Serial Number and PIN combination is already registered.";
+        exit;
+    }
+
+    // Hash the password before storing it
+    $passwordHash = password_hash($password, PASSWORD_BCRYPT);
+
+    // Insert the new applicant into the applicants table
+    $stmt_insert = $conn->prepare("INSERT INTO applicants (serial_number, pin, first_name, surname, email, password) VALUES (?, ?, ?, ?, ?, ?)");
+    $stmt_insert->bind_param("ssssss", $serial, $pin, $first_name, $surname, $email, $passwordHash);
+
+    if ($stmt_insert->execute()) {
+        // Mark the transaction as used
+        $stmt_update = $conn->prepare("UPDATE transactions SET is_used = 1 WHERE id = ?");
+        $stmt_update->bind_param("i", $transaction['id']);
+        $stmt_update->execute();
+
+        echo "Registration successful!";
+    } else {
+        echo "Error: " . $stmt_insert->error;
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nebatech Admission Portal - Sign Up</title>
-  <style>
-    body {
-      background: linear-gradient(135deg, #002060, #0056b3);
-      color: #333;
-      height: 100vh;
-      line-height: 1.6;
-    }
-
-    .container-signup {
-      max-width: 500px;
-      margin: 7rem auto;
-      padding: 2rem;
-      background-color: #fff;
-      border-radius: 15px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    }
-
-    .header {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-
-    .header h1 {
-      color: #1a73e8;
-      margin-bottom: 0.5rem;
-    }
-
-    .header p {
-      color: #666;
-    }
-
-    /* Floating label container */
-    .floating-label-group {
-      position: relative;
-      margin-bottom: 1.5rem;
-    }
-
-    /* Style the input */
-    .floating-label-group input {
-      width: 100%;
-      padding: 1rem 0.75rem 0.75rem;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      font-size: 1rem;
-      transition: border-color 0.3s;
-    }
-
-    .floating-label-group input:focus {
-      outline: none;
-      border-color: #1a73e8;
-    }
-
-    /* Position the label inside the input */
-    .floating-label-group label {
-      position: absolute;
-      top: 0.75rem;
-      left: 0.75rem;
-      font-weight: 500;
-      color: #444;
-      background-color: #fff;
-      padding: 0 5px;
-      transition: all 0.2s ease;
-      pointer-events: none;
-    }
-
-    /* When the input is focused or has text, move the label */
-    .floating-label-group input:focus + label,
-    .floating-label-group input:not(:placeholder-shown) + label {
-      top: -0.5rem;
-      left: 0.5rem;
-      font-size: 0.75rem;
-      color: #1a73e8;
-    }
-
-    .error {
-      color: #dc3545;
-      font-size: 0.875rem;
-      margin-top: 0.25rem;
-      display: none;
-    }
-
-    button {
-      background-color: #002060;
-      color: #fff;
-      padding: 1rem 2rem;
-      border: none;
-      border-radius: 15px;
-      cursor: pointer;
-      font-size: 1rem;
-      width: 100%;
-      transition: background-color 0.3s;
-    }
-
-    button:hover {
-      background-color: #e55c00;
-    }
-
-    /* Add the required asterisk via CSS */
-    .required::after {
-      content: "*";
-      color: #dc3545;
-      margin-left: 4px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Registration Form</title>
+    <style>
+        /* Basic styles for the form */
+        form { max-width: 400px; margin: 0 auto; }
+        label { display: block; margin-top: 15px; }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] { width: 100%; padding: 8px; }
+        button { margin-top: 20px; padding: 10px 15px; }
+    </style>
 </head>
 <body>
-  <?php include("includes/header.php"); ?>
-  <div class="container-signup">
-    <div class="header">
-      <h1>Register</h1>
-      <p>Create your account to begin the application process</p>
-    </div>
+    <form method="post" action="">
+        <h2>Register</h2>
+        <label for="serial_number">Serial Number:</label>
+        <input type="text" id="serial_number" name="serial_number" required>
 
-    <form id="signupForm" action="applicant/validate_serial_pin.php" method="POST" onsubmit="return validateForm(event)">
-        <div class="form-group">
-          <div class="floating-label-group">
-            <input type="text" id="serialNumber" name="serial" placeholder=" " required>
-            <label for="serialNumber" class="required">Serial Number</label>
-          </div>
-          <div class="error" id="serialNumberError"></div>
-        </div>
+        <label for="pin">PIN:</label>
+        <input type="text" id="pin" name="pin" required>
 
-        <div class="form-group">
-          <div class="floating-label-group">
-            <input type="text" id="pin" name="pin" placeholder=" " required>
-            <label for="pin" class="required">PIN</label>
-          </div>
-          <div class="error" id="pinError"></div>
-        </div>
+        <label for="first_name">First Name:</label>
+        <input type="text" id="first_name" name="first_name" required>
 
-        <div class="form-group">
-          <div class="floating-label-group">
-            <input type="text" id="firstName" name="firstName" placeholder=" " required>
-            <label for="firstName" class="required">First Name</label>
-          </div>
-          <div class="error" id="firstNameError"></div>
-        </div>
+        <label for="surname">Surname:</label>
+        <input type="text" id="surname" name="surname" required>
 
-        <div class="form-group">
-          <div class="floating-label-group">
-            <input type="text" id="surname" name="surname" placeholder=" " required>
-            <label for="surname" class="required">Surname</label>
-          </div>
-          <div class="error" id="surnameError"></div>
-        </div>
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required>
 
-      <div class="form-group">
-        <div class="floating-label-group">
-          <input type="email" id="email" name="email" placeholder=" " required>
-          <label for="email" class="required">Email Address</label>
-        </div>
-        <div class="error" id="emailError"></div>
-      </div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
 
-        <div class="form-group">
-          <div class="floating-label-group">
-            <input type="password" id="password" name="password" placeholder=" " required>
-            <label for="password" class="required">Password</label>
-          </div>
-          <div class="error" id="passwordError"></div>
-        </div>
+        <label for="confirm_password">Confirm Password:</label>
+        <input type="password" id="confirm_password" name="confirm_password" required>
 
-        <div class="form-group">
-          <div class="floating-label-group">
-            <input type="password" id="confirmPassword" name="confirm-password" placeholder=" " required>
-            <label for="confirmPassword" class="required">Confirm Password</label>
-          </div>
-          <div class="error" id="confirmPasswordError"></div>
-        </div>
-
-      <button type="submit">Create Account</button>
+        <button type="submit">Register</button>
     </form>
-  </div>
-
-  <script>
-    function validateForm(event) {
-      event.preventDefault();
-      let isValid = true;
-      
-      // Reset errors
-      const errors = document.querySelectorAll('.error');
-      errors.forEach(error => error.style.display = 'none');
-
-      // Validate Serial Number
-      const serialNumber = document.getElementById('serialNumber').value;
-      if (serialNumber.length !== 11) {
-        showError('serialNumberError', 'Serial Number must be 10 characters long');
-        isValid = false;
-      }
-
-      // Validate PIN
-      const pin = document.getElementById('pin').value;
-      if (pin.length !== 6) {
-        showError('pinError', 'PIN must be 6 characters long');
-        isValid = false;
-      }
-
-      // Validate Email
-      const email = document.getElementById('email').value;
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) {
-        showError('emailError', 'Please enter a valid email address');
-        isValid = false;
-      }
-
-      // Validate Password
-      const password = document.getElementById('password').value;
-      const confirmPassword = document.getElementById('confirmPassword').value;
-      
-      if (password.length < 8) {
-        showError('passwordError', 'Password must be at least 8 characters long');
-        isValid = false;
-      }
-
-      if (password !== confirmPassword) {
-        showError('confirmPasswordError', 'Passwords do not match');
-        isValid = false;
-      }
-
-      // Check if Serial Number is already used
-      if (isSerialNumberUsed(serialNumber)) {
-        showError('serialNumberError', 'Serial Number is already used');
-        isValid = false;
-      }
-
-      if (isValid) {
-        // Here you would typically submit the form to your backend
-        alert('Form submitted successfully!');
-        // Uncomment the line below to submit the form to a backend
-        // document.getElementById('signupForm').submit();
-      }
-
-      return false;
-    }
-
-    function showError(elementId, message) {
-      const errorElement = document.getElementById(elementId);
-      errorElement.textContent = message;
-      errorElement.style.display = 'block';
-    }
-
-    function isSerialNumberUsed(serialNumber) {
-      // This is a placeholder function. Replace with actual logic to check if the serial number is already used.
-      // For example, you could make an AJAX request to your backend to check the serial number.
-      const usedSerialNumbers = ['1234567890', '0987654321']; // Example used serial numbers
-      return usedSerialNumbers.includes(serialNumber);
-    }
-  </script>
-  <?php include("../includes/public_footer.php"); ?>
 </body>
 </html>
