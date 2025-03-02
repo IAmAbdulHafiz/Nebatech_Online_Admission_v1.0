@@ -65,7 +65,7 @@ $yesNoOptions = ['Yes', 'No'];
       font-size: 1rem;
       font-weight: bold;
       line-height: 30px;
-    }
+    } 
   </style>
   <script>
     document.addEventListener('DOMContentLoaded', function () {

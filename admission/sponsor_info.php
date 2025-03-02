@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="progress mb-4">
           <div class="progress-bar" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
             Step 7 of 9
-          </div>
+          </div> 
         </div>
         <form action="" method="POST" id="sponsorForm">
           <div class="row">

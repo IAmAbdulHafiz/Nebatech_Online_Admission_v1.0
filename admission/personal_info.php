@@ -386,7 +386,7 @@ if (!isset($_SESSION['application']['user_id'])) {
             }
         });
 
-        // Show the first step initially
+        // Show the first step initially 
         showStep(currentStep);
 
         // Preview passport photo

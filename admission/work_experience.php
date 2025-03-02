@@ -156,7 +156,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     function removeWorkExperience(button) {
       var card = button.closest('.card');
-      card.remove();
+      card.remove(); 
     }
 
     $("#workExperienceForm").submit(function(e) {
