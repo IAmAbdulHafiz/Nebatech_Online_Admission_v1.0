@@ -43,7 +43,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     .content {
       margin-left: 270px; /* Adjust for sidebar width */
       padding: 20px;
-      flex: 1;
       position: relative;
       z-index: 1;
     }
