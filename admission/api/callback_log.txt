@@ -1,0 +1,144 @@
+[2025-02-26 16:39:48] Received data: Array
+(
+    [ResponseCode] => 0000
+    [Status] => Success
+    [Data] => Array
+        (
+            [CheckoutId] => 465dbee0b0334966a044269bf39b6c89
+            [SalesInvoiceId] => 226f622adc584e9fbf443dedbccce7ad
+            [ClientReference] => NTSS_67bf42b5eee6e
+            [Status] => Success
+            [Amount] => 0.31
+            [CustomerPhoneNumber] => 233598045444
+            [PaymentDetails] => Array
+                (
+                    [MobileMoneyNumber] => 233598045444
+                    [PaymentType] => mobilemoney
+                    [Channel] => mtn-gh
+                )
+
+            [Description] => The MTN Mobile Money payment has been approved and processed successfully.
+        )
+
+)
+
+[2025-02-28 07:50:13] Received data: Array
+(
+    [ResponseCode] => 0000
+    [Status] => Success
+    [Data] => Array
+        (
+            [CheckoutId] => c32b3a1807484b04bb355e7e4ec03549
+            [SalesInvoiceId] => b6904e362c3d4fe1aeb88212fe34a5d1
+            [ClientReference] => NTSS_67c16a73af42d
+            [Status] => Success
+            [Amount] => 0.31
+            [CustomerPhoneNumber] => 233249241156
+            [PaymentDetails] => Array
+                (
+                    [MobileMoneyNumber] => 233249241156
+                    [PaymentType] => mobilemoney
+                    [Channel] => mtn-gh
+                )
+
+            [Description] => The MTN Mobile Money payment has been approved and processed successfully.
+        )
+
+)
+
+[2025-02-28 10:40:35] Received data: Array
+(
+    [ResponseCode] => 0000
+    [Status] => Success
+    [Data] => Array
+        (
+            [CheckoutId] => b04de889a1194f7591c995c8c20a7fef
+            [SalesInvoiceId] => 205c2919b09d4118b4ecfd44bddccafa
+            [ClientReference] => NTSS_67c1919a6f13b
+            [Status] => Success
+            [Amount] => 0.31
+            [CustomerPhoneNumber] => 233551966848
+            [PaymentDetails] => Array
+                (
+                    [MobileMoneyNumber] => 233551966848
+                    [PaymentType] => mobilemoney
+                    [Channel] => mtn-gh
+                )
+
+            [Description] => The MTN Mobile Money payment has been approved and processed successfully.
+        )
+
+)
+
+[2025-03-01 03:49:38] Received data: Array
+(
+    [ResponseCode] => 0000
+    [Status] => Success
+    [Data] => Array
+        (
+            [CheckoutId] => 67634cf1b608400bb7e42e8f7da8c730
+            [SalesInvoiceId] => cc0f173630244ed899ef91bbbfd52167
+            [ClientReference] => NTSS_67c28369ac4f4
+            [Status] => Success
+            [Amount] => 0.31
+            [CustomerPhoneNumber] => 233249241156
+            [PaymentDetails] => Array
+                (
+                    [MobileMoneyNumber] => 233249241156
+                    [PaymentType] => mobilemoney
+                    [Channel] => mtn-gh
+                )
+
+            [Description] => The MTN Mobile Money payment has been approved and processed successfully.
+        )
+
+)
+
+[2025-03-01 06:05:47] Received data: Array
+(
+    [ResponseCode] => 0000
+    [Status] => Success
+    [Data] => Array
+        (
+            [CheckoutId] => 5dc30612bc3949659b847177351b433e
+            [SalesInvoiceId] => 86794a98b4e14f2696664f09fe5e3c2e
+            [ClientReference] => NTSS_67c2a36a5e569
+            [Status] => Success
+            [Amount] => 0.31
+            [CustomerPhoneNumber] => 233249241156
+            [PaymentDetails] => Array
+                (
+                    [MobileMoneyNumber] => 233249241156
+                    [PaymentType] => mobilemoney
+                    [Channel] => mtn-gh
+                )
+
+            [Description] => The MTN Mobile Money payment has been approved and processed successfully.
+        )
+
+)
+
+[2025-03-01 06:15:15] Received data: Array
+(
+    [ResponseCode] => 0000
+    [Status] => Success
+    [Data] => Array
+        (
+            [CheckoutId] => 7953e58a9383466ba54c57d0619bd738
+            [SalesInvoiceId] => e54ab25f72de4a7da2d8966e934bb422
+            [ClientReference] => NTSS_67c2a59e6b14b
+            [Status] => Success
+            [Amount] => 0.31
+            [CustomerPhoneNumber] => 233249241156
+            [PaymentDetails] => Array
+                (
+                    [MobileMoneyNumber] => 233249241156
+                    [PaymentType] => mobilemoney
+                    [Channel] => mtn-gh
+                )
+
+            [Description] => The MTN Mobile Money payment has been approved and processed successfully.
+        )
+
+)
+

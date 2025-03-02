@@ -1,0 +1,6 @@
+SMS sent to: 0249241156, response: {"rate":0.0246,"messageId":"93bec613-eec0-43fb-8fe4-968e7f19ee33","status":0,"networkId":"62001","clientReference":null,"statusDescription":"request submitted successfully"}
+SMS sent to: 0249241156, response: {"rate":0.0246,"messageId":"a301e509-becc-407a-9337-da1c59bc0a7b","status":0,"networkId":"62001","clientReference":null,"statusDescription":"request submitted successfully"}
+SMS sent to: 0542361603, response: {"rate":0.0246,"messageId":"845159bc-1b77-4e5e-82f4-24ac8198e025","status":0,"networkId":"62001","clientReference":null,"statusDescription":"request submitted successfully"}
+SMS sent to: 0249241156, response: {"rate":0.0246,"messageId":"c48eb8a0-005c-43e6-ade5-f90984e4714d","status":0,"networkId":"62001","clientReference":null,"statusDescription":"request submitted successfully"}
+SMS sent to: 0534351719, response: {"rate":0.0246,"messageId":"704fb370-c5a3-4167-9ac1-f6ee4700525f","status":0,"networkId":"62001","clientReference":null,"statusDescription":"request submitted successfully"}
+SMS sent to: 0249241156, response: {"rate":0.0246,"messageId":"da31ca7d-f532-4435-8822-61e2bc1d819b","status":0,"networkId":"62001","clientReference":null,"statusDescription":"request submitted successfully"}
