@@ -31,7 +31,7 @@ function getField($field, $default = 'Not provided') {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NTSS - View Application</title>
-  <!-- Bootstrap CSS & Icons (same as dashboard) -->
+  <!-- Bootstrap CSS & Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
   <style>
@@ -58,6 +58,15 @@ function getField($field, $default = 'Not provided') {
     }
     .action-buttons {
       margin-bottom: 20px;
+    }
+    /* Print media: hide header, footer, and sidebar */
+    @media print {
+      header, footer, #sidebar, .action-buttons { 
+        display: none !important; 
+      }
+      .main-content {
+        margin: 0;
+      }
     }
   </style>
 </head>
@@ -292,32 +301,30 @@ function getField($field, $default = 'Not provided') {
   <?php include("../includes/footer.php"); ?>
   <!-- Bootstrap Bundle JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- jsPDF Library for PDF Download -->
+  <!-- jsPDF and html2canvas Libraries -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script>
-    // Print Function
+    // Print Function: Opens print dialog for the main content only (header, footer, and sidebar hidden via CSS)
     document.getElementById('printBtn').addEventListener('click', function () {
       window.print();
     });
 
-    // Download PDF Function using jsPDF
+    // Download PDF Function using html2canvas and jsPDF
     document.getElementById('downloadBtn').addEventListener('click', function () {
-      const { jsPDF } = window.jspdf;
-      const doc = new jsPDF('p', 'pt', 'a4');
-      
-      // Select the content you want to export (using the main content container)
-      const content = document.getElementById('contentToPrint');
-
-      // Use the html method provided by jsPDF to render the content
-      doc.html(content, {
-          callback: function (doc) {
-              doc.save('application.pdf');
-          },
-          margin: [20, 20, 20, 20],
-          x: 0,
-          y: 0,
-          width: 550, // adjust as necessary for your content
-          windowWidth: content.scrollWidth
+      html2canvas(document.getElementById('contentToPrint')).then(function(canvas) {
+          const imgData = canvas.toDataURL('image/png');
+          const { jsPDF } = window.jspdf;
+          const doc = new jsPDF('p', 'mm', 'a4');
+          const pageWidth = doc.internal.pageSize.getWidth();
+          const pageHeight = doc.internal.pageSize.getHeight();
+          // Calculate the image dimensions to maintain aspect ratio
+          const imgWidth = pageWidth;
+          const imgHeight = canvas.height * imgWidth / canvas.width;
+          doc.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+          doc.save('application.pdf');
+      }).catch(function(error) {
+          console.error('Error generating PDF:', error);
       });
     });
   </script>
