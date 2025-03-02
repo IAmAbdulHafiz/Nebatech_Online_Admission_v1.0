@@ -25,6 +25,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit();
     }
 
+    var_dump($_POST['password'], $_POST['confirm-password']);
+    exit();
     // Validate password match
     if ($password !== $confirmPassword) {
         header("Location: signup.php?error=Passwords+do+not+match");
