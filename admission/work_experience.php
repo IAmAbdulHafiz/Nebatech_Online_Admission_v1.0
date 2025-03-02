@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     /* Page wrapper for consistent dashboard layout */
     .page-wrapper {
       display: flex;
-      flex-direction: none;
+      flex-direction: column;
       min-height: 100vh;
     }
     /* Main content area */
