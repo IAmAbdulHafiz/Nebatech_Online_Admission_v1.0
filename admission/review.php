@@ -227,10 +227,24 @@ function getField($field, $default = 'Not provided') {
             <h4>6. Programme Selection</h4> 
             <div class="card shadow-sm p-3">
               <ul class="list-group">
-                <li class="list-group-item"><strong>First Choice:</strong> <?= getField($applicationData['programme_selection']['first_choice'] ?? null) ?></li>
-                <li class="list-group-item"><strong>Second Choice:</strong> <?= getField($applicationData['programme_selection']['second_choice'] ?? null) ?></li>
-                <li class="list-group-item"><strong>Third Choice:</strong> <?= getField($applicationData['programme_selection']['third_choice'] ?? null) ?></li>
-                <li class="list-group-item"><strong>Session:</strong> <?= getField($applicationData['programme_selection']['campus'] ?? null) ?></li>
+                <li class="list-group-item">
+                  <strong>First Choice:</strong> <?= getField($applicationData['programme_selection']['first_choice'] ?? null) ?>
+                </li>
+                <li class="list-group-item">
+                  <strong>Session (First Choice):</strong> <?= getField($applicationData['programme_selection']['session_first'] ?? null) ?>
+                </li>
+                <li class="list-group-item">
+                  <strong>Second Choice:</strong> <?= getField($applicationData['programme_selection']['second_choice'] ?? null) ?>
+                </li>
+                <li class="list-group-item">
+                  <strong>Session (Second Choice):</strong> <?= getField($applicationData['programme_selection']['session_second'] ?? null) ?>
+                </li>
+                <li class="list-group-item">
+                  <strong>Third Choice:</strong> <?= getField($applicationData['programme_selection']['third_choice'] ?? null) ?>
+                </li>
+                <li class="list-group-item">
+                  <strong>Session (Third Choice):</strong> <?= getField($applicationData['programme_selection']['session_third'] ?? null) ?>
+                </li>
               </ul>
             </div>
           </section>
