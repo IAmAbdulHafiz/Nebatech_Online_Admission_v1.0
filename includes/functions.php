@@ -1,13 +1,11 @@
 <?php
-// filepath: /c:/xampp/htdocs/GitHub/online-admission-system/includes/functions.php
-
 require_once '../vendor/autoload.php';
 use Twilio\Rest\Client;
 
 if (!function_exists('addNotification')) {
-    function addNotification($user_id, $message) {
+    function addNotification($conn, $user_id, $message) {
         global $conn;
-        $query = "INSERT INTO notifications (user_id, message, status, created_at) VALUES (:user_id, :message, 'unread', NOW())";
+        $query = "INSERT INTO notifications (user_id, message, is_read, created_at) VALUES (:user_id, :message, 0, NOW())";
         $stmt = $conn->prepare($query);
         $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
         $stmt->bindParam(':message', $message, PDO::PARAM_STR);
@@ -16,7 +14,7 @@ if (!function_exists('addNotification')) {
 }
 
 if (!function_exists('fetchNotifications')) {
-    function fetchNotifications($user_id) {
+    function fetchNotifications($conn, $user_id) {
         global $conn;
         $query = "SELECT * FROM notifications WHERE user_id = :user_id AND is_read = 0 ORDER BY created_at DESC";
         $stmt = $conn->prepare($query);
@@ -27,7 +25,7 @@ if (!function_exists('fetchNotifications')) {
 }
 
 if (!function_exists('addNotificationLog')) {
-    function addNotificationLog($applicant_id, $type, $status, $message) {
+    function addNotificationLog($conn, $applicant_id, $type, $status, $message) {
         global $conn;
         $query = "INSERT INTO notification_logs (applicant_id, type, status, message, created_at) VALUES (:applicant_id, :type, :status, :message, NOW())";
         $stmt = $conn->prepare($query);
@@ -65,7 +63,7 @@ if (!function_exists('sendSmsAlert')) {
     }
 }
 
-function logAction($user_id, $action, $details = null) {
+function logAction($conn, $user_id, $action, $details = null) {
     global $conn;
     $query = "INSERT INTO logs (user_id, action, details) VALUES (:user_id, :action, :details)";
     $stmt = $conn->prepare($query);
