@@ -33,7 +33,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       background: #f8f9fa;
       min-height: 100vh;
     }
-
+    /* Page wrapper for consistent dashboard layout */
+    .page-wrapper {
+      min-height: 100vh;
+    }
     /* Main content area */
     .content {
       margin-left: 270px; /* Adjust for sidebar width */
