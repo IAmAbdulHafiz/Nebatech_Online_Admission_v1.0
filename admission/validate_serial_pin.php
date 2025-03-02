@@ -27,6 +27,10 @@ $confirmPassword = $_POST['confirm-password'];
 $firstName = htmlspecialchars(trim($_POST['firstName']));
 $surname = htmlspecialchars(trim($_POST['surname']));
 
+// Log the received password and confirm password values
+error_log("Password: $password");
+error_log("Confirm Password: $confirmPassword");
+
 // Validate email
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     die("Error: Invalid email format.");
