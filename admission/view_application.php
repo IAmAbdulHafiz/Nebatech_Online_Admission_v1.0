@@ -56,16 +56,29 @@ function getField($field, $default = 'Not provided') {
       max-width: 200px;
       height: 200px;
     }
+    .action-buttons {
+      margin-bottom: 20px;
+    }
   </style>
 </head>
 <body>
   <?php include("includes/header.php"); ?>
   <?php include("includes/sidebar.php"); ?>
   
-  <div class="main-content">
+  <div class="main-content" id="contentToPrint">
     <div class="container">
       <h2 class="mb-4 text-center" style="color: #002060;">View Your Application</h2>
       <p class="text-muted text-center">Below is the information you provided in your application.</p>
+
+      <!-- Action Buttons -->
+      <div class="d-flex justify-content-end action-buttons">
+          <button id="downloadBtn" class="btn btn-primary me-2">
+            <i class="bi bi-download"></i> Download PDF
+          </button>
+          <button id="printBtn" class="btn btn-secondary">
+            <i class="bi bi-printer"></i> Print
+          </button>
+      </div>
 
       <!-- Section: Personal Details -->
       <section>
@@ -277,6 +290,36 @@ function getField($field, $default = 'Not provided') {
   </div>
 
   <?php include("../includes/footer.php"); ?>
+  <!-- Bootstrap Bundle JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- jsPDF Library for PDF Download -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script>
+    // Print Function
+    document.getElementById('printBtn').addEventListener('click', function () {
+      window.print();
+    });
+
+    // Download PDF Function using jsPDF
+    document.getElementById('downloadBtn').addEventListener('click', function () {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF('p', 'pt', 'a4');
+      
+      // Select the content you want to export (using the main content container)
+      const content = document.getElementById('contentToPrint');
+
+      // Use the html method provided by jsPDF to render the content
+      doc.html(content, {
+          callback: function (doc) {
+              doc.save('application.pdf');
+          },
+          margin: [20, 20, 20, 20],
+          x: 0,
+          y: 0,
+          width: 550, // adjust as necessary for your content
+          windowWidth: content.scrollWidth
+      });
+    });
+  </script>
 </body>
 </html>
