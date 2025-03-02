@@ -3,7 +3,7 @@
 setcookie("userPreference", "darkMode", [
     'expires' => time() + (7 * 24 * 60 * 60), // Expires in 7 days
     'path' => '/',
-    'domain' => 'nebatech.com',   // Replace with your actual domain
+    'domain' => 'admissions.nebatech.com',   // Replace with your actual domain
     'secure' => true,               // Only send cookie over HTTPS
     'httponly' => true,             // Accessible only via HTTP(S), not JavaScript
     'samesite' => 'Strict'          // Prevent cross-site request forgery
