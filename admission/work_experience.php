@@ -29,9 +29,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="../assets/css/style.css">
   <style>
-    html, body {
-      height: 100%;
-      margin: 0;
+    body {
+      background: #f8f9fa;
+      min-height: 100vh;
     }
     /* Page wrapper for consistent dashboard layout */
     .page-wrapper {
@@ -43,7 +43,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     .content {
       margin-left: 270px; /* Adjust for sidebar width */
       padding: 20px;
-      flex: 1;
       position: relative;
       z-index: 1;
     }
