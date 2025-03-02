@@ -17,11 +17,11 @@ $programmes = [
     'Front-End Development' => '3,500.00 for 16 weeks',
     'Back-End Development' => '4,500.00 for 20 weeks',
     'Full-Stack Development' => '7,500.00 for 36 weeks',
-    'Database Management & Administration' => '4,000.00 for 16 weeks',
+    'Database Management and Administration' => '4,000.00 for 16 weeks',
     'Microsoft Office Suite Mastery' => '1,800.00 for 8 weeks',
-    'Video Editing & Production Technology' => '3,600.00 for 12 weeks',
-    'Graphic Design & Digital Arts' => '3,200.00 for 12 weeks',
-    'iPhone & Computer Hardware Technician' => '3,000.00 for 12 weeks',
+    'Video Editing and Production Technology' => '3,600.00 for 12 weeks',
+    'Graphic Design and Digital Arts' => '3,200.00 for 12 weeks',
+    'iPhone and Computer Hardware Technician' => '3,000.00 for 12 weeks',
 ];
 
 // Example session options
