@@ -144,8 +144,8 @@ function getField($field, $default = 'Not provided') {
             <h4>4. Educational Background</h4>
             <div class="card shadow-sm p-3">
                 <?php
-                $stmt = $conn->prepare("SELECT * FROM educational_background WHERE application_id = ?");
-                $stmt->execute([$applicationData['application_id']]);
+                $stmt = $conn->prepare("SELECT * FROM educational_background WHERE applicant_id = ?");
+                $stmt->execute([$applicationData['applicant_id']]);
                 $educationalBackground = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 ?>
                 <?php if (!empty($educationalBackground)): ?>
@@ -187,8 +187,8 @@ function getField($field, $default = 'Not provided') {
             <h4>Programme Selection</h4> 
             <div class="card shadow-sm p-3">
                 <?php
-                $stmt = $conn->prepare("SELECT * FROM program_selections WHERE application_id = ?");
-                $stmt->execute([$applicationData['application_id']]);
+                $stmt = $conn->prepare("SELECT * FROM program_selections WHERE applicant_id = ?");
+                $stmt->execute([$applicationData['applicant_id']]);
                 $programSelections = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 ?>
                 <ul class="list-group">
@@ -208,8 +208,8 @@ function getField($field, $default = 'Not provided') {
             <h4>Other Information</h4>
             <div class="card shadow-sm p-3">
                 <?php
-                $stmt = $conn->prepare("SELECT * FROM other_information WHERE application_id = ?");
-                $stmt->execute([$applicationData['application_id']]);
+                $stmt = $conn->prepare("SELECT * FROM other_information WHERE applicant_id = ?");
+                $stmt->execute([$applicationData['applicant_id']]);
                 $otherInformation = $stmt->fetch(PDO::FETCH_ASSOC);
                 ?>
                 <ul class="list-group">
@@ -227,8 +227,8 @@ function getField($field, $default = 'Not provided') {
             <h4>Parent/Guardian/Sponsor Information</h4>
             <div class="card shadow-sm p-3">
                 <?php
-                $stmt = $conn->prepare("SELECT * FROM sponsor_information WHERE application_id = ?");
-                $stmt->execute([$applicationData['application_id']]);
+                $stmt = $conn->prepare("SELECT * FROM sponsor_information WHERE applicant_id = ?");
+                $stmt->execute([$applicationData['applicant_id']]);
                 $sponsorInformation = $stmt->fetch(PDO::FETCH_ASSOC);
                 ?>
                 <ul class="list-group">
@@ -250,8 +250,8 @@ function getField($field, $default = 'Not provided') {
             <h4>Work Experience</h4>
             <div class="card shadow-sm p-3">
                 <?php
-                $stmt = $conn->prepare("SELECT * FROM work_experience WHERE application_id = ?");
-                $stmt->execute([$applicationData['application_id']]);
+                $stmt = $conn->prepare("SELECT * FROM work_experience WHERE applicant_id = ?");
+                $stmt->execute([$applicationData['applicant_id']]);
                 $workExperiences = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 ?>
                 <ul class="list-group">
