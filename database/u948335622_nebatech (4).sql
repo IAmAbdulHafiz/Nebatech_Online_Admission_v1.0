@@ -100,7 +100,7 @@ CREATE TABLE `audit_logs` (
 
 CREATE TABLE `educational_background` (
   `id` int(11) NOT NULL,
-  `application_id` int(11) NOT NULL,
+  `applicant_id` int(11) NOT NULL,
   `school_name` varchar(255) NOT NULL,
   `course` varchar(255) DEFAULT NULL,
   `qualification` varchar(50) NOT NULL,
@@ -114,7 +114,7 @@ CREATE TABLE `educational_background` (
 -- Dumping data for table `educational_background`
 --
 
-INSERT INTO `educational_background` (`id`, `application_id`, `school_name`, `course`, `qualification`, `start_year`, `end_year`, `certificate_path`, `created_at`) VALUES
+INSERT INTO `educational_background` (`id`, `applicant_id`, `school_name`, `course`, `qualification`, `start_year`, `end_year`, `certificate_path`, `created_at`) VALUES
 (0, 1, 'Catholic University', 'Computer Science', 'Bachelor Degree', '2025-01-01', '2025-01-17', '../uploads/certificates/Salifu_Certificate.jpg', '2025-01-22 15:01:15'),
 (0, 2, 'Catholic University', 'Computer Science', 'Bachelor Degree', '2024-12-31', '2025-01-22', '../uploads/certificates/welcome1.JPG', '2025-01-23 07:15:20'),
 (0, 7, 'Ghana Senior High School', 'Business', 'WASSCE', '2025-01-01', '2025-01-22', '../uploads/certificates/CamScanner 01-10-2025 14.13.pdf', '2025-01-24 19:52:17'),
@@ -129,7 +129,7 @@ INSERT INTO `educational_background` (`id`, `application_id`, `school_name`, `co
 
 CREATE TABLE `legal_consent` (
   `id` int(11) NOT NULL,
-  `application_id` int(11) NOT NULL,
+  `applicant_id` int(11) NOT NULL,
   `privacy_policy_accepted` tinyint(1) NOT NULL,
   `accurate_information_acknowledged` tinyint(1) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
@@ -139,7 +139,7 @@ CREATE TABLE `legal_consent` (
 -- Dumping data for table `legal_consent`
 --
 
-INSERT INTO `legal_consent` (`id`, `application_id`, `privacy_policy_accepted`, `accurate_information_acknowledged`, `created_at`) VALUES
+INSERT INTO `legal_consent` (`id`, `applicant_id`, `privacy_policy_accepted`, `accurate_information_acknowledged`, `created_at`) VALUES
 (1, 1, 1, 1, '2025-01-22 15:01:15'),
 (2, 2, 1, 1, '2025-01-23 07:15:20'),
 (3, 7, 0, 0, '2025-01-24 19:52:17'),
@@ -193,7 +193,7 @@ CREATE TABLE `notification_logs` (
 
 CREATE TABLE `other_information` (
   `id` int(11) NOT NULL,
-  `application_id` int(11) NOT NULL,
+  `applicant_id` int(11) NOT NULL,
   `source_of_information` enum('Social Media','Friends or Family','Website','Advertisement','Other') NOT NULL,
   `has_medical_condition` tinyint(1) NOT NULL DEFAULT 0,
   `medical_condition_description` text DEFAULT NULL,
@@ -206,7 +206,7 @@ CREATE TABLE `other_information` (
 -- Dumping data for table `other_information`
 --
 
-INSERT INTO `other_information` (`id`, `application_id`, `source_of_information`, `has_medical_condition`, `medical_condition_description`, `has_criminal_record`, `criminal_record_description`, `created_at`) VALUES
+INSERT INTO `other_information` (`id`, `applicant_id`, `source_of_information`, `has_medical_condition`, `medical_condition_description`, `has_criminal_record`, `criminal_record_description`, `created_at`) VALUES
 (0, 1, 'Friends or Family', 1, 'Hello world', 1, 'I love coding', '2025-01-22 15:01:15'),
 (0, 2, 'Advertisement', 1, 'none', 1, 'None', '2025-01-23 07:15:20'),
 (0, 7, 'Friends or Family', 1, 'None', 1, 'None', '2025-01-24 19:52:17'),
@@ -306,7 +306,7 @@ INSERT INTO `personal_information` (`id`, `first_name`, `middle_name`, `last_nam
 
 CREATE TABLE `program_selections` (
   `id` int(11) NOT NULL,
-  `application_id` int(11) NOT NULL,
+  `applicant_id` int(11) NOT NULL,
   `choice_number` tinyint(4) NOT NULL,
   `program_name` varchar(100) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
@@ -317,7 +317,7 @@ CREATE TABLE `program_selections` (
 -- Dumping data for table `program_selections`
 --
 
-INSERT INTO `program_selections` (`id`, `application_id`, `choice_number`, `program_name`, `created_at`, `session`) VALUES
+INSERT INTO `program_selections` (`id`, `applicant_id`, `choice_number`, `program_name`, `created_at`, `session`) VALUES
 (1, 1, 1, 'Introduction to Artificial Intelligence', '2025-01-22 15:01:15', ''),
 (2, 1, 2, 'AI for Beginners: Machine Learning', '2025-01-22 15:01:15', ''),
 (3, 1, 3, 'Database Management &amp;amp; Administration', '2025-01-22 15:01:15', ''),
@@ -386,7 +386,7 @@ INSERT INTO `settings` (`id`, `company_name`, `logo`, `theme`, `admissions_deadl
 
 CREATE TABLE `sponsor_information` (
   `id` int(11) NOT NULL,
-  `application_id` int(11) NOT NULL,
+  `applicant_id` int(11) NOT NULL,
   `first_name` varchar(50) NOT NULL,
   `last_name` varchar(50) NOT NULL,
   `relationship` varchar(50) NOT NULL,
@@ -403,7 +403,7 @@ CREATE TABLE `sponsor_information` (
 -- Dumping data for table `sponsor_information`
 --
 
-INSERT INTO `sponsor_information` (`id`, `application_id`, `first_name`, `last_name`, `relationship`, `occupation`, `house_address`, `digital_address`, `city`, `region`, `phone_number`, `created_at`) VALUES
+INSERT INTO `sponsor_information` (`id`, `applicant_id`, `first_name`, `last_name`, `relationship`, `occupation`, `house_address`, `digital_address`, `city`, `region`, `phone_number`, `created_at`) VALUES
 (1, 1, 'Yussif', 'Abdulai', 'Brother', 'Imam', 'KAG576 Rake St. NT-0118-9613', 'KAG576 Rake St. NT-0118-9613', 'Tamale', 'Accra', '0206789600', '2025-01-22 15:01:15'),
 (2, 2, 'Yussif', 'Abdulai', 'Father', 'Imam', 'KAG576 Rake St. NT-0118-9613', 'KAG576 Rake St. NT-0118-9613', 'Tamale', 'Accra', '0206789600', '2025-01-23 07:15:20'),
 (3, 7, 'JAFARU', 'ABDUL-AZIZ', 'Father', 'Farmer', 'K68 MBO LK, Dungu UDS', 'K68 MBO LK, Dungu UDS', 'TAMALE', 'Northern', '0208271749', '2025-01-24 19:52:17'),
@@ -487,7 +487,7 @@ INSERT INTO `users` (`id`, `email`, `first_name`, `last_name`, `phone_number`, `
 
 CREATE TABLE `work_experience` (
   `id` int(11) NOT NULL,
-  `application_id` int(11) NOT NULL,
+  `applicant_id` int(11) NOT NULL,
   `company_name` varchar(255) NOT NULL,
   `position` varchar(255) NOT NULL,
   `start_date` date NOT NULL,
@@ -498,7 +498,7 @@ CREATE TABLE `work_experience` (
 -- Dumping data for table `work_experience`
 --
 
-INSERT INTO `work_experience` (`id`, `application_id`, `company_name`, `position`, `start_date`, `end_date`) VALUES
+INSERT INTO `work_experience` (`id`, `applicant_id`, `company_name`, `position`, `start_date`, `end_date`) VALUES
 (1, 34, 'Nebatech Software Solution Ltd', 'Software Engineering', '0000-00-00', '0000-00-00'),
 (2, 35, 'Nebatech Software Solution Ltd', 'Software Engineer', '0000-00-00', '0000-00-00');
 
@@ -523,7 +523,7 @@ ALTER TABLE `audit_logs`
 --
 ALTER TABLE `legal_consent`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `application_id` (`application_id`);
+  ADD KEY `applicant_id` (`applicant_id`);
 
 --
 -- Indexes for table `notification_logs`
@@ -549,7 +549,7 @@ ALTER TABLE `personal_information`
 --
 ALTER TABLE `program_selections`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `application_id` (`application_id`);
+  ADD KEY `applicant_id` (`applicant_id`);
 
 --
 -- Indexes for table `serial_pins`
@@ -569,7 +569,7 @@ ALTER TABLE `settings`
 --
 ALTER TABLE `sponsor_information`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `application_id` (`application_id`);
+  ADD KEY `applicant_id` (`applicant_id`);
 
 --
 -- Indexes for table `transactions`
@@ -588,7 +588,7 @@ ALTER TABLE `users`
 --
 ALTER TABLE `work_experience`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `application_id` (`application_id`);
+  ADD KEY `applicant_id` (`applicant_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -680,7 +680,7 @@ ALTER TABLE `work_experience`
 -- Constraints for table `work_experience`
 --
 ALTER TABLE `work_experience`
-  ADD CONSTRAINT `work_experience_ibfk_1` FOREIGN KEY (`application_id`) REFERENCES `applicants` (`id`);
+  ADD CONSTRAINT `work_experience_ibfk_1` FOREIGN KEY (`applicant_id`) REFERENCES `applicants` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

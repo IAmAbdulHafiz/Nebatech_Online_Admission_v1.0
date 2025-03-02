@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Insert educational background (using applicant_id)
         foreach ($applicationData['educational_background']['school'] as $index => $school) {
             $stmt = $conn->prepare("INSERT INTO educational_background 
-                (application_id, school_name, course, qualification, start_year, end_year, certificate_path) 
+                (applicant_id, school_name, course, qualification, start_year, end_year, certificate_path) 
                 VALUES (?, ?, ?, ?, ?, ?, ?)");
             $stmt->execute([
                 $applicant_id,
@@ -82,14 +82,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         // Insert programme selection (using applicant_id)
-        $stmt = $conn->prepare("INSERT INTO program_selections (application_id, choice_number, program_name, session) VALUES (?, 1, ?, ?)");
+        $stmt = $conn->prepare("INSERT INTO program_selections (applicant_id, choice_number, program_name, session) VALUES (?, 1, ?, ?)");
         $stmt->execute([
             $applicant_id,
             htmlspecialchars($applicationData['programme_selection']['first_choice']),
             htmlspecialchars($applicationData['programme_selection']['session_first'])
         ]);
         if (!empty($applicationData['programme_selection']['second_choice'])) {
-            $stmt = $conn->prepare("INSERT INTO program_selections (application_id, choice_number, program_name, session) VALUES (?, 2, ?, ?)");
+            $stmt = $conn->prepare("INSERT INTO program_selections (applicant_id, choice_number, program_name, session) VALUES (?, 2, ?, ?)");
             $stmt->execute([
                 $applicant_id,
                 htmlspecialchars($applicationData['programme_selection']['second_choice']),
@@ -97,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ]);
         }
         if (!empty($applicationData['programme_selection']['third_choice'])) {
-            $stmt = $conn->prepare("INSERT INTO program_selections (application_id, choice_number, program_name, session) VALUES (?, 3, ?, ?)");
+            $stmt = $conn->prepare("INSERT INTO program_selections (applicant_id, choice_number, program_name, session) VALUES (?, 3, ?, ?)");
             $stmt->execute([
                 $applicant_id,
                 htmlspecialchars($applicationData['programme_selection']['third_choice']),
@@ -107,7 +107,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Insert other information (using applicant_id)
         $stmt = $conn->prepare("INSERT INTO other_information 
-            (application_id, source_of_information, has_medical_condition, medical_condition_description, has_criminal_record, criminal_record_description) 
+            (applicant_id, source_of_information, has_medical_condition, medical_condition_description, has_criminal_record, criminal_record_description) 
             VALUES (?, ?, ?, ?, ?, ?)");
         $stmt->execute([
             $applicant_id,
@@ -120,7 +120,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Insert sponsor information (using applicant_id)
         $stmt = $conn->prepare("INSERT INTO sponsor_information 
-            (application_id, first_name, last_name, relationship, occupation, house_address, digital_address, city, region, phone_number) 
+            (applicant_id, first_name, last_name, relationship, occupation, house_address, digital_address, city, region, phone_number) 
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         $stmt->execute([
             $applicant_id,
@@ -138,7 +138,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Insert work experience (if provided; using applicant_id)
         if (!empty($applicationData['work_experience'])) {
             foreach ($applicationData['work_experience'] as $experience) {
-                $stmt = $conn->prepare("INSERT INTO work_experience (application_id, company_name, position, start_date, end_date) VALUES (?, ?, ?, ?, ?)");
+                $stmt = $conn->prepare("INSERT INTO work_experience (applicant_id, company_name, position, start_date, end_date) VALUES (?, ?, ?, ?, ?)");
                 $stmt->execute([
                     $applicant_id,
                     htmlspecialchars($experience['company']),
@@ -150,7 +150,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         // Insert legal consent (using applicant_id)
-        $stmt = $conn->prepare("INSERT INTO legal_consent (application_id, privacy_policy_accepted, accurate_information_acknowledged) VALUES (?, ?, ?)");
+        $stmt = $conn->prepare("INSERT INTO legal_consent (applicant_id, privacy_policy_accepted, accurate_information_acknowledged) VALUES (?, ?, ?)");
         $stmt->execute([
             $applicant_id,
             $privacy_policy_accepted,

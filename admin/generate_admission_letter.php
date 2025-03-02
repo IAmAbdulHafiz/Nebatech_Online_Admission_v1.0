@@ -4,7 +4,7 @@ require_once('../vendor/autoload.php');
 include("../config/database.php");
 
 if (isset($_GET['id'])) {
-    $application_id = $_GET['id'];
+    $applicant_id = $_GET['id'];
 
     // Fetch application details
     $query = "
@@ -15,13 +15,13 @@ if (isset($_GET['id'])) {
             ps.program_name,
             ads.status
         FROM applications a
-        LEFT JOIN personal_information pi ON a.id = pi.application_id
-        LEFT JOIN program_selections ps ON a.id = ps.application_id AND ps.choice_number = 1
+        LEFT JOIN personal_information pi ON a.id = pi.applicant_id
+        LEFT JOIN program_selections ps ON a.id = ps.applicant_id AND ps.choice_number = 1
         LEFT JOIN admission_status ads ON a.id = ads.applicant_id
-        WHERE a.id = :application_id
+        WHERE a.id = :applicant_id
     ";
     $stmt = $conn->prepare($query);
-    $stmt->execute([':application_id' => $application_id]);
+    $stmt->execute([':applicant_id' => $applicant_id]);
     $application = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($application) {
@@ -34,7 +34,7 @@ if (isset($_GET['id'])) {
             <p>Congratulations!</p>
         ";
         $mpdf->WriteHTML($html);
-        $mpdf->Output("admission_letter_{$application_id}.pdf", 'D');
+        $mpdf->Output("admission_letter_{$applicant_id}.pdf", 'D');
     } else {
         echo "Application not found.";
     }
