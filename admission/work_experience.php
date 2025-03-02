@@ -33,11 +33,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       background: #f8f9fa;
       min-height: 100vh;
     }
+    /* Page wrapper for consistent dashboard layout */
+    .page-wrapper {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
     /* Main content area */
     .content {
-      margin-left: 250px; /* Adjust for sidebar width */
+      margin-left: 270px; /* Adjust for sidebar width */
       padding: 20px;
+      flex: 1;
       position: relative;
+      z-index: 1;
     }
     @media (max-width: 768px) {
       .content {
