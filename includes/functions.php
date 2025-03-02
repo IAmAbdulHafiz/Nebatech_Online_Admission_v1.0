@@ -4,7 +4,6 @@
 require_once '../vendor/autoload.php';
 use Twilio\Rest\Client;
 
-
 if (!function_exists('addNotification')) {
     function addNotification($user_id, $message) {
         global $conn;
@@ -26,20 +25,10 @@ if (!function_exists('fetchNotifications')) {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }
-function addNotificationLog($applicant_id, $type, $status, $message) {
-    var_dump($applicant_id); // Ensure this outputs an integer
-    global $conn;
-    $query = "INSERT INTO notification_logs (applicant_id, type, status, message, created_at) VALUES (:applicant_id, :type, :status, :message, NOW())";
-    $stmt = $conn->prepare($query);
-    $stmt->bindParam(':applicant_id', $applicant_id, PDO::PARAM_INT);
-    $stmt->bindParam(':type', $type, PDO::PARAM_STR);
-    $stmt->bindParam(':status', $status, PDO::PARAM_STR);
-    $stmt->bindParam(':message', $message, PDO::PARAM_STR);
-    $stmt->execute();
-}
 
 if (!function_exists('addNotificationLog')) {
     function addNotificationLog($applicant_id, $type, $status, $message) {
+        var_dump($applicant_id); // Debug: ensure this outputs an integer
         global $conn;
         $query = "INSERT INTO notification_logs (applicant_id, type, status, message, created_at) VALUES (:applicant_id, :type, :status, :message, NOW())";
         $stmt = $conn->prepare($query);
