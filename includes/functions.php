@@ -28,7 +28,6 @@ if (!function_exists('fetchNotifications')) {
 
 if (!function_exists('addNotificationLog')) {
     function addNotificationLog($applicant_id, $type, $status, $message) {
-        var_dump($applicant_id); // Debug: ensure this outputs an integer
         global $conn;
         $query = "INSERT INTO notification_logs (applicant_id, type, status, message, created_at) VALUES (:applicant_id, :type, :status, :message, NOW())";
         $stmt = $conn->prepare($query);
