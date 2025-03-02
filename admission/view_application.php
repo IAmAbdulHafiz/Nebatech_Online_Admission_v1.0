@@ -1,9 +1,13 @@
 <?php
 session_start();
 
+echo 'Session applicant ID: ' . htmlspecialchars($_SESSION['applicant']['id']);
+exit();
+
+
 // Check if the application session data exists
 if (!isset($_SESSION['application_submitted'])) {
-    header('Location: applicant_dashboard.php'); // Redirect to the dashboard if no application submitted
+    header('Location: applicant_dashboard.php'); // Redirect if no application submitted
     exit();
 }
 
@@ -39,7 +43,6 @@ function getField($field, $default = 'Not provided') {
             padding-top: 70px; /* Height of the fixed header */
             padding-bottom: 70px; /* Height of the fixed footer */
         }
-
         .content {
             margin-left: 270px; /* Width of the sidebar */
             padding: 20px;
@@ -59,11 +62,6 @@ function getField($field, $default = 'Not provided') {
     <?php include("includes/sidebar.php"); ?>
     <div class="content mt-5">
         <h2 class="mb-3 text-center" style="color: #002060;">View Your Application</h2>
-        <!--<div class="progress mb-4">
-            <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
-                Step 9 of 9
-            </div>
-        </div>-->
         <p class="text-muted text-center">Below is the information you provided in your application.</p>
 
         <!-- Section: Personal Details -->
@@ -74,7 +72,7 @@ function getField($field, $default = 'Not provided') {
                     <div class="col-md-3 text-center">
                         <?php if (!empty($applicationData['passport_photo'])): ?>
                             <img src="<?= htmlspecialchars($applicationData['passport_photo']) ?>" 
-                                alt="Passport Photo" class="img-thumbnail" style="max-width: 200px; height: 200px;">
+                                 alt="Passport Photo" class="img-thumbnail" style="max-width: 200px; height: 200px;">
                         <?php else: ?>
                             <p>No passport photo uploaded</p>
                         <?php endif; ?>
@@ -123,7 +121,7 @@ function getField($field, $default = 'Not provided') {
                     <div class="col-md-3 text-center">
                         <?php if (!empty($applicationData['identification_document'])): ?>
                             <img src="<?= htmlspecialchars($applicationData['identification_document']) ?>" 
-                            alt="Identification Document" class="img-thumbnail" style="max-width: 200px; height: 200px;">
+                                 alt="Identification Document" class="img-thumbnail" style="max-width: 200px; height: 200px;">
                         <?php else: ?>
                             <p>No identification document uploaded</p>
                         <?php endif; ?>
@@ -144,6 +142,7 @@ function getField($field, $default = 'Not provided') {
             <h4>4. Educational Background</h4>
             <div class="card shadow-sm p-3">
                 <?php
+                // Query now uses applicant_id after renaming the column in the table
                 $stmt = $conn->prepare("SELECT * FROM educational_background WHERE applicant_id = ?");
                 $stmt->execute([$applicationData['applicant_id']]);
                 $educationalBackground = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -183,6 +182,7 @@ function getField($field, $default = 'Not provided') {
             </div>
         </section>
 
+        <!-- Section: Programme Selection -->
         <section>
             <h4>Programme Selection</h4> 
             <div class="card shadow-sm p-3">
@@ -194,7 +194,9 @@ function getField($field, $default = 'Not provided') {
                 <ul class="list-group">
                     <?php if (!empty($programSelections)): ?>
                         <?php foreach ($programSelections as $program): ?>
-                            <li class="list-group-item"><strong>Choice <?= $program['choice_number'] ?>:</strong> <?= getField($program['program_name']) ?></li>
+                            <li class="list-group-item">
+                                <strong>Choice <?= getField($program['choice_number']) ?>:</strong> <?= getField($program['program_name']) ?>
+                            </li>
                         <?php endforeach; ?>
                     <?php else: ?>
                         <li class="list-group-item">No programme selections provided.</li>
@@ -250,6 +252,7 @@ function getField($field, $default = 'Not provided') {
             <h4>Work Experience</h4>
             <div class="card shadow-sm p-3">
                 <?php
+                // Note the query uses applicant_id and the fields are updated to match the table schema.
                 $stmt = $conn->prepare("SELECT * FROM work_experience WHERE applicant_id = ?");
                 $stmt->execute([$applicationData['applicant_id']]);
                 $workExperiences = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -258,8 +261,8 @@ function getField($field, $default = 'Not provided') {
                     <?php if (!empty($workExperiences)): ?>
                         <?php foreach ($workExperiences as $experience): ?>
                             <li class="list-group-item">
-                                <strong>Company:</strong> <?= getField($experience['company']) ?><br>
-                                <strong>Role:</strong> <?= getField($experience['role']) ?><br>
+                                <strong>Company:</strong> <?= getField($experience['company_name']) ?><br>
+                                <strong>Role:</strong> <?= getField($experience['position']) ?><br>
                                 <strong>Duration:</strong> <?= getField($experience['start_date']) ?> - <?= getField($experience['end_date']) ?>
                             </li>
                         <?php endforeach; ?>
