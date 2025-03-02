@@ -219,7 +219,8 @@ function getField($field, $default = 'Not provided') {
                   <?php if (!empty($programSelections)): ?>
                       <?php foreach ($programSelections as $program): ?>
                           <li class="list-group-item">
-                              <strong>Choice <?= getField($program['choice_number']) ?>:</strong> <?= getField($program['program_name']) ?>
+                              <strong>Choice <?= getField($program['choice_number']) ?>:</strong> <?= getField($program['program_name']) ?><br>
+                              <strong>Session:</strong> <?= getField($program['session']) ?>
                           </li>
                       <?php endforeach; ?>
                   <?php else: ?>
