@@ -13,8 +13,10 @@ if (!isset($_SESSION['applicant'])) {
 $applicant = $_SESSION['applicant'];
 include('../config/database.php');
 
-// Retrieve application status from the applicant record if available; default otherwise.
-$applicationStatus = isset($applicant['application_status']) ? $applicant['application_status'] : 'Not Started';
+// Retrieve application status from the database
+$stmt = $conn->prepare("SELECT application_status FROM applicants WHERE id = ?");
+$stmt->execute([$applicant['id']]);
+$applicationStatus = $stmt->fetchColumn();
 
 // Fetch notifications for the applicant.
 $stmt = $conn->prepare("SELECT * FROM notifications WHERE user_id = ? AND is_read = 0 ORDER BY created_at DESC");
