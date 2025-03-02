@@ -26,26 +26,45 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NTSS - Work Experience</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
   <style>
-    body {
-      background: #f8f9fa;
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+    /* Page wrapper for consistent dashboard layout */
+    .page-wrapper {
+      display: flex;
+      flex-direction: column;
       min-height: 100vh;
     }
-    /* Main content layout taking the sidebar into account */
-    .main-content {
-      margin-left: 250px;
+    /* Main content area */
+    .content {
+      margin-left: 270px; /* Adjust for sidebar width */
       padding: 20px;
+      flex: 1;
       position: relative;
       z-index: 1;
     }
     @media (max-width: 768px) {
-      .main-content {
+      .content {
         margin-left: 0;
       }
     }
-    /* Modern progress bar */
+    /* Additional styling for cards and buttons */
+    .card {
+      margin-bottom: 50px;
+    }
+    /* Remove hover effects on cards */
+    .card:hover {
+      box-shadow: none !important;
+      transform: none !important;
+    }
+    .remove-btn {
+      margin-top: 30px;
+    }
+    /* Progress bar styling */
     .progress {
       height: 30px;
       background-color: #e9ecef;
@@ -58,79 +77,62 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       font-weight: bold;
       line-height: 30px;
     }
-    /* Card styling */
-    .card {
-      margin-bottom: 20px;
-    }
   </style>
 </head>
 <body>
-  <?php include("includes/header.php"); ?>
-  <?php include("includes/sidebar.php"); ?>
+  <div class="page-wrapper">
+    <?php include("includes/header.php"); ?>
+    <?php include("includes/sidebar.php"); ?>
 
-  <div class="main-content">
-    <div class="container">
-      <h2 class="mb-4">Application Form - Work Experience</h2>
-      <div class="progress mb-4">
-        <div class="progress-bar bg-info" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
-          Step 8 of 9
+    <div class="content mt-5">
+      <div class="container">
+        <h2 class="mb-4">Application Form - Work Experience</h2>
+        <div class="progress mb-4">
+          <div class="progress-bar" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
+            Step 8 of 9
+          </div>
         </div>
-      </div>
-      <form action="work_experience.php" method="post" id="workExperienceForm">
-        <div id="work-experience-section">
-          <div class="card shadow-sm p-3">
-            <div class="row g-3">
-              <div class="col-md-4">
-                <label for="company" class="form-label">Company</label>
-                <input type="text" name="company[]" class="form-control" placeholder="e.g., ABC Corp">
-              </div>
-              <div class="col-md-4">
-                <label for="role" class="form-label">Role</label>
-                <input type="text" name="role[]" class="form-control" placeholder="e.g., Software Engineer">
-              </div>
-              <div class="col-md-4">
-                <label for="duration" class="form-label">Duration</label>
-                <input type="text" name="duration[]" class="form-control" placeholder="e.g., Jan 2020 - Dec 2021">
-              </div>
-              <div class="col-md-12 mt-3">
-                <button type="button" class="btn btn-danger btn-sm" onclick="removeWorkExperience(this)">Delete</button>
+        <form action="work_experience.php" method="post" id="workExperienceForm">
+          <div id="work-experience-section">
+            <div class="card shadow-sm p-3 mb-3">
+              <div class="row g-3">
+                <div class="col-md-4">
+                  <label for="company" class="form-label">Company</label>
+                  <input type="text" name="company[]" class="form-control" placeholder="e.g., ABC Corp">
+                </div>
+                <div class="col-md-4">
+                  <label for="role" class="form-label">Role</label>
+                  <input type="text" name="role[]" class="form-control" placeholder="e.g., Software Engineer">
+                </div>
+                <div class="col-md-4">
+                  <label for="duration" class="form-label">Duration</label>
+                  <input type="text" name="duration[]" class="form-control" placeholder="e.g., Jan 2020 - Dec 2021">
+                </div>
+                <div class="col-md-4 remove-btn">
+                  <button type="button" class="btn btn-danger btn-sm" onclick="removeWorkExperience(this)">Delete</button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <button type="button" class="btn btn-secondary mb-3" onclick="addWorkExperience()">Add More</button>
-        <div class="d-flex justify-content-between mt-4">
-          <a href="personal_info.php" class="btn btn-secondary">Previous</a>
-          <button type="submit" class="btn btn-success">Save and Continue</button>
-        </div>
-      </form>
+          <button type="button" class="btn btn-secondary mb-3" onclick="addWorkExperience()">Add More</button>
+          <div class="d-flex justify-content-between mt-4">
+            <a href="personal_info.php" class="btn btn-secondary">Previous</a>
+            <button type="submit" class="btn btn-success">Save and Continue</button>
+          </div>
+        </form>
+      </div>
     </div>
+    
+    <?php include("../includes/footer.php"); ?>
   </div>
 
-  <?php include("../includes/footer.php"); ?>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/jquery-3.7.1.min.js"></script>
+  <script src="../assets/js/bootstrap.bundle.min.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const sidebar = document.getElementById('sidebar');
-      const toggleBtn = document.getElementById('sidebarToggle');
-      if (toggleBtn) {
-        toggleBtn.addEventListener('click', function () {
-          const currentLeft = window.getComputedStyle(sidebar).left;
-          if (currentLeft === '0px') {
-              sidebar.style.left = '-250px';
-              toggleBtn.innerHTML = '<i class="fas fa-bars"></i>';
-          } else {
-              sidebar.style.left = '0px';
-              toggleBtn.innerHTML = '<i class="fas fa-times"></i>';
-          }
-        });
-      }
-    });
-
     function addWorkExperience() {
       var section = document.getElementById('work-experience-section');
       var newExperience = document.createElement('div');
-      newExperience.className = 'card shadow-sm p-3';
+      newExperience.className = 'card shadow-sm p-3 mb-3';
       newExperience.innerHTML = `
         <div class="row g-3">
           <div class="col-md-4">
@@ -145,7 +147,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <label for="duration" class="form-label">Duration</label>
             <input type="text" name="duration[]" class="form-control" placeholder="e.g., Jan 2020 - Dec 2021">
           </div>
-          <div class="col-md-12 mt-3">
+          <div class="col-md-4 remove-btn">
             <button type="button" class="btn btn-danger btn-sm" onclick="removeWorkExperience(this)">Delete</button>
           </div>
         </div>`;
@@ -157,7 +159,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       card.remove();
     }
 
-    document.getElementById("workExperienceForm").addEventListener("submit", function(e) {
+    $("#workExperienceForm").submit(function(e) {
       if (!this.checkValidity()) {
         e.preventDefault();
         alert("Please fill out all required fields before submitting.");
