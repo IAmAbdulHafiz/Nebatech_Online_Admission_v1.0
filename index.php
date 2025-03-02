@@ -101,7 +101,7 @@
           <div class="feature-card h-100">
             <i class="fas fa-handshake fa-2x mb-3 text-warning"></i>
             <h5>Reliability</h5>
-            <p class="mb-0">Trusted partner for reliable and robust solutions.</p>
+            <p class="mb-0">Hello, Trusted partner for reliable and robust solutions.</p>
           </div>
         </div>
         <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
