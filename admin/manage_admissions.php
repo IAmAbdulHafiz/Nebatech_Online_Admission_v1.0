@@ -4,32 +4,32 @@ include("../config/database.php");
 
 // Handle status updates
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_status'])) {
-    $application_id = $_POST['application_id'];
+    $applicant_id = $_POST['applicant_id'];
     $new_status = $_POST['status'];
     $remarks = $_POST['remarks'];
 
     // Debug: Check if form data is received
-    error_log("Form submitted: application_id=$application_id, status=$new_status, remarks=$remarks");
+    error_log("Form submitted: applicant_id=$applicant_id, status=$new_status, remarks=$remarks");
 
-    $update_query = "UPDATE admission_status SET status = :status, remarks = :remarks WHERE applicant_id = :application_id";
+    $update_query = "UPDATE admission_status SET status = :status, remarks = :remarks WHERE applicant_id = :applicant_id";
     $update_stmt = $conn->prepare($update_query);
     $update_result = $update_stmt->execute([
         ':status' => $new_status,
         ':remarks' => $remarks,
-        ':application_id' => $application_id
+        ':applicant_id' => $applicant_id
     ]);
 
     // Debug: Check if the update query was successful
     if ($update_result) {
-        error_log("Status updated successfully for application_id=$application_id");
+        error_log("Status updated successfully for applicant_id=$applicant_id");
     } else {
-        error_log("Failed to update status for application_id=$application_id");
+        error_log("Failed to update status for applicant_id=$applicant_id");
     }
 
     // Send notification email
-    $applicant_query = "SELECT email FROM personal_information WHERE application_id = :application_id";
+    $applicant_query = "SELECT email FROM personal_information WHERE applicant_id = :applicant_id";
     $applicant_stmt = $conn->prepare($applicant_query);
-    $applicant_stmt->execute([':application_id' => $application_id]);
+    $applicant_stmt->execute([':applicant_id' => $applicant_id]);
     $applicant = $applicant_stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($applicant) {
@@ -57,7 +57,7 @@ include("../includes/sidebar.php");
 // Fetch applications with their current admission status
 $query = "
     SELECT 
-        a.id AS application_id,
+        a.id AS applicant_id,
         pi.first_name,
         pi.middle_name,
         pi.last_name,
@@ -67,8 +67,8 @@ $query = "
         ads.status,
         ads.remarks
     FROM applications a
-    LEFT JOIN personal_information pi ON a.id = pi.application_id
-    LEFT JOIN program_selections ps ON a.id = ps.application_id AND ps.choice_number = 1
+    LEFT JOIN personal_information pi ON a.id = pi.applicant_id
+    LEFT JOIN program_selections ps ON a.id = ps.applicant_id AND ps.choice_number = 1
     LEFT JOIN admission_status ads ON a.id = ads.applicant_id
     WHERE 1=1
 ";
@@ -190,7 +190,7 @@ $applications = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <td><?php echo htmlspecialchars($application['remarks']); ?></td>
                             <td>
                                 <form action="manage_admissions.php" method="POST" class="d-inline">
-                                    <input type="hidden" name="application_id" value="<?php echo $application['application_id']; ?>">
+                                    <input type="hidden" name="applicant_id" value="<?php echo $application['applicant_id']; ?>">
                                     <select name="status" class="form-control mb-2">
                                         <option value="Pending" <?php echo $application['status'] == 'Pending' ? 'selected' : ''; ?>>Pending</option>
                                         <option value="Reviewed" <?php echo $application['status'] == 'Reviewed' ? 'selected' : ''; ?>>Reviewed</option>
@@ -200,7 +200,7 @@ $applications = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                     <textarea name="remarks" class="form-control mb-2" placeholder="Remarks"><?php echo htmlspecialchars($application['remarks']); ?></textarea>
                                     <button type="submit" name="update_status" class="btn btn-secondary">Update Status</button>
                                 </form>
-                                <a href="generate_admission_letter.php?id=<?php echo $application['application_id']; ?>" class="btn btn-success btn-sm mt-2">Generate Letter</a>
+                                <a href="generate_admission_letter.php?id=<?php echo $application['applicant_id']; ?>" class="btn btn-success btn-sm mt-2">Generate Letter</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

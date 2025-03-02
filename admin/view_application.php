@@ -20,13 +20,13 @@ $query = "
         lc.privacy_policy_accepted, lc.accurate_information_acknowledged,
         pi.passport_photo
     FROM applicants a
-    LEFT JOIN personal_information pi ON a.id = pi.application_id
-    LEFT JOIN program_selections ps ON a.id = ps.application_id
-    LEFT JOIN sponsor_information si ON a.id = si.application_id
-    LEFT JOIN other_information oi ON a.id = oi.application_id
-    LEFT JOIN educational_background eb ON a.id = eb.application_id
-    LEFT JOIN work_experience we ON a.id = we.application_id
-    LEFT JOIN legal_consent lc ON a.id = lc.application_id
+    LEFT JOIN personal_information pi ON a.id = pi.applicant_id
+    LEFT JOIN program_selections ps ON a.id = ps.applicant_id
+    LEFT JOIN sponsor_information si ON a.id = si.applicant_id
+    LEFT JOIN other_information oi ON a.id = oi.applicant_id
+    LEFT JOIN educational_background eb ON a.id = eb.applicant_id
+    LEFT JOIN work_experience we ON a.id = we.applicant_id
+    LEFT JOIN legal_consent lc ON a.id = lc.applicant_id
     WHERE a.id = :applicant_id
 ";
 

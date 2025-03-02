@@ -18,7 +18,7 @@ if (!$admissionStatus || $admissionStatus['status'] !== 'Approved') {
     exit();
 }
 
-// Fetch the applicant's personal information using applicant_id (not application_id)
+// Fetch the applicant's personal information using applicant_id (not applicant_id)
 $stmt = $conn->prepare("SELECT * FROM personal_information WHERE applicant_id = ?");
 $stmt->execute([$applicant['id']]);
 $personalInfo = $stmt->fetch(PDO::FETCH_ASSOC);
