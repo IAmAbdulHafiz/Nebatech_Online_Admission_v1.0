@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header('Location: review.php'); // Redirect to the review page
     exit();
 }
-?> 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,23 +29,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="../assets/css/style.css">
   <style>
-    /* Dashboard unified design styling */
+    /* Dashboard styling */
     body {
       background: #f8f9fa;
       min-height: 100vh;
     }
-    /* Main content layout with sidebar accounted for */
+    /* Main content container to mimic dashboard structure */
     .main-content {
       margin-left: 250px;
       padding: 20px;
       position: relative;
+      z-index: 1;
     }
     @media (max-width: 768px) {
       .main-content {
         margin-left: 0;
       }
     }
-    /* Modern progress bar styling */
+    /* Progress bar styling */
     .progress {
       height: 30px;
       background-color: #e9ecef;
@@ -58,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       font-weight: bold;
       line-height: 30px;
     }
-    /* Card styling for work experience sections */
+    /* Card styling for work experience entries */
     .card {
       margin-bottom: 20px;
     }
@@ -99,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <label for="duration" class="form-label">Duration</label>
                 <input type="text" name="duration[]" class="form-control" placeholder="e.g., Jan 2020 - Dec 2021">
               </div>
-              <div class="col-md-4 remove-btn">
+              <div class="col-12 mt-3">
                 <button type="button" class="btn btn-danger btn-sm" onclick="removeWorkExperience(this)">Delete</button>
               </div>
             </div>
@@ -136,7 +137,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <label for="duration" class="form-label">Duration</label>
             <input type="text" name="duration[]" class="form-control" placeholder="e.g., Jan 2020 - Dec 2021">
           </div>
-          <div class="col-md-4 remove-btn">
+          <div class="col-12 mt-3">
             <button type="button" class="btn btn-danger btn-sm" onclick="removeWorkExperience(this)">Delete</button>
           </div>
         </div>`;
@@ -145,7 +146,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     function removeWorkExperience(button) {
       var card = button.closest('.card');
-      card.remove(); 
+      card.remove();
     }
 
     $("#workExperienceForm").submit(function(e) {
