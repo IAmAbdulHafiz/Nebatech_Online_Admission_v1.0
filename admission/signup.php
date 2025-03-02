@@ -314,6 +314,10 @@ $pageType = 'signup';
       
       const serialValue = document.getElementById('serialNumber').value;
       const pinValue = document.getElementById('pin').value;
+      const emailValue = document.getElementById('email').value;
+      const passwordValue = document.getElementById('password').value;
+      const confirmPasswordValue = document.getElementById('confirmPassword').value;
+
       if (serialValue.length !== 15) {
         showError('serialNumberError', 'Serial Number must be 15 characters long');
         valid = false;
@@ -323,15 +327,15 @@ $pageType = 'signup';
         valid = false;
       }
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(document.getElementById('email').value)) {
+      if (!emailRegex.test(emailValue)) {
         showError('emailError', 'Invalid email format');
         valid = false;
       }
-      if (document.getElementById('password').value.length < 8) {
+      if (passwordValue.length < 8) {
         showError('passwordError', 'Password must be at least 8 characters long');
         valid = false;
       }
-      if (document.getElementById('password').value !== document.getElementById('confirmPassword').value) {
+      if (passwordValue !== confirmPasswordValue) {
         showError('confirmPasswordError', 'Passwords do not match');
         valid = false;
       }

@@ -34,7 +34,8 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
 // Validate password match
 if ($password !== $confirmPassword) {
-    die("Error: Passwords do not match.");
+    header("Location: signup.php?error=Passwords+do+not+match");
+    exit();
 }
 
 // Hash the password
