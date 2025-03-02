@@ -69,20 +69,34 @@ $yesNoOptions = ['Yes', 'No'];
   </style>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      const medicalConditionSelect = document.getElementById('medical_condition');
-      const medicalConditionDetails = document.getElementById('medical_condition_details');
-      const criminalRecordSelect = document.getElementById('criminal_record');
-      const criminalRecordDetails = document.getElementById('criminal_record_details');
+        const medicalConditionSelect = document.getElementById('medical_condition');
+        const medicalConditionDetails = document.getElementById('medical_condition_details');
+        const medicalConditionDetailsText = document.getElementById('medical_condition_details_text');
+        const criminalRecordSelect = document.getElementById('criminal_record');
+        const criminalRecordDetails = document.getElementById('criminal_record_details');
+        const criminalRecordDetailsText = document.getElementById('criminal_record_details_text');
 
-      // Show/Hide medical condition details based on selection
-      medicalConditionSelect.addEventListener('change', function () {
-          medicalConditionDetails.style.display = this.value === 'Yes' ? 'block' : 'none';
-      });
+        // Show/Hide medical condition details based on selection
+        medicalConditionSelect.addEventListener('change', function () {
+            if (this.value === 'Yes') {
+                medicalConditionDetails.style.display = 'block';
+                medicalConditionDetailsText.setAttribute('required', 'required');
+            } else {
+                medicalConditionDetails.style.display = 'none';
+                medicalConditionDetailsText.removeAttribute('required');
+            }
+        });
 
-      // Show/Hide criminal record details based on selection
-      criminalRecordSelect.addEventListener('change', function () {
-          criminalRecordDetails.style.display = this.value === 'Yes' ? 'block' : 'none';
-      });
+        // Show/Hide criminal record details based on selection
+        criminalRecordSelect.addEventListener('change', function () {
+            if (this.value === 'Yes') {
+                criminalRecordDetails.style.display = 'block';
+                criminalRecordDetailsText.setAttribute('required', 'required');
+            } else {
+                criminalRecordDetails.style.display = 'none';
+                criminalRecordDetailsText.removeAttribute('required');
+            }
+        });
     });
   </script>
 </head>
@@ -129,7 +143,7 @@ $yesNoOptions = ['Yes', 'No'];
           <!-- Medical Condition Details -->
           <div class="mb-4" id="medical_condition_details" style="display: none;">
             <label for="medical_condition_details_text" class="form-label">If yes, explain the type of condition</label>
-            <textarea id="medical_condition_details_text" name="medical_condition_details" class="form-control" rows="3" placeholder="Describe the medical condition if applicable" required></textarea>
+            <textarea id="medical_condition_details_text" name="medical_condition_details" class="form-control" rows="3" placeholder="Describe the medical condition if applicable"></textarea>
           </div>
           <div class="row">
             <div class="col-md-6">
@@ -148,7 +162,7 @@ $yesNoOptions = ['Yes', 'No'];
           <!-- Criminal Record Details -->
           <div class="mb-4" id="criminal_record_details" style="display: none;">
             <label for="criminal_record_details_text" class="form-label">If yes, explain</label>
-            <textarea id="criminal_record_details_text" name="criminal_record_details" class="form-control" rows="3" placeholder="Provide details of the criminal record if applicable" required></textarea>
+            <textarea id="criminal_record_details_text" name="criminal_record_details" class="form-control" rows="3" placeholder="Provide details of the criminal record if applicable"></textarea>
           </div>
           <div class="d-flex justify-content-between">
             <button type="button" class="btn btn-secondary" onclick="window.history.back();">Previous</button>
