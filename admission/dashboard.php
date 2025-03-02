@@ -13,13 +13,8 @@ if (!isset($_SESSION['applicant'])) {
 $applicant = $_SESSION['applicant'];
 include('../config/database.php');
 
-// Refresh the applicant data from the database
-$stmt = $conn->prepare("SELECT * FROM applicants WHERE id = ?");
-$stmt->execute([$applicant['id']]);
-$latestApplicant = $stmt->fetch(PDO::FETCH_ASSOC);
-
-// Use the latest status if available; otherwise, default to session value or 'Not Started'
-$applicationStatus = isset($latestApplicant['application_status']) ? $latestApplicant['application_status'] : (isset($applicant['application_status']) ? $applicant['application_status'] : 'Not Started');
+// Retrieve application status from the applicant record if available; default otherwise.
+$applicationStatus = isset($applicant['application_status']) ? $applicant['application_status'] : 'Not Started';
 
 // Fetch notifications for the applicant.
 $stmt = $conn->prepare("SELECT * FROM notifications WHERE user_id = ? AND is_read = 0 ORDER BY created_at DESC");
@@ -40,17 +35,20 @@ $unreadCount = count($notifications);
       background: #f8f9fa;
       min-height: 100vh;
     }
+    /* Main content layout taking the sidebar into account */
     .main-content {
       margin-left: 250px;
       padding: 20px;
       position: relative;
-      z-index: 1;
+      z-index: 1;  /* Ensure main content is behind the sidebar when sidebar's z-index is higher */
     }
     @media (max-width: 768px) {
       .main-content {
+        /* We keep the margin-left if you wish, but the sidebar will overlay on top of it */
         margin-left: 0px;
       }
     }
+    /* Modern progress bar */
     .progress {
       height: 30px;
       background-color: #e9ecef;
@@ -62,6 +60,7 @@ $unreadCount = count($notifications);
       font-weight: bold;
       line-height: 30px;
     }
+    /* Notification badge styling */
     .notification-badge {
       position: absolute;
       top: 10px;
@@ -118,28 +117,78 @@ $unreadCount = count($notifications);
         </div>
       </div>
 
-      <!-- Quick Links Section and Notifications... -->
-      <!-- Your remaining code remains the same -->
+      <!-- Quick Links Section -->
+      <div class="row mb-4">
+        <div class="col-md-4">
+          <div class="card text-center shadow-sm">
+            <div class="card-body">
+              <i class="bi bi-file-earmark-text-fill display-4 text-primary"></i>
+              <h5 class="card-title mt-3">View Application</h5>
+              <a href="view_application.php" class="btn btn-primary">View</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card text-center shadow-sm">
+            <div class="card-body">
+              <i class="bi bi-clipboard-check-fill display-4 text-success"></i>
+              <h5 class="card-title mt-3">Admission Status</h5>
+              <a href="admission_status.php" class="btn btn-success">Check Status</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card text-center shadow-sm">
+            <div class="card-body">
+              <i class="bi bi-printer display-4 text-warning"></i>
+              <h5 class="card-title mt-3">Print Admission Letter</h5>
+              <a href="print_admission_letter.php" class="btn btn-warning">Print</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Notifications Section -->
+      <div class="card shadow-sm">
+        <div class="card-body position-relative">
+          <h5 class="card-title">Notifications</h5>
+          <?php if ($unreadCount > 0): ?>
+            <span class="notification-badge"><?= $unreadCount ?></span>
+          <?php endif; ?>
+          <?php if ($unreadCount > 0): ?>
+            <ul class="list-group list-group-flush">
+              <?php foreach($notifications as $notification): ?>
+                <li class="list-group-item">
+                  <?= htmlspecialchars($notification['message']) ?>
+                  <small class="text-muted float-end"><?= date("M d, Y H:i", strtotime($notification['created_at'])) ?></small>
+                </li>
+              <?php endforeach; ?>
+            </ul>
+          <?php else: ?>
+            <p class="mb-0">No new notifications.</p>
+          <?php endif; ?>
+        </div>
+      </div>
     </div>
   </div>
 
   <?php include("../includes/footer.php"); ?>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // Sidebar toggle functionality
     document.addEventListener('DOMContentLoaded', function() {
-      const sidebar = document.getElementById('sidebar');
-      const toggleBtn = document.getElementById('sidebarToggle');
-      toggleBtn.addEventListener('click', function () {
-        const currentLeft = window.getComputedStyle(sidebar).left;
-        if (currentLeft === '0px') {
-          sidebar.style.left = '-250px';
-          toggleBtn.innerHTML = '<i class="fas fa-bars"></i>';
-        } else {
-          sidebar.style.left = '0px';
-          toggleBtn.innerHTML = '<i class="fas fa-times"></i>';
-        }
-      });
+        const sidebar = document.getElementById('sidebar');
+        const toggleBtn = document.getElementById('sidebarToggle');
+
+        toggleBtn.addEventListener('click', function () {
+            const currentLeft = window.getComputedStyle(sidebar).left;
+            if (currentLeft === '0px') {
+                sidebar.style.left = '-250px';
+                toggleBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            } else {
+                sidebar.style.left = '0px';
+                toggleBtn.innerHTML = '<i class="fas fa-times"></i>';
+            }
+        });
     });
   </script>
 </body>
