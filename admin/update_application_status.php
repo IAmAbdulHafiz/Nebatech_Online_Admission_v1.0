@@ -21,7 +21,7 @@ $query = "
         pi.first_name, pi.middle_name, pi.last_name, 
         s.status, s.remarks 
     FROM applicants a
-    LEFT JOIN personal_information pi ON a.id = pi.application_id
+    LEFT JOIN personal_information pi ON a.id = pi.applicant_id
     LEFT JOIN admission_status s ON a.id = s.applicant_id
     WHERE a.id = :id
 ";

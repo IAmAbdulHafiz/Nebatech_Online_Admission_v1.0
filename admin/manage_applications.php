@@ -7,7 +7,7 @@ include("../includes/sidebar.php");
 // Fetch filtered applications
 $query = "
     SELECT 
-        a.id AS application_id,
+        a.id AS applicant_id,
         pi.first_name,
         pi.middle_name,
         pi.last_name,
@@ -17,8 +17,8 @@ $query = "
         ads.status,
         ads.remarks
     FROM applications a
-    LEFT JOIN personal_information pi ON a.id = pi.application_id
-    LEFT JOIN program_selections ps ON a.id = ps.application_id AND ps.choice_number = 1
+    LEFT JOIN personal_information pi ON a.id = pi.applicant_id
+    LEFT JOIN program_selections ps ON a.id = ps.applicant_id AND ps.choice_number = 1
     LEFT JOIN admission_status ads ON a.id = ads.applicant_id
     WHERE 1=1
 ";
@@ -149,7 +149,7 @@ $applications = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <tbody>
                         <?php foreach ($applications as $application): ?>
                             <tr>
-                                <td><input type="checkbox" name="application_ids[]" value="<?php echo $application['application_id']; ?>"></td>
+                                <td><input type="checkbox" name="application_ids[]" value="<?php echo $application['applicant_id']; ?>"></td>
                                 <td><?php echo htmlspecialchars($application['first_name'] . ' ' . $application['middle_name'] . ' ' . $application['last_name']); ?></td>
                                 <td><?php echo htmlspecialchars($application['email']); ?></td>
                                 <td><?php echo htmlspecialchars($application['phone_number']); ?></td>
@@ -157,8 +157,8 @@ $applications = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <td><?php echo htmlspecialchars($application['status']); ?></td>
                                 <td><?php echo htmlspecialchars($application['remarks']); ?></td>
                                 <td>
-                                    <a href="view_application.php?id=<?php echo $application['application_id']; ?>" class="btn btn-info btn-sm table-action-btn mb-2">View</a>
-                                    <a href="assign_reviewer.php?id=<?php echo $application['application_id']; ?>" class="btn btn-warning btn-sm table-action-btn">Assign Reviewer</a>
+                                    <a href="view_application.php?id=<?php echo $application['applicant_id']; ?>" class="btn btn-info btn-sm table-action-btn mb-2">View</a>
+                                    <a href="assign_reviewer.php?id=<?php echo $application['applicant_id']; ?>" class="btn btn-warning btn-sm table-action-btn">Assign Reviewer</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

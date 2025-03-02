@@ -27,7 +27,7 @@ $total_notifications = $conn->query($total_notifications_query)->fetchColumn();
 $recent_activities_query = "
     SELECT a.application_status, a.created_at, p.first_name, p.middle_name, p.last_name 
     FROM applications a
-    JOIN personal_information p ON a.id = p.application_id
+    JOIN personal_information p ON a.id = p.applicant_id
     ORDER BY a.created_at DESC LIMIT 5";
 $recent_activities = $conn->query($recent_activities_query)->fetchAll(PDO::FETCH_ASSOC);
 
