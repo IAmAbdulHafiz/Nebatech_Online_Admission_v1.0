@@ -1,10 +1,6 @@
 <?php
 session_start();
 
-echo 'Session applicant ID: ' . htmlspecialchars($_SESSION['applicant']['id']);
-exit();
-
-
 // Check if the application session data exists
 if (!isset($_SESSION['application_submitted'])) {
     header('Location: applicant_dashboard.php'); // Redirect if no application submitted
