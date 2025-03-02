@@ -339,6 +339,9 @@ $pageType = 'signup';
         showError('confirmPasswordError', 'Passwords do not match');
         valid = false;
       }
+
+      // Temporary debug message to display password values
+      alert(`Password: ${passwordValue}, Confirm Password: ${confirmPasswordValue}`);
       
       // Check via AJAX if serial and pin exist and are available
       const ajaxCheck = await checkSerialPin();

@@ -38,6 +38,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
 // Validate password match
 if ($password !== $confirmPassword) {
+    error_log("Passwords do not match: Password - $password, Confirm Password - $confirmPassword");
     header("Location: signup.php?error=Passwords+do+not+match");
     exit();
 }
