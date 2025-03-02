@@ -194,7 +194,7 @@ if (!$profilePicture) {
       <!-- Navigation Links -->
       <ul class="nav flex-column px-3">
         <li class="nav-item">
-          <a href="applicant_dashboard.php" class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'applicant_dashboard.php' ? 'active' : ''; ?>">
+          <a href="dashboard.php" class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'dashboard.php' ? 'active' : ''; ?>">
             <i class="fas fa-home me-2"></i> Dashboard
           </a>
         </li>

@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } elseif ($user['role'] == 'registrar') {
             header("Location: ../registrar/registrar_dashboard.php");
         } elseif ($user['role'] == 'applicant') {
-            header("Location: ../applicant/applicant_dashboard.php");
+            header("Location: dashboard.php");
         }
         exit();
     } else {

@@ -1,7 +1,7 @@
 <?php 
 session_start();
 if (!isset($_SESSION['application'])) {
-    header('Location: applicant_dashboard.php'); // Redirect if no application session data exists
+    header('Location: dashboard.php'); // Redirect if no application session data exists
     exit();
 }
 $applicationData = $_SESSION['application'];

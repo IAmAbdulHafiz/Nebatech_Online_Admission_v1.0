@@ -3,7 +3,7 @@ session_start();
 
 // Check if the application session data exists
 if (!isset($_SESSION['application_submitted'])) {
-    header('Location: applicant_dashboard.php'); // Redirect to the dashboard if no application submitted
+    header('Location: dashboard.php'); // Redirect to the dashboard if no application submitted
     exit();
 }
 
