@@ -31,10 +31,6 @@ $pageType = 'signup';
       margin-bottom: 20px;
       text-align: center;
     }
-    .alert-danger {
-      margin-bottom: 20px;
-      text-align: center;
-    }
     .floating-label-group {
       position: relative;
       margin-bottom: 1.5rem;
@@ -110,7 +106,6 @@ $pageType = 'signup';
     document.addEventListener('DOMContentLoaded', function() {
       const params = new URLSearchParams(window.location.search);
       const msg = params.get('msg');
-      const error = params.get('error');
       if (msg) {
         // Create and display a success alert at the top of the container
         const container = document.querySelector('.signup-container');
@@ -123,14 +118,6 @@ $pageType = 'signup';
         setTimeout(function() {
           window.location.href = "login.php";
         }, 5000);
-      }
-      if (error) {
-        // Create and display an error alert at the top of the container
-        const container = document.querySelector('.signup-container');
-        const alertDiv = document.createElement('div');
-        alertDiv.className = 'alert alert-danger';
-        alertDiv.textContent = decodeURIComponent(error.replace(/\+/g, ' '));
-        container.prepend(alertDiv);
       }
     });
 
