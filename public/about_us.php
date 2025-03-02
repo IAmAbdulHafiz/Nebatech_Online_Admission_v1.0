@@ -22,7 +22,7 @@
       background-size: cover;
       background-position: center;
       color: white;
-      padding: 7rem 2rem;
+      padding: 9rem 2rem;
       text-align: center;
       margin-bottom: 0;
     }
@@ -175,7 +175,10 @@
       color: orange;
     }
     @media (max-width: 768px) {
-      .hero, .about-section, .mission-vision-section, .core-values-section, .ceo-section, .team-section {
+      .hero{
+        padding: 9rem 1rem;
+      }
+      .about-section, .mission-vision-section, .core-values-section, .ceo-section, .team-section {
         padding: 50px 1rem;
       }
       .hero h1 {
@@ -184,6 +187,10 @@
       .hero p {
         font-size: 1rem;
       }
+      .team-img {
+      width: 100%;
+      height: 450px;
+      object-fit: cover;
     }
   </style>
 </head>

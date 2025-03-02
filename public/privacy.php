@@ -10,18 +10,50 @@
     <meta charset="UTF-8">
     <title>Nebatech Privacy Policy</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn how Nebatech Software Solution Ltd. collects, uses, and protects your personal data.">
+    <meta name="keywords" content="Privacy Policy, Nebatech, Data Protection, Personal Data, Security">
+    <meta name="author" content="Nebatech Software Solution Ltd">
+    <link rel="icon" href="../assets/images/favicon.ico">
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
     <style>
-        body {font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 20px; background-color: #f4f4f4; color: #333;}
-        header {background-color: #002060; color: #fff; padding: 20px 10px; text-align: center;}
-        section {background: #fff; padding: 20px; margin-bottom: 20px; border-radius: 5px;}
-        h1, h2, h3 {color: #002060;}
+        /* Hero header style for consistency */
+        .policy-header {
+            background: linear-gradient(rgba(0, 32, 96, 0.9), rgba(0, 32, 96, 0.9)), url('../assets/images/hero_bg1.JPG');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 9rem 2rem;
+            text-align: center;
+        }
+        /* Style each section individually as separate blocks */
+        section {
+            background: #fff;
+            padding: 20px;
+            margin: 2rem auto;
+            max-width: 800px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        section h2, section h3 {
+            color: #002060;
+        }
+        section p, section li {
+            line-height: 1.6;
+            color: #333;
+        }
+        section ul {
+            margin-left: 20px;
+        }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Nebatech Software Solution Ltd.</h1>
-        <p>Privacy Policy</p>
+    <?php include("includes/public_header.php"); ?>
+    <header class="policy-header">
+        <h1>Nebatech Privacy Policy</h1>
+        <p>Your privacy is our priority—learn how we safeguard your data</p>
     </header>
+
     <section>
         <h2>1. Introduction</h2>
         <p>
@@ -52,9 +84,7 @@
 
     <section>
         <h2>3. How We Use Your Information</h2>
-        <p>
-            The information we collect may be used to:
-        </p>
+        <p>The information we collect may be used to:</p>
         <ul>
             <li>Provide, operate, and maintain our website and services.</li>
             <li>Process your transactions and manage your accounts.</li>
@@ -126,5 +156,6 @@
             Phone: 0247636080 / 0206789600
         </p>
     </section>
+    <?php include("includes/footer.php"); ?>
 </body>
 </html>

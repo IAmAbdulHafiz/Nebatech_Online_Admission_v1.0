@@ -1,3 +1,8 @@
+<?php
+include("cookie-consent.php");
+?>
+
+<!-- Footer -->
 <footer class="text-white py-3" style="background: #002060; box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.5);">
     <div class="container">
         <div class="row align-items-center">
