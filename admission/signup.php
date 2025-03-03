@@ -147,7 +147,7 @@ $pageType = 'signup';
           <div class="col-md-6">
             <div class="floating-label-group">
               <input type="text" id="serialNumber" name="serial" class="form-control" placeholder=" " required>
-              <label for="serialNumber">Serial Number</label>
+              <label for="serialNumber">Serial Number:</label>
               <small id="serialNumberError" class="error-message"></small>
             </div>
           </div>
