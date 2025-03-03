@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $serial = htmlspecialchars($_POST['serial']);
     $pin = htmlspecialchars($_POST['pin']);
     $email = htmlspecialchars($_POST['email']);
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $password = $_POST['password'];
     $confirmPassword = $_POST['confirm-password'];
     $firstName = htmlspecialchars($_POST['firstName']);
     $surname = htmlspecialchars($_POST['surname']);
@@ -44,19 +44,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit();
     }
 
-    // Check if the passwords match
+    // Check if the passwords match before hashing
     if ($password !== $confirmPassword) {
         header("Location: signup.php?error=Passwords+do+not+match");
         exit();
     }
 
+    // Hash the password after confirming they match
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
     // Insert user details into the applicants table,
     // including first name and surname, and marking the serial as used.
     $insertQuery = "INSERT INTO applicants (email, password, serial_number, pin, first_name, surname, is_used) 
-                    VALUES (:email, :password, :serial, :pin, :first_name, :surname, 1)";
+                    VALUES (:email, :hashedPassword, :serial, :pin, :first_name, :surname, 1)";
     $insertStmt = $conn->prepare($insertQuery);
     $insertStmt->bindParam(':email', $email);
-    $insertStmt->bindParam(':password', $password);
+    $insertStmt->bindParam(':hashedPassword', $hashedPassword);
     $insertStmt->bindParam(':serial', $serial);
     $insertStmt->bindParam(':pin', $pin);
     $insertStmt->bindParam(':first_name', $firstName);
